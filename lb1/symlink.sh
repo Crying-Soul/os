@@ -16,7 +16,7 @@ output_file="./file_links.txt"
 > "$output_file"
 
 # Поиск символьных ссылок, указывающих на целевой файл
-find / 2>/dev/null -type l -exec ls -l {} + | grep "$target_file" >> "$output_file"
+ls -lR /home 2>/dev/null | grep $1 | grep ^l | awk '{print $0}' > "$output_file"
 
 # Подсчет количества найденных ссылок
 count=$(wc -l < "$output_file")
