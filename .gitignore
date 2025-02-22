@@ -1,0 +1,7 @@
+*
+!/.gitignore
+!/logger.sh
+!/lb1/
+lb1/tests
+lb1/*.txt
+
