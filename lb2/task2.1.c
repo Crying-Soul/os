@@ -4,45 +4,63 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 
-// Функция для вывода информации о памяти процесса
-void print_process_maps(pid_t pid) {
-    char command[256];
-    sprintf(command, "pmap -x %d", pid);  // Используем pmap для вывода информации о памяти
-    printf("\n--- Memory usage for process %d (using pmap) ---\n", pid);
-    system(command);  // Выполнение команды pmap
-}
-
-// Функция для имитации длительных вычислений (версия 1)
-void long_computation(const char* process_name, int sleep_time) {
-    // printf("%s: PID = %d, PPID = %d\n", process_name, getpid(), getppid());
-
+// Имитация длительных вычислений (используется только в этом файле)
+static void long_computation(const char* process_name, int sleep_time, int* var) {
     for (int i = 0; i < 5; i++) {
-        printf("%s: PID = %d, PPID = %d, выполнение итерации %d\n", process_name, getpid(), getppid(), i);
-        sleep(sleep_time);  // Имитация длительных вычислений
+        printf("%s: PID = %d, PPID = %d, var = %d, адрес = %p, итерация %d\n", 
+               process_name, getpid(), getppid(), *var, (void*)var, i);
+        fflush(stdout);
+        sleep(sleep_time);
     }
 }
 
-int main() {
-    print_process_maps(getpid());
-    pid_t ret = fork();  // Создаем новый процесс
+int main(void) {
+    int shared_var = 100; // Локальная переменная, изменения которой в дочернем процессе не затрагивают родителя
 
-    if (ret < 0) {
-        // Ошибка при создании процесса
-        fprintf(stderr, "Ошибка при создании процесса\n");
-        return 1;
-    } else if (ret == 0) {
-        print_process_maps(getpid());  // Выводим информацию о памяти текущего процесса
-        // Код, выполняемый в процессе-потомке
-        long_computation("Потомок",3);
+    printf("Начало программы. Родитель: PID = %d, var = %d, адрес = %p\n", 
+           getpid(), shared_var, (void*)&shared_var);
+    fflush(stdout);
+
+    pid_t pid = fork();
+    if (pid < 0) {
+        perror("Ошибка при вызове fork");
+        exit(EXIT_FAILURE);
+    } else if (pid == 0) {
+        // Дочерний процесс
+        printf("Дочерний процесс: PID = %d, PPID = %d, var = %d, адрес = %p (до изменения)\n",
+               getpid(), getppid(), shared_var, (void*)&shared_var);
+        fflush(stdout);
+
+        shared_var += 50;  // Изменяем копию переменной в дочернем процессе
+        printf("Дочерний процесс: PID = %d, изменённое значение var = %d, адрес = %p\n", 
+               getpid(), shared_var, (void*)&shared_var);
+        fflush(stdout);
+
+        long_computation("Дочерний процесс", 3, &shared_var);
+
+        printf("Дочерний процесс: PID = %d, завершение работы\n", getpid());
+        fflush(stdout);
+        _exit(EXIT_SUCCESS); // Используем _exit для корректного завершения дочернего процесса
     } else {
-        sleep(1);
-        // Код, выполняемый в процессе-родителе
-        long_computation("Родитель",4);
+        // Родительский процесс
+        sleep(1);  // Небольшая задержка для наглядности вывода
 
-        // Ожидание завершения потомка
-        wait(NULL);
+        printf("Родитель: PID = %d, var = %d, адрес = %p (после fork)\n", 
+               getpid(), shared_var, (void*)&shared_var);
+        fflush(stdout);
+
+        long_computation("Родитель", 2, &shared_var);
+
+        if (waitpid(pid, NULL, 0) < 0) {
+            perror("Ошибка при ожидании завершения дочернего процесса");
+            exit(EXIT_FAILURE);
+        }
+
+        printf("Родитель: PID = %d, завершение работы\n", getpid());
+        fflush(stdout);
     }
 
     printf("Завершение программы (PID = %d)\n", getpid());
-    return 0;
+    fflush(stdout);
+    return EXIT_SUCCESS;
 }

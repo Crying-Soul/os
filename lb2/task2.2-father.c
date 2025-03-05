@@ -26,7 +26,7 @@ int main() {
         wait(NULL);
 
         // Фиксируем состояние таблицы процессов
-        system("ps -l > father_processes.txt");
+        system("ps -H f | head -n 6 > father_processes.txt");
 
         printf("Father process finished.\n");
     }

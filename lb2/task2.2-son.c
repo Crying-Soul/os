@@ -6,7 +6,7 @@ int main() {
     printf("Son process is running with PID: %d\n", getpid());
 
     // Фиксируем состояние таблицы процессов
-    system("ps -l > son_processes.txt");
+    system("ps -H f | head -n 7 > son_processes.txt");
 
     printf("Son process finished.\n");
 
