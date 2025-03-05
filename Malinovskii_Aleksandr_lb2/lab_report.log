@@ -1,0 +1,159 @@
+Script started on 2025-03-05 23:46:07+03:00 [COMMAND="./logger.sh" TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="263" LINES="12"]
+Дата исполнения отчёта: 2025-03-05 23:46:07
+Идентификация исполнителя: immortal
+Группа: 3343
+ФИО: Малиновский Александр Алексеевич
+-----------------------------------------------------------------
+
+[2025-03-05 23:46:07] ПРОФИЛЬ СИСТЕМЫ
+
+[2025-03-05 23:46:07] >>> Информация о процессоре (lscpu) <<<
+----------------------------------------
+Архитектура:                          x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        39 bits physical, 48 bits virtual
+Порядок байт:                         Little Endian
+CPU(s):                               4
+On-line CPU(s) list:                  0-3
+ID прроизводителя:                    GenuineIntel
+Имя модели:                           11th Gen Intel(R) Core(TM) i5-1155G7 @ 2.50GHz
+Семейство ЦПУ:                        6
+Модель:                               140
+Потоков на ядро:                      1
+Ядер на сокет:                        4
+Сокетов:                              1
+Степпинг:                             2
+BogoMIPS:                             4992,02
+Флаги:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 movbe popcnt aes rdrand hypervisor lahf_lm abm 3dnowprefetch ibrs_enhanced fsgsbase bmi1 bmi2 invpcid rdseed adx clflushopt sha_ni arat md_clear flush_l1d arch_capabilities
+Разработчик гипервизора:              KVM
+Тип виртуализации:                    полный
+L1d cache:                            192 KiB (4 instances)
+L1i cache:                            128 KiB (4 instances)
+L2 cache:                             5 MiB (4 instances)
+L3 cache:                             32 MiB (4 instances)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-3
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Vulnerable
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; RSB filling; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+----------------------------------------
+
+[2025-03-05 23:46:07] >>> Информация о памяти (free -h) <<<
+----------------------------------------
+               всего        занят        своб      общая  буф/врем.   доступно
+Память:        3,8Gi       2,2Gi       583Mi       151Mi       1,5Gi       1,6Gi
+Подкачка:      511Mi       321Mi       190Mi
+----------------------------------------
+
+[2025-03-05 23:46:07] >>> Информация о дисках (lsblk) <<<
+----------------------------------------
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+loop0    7:0    0  74,2M  1 loop /snap/core22/1621
+loop1    7:1    0     4K  1 loop /snap/bare/5
+loop2    7:2    0   258M  1 loop /snap/firefox/5751
+loop3    7:3    0  73,9M  1 loop /snap/core22/1748
+loop4    7:4    0  10,7M  1 loop /snap/firmware-updater/127
+loop5    7:5    0 257,9M  1 loop /snap/firefox/5783
+loop6    7:6    0  11,1M  1 loop /snap/firmware-updater/167
+loop7    7:7    0  89,7M  1 loop /snap/gtk-common-themes/1536
+loop8    7:8    0  91,7M  1 loop /snap/gtk-common-themes/1535
+loop9    7:9    0   264K  1 loop /snap/gtk-theme-breeze/5
+loop10   7:10   0   125M  1 loop /snap/gtk-theme-breeze/2
+loop11   7:11   0    14M  1 loop /snap/icon-theme-breeze/3
+loop12   7:12   0 505,1M  1 loop /snap/gnome-42-2204/176
+loop13   7:13   0  13,2M  1 loop /snap/icon-theme-breeze/5
+loop14   7:14   0  38,8M  1 loop /snap/snapd/21759
+loop15   7:15   0 210,4M  1 loop /snap/thunderbird/663
+loop16   7:16   0  44,4M  1 loop /snap/snapd/23545
+loop17   7:17   0 210,4M  1 loop /snap/thunderbird/644
+sda      8:0    0    20G  0 disk 
+└─sda1   8:1    0    20G  0 part /
+sr0     11:0    1  57,4M  0 rom  
+----------------------------------------
+
+[2025-03-05 23:46:07] >>> Информация о сетевых интерфейсах (ip a) <<<
+----------------------------------------
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:9c:d2:56 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 79063sec preferred_lft 79063sec
+    inet6 fd00::c88d:814e:a7c8:f851/64 scope global temporary dynamic 
+       valid_lft 86265sec preferred_lft 14265sec
+    inet6 fd00::80f:6263:cd47:52af/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 86265sec preferred_lft 14265sec
+    inet6 fe80::de6f:659a:67d9:e9d7/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+----------------------------------------
+
+[2025-03-05 23:46:07] ИДЕНТИФИКАЦИЯ ВИРТУАЛЬНОЙ МАШИНЫ
+
+[2025-03-05 23:46:07] Система запущена в виртуальной машине.
+
+[2025-03-05 23:46:07] Тип виртуализации: oracle
+
+-----------------------------------------------------------------
+
+[2025-03-05 23:46:07] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
+
+[2025-03-05 23:46:07] >>> Информация о ядре (uname -a) <<<
+----------------------------------------
+Linux immortal-virtualbox 6.11.0-14-generic #15-Ubuntu SMP PREEMPT_DYNAMIC Fri Jan 10 23:48:25 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+----------------------------------------
+
+[2025-03-05 23:46:07] >>> Информация о версии ОС (lsb_release -a) <<<
+----------------------------------------
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.10
+Release:	24.10
+Codename:	oracular
+----------------------------------------
+
+-----------------------------------------------------------------
+
+[2025-03-05 23:46:07] НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ
+
+[2025-03-05 23:46:07] НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ
+
+[2025-03-05 23:46:07] ВЫПОЛНЕНИЕ ЗАДАНИЯ 3
+
+[2025-03-05 23:46:07] >>> Выполнение команды: ln -s ./lb1/tests/linked_file.txt ./lb1/links1/symlink_ln.txt && ls -l ./lb1/links1/symlink_ln.txt <<<
+----------------------------------------
+ln: не удалось создать символьную ссылку './lb1/links1/symlink_ln.txt': Нет такого файла или каталога
+----------------------------------------
+
+[2025-03-05 23:46:07] >>> Выполнение команды: cp -s ./lb1/tests/linked_file.txt ./symlink_cp.txt && ls -l ./symlink_cp.txt <<<
+----------------------------------------
+cp: не удалось выполнить stat для './lb1/tests/linked_file.txt': Нет такого файла или каталога
+----------------------------------------
+
+[2025-03-05 23:46:07] >>> Выполнение команды: link /lb1/tests/linked_file.txt ./lb1/links1/hardlink.txt && ls -l ./lb1/links1/hardlink.txt <<<
+----------------------------------------
+link: невозможно создать ссылку './lb1/links1/hardlink.txt' на '/lb1/tests/linked_file.txt': Нет такого файла или каталога
+----------------------------------------
+
+[2025-03-05 23:46:07] Время выполнения задания 3: 0 секунд.
+
+[2025-03-05 23:46:07] ВЫПОЛНЕНИЕ ЗАДАНИЯ 3 (Скрипт)
+
+[2025-03-05 23:46:07] Запуск скрипта lb1/task3.sh с аргументами: ./lb1/tests/linked_file.txt
+
+[2025-03-05 23:46:07] Скрипт для задания 3 не найден. Пропуск задания.
+
+Script done on 2025-03-05 23:46:07+03:00 [COMMAND_EXIT_CODE="1"]
