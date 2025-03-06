@@ -1,0 +1,194 @@
+Script started on 2025-03-06 03:12:59+03:00 [COMMAND="./logger-lb2.sh" TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="165" LINES="44"]
+=================================================================
+                   ОТЧЁТ ПО ЛАБОРАТОРНОЙ РАБОТЕ
+=================================================================
+Дата исполнения отчёта: 2025-03-06 03:12:59
+Идентификация исполнителя: root
+Группа: 3343
+ФИО: Гребнев Егор Дмитриевич
+-----------------------------------------------------------------
+
+[2025-03-06 03:12:59] ПРОФИЛЬ СИСТЕМЫ
+
+[2025-03-06 03:12:59] >>> Информация о процессоре (lscpu) <<<
+----------------------------------------
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        48 bits physical, 48 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               6
+On-line CPU(s) list:                  0-5
+Vendor ID:                            AuthenticAMD
+Model name:                           AMD Ryzen 5 3600 6-Core Processor
+BIOS Model name:                        CPU @ 0.0GHz
+BIOS CPU family:                      0
+CPU family:                           23
+Model:                                113
+Thread(s) per core:                   1
+Core(s) per socket:                   6
+Socket(s):                            1
+Stepping:                             0
+BogoMIPS:                             7199.99
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch ssbd vmmcall fsgsbase bmi1 avx2 bmi2 rdseed adx clflushopt sha_ni arat nrip_save flushbyasid decodeassists
+Virtualization:                       AMD-V
+Hypervisor vendor:                    KVM
+Virtualization type:                  full
+L1d cache:                            192 KiB (6 instances)
+L1i cache:                            192 KiB (6 instances)
+L2 cache:                             3 MiB (6 instances)
+L3 cache:                             192 MiB (6 instances)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-5
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Mitigation; untrained return thunk; SMT disabled
+Vulnerability Spec rstack overflow:   Mitigation; safe RET, no microcode
+Vulnerability Spec store bypass:      Not affected
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Retpolines; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+----------------------------------------
+
+[2025-03-06 03:12:59] >>> Информация о памяти (free -h) <<<
+----------------------------------------
+               total        used        free      shared  buff/cache   available
+Mem:            23Gi       2.7Gi        19Gi        74Mi       1.7Gi        20Gi
+Swap:          974Mi          0B       974Mi
+----------------------------------------
+
+[2025-03-06 03:12:59] >>> Информация о дисках (lsblk) <<<
+----------------------------------------
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda      8:0    0   60G  0 disk 
+├─sda1   8:1    0   59G  0 part /
+├─sda2   8:2    0    1K  0 part 
+└─sda5   8:5    0  975M  0 part [SWAP]
+sr0     11:0    1 57.4M  0 rom  
+----------------------------------------
+
+[2025-03-06 03:12:59] >>> Информация о сетевых интерфейсах (ip a) <<<
+----------------------------------------
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:5c:10:fa brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 81372sec preferred_lft 81372sec
+    inet6 fd00::b480:6f:ef45:9618/64 scope global temporary dynamic 
+       valid_lft 85948sec preferred_lft 13948sec
+    inet6 fd00::a00:27ff:fe5c:10fa/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 85948sec preferred_lft 13948sec
+    inet6 fe80::a00:27ff:fe5c:10fa/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether f2:64:e5:b7:9c:24 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+4: br-b56d365599b8: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 5a:a1:e7:87:d9:bc brd ff:ff:ff:ff:ff:ff
+    inet 172.18.0.1/16 brd 172.18.255.255 scope global br-b56d365599b8
+       valid_lft forever preferred_lft forever
+----------------------------------------
+
+[2025-03-06 03:12:59] ИДЕНТИФИКАЦИЯ ВИРТУАЛЬНОЙ МАШИНЫ
+
+[2025-03-06 03:12:59] Система запущена в виртуальной машине.
+
+[2025-03-06 03:12:59] Тип виртуализации: oracle
+
+-----------------------------------------------------------------
+
+[2025-03-06 03:12:59] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
+
+[2025-03-06 03:12:59] >>> Информация о ядре (uname -a) <<<
+----------------------------------------
+Linux ASPIRIN 6.1.0-31-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.128-1 (2025-02-07) x86_64 GNU/Linux
+----------------------------------------
+
+[2025-03-06 03:12:59] >>> Информация о версии ОС (lsb_release -a) <<<
+----------------------------------------
+Distributor ID:	Debian
+Description:	Debian GNU/Linux 12 (bookworm)
+Release:	12
+Codename:	bookworm
+----------------------------------------
+
+-----------------------------------------------------------------
+
+[2025-03-06 03:12:59] НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ
+
+[2025-03-06 03:12:59] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.3
+
+[2025-03-06 03:12:59] >>> Выполнение команды: ./lb2/task-runner.sh ./lb2/2/2.3 2.3.c --run 2.3 <<<
+----------------------------------------
+Файл 2.3.c успешно скомпилирован в 2.3
+Запуск файла 2.3...
+Демонстрация работы различных функций exec():
+
+Запуск execl:
+total 36
+drwxr-xr-x 2 lotos lotos  4096 Mar  6 03:12 .
+drwxr-xr-x 6 lotos lotos  4096 Mar  6 02:18 ..
+-rwxr-xr-x 1 root  root  16896 Mar  6 03:12 2.3
+-rw-r--r-- 1 lotos lotos  4813 Mar  6 03:12 2.3.c
+
+Запуск execlp:
+total 36
+drwxr-xr-x 2 lotos lotos  4096 Mar  6 03:12 .
+drwxr-xr-x 6 lotos lotos  4096 Mar  6 02:18 ..
+-rwxr-xr-x 1 root  root  16896 Mar  6 03:12 2.3
+-rw-r--r-- 1 lotos lotos  4813 Mar  6 03:12 2.3.c
+
+Запуск execle (с пользовательским окружением):
+total 36
+drwxr-xr-x 2 lotos lotos  4096 Mar  6 03:12 .
+drwxr-xr-x 6 lotos lotos  4096 Mar  6 02:18 ..
+-rwxr-xr-x 1 root  root  16896 Mar  6 03:12 2.3
+-rw-r--r-- 1 lotos lotos  4813 Mar  6 03:12 2.3.c
+
+Запуск execv:
+total 36
+drwxr-xr-x 2 lotos lotos  4096 Mar  6 03:12 .
+drwxr-xr-x 6 lotos lotos  4096 Mar  6 02:18 ..
+-rwxr-xr-x 1 root  root  16896 Mar  6 03:12 2.3
+-rw-r--r-- 1 lotos lotos  4813 Mar  6 03:12 2.3.c
+
+Запуск execvp:
+total 36
+drwxr-xr-x 2 lotos lotos  4096 Mar  6 03:12 .
+drwxr-xr-x 6 lotos lotos  4096 Mar  6 02:18 ..
+-rwxr-xr-x 1 root  root  16896 Mar  6 03:12 2.3
+-rw-r--r-- 1 lotos lotos  4813 Mar  6 03:12 2.3.c
+
+Запуск execve (с пользовательским окружением):
+total 36
+drwxr-xr-x 2 lotos lotos  4096 Mar  6 03:12 .
+drwxr-xr-x 6 lotos lotos  4096 Mar  6 02:18 ..
+-rwxr-xr-x 1 root  root  16896 Mar  6 03:12 2.3
+-rw-r--r-- 1 lotos lotos  4813 Mar  6 03:12 2.3.c
+
+Все дочерние процессы завершены.
+Файл 2.3 успешно выполнен
+Файл 2.3 удалён
+----------------------------------------
+
+[2025-03-06 03:12:59] Время выполнения задания 2.3: 0 секунд.
+
+[2025-03-06 03:12:59] Общее время выполнения скрипта: 0 секунд.
+=================================================================
+                      ОТЧЁТ ЗАВЕРШЁН
+=================================================================
+
+[2025-03-06 03:12:59] Основной отчёт сохранён в файл: lab_report_2025-03-06_03-12-59.log
+
+Script done on 2025-03-06 03:12:59+03:00 [COMMAND_EXIT_CODE="0"]

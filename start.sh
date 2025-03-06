@@ -1,0 +1,1 @@
+sudo rm -rf lab_* && sudo ./logger-lb2.sh

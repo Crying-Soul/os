@@ -13,7 +13,7 @@ int main() {
         exit(EXIT_FAILURE);
     } else if (pid == 0) {
         // Код для потомка
-        execl("./son", "son", NULL);
+        execl("./2.2-son", "2.2-son", NULL);
         // Если execl вернул управление, значит произошла ошибка
         perror("execl");
         exit(EXIT_FAILURE);
@@ -26,7 +26,7 @@ int main() {
         wait(NULL);
 
         // Фиксируем состояние таблицы процессов
-        system("ps -H f | head -n 6 > father_processes.txt");
+        system("ps -H f | tee father_processes.log");
 
         printf("Father process finished.\n");
     }
