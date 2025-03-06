@@ -37,7 +37,7 @@ void* thread_function(void* arg) {
         printf("%-7s | PID: %-3d | TID: %-4ld | Priority: %-3d | Policy: %-12s\n",
                "Thread",  getpid(), syscall(SYS_gettid), 
                param.sched_priority, get_scheduling_policy(policy));
-        fflush(stdout);
+          
         iteration++;
     }
     return NULL;
@@ -68,9 +68,9 @@ int main() {
         printf("%-7s | PID: %-3d | TID: %-4ld | Priority: %-3d | Policy: %-12s\n",
                "Main", getpid(), syscall(SYS_gettid), 
                main_param.sched_priority, get_scheduling_policy(policy));
-        fflush(stdout);
+          
         iteration++;
-    
+   
     }
 
     pthread_join(thread1, NULL);
