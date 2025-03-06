@@ -4,19 +4,22 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-void print_processes(const char *message) {
+void print_processes(const char *message)
+{
     printf("\n%s\n", message);
-    fflush(stdout);  // Сброс буфера stdout
-    system("ps -o pid,ppid,pgid,sid,comm -H f");  // Подробный вывод процессов
+    fflush(stdout);                              // Сброс буфера stdout
+    system("ps -o pid,ppid,pgid,sid,comm -H f"); // Подробный вывод процессов
 }
 
-int main() {
+int main()
+{
     printf("Запуск программы. Основной процесс (PID: %d, PPID: %d).\n", getpid(), getppid());
     fflush(stdout);
 
-    pid_t pid = fork();  // Создаем процесс-сына
+    pid_t pid = fork(); // Создаем процесс-сына
 
-    if (pid == 0) {
+    if (pid == 0)
+    {
         // Код, выполняемый процессом-сыном
         printf("Процесс-сын (PID: %d, PPID: %d) запущен.\n", getpid(), getppid());
         fflush(stdout);
@@ -29,10 +32,13 @@ int main() {
         fflush(stdout);
 
         // Объяснение изменения PPID
-        if (getppid() == 1) {
+        if (getppid() == 1)
+        {
             printf("Теперь родитель процесса-сына — процесс с PID 1 (init/systemd).\n");
             printf("Это корневой процесс системы, который управляет всеми процессами и завершает осиротевшие процессы.\n");
-        } else {
+        }
+        else
+        {
             printf("Родитель процесса-сына: %d.\n", getppid());
         }
         fflush(stdout);
@@ -43,7 +49,9 @@ int main() {
         printf("Процесс-сын (PID: %d, PPID: %d) завершен.\n", getpid(), getppid());
         fflush(stdout);
         exit(0);
-    } else if (pid > 0) {
+    }
+    else if (pid > 0)
+    {
         // Код, выполняемый процессом-отцом
         printf("Процесс-отец (PID: %d) создал процесс-сына (PID: %d).\n", getpid(), pid);
         fflush(stdout);
@@ -57,7 +65,9 @@ int main() {
         printf("Процесс-отец (PID: %d) завершается, не ожидая завершения процесса-сына.\n", getpid());
         fflush(stdout);
         exit(0);
-    } else {
+    }
+    else
+    {
         // Обработка ошибки fork()
         perror("Ошибка при вызове fork()");
         fflush(stderr);

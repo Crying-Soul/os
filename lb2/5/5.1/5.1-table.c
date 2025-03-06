@@ -11,28 +11,37 @@
 #include <sys/wait.h>
 
 // Функция для получения политики планирования
-const char* get_scheduling_policy(int policy) {
-    switch (policy) {
-        case SCHED_OTHER: return "SCHED_OTHER";
-        case SCHED_FIFO:  return "SCHED_FIFO";
-        case SCHED_RR:    return "SCHED_RR";
-        default:          return "UNKNOWN";
+const char *get_scheduling_policy(int policy)
+{
+    switch (policy)
+    {
+    case SCHED_OTHER:
+        return "SCHED_OTHER";
+    case SCHED_FIFO:
+        return "SCHED_FIFO";
+    case SCHED_RR:
+        return "SCHED_RR";
+    default:
+        return "UNKNOWN";
     }
 }
 
 // Функция для вывода информации о процессе
-void print_process_info(pid_t pid) {
+void print_process_info(pid_t pid)
+{
     int policy;
     struct sched_param param;
 
     // Получаем политику планирования и параметры
     policy = sched_getscheduler(pid);
-    if (policy == -1) {
+    if (policy == -1)
+    {
         perror("sched_getscheduler");
         return;
     }
 
-    if (sched_getparam(pid, &param) == -1) {
+    if (sched_getparam(pid, &param) == -1)
+    {
         perror("sched_getparam");
         return;
     }
@@ -43,9 +52,12 @@ void print_process_info(pid_t pid) {
 }
 
 // Функция для проверки, является ли строка числом
-int is_number(const char* str) {
-    while (*str) {
-        if (!isdigit(*str)) {
+int is_number(const char *str)
+{
+    while (*str)
+    {
+        if (!isdigit(*str))
+        {
             return 0;
         }
         str++;
@@ -54,23 +66,27 @@ int is_number(const char* str) {
 }
 
 // Функция для чтения списка процессов из /proc
-void read_process_table() {
+void read_process_table()
+{
     DIR *dir;
     struct dirent *entry;
 
     // Открываем директорию /proc
     dir = opendir("/proc");
-    if (!dir) {
+    if (!dir)
+    {
         perror("opendir");
         return;
     }
 
     // Читаем записи в директории
-    while ((entry = readdir(dir)) != NULL) {
+    while ((entry = readdir(dir)) != NULL)
+    {
         // Проверяем, является ли имя директории числом (PID)
-        if (is_number(entry->d_name)) {
+        if (is_number(entry->d_name))
+        {
             pid_t pid = atoi(entry->d_name);
-            print_process_info(pid);  // Выводим информацию о процессе
+            print_process_info(pid); // Выводим информацию о процессе
         }
     }
 
@@ -78,22 +94,29 @@ void read_process_table() {
 }
 
 // Функция для запуска процесса по его имени
-void launch_process(const char* program) {
+void launch_process(const char *program)
+{
     pid_t pid = fork();
-    if (pid == 0) {
+    if (pid == 0)
+    {
         // Дочерний процесс
         execlp(program, program, NULL);
-        perror("execlp");  // Если execlp fails
+        perror("execlp"); // Если execlp fails
         exit(1);
-    } else if (pid > 0) {
+    }
+    else if (pid > 0)
+    {
         // Родительский процесс
         printf("Launched process %s with PID: %d\n", program, pid);
-    } else {
+    }
+    else
+    {
         perror("fork");
     }
 }
 
-int main() {
+int main()
+{
     // Читаем и выводим информацию о процессах из таблицы процессов
     printf("Process table:\n");
     read_process_table();
@@ -104,10 +127,11 @@ int main() {
 
     // Запускаем процессы из таблицы процессов
     printf("\nLaunching processes...\n");
-    launch_process("ls");  
+    launch_process("ls");
 
     // Ждем завершения дочерних процессов
-    while (wait(NULL) > 0);
+    while (wait(NULL) > 0)
+        ;
 
     return 0;
 }

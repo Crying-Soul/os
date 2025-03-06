@@ -4,20 +4,26 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-int main() {
+int main()
+{
     pid_t pid = fork();
 
-    if (pid < 0) {
+    if (pid < 0)
+    {
         // Ошибка при создании процесса
         perror("fork");
         exit(EXIT_FAILURE);
-    } else if (pid == 0) {
+    }
+    else if (pid == 0)
+    {
         // Код для потомка
         execl("./2.2-son", "2.2-son", NULL);
         // Если execl вернул управление, значит произошла ошибка
         perror("execl");
         exit(EXIT_FAILURE);
-    } else {
+    }
+    else
+    {
         // Код для родителя
         printf("Father process is running with PID: %d\n", getpid());
         printf("Child process created with PID: %d\n", pid);

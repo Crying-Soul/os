@@ -5,12 +5,14 @@
 #include <sys/wait.h>
 #include <signal.h>
 
-int main() {
+int main()
+{
     pid_t son1, son2, son3;
     system("> processes_after.txt");
     // Создаем son1
     son1 = fork();
-    if (son1 == 0) {
+    if (son1 == 0)
+    {
         execl("./3.1-son1", "3.1-son1", NULL); // Запуск son1
         perror("execl son1 failed");
         exit(1);
@@ -23,7 +25,8 @@ int main() {
 
     // Создаем son2
     son2 = fork();
-    if (son2 == 0) {
+    if (son2 == 0)
+    {
         execl("./3.1-son2", "3.1-son2", NULL); // Запуск son2
         perror("execl son2 failed");
         exit(1);
@@ -36,7 +39,8 @@ int main() {
 
     // Создаем son3
     son3 = fork();
-    if (son3 == 0) {
+    if (son3 == 0)
+    {
         execl("./3.1-son3", "3.1-son3", NULL); // Запуск son3
         perror("execl son3 failed");
         exit(1);

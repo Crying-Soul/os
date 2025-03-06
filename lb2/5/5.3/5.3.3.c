@@ -13,32 +13,41 @@
 
 #define BUFFER_SIZE 32
 
-struct thread_params {
+struct thread_params
+{
     int priority;
-    const char* name;
+    const char *name;
 };
 
-const char* get_scheduling_policy(int policy) {
-    switch (policy) {
-        case SCHED_OTHER: return "SCHED_OTHER";
-        case SCHED_FIFO:  return "SCHED_FIFO";
-        case SCHED_RR:    return "SCHED_RR";
-        default:          return "UNKNOWN";
+const char *get_scheduling_policy(int policy)
+{
+    switch (policy)
+    {
+    case SCHED_OTHER:
+        return "SCHED_OTHER";
+    case SCHED_FIFO:
+        return "SCHED_FIFO";
+    case SCHED_RR:
+        return "SCHED_RR";
+    default:
+        return "UNKNOWN";
     }
 }
 
-void* thread_function(void* arg) {
-    struct thread_params* params = (struct thread_params*)arg;
+void *thread_function(void *arg)
+{
+    struct thread_params *params = (struct thread_params *)arg;
     int policy;
     struct sched_param param;
     int iteration = 0;
 
-    while (iteration < 5) {
+    while (iteration < 5)
+    {
         pthread_getschedparam(pthread_self(), &policy, &param);
 
         printf("%-7s | PID: %-5d | TID: %-5ld | Priority: %-3d | Policy: %-12s\n",
-               params->name, getpid(), 
-               syscall(SYS_gettid), param.sched_priority, 
+               params->name, getpid(),
+               syscall(SYS_gettid), param.sched_priority,
                get_scheduling_policy(policy));
 
         iteration++;
@@ -46,7 +55,8 @@ void* thread_function(void* arg) {
     return NULL;
 }
 
-int main() {
+int main()
+{
     pthread_attr_t attr_main, attr1, attr2;
     struct sched_param param_main, param1, param2;
 
@@ -75,11 +85,13 @@ int main() {
     pthread_attr_setschedparam(&attr2, &param2);
 
     pthread_t thread1, thread2;
-    if (pthread_create(&thread1, &attr1, thread_function, &params1) != 0) {
+    if (pthread_create(&thread1, &attr1, thread_function, &params1) != 0)
+    {
         fprintf(stderr, "Ошибка создания потока 1: %s\n", strerror(errno));
         return EXIT_FAILURE;
     }
-    if (pthread_create(&thread2, &attr2, thread_function, &params2) != 0) {
+    if (pthread_create(&thread2, &attr2, thread_function, &params2) != 0)
+    {
         fprintf(stderr, "Ошибка создания потока 2: %s\n", strerror(errno));
         return EXIT_FAILURE;
     }
@@ -87,11 +99,12 @@ int main() {
     // Вывод информации из главного потока
     char timestamp[20];
     int iteration = 0;
-    while (iteration < 5) {
-        
+    while (iteration < 5)
+    {
+
         printf("%-7s | PID: %-5d | TID: %-5ld | Priority: %-3d | Policy: %-12s\n",
-               "Main", getpid(), 
-               syscall(SYS_gettid), param_main.sched_priority, 
+               "Main", getpid(),
+               syscall(SYS_gettid), param_main.sched_priority,
                get_scheduling_policy(SCHED_FIFO));
         iteration++;
     }

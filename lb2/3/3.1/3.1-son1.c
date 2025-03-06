@@ -2,10 +2,11 @@
 #include <unistd.h>
 #include <signal.h>
 
-int main() {
+int main()
+{
     printf("Son1: Started (PID: %d)\n", getpid());
-    while (1) {
-
+    while (1)
+    {
     }
     return 0;
 }

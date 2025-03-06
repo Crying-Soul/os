@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int main() {
+int main()
+{
     printf("Son process is running with PID: %d\n", getpid());
 
     // Фиксируем состояние таблицы процессов
@@ -12,4 +13,3 @@ int main() {
 
     return 0;
 }
-

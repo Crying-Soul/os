@@ -8,24 +8,31 @@
 
 #define BUFFER_SIZE 32
 
-
 // Функция для получения политики планирования
-const char* get_scheduling_policy(int policy) {
-    switch (policy) {
-        case SCHED_OTHER: return "SCHED_OTHER";
-        case SCHED_FIFO:  return "SCHED_FIFO";
-        case SCHED_RR:    return "SCHED_RR";
-        default:          return "UNKNOWN";
+const char *get_scheduling_policy(int policy)
+{
+    switch (policy)
+    {
+    case SCHED_OTHER:
+        return "SCHED_OTHER";
+    case SCHED_FIFO:
+        return "SCHED_FIFO";
+    case SCHED_RR:
+        return "SCHED_RR";
+    default:
+        return "UNKNOWN";
     }
 }
 
 // Функция, выполняемая в потоке
-void* thread_function(void* arg) {
+void *thread_function(void *arg)
+{
     int policy;
     struct sched_param param;
     int iteration = 0;
 
-    while (iteration < 5) {
+    while (iteration < 5)
+    {
 
         // Получаем политику планирования и параметры
         pthread_getschedparam(pthread_self(), &policy, &param);
@@ -39,7 +46,8 @@ void* thread_function(void* arg) {
     return NULL;
 }
 
-int main() {
+int main()
+{
     pthread_t thread1, thread2;
 
     // Создаем два потока
@@ -51,8 +59,8 @@ int main() {
     struct sched_param param;
     int iteration = 0;
 
-    while (iteration < 5) {
-
+    while (iteration < 5)
+    {
 
         // Получаем политику планирования и параметры
         policy = sched_getscheduler(getpid());

@@ -6,22 +6,27 @@
 #include <errno.h>
 
 // Вспомогательная функция для ожидания завершения дочернего процесса
-void wait_for_child() {
+void wait_for_child()
+{
     int status;
-    if (wait(&status) < 0) {
+    if (wait(&status) < 0)
+    {
         perror("wait failed");
         exit(EXIT_FAILURE);
     }
 }
 
 // Функция для демонстрации execl()
-void run_execl(const char *path) {
+void run_execl(const char *path)
+{
     pid_t pid = fork();
-    if (pid < 0) {
+    if (pid < 0)
+    {
         perror("fork failed");
         exit(EXIT_FAILURE);
     }
-    if (pid == 0) {
+    if (pid == 0)
+    {
         printf("Дочерний процесс [%d] запускает execl...\n", getpid());
         fflush(stdout);
         execl(path, "ls", "-l", "-a", (char *)NULL);
@@ -32,13 +37,16 @@ void run_execl(const char *path) {
 }
 
 // Функция для демонстрации execlp()
-void run_execlp(const char *file) {
+void run_execlp(const char *file)
+{
     pid_t pid = fork();
-    if (pid < 0) {
+    if (pid < 0)
+    {
         perror("fork failed");
         exit(EXIT_FAILURE);
     }
-    if (pid == 0) {
+    if (pid == 0)
+    {
         printf("Дочерний процесс [%d] запускает execlp...\n", getpid());
         fflush(stdout);
         execlp(file, "ls", "-l", "-a", (char *)NULL);
@@ -49,13 +57,16 @@ void run_execlp(const char *file) {
 }
 
 // Функция для демонстрации execle() с передачей пользовательского окружения
-void run_execle(const char *path, char *const envp[]) {
+void run_execle(const char *path, char *const envp[])
+{
     pid_t pid = fork();
-    if (pid < 0) {
+    if (pid < 0)
+    {
         perror("fork failed");
         exit(EXIT_FAILURE);
     }
-    if (pid == 0) {
+    if (pid == 0)
+    {
         printf("Дочерний процесс [%d] запускает execle (с пользовательским окружением)...\n", getpid());
         fflush(stdout);
         execle(path, "ls", "-l", "-a", (char *)NULL, envp);
@@ -66,13 +77,16 @@ void run_execle(const char *path, char *const envp[]) {
 }
 
 // Функция для демонстрации execv()
-void run_execv(const char *path, char *const argv[]) {
+void run_execv(const char *path, char *const argv[])
+{
     pid_t pid = fork();
-    if (pid < 0) {
+    if (pid < 0)
+    {
         perror("fork failed");
         exit(EXIT_FAILURE);
     }
-    if (pid == 0) {
+    if (pid == 0)
+    {
         printf("Дочерний процесс [%d] запускает execv...\n", getpid());
         fflush(stdout);
         execv(path, argv);
@@ -83,13 +97,16 @@ void run_execv(const char *path, char *const argv[]) {
 }
 
 // Функция для демонстрации execvp()
-void run_execvp(const char *file, char *const argv[]) {
+void run_execvp(const char *file, char *const argv[])
+{
     pid_t pid = fork();
-    if (pid < 0) {
+    if (pid < 0)
+    {
         perror("fork failed");
         exit(EXIT_FAILURE);
     }
-    if (pid == 0) {
+    if (pid == 0)
+    {
         printf("Дочерний процесс [%d] запускает execvp...\n", getpid());
         fflush(stdout);
         execvp(file, argv);
@@ -100,13 +117,16 @@ void run_execvp(const char *file, char *const argv[]) {
 }
 
 // Функция для демонстрации execve() с передачей пользовательского окружения
-void run_execve(const char *path, char *const argv[], char *const envp[]) {
+void run_execve(const char *path, char *const argv[], char *const envp[])
+{
     pid_t pid = fork();
-    if (pid < 0) {
+    if (pid < 0)
+    {
         perror("fork failed");
         exit(EXIT_FAILURE);
     }
-    if (pid == 0) {
+    if (pid == 0)
+    {
         printf("Дочерний процесс [%d] запускает execve (с пользовательским окружением)...\n", getpid());
         fflush(stdout);
         execve(path, argv, envp);
@@ -116,7 +136,8 @@ void run_execve(const char *path, char *const argv[], char *const envp[]) {
     wait_for_child();
 }
 
-int main(void) {
+int main(void)
+{
     // Путь к исполняемому файлу и его псевдоним для поиска в PATH
     char *file = "ls";
     char *path = "/bin/ls";
@@ -154,7 +175,6 @@ int main(void) {
     run_execve(path, args, env);
 
     printf("\nВсе дочерние процессы завершены.\n");
-  
 
     return 0;
 }
