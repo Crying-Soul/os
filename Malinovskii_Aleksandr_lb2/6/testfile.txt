@@ -1,0 +1,3 @@
+Parent writes line 1
+Child writes line 2
+Parent writes line 3

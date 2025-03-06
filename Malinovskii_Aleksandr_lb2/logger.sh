@@ -25,23 +25,33 @@ run_and_log() {
     local header="$1"
     shift
     log "$header"
-    echo "----------------------------------------"
+    echo -e "\n"
+    
+    # Формируем строку с путём и пользователем
+    local user_path
+    user_path="$(whoami)@$(hostname):$(pwd | sed 's|^/home/'"$(whoami)"'|~|')$"
+    
+    # Выводим строку с путём и выполняем команду
+    echo -e "${user_path} $*"
     while IFS= read -r line; do
         echo "$line"
     done < <("$@" 2>&1)
-    echo "----------------------------------------"
+    echo 
 }
 
 # Основные переменные
 OUTPUT_FILE="out.txt"
-LB_FOLDER="lb1/"
+LB_FOLDER="./"
 
 # Заголовок отчёта
 cat <<EOF
+=================================================================
+                   ОТЧЁТ ПО ЛАБОРАТОРНОЙ РАБОТЕ
+=================================================================
 Дата исполнения отчёта: $(date '+%Y-%m-%d %H:%M:%S')
 Идентификация исполнителя: $(whoami)
 Группа: 3343
-ФИО: Малиновский Александр Алексеевич
+ФИО: Гребнев Егор Дмитриевич
 -----------------------------------------------------------------
 EOF
 
@@ -73,54 +83,75 @@ fi
 echo -e "\n-----------------------------------------------------------------"
 
 # Функция для выполнения задания с замером времени выполнения
-execute_task() {
-    local task_number=$1
-    local output_file_flag=${2:-1}  # По умолчанию 1 (выводить out.txt)
-    shift 2
-    local task_script="${LB_FOLDER}task${task_number}.sh"
-    local task_args=("$@")
+find_script() {
+    local script_name=$1
+    local search_dir=${2:-.}  # По умолчанию поиск начинается с текущей директории
 
-    log "ВЫПОЛНЕНИЕ ЗАДАНИЯ ${task_number} (Скрипт)"
-    log "Запуск скрипта ${task_script} с аргументами: ${task_args[*]}"
+    # Поиск файла с заданным именем в директории и всех поддиректориях
+    local found_script=$(find "$search_dir" -type f -name "$script_name" -print -quit)
 
-    if [[ -f "$task_script" ]]; then
-        # Состояние файла до выполнения
-        if [[ "$output_file_flag" -eq 1 && -f "$OUTPUT_FILE" ]]; then
-            echo -e "\n>>> СОСТОЯНИЕ ФАЙЛА ДО ВЫПОЛНЕНИЯ $OUTPUT_FILE <<<"
-            echo "----------------------------------------"
-            if [[ ! -s "$OUTPUT_FILE" ]]; then
-                echo "Файл $OUTPUT_FILE пуст."
-            else
-                cat "$OUTPUT_FILE"
-            fi
-            echo "----------------------------------------"
-        fi
-
-        local start_time end_time duration
-        start_time=$(date +%s)
-        bash "$task_script" "${task_args[@]}"
-        end_time=$(date +%s)
-        duration=$((end_time - start_time))
-        log "Время выполнения задания ${task_number}: ${duration} секунд."
-
-        # Состояние файла после выполнения
-        if [[ "$output_file_flag" -eq 1 && -f "$OUTPUT_FILE" ]]; then
-            echo -e "\n>>> СОСТОЯНИЕ ФАЙЛА ПОСЛЕ ВЫПОЛНЕНИЯ $OUTPUT_FILE <<<"
-            echo "----------------------------------------"
-            if [[ ! -s "$OUTPUT_FILE" ]]; then
-                echo "Файл $OUTPUT_FILE пуст."
-            else
-                cat "$OUTPUT_FILE"
-            fi
-            echo "----------------------------------------"
-            >"$OUTPUT_FILE"
-        fi
+    if [[ -n "$found_script" ]]; then
+        echo "$found_script"
+        return 0
     else
-        log "Скрипт для задания ${task_number} не найден. Пропуск задания."
+        echo "Скрипт '$script_name' не найден."
         return 1
     fi
 }
 
+execute_task() {
+    local task_number=$1
+    local output_file_flag=${2:-1}  # По умолчанию 1 (выводить out.txt)
+    shift 2
+    local task_script_name="${task_number}.sh"
+    local task_script=$(find_script "$task_script_name" "$LB_FOLDER")
+    local task_args=("$@")
+
+    if [[ -z "$task_script" ]]; then
+        log "Скрипт для задания ${task_number} не найден. Пропуск задания."
+        return 1
+    fi
+
+    log "ВЫПОЛНЕНИЕ ЗАДАНИЯ ${task_number} (Скрипт)"
+     if [[ ${#task_args[@]} -gt 0 ]]; then
+        log "Запуск скрипта ${task_script} с аргументами: ${task_args[*]}"
+    else
+        log "Запуск скрипта ${task_script} без аргументов."
+    fi
+
+
+    # Состояние файла до выполнения
+    if [[ "$output_file_flag" -eq 1 && -f "$OUTPUT_FILE" ]]; then
+        echo -e "\n>>> СОСТОЯНИЕ ФАЙЛА ДО ВЫПОЛНЕНИЯ $OUTPUT_FILE <<<"
+        echo "----------------------------------------"
+        if [[ ! -s "$OUTPUT_FILE" ]]; then
+            echo "Файл $OUTPUT_FILE пуст."
+        else
+            cat "$OUTPUT_FILE"
+        fi
+        echo "----------------------------------------"
+    fi
+
+    local start_time end_time duration
+    start_time=$(date +%s)
+    bash "$task_script" "${task_args[@]}"
+    end_time=$(date +%s)
+    duration=$((end_time - start_time))
+    log "Время выполнения задания ${task_number}: ${duration} секунд."
+
+    # Состояние файла после выполнения
+    if [[ "$output_file_flag" -eq 1 && -f "$OUTPUT_FILE" ]]; then
+        echo -e "\n>>> СОСТОЯНИЕ ФАЙЛА ПОСЛЕ ВЫПОЛНЕНИЯ $OUTPUT_FILE <<<"
+        echo "----------------------------------------"
+        if [[ ! -s "$OUTPUT_FILE" ]]; then
+            echo "Файл $OUTPUT_FILE пуст."
+        else
+            cat "$OUTPUT_FILE"
+        fi
+        echo "----------------------------------------"
+        >"$OUTPUT_FILE"
+    fi
+}
 
 
 
@@ -144,126 +175,38 @@ execute_commands() {
     log "Время выполнения задания ${task_number}: ${duration} секунд."
 }
 
-# Выполнение заданий
-log "НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ"
+# # Выполнение заданий
+# log "НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ"
 
-# # Пример выполнения задания с использованием скрипта
-# Выполнение заданий
-log "НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ"
+# execute_task 1.1 0
 
+# # execute_task 1.2 0
 
+# execute_task 1.3 0
 
-execute_commands 3 \
-    "ln -s ./lb1/tests/linked_file.txt ./lb1/links1/symlink_ln.txt && ls -l ./lb1/links1/symlink_ln.txt" \
-    "cp -s ./lb1/tests/linked_file.txt ./symlink_cp.txt && ls -l ./symlink_cp.txt" \
-    "link /lb1/tests/linked_file.txt ./lb1/links1/hardlink.txt && ls -l ./lb1/links1/hardlink.txt"
+# execute_task 1.4 0
 
-# Пример выполнения задания с использованием скрипта
-execute_task 3 1 "./lb1/tests/linked_file.txt" #symlinks
-
-rm -rf ./lb1/links1 ./symlink_cp.txt ./lb1/tests/hardlink.txt
-
-# Определяем целевой файл
-target_file="./lb1/tests/linked_file.txt"
-
-# Выполнение задания с использованием отдельных команд
-execute_commands 4 \
-    "ls -lRa /home/lotos | grep ' -> ' | grep '$target_file'" \
-    "find /home/lotos -type l -exec stat -c '%N' {} \; 2>/dev/null | grep '$target_file'" \
-    "find /home/lotos -type l -lname '*$(basename "$target_file")*' 2>/dev/null" \
-    "for link in \$(find /home/lotos -type l 2>/dev/null); do if readlink \"\$link\" | grep -q '$target_file'; then echo \"\$link -> \$(readlink \"\$link\")\"; fi; done"
-
-execute_commands 5 \
-    "find /home/lotos -type f 2>/dev/null | head -n 3" \
-    "find /home/lotos -type d 2>/dev/null | head -n 3" \
-    "find /home/lotos -type l 2>/dev/null | head -n 3" \
-    "find /home/lotos -type f -mtime -7 -exec stat -c '%n %y' {} + 2>/dev/null | head -n 3" \
-    "find /home/lotos -type f -size +1M -exec ls -lh {} + 2>/dev/null | head -n 3"
-
-execute_commands 6 \
-    "od -c /home/lotos/test/example.txt | head -n 10" \
-    "od -x /home/lotos/test/example.bin | head -n 10" \
-    "hexdump -C /home/lotos/test/example_exec | head -n 10" \
-    "hexdump -C /home/lotos/test/image.jpg | head -n 10"
-
-execute_task 7 0
-
-execute_commands 8 \
-    "ls -l /etc/passwd && stat /etc/passwd" \
-    "ls -l /etc/shadow && stat /etc/shadow" \
-    "ls -l /usr/bin/passwd && stat /usr/bin/passwd && getcap /usr/bin/passwd" \
-    "head -n 5 /etc/passwd" \
-    "sudo head -n 5 /etc/shadow" \
-    "ls -l /usr/bin/passwd"
-
-rm -rf /tmp/testdir
-rm -rf /tmp/testdir2
-userdel anotheruser
-
-# 9. Исследование прав владения и доступа
-execute_commands 9.1 \
-    "useradd -m anotheruser || true" \
-    "mkdir -p /tmp/testdir && echo 'Файл 1: содержимое' > /tmp/testdir/file1 && echo 'Файл 2: содержимое' > /tmp/testdir/file2 && echo 'Файл 3: содержимое' > /tmp/testdir/file3 && ls -l /tmp/testdir" \
-    "chown root:root /tmp/testdir/file1 && ls -l /tmp/testdir" \
-    "chmod 755 /tmp/testdir/file1 && chmod 644 /tmp/testdir/file2 && ls -l /tmp/testdir"
-
-execute_commands 9.2 \
-    "touch /tmp/testdir/execfile && echo -e \"#!/bin/bash\necho 'Hello, World!'\" > /tmp/testdir/execfile && chmod +x /tmp/testdir/execfile && ls -l /tmp/testdir" \
-    "chmod u+s /tmp/testdir/execfile && ls -l /tmp/testdir/execfile"
-
-execute_commands 9.3 \
-    "touch /tmp/testdir/file4 && echo 'Это файл 4' > /tmp/testdir/file4 && chmod 640 /tmp/testdir/file4 && chown root:root /tmp/testdir/file4 && ls -l /tmp/testdir/file4" \
-    "su anotheruser -c \"cat /tmp/testdir/file4\""
-
-execute_commands 9.4 \
-    "mkdir -p /tmp/testdir2 && echo 'Это файл 5' > /tmp/testdir2/file5" \
-    "chmod 700 /tmp/testdir2/file5 && su anotheruser -c \"cat /tmp/testdir2/file5\"" \
-    "chmod 777 /tmp/testdir2/file5 && cat /tmp/testdir2/file5"
-
-execute_task 10 0
-
-execute_commands 11.1 \
-    "df -h" \
-    "lsblk" \
-    "cat /etc/fstab" \
-    "mount" \
-    "blkid"
-
-execute_commands 11.2 \
-    "lsblk -f" \
-    "mount" \
-    "cat /etc/fstab" \
-    "diff before.txt after.txt"
-
-execute_task 11.3 0
-
-# 12. Проанализировать и пояснить принцип работы утилиты file.
-execute_commands 12 \
-    "file -i /bin/bash" \
-    "file -b /bin/bash" \
-    "file -z /etc/apt/sources.list" \
-    "file -v"
-
-execute_commands 12.1 \
-    "file /bin/bash" \
-    "hexdump -n 16 -C /bin/bash" \
-    "ls -l /usr/share/misc/magic && readlink -f /usr/share/misc/magic" \
-    
-
-execute_commands 12.2 \
-    "file -i /bin/bash" \
-    "file -b /bin/bash" \
-    "file -s /dev/sda1" \
-    "file -k /bin/bash" \
-    "file -L /bin/sh"
-
-execute_task 12.3 0
+# execute_task 1.5 0
  
-# rm example.mytype
+# execute_commands 2.1 \
+#         "./lb2/task-runner.sh ./lb2/2/2.1 2.1.c --run 2.1"
+
+# execute_commands 2.2 \
+#         "./lb2/task-runner.sh ./lb2/2/2.2 2.2-father.c 2.2-son.c --run 2.2-father"
+
+
+execute_task 2.3 0
+
+
+
 # Замер общего времени выполнения скрипта
 SCRIPT_END=$(date +%s)
-
+TOTAL_DURATION=$((SCRIPT_END - SCRIPT_START))
+log "Общее время выполнения скрипта: ${TOTAL_DURATION} секунд."
 
 cat <<EOF
+=================================================================
+                      ОТЧЁТ ЗАВЕРШЁН
+=================================================================
 EOF
 log "Основной отчёт сохранён в файл: $LOG_FILE"

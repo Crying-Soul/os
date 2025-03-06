@@ -1,13 +1,14 @@
     PID TTY      STAT   TIME COMMAND
-   2469 pts/2    Ss     0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
-   8386 pts/2    S+     0:00  \_ /bin/bash ./run_3.2.sh
-   8417 pts/2    S+     0:00      \_ ./father
-   8418 pts/2    Z+     0:00          \_ [son1] <defunct>
-   8419 pts/2    Z+     0:00          \_ [son2] <defunct>
-   8420 pts/2    Z+     0:00          \_ [son3] <defunct>
-   8421 pts/2    Z+     0:00          \_ [son4] <defunct>
-   8422 pts/2    Z+     0:00          \_ [son5] <defunct>
-   8423 pts/2    S+     0:00          \_ sh -c -- ps -H f > file.txt
-   8424 pts/2    R+     0:00              \_ ps -H f
-   2271 pts/1    Ss+    0:00 /bin/bash
-   1499 tty1     Ssl+   0:00 /usr/bin/startplasma-wayland
+  35696 pts/2    Ss     0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
+  36743 pts/2    T      0:00  \_ yes ya loh
+  37290 pts/2    S+     0:00  \_ /bin/bash ./run_3.2.sh
+  37321 pts/2    S+     0:00      \_ ./father
+  37322 pts/2    Z+     0:00          \_ [son1] <defunct>
+  37323 pts/2    Z+     0:00          \_ [son2] <defunct>
+  37324 pts/2    Z+     0:00          \_ [son3] <defunct>
+  37325 pts/2    Z+     0:00          \_ [son4] <defunct>
+  37326 pts/2    Z+     0:00          \_ [son5] <defunct>
+  37327 pts/2    S+     0:00          \_ sh -c -- ps -H f > file.txt
+  37328 pts/2    R+     0:00              \_ ps -H f
+  35446 pts/1    Ss+    0:00 /bin/bash
+  34709 tty1     Ssl+   0:00 /usr/bin/startplasma-wayland

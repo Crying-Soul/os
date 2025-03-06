@@ -1,0 +1,3 @@
+Parent (before clone) writes line
+Clone child writes line
+Parent (after clone) writes line

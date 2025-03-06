@@ -1,14 +1,19 @@
-Script started on 2025-03-05 23:46:07+03:00 [COMMAND="./logger.sh" TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="263" LINES="12"]
-Дата исполнения отчёта: 2025-03-05 23:46:07
-Идентификация исполнителя: immortal
+Script started on 2025-03-06 15:41:00+03:00 [COMMAND="./logger.sh" TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="189" LINES="6"]
+=================================================================
+                   ОТЧЁТ ПО ЛАБОРАТОРНОЙ РАБОТЕ
+=================================================================
+Дата исполнения отчёта: 2025-03-06 15:41:00
+Идентификация исполнителя: root
 Группа: 3343
-ФИО: Малиновский Александр Алексеевич
+ФИО: Гребнев Егор Дмитриевич
 -----------------------------------------------------------------
 
-[2025-03-05 23:46:07] ПРОФИЛЬ СИСТЕМЫ
+[2025-03-06 15:41:00] ПРОФИЛЬ СИСТЕМЫ
 
-[2025-03-05 23:46:07] >>> Информация о процессоре (lscpu) <<<
-----------------------------------------
+[2025-03-06 15:41:00] >>> Информация о процессоре (lscpu) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lscpu
 Архитектура:                          x86_64
 CPU op-mode(s):                       32-bit, 64-bit
 Address sizes:                        39 bits physical, 48 bits virtual
@@ -17,6 +22,8 @@ CPU(s):                               4
 On-line CPU(s) list:                  0-3
 ID прроизводителя:                    GenuineIntel
 Имя модели:                           11th Gen Intel(R) Core(TM) i5-1155G7 @ 2.50GHz
+BIOS Model name:                        CPU @ 0.0GHz
+BIOS CPU family:                      0
 Семейство ЦПУ:                        6
 Модель:                               140
 Потоков на ядро:                      1
@@ -47,43 +54,50 @@ Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and _
 Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; RSB filling; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop
 Vulnerability Srbds:                  Not affected
 Vulnerability Tsx async abort:        Not affected
-----------------------------------------
 
-[2025-03-05 23:46:07] >>> Информация о памяти (free -h) <<<
-----------------------------------------
+
+[2025-03-06 15:41:00] >>> Информация о памяти (free -h) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ free -h
                всего        занят        своб      общая  буф/врем.   доступно
-Память:        3,8Gi       2,2Gi       583Mi       151Mi       1,5Gi       1,6Gi
-Подкачка:      511Mi       321Mi       190Mi
-----------------------------------------
+Память:        3,8Gi       2,4Gi       207Mi       136Mi       1,6Gi       1,4Gi
+Подкачка:      511Mi          0B       511Mi
 
-[2025-03-05 23:46:07] >>> Информация о дисках (lsblk) <<<
-----------------------------------------
+
+[2025-03-06 15:41:00] >>> Информация о дисках (lsblk) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lsblk
 NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 loop0    7:0    0  74,2M  1 loop /snap/core22/1621
 loop1    7:1    0     4K  1 loop /snap/bare/5
-loop2    7:2    0   258M  1 loop /snap/firefox/5751
-loop3    7:3    0  73,9M  1 loop /snap/core22/1748
-loop4    7:4    0  10,7M  1 loop /snap/firmware-updater/127
-loop5    7:5    0 257,9M  1 loop /snap/firefox/5783
-loop6    7:6    0  11,1M  1 loop /snap/firmware-updater/167
-loop7    7:7    0  89,7M  1 loop /snap/gtk-common-themes/1536
-loop8    7:8    0  91,7M  1 loop /snap/gtk-common-themes/1535
-loop9    7:9    0   264K  1 loop /snap/gtk-theme-breeze/5
+loop2    7:2    0  73,9M  1 loop /snap/core22/1748
+loop3    7:3    0   258M  1 loop /snap/firefox/5751
+loop4    7:4    0 257,9M  1 loop /snap/firefox/5783
+loop5    7:5    0  11,1M  1 loop /snap/firmware-updater/167
+loop6    7:6    0 505,1M  1 loop /snap/gnome-42-2204/176
+loop7    7:7    0  10,7M  1 loop /snap/firmware-updater/127
+loop8    7:8    0   516M  1 loop /snap/gnome-42-2204/202
+loop9    7:9    0  89,7M  1 loop /snap/gtk-common-themes/1536
 loop10   7:10   0   125M  1 loop /snap/gtk-theme-breeze/2
-loop11   7:11   0    14M  1 loop /snap/icon-theme-breeze/3
-loop12   7:12   0 505,1M  1 loop /snap/gnome-42-2204/176
-loop13   7:13   0  13,2M  1 loop /snap/icon-theme-breeze/5
-loop14   7:14   0  38,8M  1 loop /snap/snapd/21759
-loop15   7:15   0 210,4M  1 loop /snap/thunderbird/663
-loop16   7:16   0  44,4M  1 loop /snap/snapd/23545
-loop17   7:17   0 210,4M  1 loop /snap/thunderbird/644
+loop11   7:11   0  91,7M  1 loop /snap/gtk-common-themes/1535
+loop12   7:12   0   264K  1 loop /snap/gtk-theme-breeze/5
+loop13   7:13   0    14M  1 loop /snap/icon-theme-breeze/3
+loop14   7:14   0  13,2M  1 loop /snap/icon-theme-breeze/5
+loop15   7:15   0  44,4M  1 loop /snap/snapd/23545
+loop16   7:16   0  44,4M  1 loop /snap/snapd/23771
+loop17   7:17   0 210,4M  1 loop /snap/thunderbird/663
+loop18   7:18   0 210,4M  1 loop /snap/thunderbird/644
 sda      8:0    0    20G  0 disk 
 └─sda1   8:1    0    20G  0 part /
 sr0     11:0    1  57,4M  0 rom  
-----------------------------------------
 
-[2025-03-05 23:46:07] >>> Информация о сетевых интерфейсах (ip a) <<<
-----------------------------------------
+
+[2025-03-06 15:41:00] >>> Информация о сетевых интерфейсах (ip a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
@@ -93,67 +107,1044 @@ sr0     11:0    1  57,4M  0 rom
 2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 08:00:27:9c:d2:56 brd ff:ff:ff:ff:ff:ff
     inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
-       valid_lft 79063sec preferred_lft 79063sec
-    inet6 fd00::c88d:814e:a7c8:f851/64 scope global temporary dynamic 
-       valid_lft 86265sec preferred_lft 14265sec
+       valid_lft 85463sec preferred_lft 85463sec
+    inet6 fd00::e588:5f48:fe9c:efb4/64 scope global temporary dynamic 
+       valid_lft 86243sec preferred_lft 14243sec
     inet6 fd00::80f:6263:cd47:52af/64 scope global dynamic mngtmpaddr noprefixroute 
-       valid_lft 86265sec preferred_lft 14265sec
+       valid_lft 86243sec preferred_lft 14243sec
     inet6 fe80::de6f:659a:67d9:e9d7/64 scope link noprefixroute 
        valid_lft forever preferred_lft forever
-----------------------------------------
 
-[2025-03-05 23:46:07] ИДЕНТИФИКАЦИЯ ВИРТУАЛЬНОЙ МАШИНЫ
 
-[2025-03-05 23:46:07] Система запущена в виртуальной машине.
+[2025-03-06 15:41:00] ИДЕНТИФИКАЦИЯ ВИРТУАЛЬНОЙ МАШИНЫ
 
-[2025-03-05 23:46:07] Тип виртуализации: oracle
+[2025-03-06 15:41:00] Система запущена в виртуальной машине.
+
+[2025-03-06 15:41:00] Тип виртуализации: oracle
 
 -----------------------------------------------------------------
 
-[2025-03-05 23:46:07] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
+[2025-03-06 15:41:00] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
 
-[2025-03-05 23:46:07] >>> Информация о ядре (uname -a) <<<
-----------------------------------------
+[2025-03-06 15:41:00] >>> Информация о ядре (uname -a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ uname -a
 Linux immortal-virtualbox 6.11.0-14-generic #15-Ubuntu SMP PREEMPT_DYNAMIC Fri Jan 10 23:48:25 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
-----------------------------------------
 
-[2025-03-05 23:46:07] >>> Информация о версии ОС (lsb_release -a) <<<
-----------------------------------------
+
+[2025-03-06 15:41:00] >>> Информация о версии ОС (lsb_release -a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lsb_release -a
 Distributor ID:	Ubuntu
 Description:	Ubuntu 24.10
 Release:	24.10
 Codename:	oracular
-----------------------------------------
+
 
 -----------------------------------------------------------------
 
-[2025-03-05 23:46:07] НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ
+[2025-03-06 15:41:01] НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ
 
-[2025-03-05 23:46:07] НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ
+[2025-03-06 15:41:01] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.1 (Скрипт)
 
-[2025-03-05 23:46:07] ВЫПОЛНЕНИЕ ЗАДАНИЯ 3
+[2025-03-06 15:41:01] Запуск скрипта ./1/1.1.sh без аргументов.
+Запуск фоновых процессов...
+Запуск задания 1: имитация работы утилиты 'top'...
+Задание 1 (PID 4212) запущено: имитация работы 'top' (5 итераций).
+Запуск задания 2: имитация работы утилиты 'dd'...
+Задание 2 (PID 4213) запущено: имитация работы 'dd'.
+Запуск задания 3: имитация работы утилиты 'tar'...
+Задание 3 (PID 4214) запущено: имитация работы 'tar'.
 
-[2025-03-05 23:46:07] >>> Выполнение команды: ln -s ./lb1/tests/linked_file.txt ./lb1/links1/symlink_ln.txt && ls -l ./lb1/links1/symlink_ln.txt <<<
+Анализ списка заданий:
+[1]   4212 Запущен          top -b -d 1 -n 5 > /dev/null 2>&1 &
+[2]-  4213 Запущен          dd if=/dev/zero of=/dev/null bs=1M &
+[3]+  4214 Запущен          tar cf /dev/null /usr/bin > /dev/null 2>&1 &
+
+Прерывание задания 2 (имитация 'dd')...
+Выполняем команду: kill -9 4213
+Задание 2 (PID 4213) было прервано.
+./1/1.1.sh: строка 57:  4213 Убито              dd if=/dev/zero of=/dev/null bs=1M
+
+Анализ списка заданий после прерывания задания 2:
+[1]+  4212 Запущен          top -b -d 1 -n 5 > /dev/null 2>&1 &
+[3]   4214 Завершён        tar cf /dev/null /usr/bin > /dev/null 2>&1
+
+Ожидание завершения задания 1 (имитация 'top')...
+Задание 1 (PID 4212) успешно завершено.
+
+Итоговый анализ списка заданий:
+
+Скрипт завершен.
+Очистка фоновых процессов...
+Очистка завершена.
+
+[2025-03-06 15:41:05] Время выполнения задания 1.1: 4 секунд.
+
+[2025-03-06 15:41:05] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.3 (Скрипт)
+
+[2025-03-06 15:41:05] Запуск скрипта ./1/1.3.sh без аргументов.
+Минимальный PID: 1
+Подробная информация о процессе с PID 1:
 ----------------------------------------
-ln: не удалось создать символьную ссылку './lb1/links1/symlink_ln.txt': Нет такого файла или каталога
+  PID   UID  COMMAND         STAT  START     RSS   PPID   NI
+  1     0    systemd         Ss    15:25      14372  0      0  
+Команда запуска: /sbin/init splash 
+Текущий рабочий каталог: /
+Исполняемый файл: /usr/lib/systemd/systemd
+
+Максимальный возможный PID: 4194304
+
+Самый большой активный PID в системе: 4291
+Подробная информация о процессе с PID 4291:
 ----------------------------------------
+  PID   UID  COMMAND         STAT  START     RSS   PPID   NI
+  4291  0    bash            S+    15:41      3660   4131   0  
+Команда запуска: bash ./1/1.3.sh 
+Текущий рабочий каталог: /home/immortal/labs/Malinovskii_Aleksandr_lb2
+Исполняемый файл: /usr/bin/bash
 
-[2025-03-05 23:46:07] >>> Выполнение команды: cp -s ./lb1/tests/linked_file.txt ./symlink_cp.txt && ls -l ./symlink_cp.txt <<<
-----------------------------------------
-cp: не удалось выполнить stat для './lb1/tests/linked_file.txt': Нет такого файла или каталога
-----------------------------------------
+Минимальный UID: 0
+Пользователь с минимальным UID: root
+Максимальный UID: 65534
+Пользователь с максимальным UID: nobody
 
-[2025-03-05 23:46:07] >>> Выполнение команды: link /lb1/tests/linked_file.txt ./lb1/links1/hardlink.txt && ls -l ./lb1/links1/hardlink.txt <<<
-----------------------------------------
-link: невозможно создать ссылку './lb1/links1/hardlink.txt' на '/lb1/tests/linked_file.txt': Нет такого файла или каталога
-----------------------------------------
+[2025-03-06 15:41:05] Время выполнения задания 1.3: 0 секунд.
 
-[2025-03-05 23:46:07] Время выполнения задания 3: 0 секунд.
+[2025-03-06 15:41:05] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.4 (Скрипт)
 
-[2025-03-05 23:46:07] ВЫПОЛНЕНИЕ ЗАДАНИЯ 3 (Скрипт)
+[2025-03-06 15:41:05] Запуск скрипта ./1/1.4.sh без аргументов.
+nohup: вывод добавляется в 'nohup.out'
+root        3690  0.0  0.0   8848  2276 ?        S    15:38   0:00 sleep 3600
+root        3978  0.0  0.0   8848  2416 ?        S    15:39   0:00 sleep 3600
+root        4328  0.0  0.0   8848  2424 pts/4    S+   15:41   0:00 sleep 3600
+root        4330  0.0  0.0   9252  2364 pts/4    S+   15:41   0:00 grep sleep
 
-[2025-03-05 23:46:07] Запуск скрипта lb1/task3.sh с аргументами: ./lb1/tests/linked_file.txt
+[2025-03-06 15:41:05] Время выполнения задания 1.4: 0 секунд.
 
-[2025-03-05 23:46:07] Скрипт для задания 3 не найден. Пропуск задания.
+[2025-03-06 15:41:05] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.5 (Скрипт)
 
-Script done on 2025-03-05 23:46:07+03:00 [COMMAND_EXIT_CODE="1"]
+[2025-03-06 15:41:05] Запуск скрипта ./1/1.5.sh без аргументов.
+=== Информация о процессе c PID 4338===
+Name:	bash
+Umask:	0022
+State:	S (sleeping)
+Tgid:	4338
+Ngid:	0
+Pid:	4338
+PPid:	4131
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	256
+Groups:	0 
+NStgid:	4338
+NSpid:	4338
+NSpgid:	4131
+NSsid:	4131
+Kthread:	0
+VmPeak:	   10040 kB
+VmSize:	   10040 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	    3676 kB
+VmRSS:	    3676 kB
+RssAnon:	     256 kB
+RssFile:	    3420 kB
+RssShmem:	       0 kB
+VmData:	     304 kB
+VmStk:	     132 kB
+VmExe:	     984 kB
+VmLib:	    1888 kB
+VmPTE:	      72 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	2/15333
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000010000
+SigIgn:	0000000000000004
+SigCgt:	0000000000010002
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	f
+Cpus_allowed_list:	0-3
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	1
+nonvoluntary_ctxt_switches:	6
+x86_Thread_features:	
+x86_Thread_features_locked:	
+
+=== Командная строка процесса ===
+bash ./1/1.5.sh 
+
+=== Переменные окружения ===
+SHELL=/bin/bash
+COLORTERM=truecolor
+SUDO_GID=1000
+LANGUAGE=
+LC_ADDRESS=ru_RU.UTF-8
+LC_NAME=ru_RU.UTF-8
+SUDO_COMMAND=./logger.sh
+LC_MONETARY=ru_RU.UTF-8
+SUDO_USER=immortal
+IN_SCRIPT=1
+PWD=/home/immortal/labs/Malinovskii_Aleksandr_lb2
+LOGNAME=root
+XAUTHORITY=/run/user/1000/xauth_vXDBSs
+HOME=/root
+LANG=ru_RU.UTF-8
+LC_PAPER=ru_RU.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:
+XDG_CURRENT_DESKTOP=KDE
+LOG_FILE=lab_report.log
+TERM=xterm-256color
+LC_IDENTIFICATION=ru_RU.UTF-8
+USER=root
+DISPLAY=:1
+SHLVL=2
+LC_TELEPHONE=ru_RU.UTF-8
+LC_MEASUREMENT=ru_RU.UTF-8
+LC_TIME=ru_RU.UTF-8
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+SUDO_UID=1000
+MAIL=/var/mail/root
+LC_NUMERIC=ru_RU.UTF-8
+_=/usr/bin/bash
+
+=== Открытые файлы ===
+итого 0
+lrwx------ 1 root root 64 мар  6 15:41 0 -> /dev/pts/4
+lrwx------ 1 root root 64 мар  6 15:41 1 -> /dev/pts/4
+lrwx------ 1 root root 64 мар  6 15:41 2 -> /dev/pts/4
+lr-x------ 1 root root 64 мар  6 15:41 255 -> /home/immortal/labs/Malinovskii_Aleksandr_lb2/1/1.5.sh
+
+=== Информация о памяти ===
+5c17d5311000-5c17d5341000 r--p 00000000 08:01 1048950                    /usr/bin/bash
+5c17d5341000-5c17d5437000 r-xp 00030000 08:01 1048950                    /usr/bin/bash
+5c17d5437000-5c17d546c000 r--p 00126000 08:01 1048950                    /usr/bin/bash
+5c17d546c000-5c17d5470000 r--p 0015b000 08:01 1048950                    /usr/bin/bash
+5c17d5470000-5c17d5479000 rw-p 0015f000 08:01 1048950                    /usr/bin/bash
+5c17d5479000-5c17d5484000 rw-p 00000000 00:00 0 
+5c180edf0000-5c180ee11000 rw-p 00000000 00:00 0                          [heap]
+73e8c2800000-73e8c2d77000 r--p 00000000 08:01 1049750                    /usr/lib/locale/locale-archive
+73e8c2e00000-73e8c2e28000 r--p 00000000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+73e8c2e28000-73e8c2fbe000 r-xp 00028000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+73e8c2fbe000-73e8c300d000 r--p 001be000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+73e8c300d000-73e8c3011000 r--p 0020c000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+73e8c3011000-73e8c3013000 rw-p 00210000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+73e8c3013000-73e8c3020000 rw-p 00000000 00:00 0 
+73e8c302a000-73e8c302d000 rw-p 00000000 00:00 0 
+73e8c302d000-73e8c303b000 r--p 00000000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
+73e8c303b000-73e8c304e000 r-xp 0000e000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
+73e8c304e000-73e8c305c000 r--p 00021000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
+73e8c305c000-73e8c3060000 r--p 0002e000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
+73e8c3060000-73e8c3061000 rw-p 00032000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
+73e8c3072000-73e8c3079000 r--s 00000000 08:01 1052410                    /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+73e8c3079000-73e8c307b000 rw-p 00000000 00:00 0 
+73e8c307b000-73e8c307f000 r--p 00000000 00:00 0                          [vvar]
+73e8c307f000-73e8c3081000 r-xp 00000000 00:00 0                          [vdso]
+73e8c3081000-73e8c3082000 r--p 00000000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+73e8c3082000-73e8c30af000 r-xp 00001000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+73e8c30af000-73e8c30b9000 r--p 0002e000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+73e8c30b9000-73e8c30bb000 r--p 00038000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+73e8c30bb000-73e8c30bd000 rw-p 0003a000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ffe053e0000-7ffe05401000 rw-p 00000000 00:00 0                          [stack]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+
+[2025-03-06 15:41:05] Время выполнения задания 1.5: 0 секунд.
+
+[2025-03-06 15:41:05] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.1
+
+[2025-03-06 15:41:05] >>> Выполнение команды: ./lb2/task-runner.sh ./lb2/2/2.1 2.1.c --run 2.1 <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ bash -c ./lb2/task-runner.sh ./lb2/2/2.1 2.1.c --run 2.1
+bash: строка 1: ./lb2/task-runner.sh: Нет такого файла или каталога
+
+
+[2025-03-06 15:41:05] Время выполнения задания 2.1: 0 секунд.
+
+[2025-03-06 15:41:05] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.2
+
+[2025-03-06 15:41:05] >>> Выполнение команды: ./lb2/task-runner.sh ./lb2/2/2.2 2.2-father.c 2.2-son.c --run 2.2-father <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ bash -c ./lb2/task-runner.sh ./lb2/2/2.2 2.2-father.c 2.2-son.c --run 2.2-father
+bash: строка 1: ./lb2/task-runner.sh: Нет такого файла или каталога
+
+
+[2025-03-06 15:41:05] Время выполнения задания 2.2: 0 секунд.
+
+[2025-03-06 15:41:05] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.3
+
+[2025-03-06 15:41:05] >>> Выполнение команды: ./lb2/task-runner.sh ./lb2/2/2.3 2.3.c --run 2.3 <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ bash -c ./lb2/task-runner.sh ./lb2/2/2.3 2.3.c --run 2.3
+bash: строка 1: ./lb2/task-runner.sh: Нет такого файла или каталога
+
+
+[2025-03-06 15:41:05] Время выполнения задания 2.3: 0 секунд.
+
+[2025-03-06 15:41:05] Общее время выполнения скрипта: 5 секунд.
+=================================================================
+                      ОТЧЁТ ЗАВЕРШЁН
+=================================================================
+
+[2025-03-06 15:41:05] Основной отчёт сохранён в файл: lab_report.log
+
+Script done on 2025-03-06 15:41:05+03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2025-03-06 16:20:53+03:00 [COMMAND="./logger.sh" TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="189" LINES="19"]
+=================================================================
+                   ОТЧЁТ ПО ЛАБОРАТОРНОЙ РАБОТЕ
+=================================================================
+Дата исполнения отчёта: 2025-03-06 16:20:53
+Идентификация исполнителя: root
+Группа: 3343
+ФИО: Гребнев Егор Дмитриевич
+-----------------------------------------------------------------
+
+[2025-03-06 16:20:53] ПРОФИЛЬ СИСТЕМЫ
+
+[2025-03-06 16:20:53] >>> Информация о процессоре (lscpu) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lscpu
+Архитектура:                          x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        39 bits physical, 48 bits virtual
+Порядок байт:                         Little Endian
+CPU(s):                               4
+On-line CPU(s) list:                  0-3
+ID прроизводителя:                    GenuineIntel
+Имя модели:                           11th Gen Intel(R) Core(TM) i5-1155G7 @ 2.50GHz
+BIOS Model name:                        CPU @ 0.0GHz
+BIOS CPU family:                      0
+Семейство ЦПУ:                        6
+Модель:                               140
+Потоков на ядро:                      1
+Ядер на сокет:                        4
+Сокетов:                              1
+Степпинг:                             2
+BogoMIPS:                             4992,02
+Флаги:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 movbe popcnt aes rdrand hypervisor lahf_lm abm 3dnowprefetch ibrs_enhanced fsgsbase bmi1 bmi2 invpcid rdseed adx clflushopt sha_ni arat md_clear flush_l1d arch_capabilities
+Разработчик гипервизора:              KVM
+Тип виртуализации:                    полный
+L1d cache:                            192 KiB (4 instances)
+L1i cache:                            128 KiB (4 instances)
+L2 cache:                             5 MiB (4 instances)
+L3 cache:                             32 MiB (4 instances)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-3
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Vulnerable
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; RSB filling; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+
+
+[2025-03-06 16:20:53] >>> Информация о памяти (free -h) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ free -h
+               всего        занят        своб      общая  буф/врем.   доступно
+Память:        3,8Gi       2,3Gi       182Mi       136Mi       1,7Gi       1,5Gi
+Подкачка:      511Mi          0B       511Mi
+
+
+[2025-03-06 16:20:53] >>> Информация о дисках (lsblk) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+loop0    7:0    0  74,2M  1 loop /snap/core22/1621
+loop1    7:1    0     4K  1 loop /snap/bare/5
+loop2    7:2    0   258M  1 loop /snap/firefox/5751
+loop3    7:3    0  73,9M  1 loop /snap/core22/1748
+loop4    7:4    0 257,9M  1 loop /snap/firefox/5783
+loop5    7:5    0  10,7M  1 loop /snap/firmware-updater/127
+loop6    7:6    0  11,1M  1 loop /snap/firmware-updater/167
+loop7    7:7    0   516M  1 loop /snap/gnome-42-2204/202
+loop8    7:8    0 505,1M  1 loop /snap/gnome-42-2204/176
+loop9    7:9    0  89,7M  1 loop /snap/gtk-common-themes/1536
+loop10   7:10   0   125M  1 loop /snap/gtk-theme-breeze/2
+loop11   7:11   0  91,7M  1 loop /snap/gtk-common-themes/1535
+loop12   7:12   0  13,2M  1 loop /snap/icon-theme-breeze/5
+loop13   7:13   0   264K  1 loop /snap/gtk-theme-breeze/5
+loop14   7:14   0    14M  1 loop /snap/icon-theme-breeze/3
+loop15   7:15   0  44,4M  1 loop /snap/snapd/23545
+loop16   7:16   0  44,4M  1 loop /snap/snapd/23771
+loop17   7:17   0 210,4M  1 loop /snap/thunderbird/663
+loop18   7:18   0 210,4M  1 loop /snap/thunderbird/644
+sda      8:0    0    20G  0 disk 
+└─sda1   8:1    0    20G  0 part /
+sr0     11:0    1  57,4M  0 rom  
+
+
+[2025-03-06 16:20:54] >>> Информация о сетевых интерфейсах (ip a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:9c:d2:56 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 85013sec preferred_lft 85013sec
+    inet6 fd00::6668:828b:9ba0:e9ea/64 scope global temporary dynamic 
+       valid_lft 86228sec preferred_lft 14228sec
+    inet6 fd00::80f:6263:cd47:52af/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 86228sec preferred_lft 14228sec
+    inet6 fe80::de6f:659a:67d9:e9d7/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+
+[2025-03-06 16:20:54] ИДЕНТИФИКАЦИЯ ВИРТУАЛЬНОЙ МАШИНЫ
+
+[2025-03-06 16:20:54] Система запущена в виртуальной машине.
+
+[2025-03-06 16:20:54] Тип виртуализации: oracle
+
+-----------------------------------------------------------------
+
+[2025-03-06 16:20:54] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
+
+[2025-03-06 16:20:54] >>> Информация о ядре (uname -a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ uname -a
+Linux immortal-virtualbox 6.11.0-14-generic #15-Ubuntu SMP PREEMPT_DYNAMIC Fri Jan 10 23:48:25 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+
+
+[2025-03-06 16:20:54] >>> Информация о версии ОС (lsb_release -a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lsb_release -a
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.10
+Release:	24.10
+Codename:	oracular
+
+
+-----------------------------------------------------------------
+
+[2025-03-06 16:20:54] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.3 (Скрипт)
+
+[2025-03-06 16:20:54] Запуск скрипта Скрипт '2.3.sh' не найден. без аргументов.
+bash: Скрипт '2.3.sh' не найден.: Нет такого файла или каталога
+
+Script done on 2025-03-06 16:20:54+03:00 [COMMAND_EXIT_CODE="127"]
+Script started on 2025-03-06 16:21:18+03:00 [COMMAND="./logger.sh" TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="189" LINES="19"]
+=================================================================
+                   ОТЧЁТ ПО ЛАБОРАТОРНОЙ РАБОТЕ
+=================================================================
+Дата исполнения отчёта: 2025-03-06 16:21:18
+Идентификация исполнителя: root
+Группа: 3343
+ФИО: Гребнев Егор Дмитриевич
+-----------------------------------------------------------------
+
+[2025-03-06 16:21:18] ПРОФИЛЬ СИСТЕМЫ
+
+[2025-03-06 16:21:18] >>> Информация о процессоре (lscpu) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lscpu
+Архитектура:                          x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        39 bits physical, 48 bits virtual
+Порядок байт:                         Little Endian
+CPU(s):                               4
+On-line CPU(s) list:                  0-3
+ID прроизводителя:                    GenuineIntel
+Имя модели:                           11th Gen Intel(R) Core(TM) i5-1155G7 @ 2.50GHz
+BIOS Model name:                        CPU @ 0.0GHz
+BIOS CPU family:                      0
+Семейство ЦПУ:                        6
+Модель:                               140
+Потоков на ядро:                      1
+Ядер на сокет:                        4
+Сокетов:                              1
+Степпинг:                             2
+BogoMIPS:                             4992,02
+Флаги:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 movbe popcnt aes rdrand hypervisor lahf_lm abm 3dnowprefetch ibrs_enhanced fsgsbase bmi1 bmi2 invpcid rdseed adx clflushopt sha_ni arat md_clear flush_l1d arch_capabilities
+Разработчик гипервизора:              KVM
+Тип виртуализации:                    полный
+L1d cache:                            192 KiB (4 instances)
+L1i cache:                            128 KiB (4 instances)
+L2 cache:                             5 MiB (4 instances)
+L3 cache:                             32 MiB (4 instances)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-3
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Vulnerable
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; RSB filling; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+
+
+[2025-03-06 16:21:18] >>> Информация о памяти (free -h) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ free -h
+               всего        занят        своб      общая  буф/врем.   доступно
+Память:        3,8Gi       2,4Gi       170Mi       135Mi       1,7Gi       1,5Gi
+Подкачка:      511Mi          0B       511Mi
+
+
+[2025-03-06 16:21:19] >>> Информация о дисках (lsblk) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+loop0    7:0    0  74,2M  1 loop /snap/core22/1621
+loop1    7:1    0     4K  1 loop /snap/bare/5
+loop2    7:2    0   258M  1 loop /snap/firefox/5751
+loop3    7:3    0  73,9M  1 loop /snap/core22/1748
+loop4    7:4    0 257,9M  1 loop /snap/firefox/5783
+loop5    7:5    0  10,7M  1 loop /snap/firmware-updater/127
+loop6    7:6    0  11,1M  1 loop /snap/firmware-updater/167
+loop7    7:7    0   516M  1 loop /snap/gnome-42-2204/202
+loop8    7:8    0 505,1M  1 loop /snap/gnome-42-2204/176
+loop9    7:9    0  89,7M  1 loop /snap/gtk-common-themes/1536
+loop10   7:10   0   125M  1 loop /snap/gtk-theme-breeze/2
+loop11   7:11   0  91,7M  1 loop /snap/gtk-common-themes/1535
+loop12   7:12   0  13,2M  1 loop /snap/icon-theme-breeze/5
+loop13   7:13   0   264K  1 loop /snap/gtk-theme-breeze/5
+loop14   7:14   0    14M  1 loop /snap/icon-theme-breeze/3
+loop15   7:15   0  44,4M  1 loop /snap/snapd/23545
+loop16   7:16   0  44,4M  1 loop /snap/snapd/23771
+loop17   7:17   0 210,4M  1 loop /snap/thunderbird/663
+loop18   7:18   0 210,4M  1 loop /snap/thunderbird/644
+sda      8:0    0    20G  0 disk 
+└─sda1   8:1    0    20G  0 part /
+sr0     11:0    1  57,4M  0 rom  
+
+
+[2025-03-06 16:21:19] >>> Информация о сетевых интерфейсах (ip a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:9c:d2:56 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 84988sec preferred_lft 84988sec
+    inet6 fd00::6668:828b:9ba0:e9ea/64 scope global temporary dynamic 
+       valid_lft 86203sec preferred_lft 14203sec
+    inet6 fd00::80f:6263:cd47:52af/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 86203sec preferred_lft 14203sec
+    inet6 fe80::de6f:659a:67d9:e9d7/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+
+[2025-03-06 16:21:19] ИДЕНТИФИКАЦИЯ ВИРТУАЛЬНОЙ МАШИНЫ
+
+[2025-03-06 16:21:19] Система запущена в виртуальной машине.
+
+[2025-03-06 16:21:19] Тип виртуализации: oracle
+
+-----------------------------------------------------------------
+
+[2025-03-06 16:21:19] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
+
+[2025-03-06 16:21:19] >>> Информация о ядре (uname -a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ uname -a
+Linux immortal-virtualbox 6.11.0-14-generic #15-Ubuntu SMP PREEMPT_DYNAMIC Fri Jan 10 23:48:25 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+
+
+[2025-03-06 16:21:19] >>> Информация о версии ОС (lsb_release -a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lsb_release -a
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.10
+Release:	24.10
+Codename:	oracular
+
+
+-----------------------------------------------------------------
+
+[2025-03-06 16:21:19] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.3 (Скрипт)
+
+[2025-03-06 16:21:19] Запуск скрипта ./2/2.3/2.3.sh без аргументов.
+[01m[Kcc1:[m[K [01;31m[Kfatal error: [m[Kexec.c: Нет такого файла или каталога
+compilation terminated.
+./2/2.3/2.3.sh: строка 4: ./exec: Нет такого файла или каталога
+
+Script done on 2025-03-06 16:21:19+03:00 [COMMAND_EXIT_CODE="127"]
+Script started on 2025-03-06 16:22:16+03:00 [COMMAND="./logger.sh" TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="189" LINES="19"]
+=================================================================
+                   ОТЧЁТ ПО ЛАБОРАТОРНОЙ РАБОТЕ
+=================================================================
+Дата исполнения отчёта: 2025-03-06 16:22:16
+Идентификация исполнителя: root
+Группа: 3343
+ФИО: Гребнев Егор Дмитриевич
+-----------------------------------------------------------------
+
+[2025-03-06 16:22:16] ПРОФИЛЬ СИСТЕМЫ
+
+[2025-03-06 16:22:16] >>> Информация о процессоре (lscpu) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lscpu
+Архитектура:                          x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        39 bits physical, 48 bits virtual
+Порядок байт:                         Little Endian
+CPU(s):                               4
+On-line CPU(s) list:                  0-3
+ID прроизводителя:                    GenuineIntel
+Имя модели:                           11th Gen Intel(R) Core(TM) i5-1155G7 @ 2.50GHz
+BIOS Model name:                        CPU @ 0.0GHz
+BIOS CPU family:                      0
+Семейство ЦПУ:                        6
+Модель:                               140
+Потоков на ядро:                      1
+Ядер на сокет:                        4
+Сокетов:                              1
+Степпинг:                             2
+BogoMIPS:                             4992,02
+Флаги:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 movbe popcnt aes rdrand hypervisor lahf_lm abm 3dnowprefetch ibrs_enhanced fsgsbase bmi1 bmi2 invpcid rdseed adx clflushopt sha_ni arat md_clear flush_l1d arch_capabilities
+Разработчик гипервизора:              KVM
+Тип виртуализации:                    полный
+L1d cache:                            192 KiB (4 instances)
+L1i cache:                            128 KiB (4 instances)
+L2 cache:                             5 MiB (4 instances)
+L3 cache:                             32 MiB (4 instances)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-3
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Vulnerable
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; RSB filling; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+
+
+[2025-03-06 16:22:16] >>> Информация о памяти (free -h) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ free -h
+               всего        занят        своб      общая  буф/врем.   доступно
+Память:        3,8Gi       2,3Gi       188Mi       138Mi       1,7Gi       1,5Gi
+Подкачка:      511Mi          0B       511Mi
+
+
+[2025-03-06 16:22:16] >>> Информация о дисках (lsblk) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+loop0    7:0    0  74,2M  1 loop /snap/core22/1621
+loop1    7:1    0     4K  1 loop /snap/bare/5
+loop2    7:2    0   258M  1 loop /snap/firefox/5751
+loop3    7:3    0  73,9M  1 loop /snap/core22/1748
+loop4    7:4    0 257,9M  1 loop /snap/firefox/5783
+loop5    7:5    0  10,7M  1 loop /snap/firmware-updater/127
+loop6    7:6    0  11,1M  1 loop /snap/firmware-updater/167
+loop7    7:7    0   516M  1 loop /snap/gnome-42-2204/202
+loop8    7:8    0 505,1M  1 loop /snap/gnome-42-2204/176
+loop9    7:9    0  89,7M  1 loop /snap/gtk-common-themes/1536
+loop10   7:10   0   125M  1 loop /snap/gtk-theme-breeze/2
+loop11   7:11   0  91,7M  1 loop /snap/gtk-common-themes/1535
+loop12   7:12   0  13,2M  1 loop /snap/icon-theme-breeze/5
+loop13   7:13   0   264K  1 loop /snap/gtk-theme-breeze/5
+loop14   7:14   0    14M  1 loop /snap/icon-theme-breeze/3
+loop15   7:15   0  44,4M  1 loop /snap/snapd/23545
+loop16   7:16   0  44,4M  1 loop /snap/snapd/23771
+loop17   7:17   0 210,4M  1 loop /snap/thunderbird/663
+loop18   7:18   0 210,4M  1 loop /snap/thunderbird/644
+sda      8:0    0    20G  0 disk 
+└─sda1   8:1    0    20G  0 part /
+sr0     11:0    1  57,4M  0 rom  
+
+
+[2025-03-06 16:22:16] >>> Информация о сетевых интерфейсах (ip a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:9c:d2:56 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 84931sec preferred_lft 84931sec
+    inet6 fd00::6668:828b:9ba0:e9ea/64 scope global temporary dynamic 
+       valid_lft 86146sec preferred_lft 14146sec
+    inet6 fd00::80f:6263:cd47:52af/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 86146sec preferred_lft 14146sec
+    inet6 fe80::de6f:659a:67d9:e9d7/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+
+[2025-03-06 16:22:16] ИДЕНТИФИКАЦИЯ ВИРТУАЛЬНОЙ МАШИНЫ
+
+[2025-03-06 16:22:16] Система запущена в виртуальной машине.
+
+[2025-03-06 16:22:16] Тип виртуализации: oracle
+
+-----------------------------------------------------------------
+
+[2025-03-06 16:22:16] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
+
+[2025-03-06 16:22:16] >>> Информация о ядре (uname -a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ uname -a
+Linux immortal-virtualbox 6.11.0-14-generic #15-Ubuntu SMP PREEMPT_DYNAMIC Fri Jan 10 23:48:25 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+
+
+[2025-03-06 16:22:16] >>> Информация о версии ОС (lsb_release -a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lsb_release -a
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.10
+Release:	24.10
+Codename:	oracular
+
+
+-----------------------------------------------------------------
+
+[2025-03-06 16:22:16] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.3 (Скрипт)
+
+[2025-03-06 16:22:16] Запуск скрипта ./2/2.3/2.3.sh без аргументов.
+Демонстрация работы различных функций семейства exec():
+
+--- Запуск execl ---
+Дочерний процесс [4463]: Запуск команды 'ls -l -a' с использованием execl...
+итого 44
+drwxrwxr-x 2 immortal immortal  4096 мар  6 16:22 .
+drwxrwxr-x 6 immortal immortal  4096 мар  6 16:13 ..
+-rwxrwxr-x 1 immortal immortal    48 мар  6 16:22 2.3.sh
+-rwxr-xr-x 1 root     root     16888 мар  6 16:22 exec
+-rw-rw-r-- 1 immortal immortal  9031 мар  6 16:15 exec.c
+Дочерний процесс завершился с кодом: 0
+
+--- Запуск execlp ---
+Дочерний процесс [4464]: Запуск команды 'ls -l -a' с использованием execlp...
+итого 44
+drwxrwxr-x 2 immortal immortal  4096 мар  6 16:22 .
+drwxrwxr-x 6 immortal immortal  4096 мар  6 16:13 ..
+-rwxrwxr-x 1 immortal immortal    48 мар  6 16:22 2.3.sh
+-rwxr-xr-x 1 root     root     16888 мар  6 16:22 exec
+-rw-rw-r-- 1 immortal immortal  9031 мар  6 16:15 exec.c
+Дочерний процесс завершился с кодом: 0
+
+--- Запуск execle ---
+Дочерний процесс [4465]: Запуск команды 'ls -l -a' с использованием execle и пользовательского окружения...
+total 44
+drwxrwxr-x 2 immortal immortal  4096 Mar  6 16:22 .
+drwxrwxr-x 6 immortal immortal  4096 Mar  6 16:13 ..
+-rwxrwxr-x 1 immortal immortal    48 Mar  6 16:22 2.3.sh
+-rwxr-xr-x 1 root     root     16888 Mar  6 16:22 exec
+-rw-rw-r-- 1 immortal immortal  9031 Mar  6 16:15 exec.c
+Дочерний процесс завершился с кодом: 0
+
+--- Запуск execv ---
+Дочерний процесс [4466]: Запуск команды 'ls -l -a' с использованием execv...
+итого 44
+drwxrwxr-x 2 immortal immortal  4096 мар  6 16:22 .
+drwxrwxr-x 6 immortal immortal  4096 мар  6 16:13 ..
+-rwxrwxr-x 1 immortal immortal    48 мар  6 16:22 2.3.sh
+-rwxr-xr-x 1 root     root     16888 мар  6 16:22 exec
+-rw-rw-r-- 1 immortal immortal  9031 мар  6 16:15 exec.c
+Дочерний процесс завершился с кодом: 0
+
+--- Запуск execvp ---
+Дочерний процесс [4467]: Запуск команды 'ls -l -a' с использованием execvp...
+итого 44
+drwxrwxr-x 2 immortal immortal  4096 мар  6 16:22 .
+drwxrwxr-x 6 immortal immortal  4096 мар  6 16:13 ..
+-rwxrwxr-x 1 immortal immortal    48 мар  6 16:22 2.3.sh
+-rwxr-xr-x 1 root     root     16888 мар  6 16:22 exec
+-rw-rw-r-- 1 immortal immortal  9031 мар  6 16:15 exec.c
+Дочерний процесс завершился с кодом: 0
+
+--- Запуск execve ---
+Дочерний процесс [4468]: Запуск команды 'ls -l -a' с использованием execve и пользовательского окружения...
+total 44
+drwxrwxr-x 2 immortal immortal  4096 Mar  6 16:22 .
+drwxrwxr-x 6 immortal immortal  4096 Mar  6 16:13 ..
+-rwxrwxr-x 1 immortal immortal    48 Mar  6 16:22 2.3.sh
+-rwxr-xr-x 1 root     root     16888 Mar  6 16:22 exec
+-rw-rw-r-- 1 immortal immortal  9031 Mar  6 16:15 exec.c
+Дочерний процесс завершился с кодом: 0
+
+Все дочерние процессы завершены.
+
+[2025-03-06 16:22:16] Время выполнения задания 2.3: 0 секунд.
+
+[2025-03-06 16:22:16] Общее время выполнения скрипта: 0 секунд.
+=================================================================
+                      ОТЧЁТ ЗАВЕРШЁН
+=================================================================
+
+[2025-03-06 16:22:16] Основной отчёт сохранён в файл: lab_report.log
+
+Script done on 2025-03-06 16:22:16+03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2025-03-06 16:22:39+03:00 [COMMAND="./logger.sh" TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="189" LINES="19"]
+=================================================================
+                   ОТЧЁТ ПО ЛАБОРАТОРНОЙ РАБОТЕ
+=================================================================
+Дата исполнения отчёта: 2025-03-06 16:22:39
+Идентификация исполнителя: root
+Группа: 3343
+ФИО: Гребнев Егор Дмитриевич
+-----------------------------------------------------------------
+
+[2025-03-06 16:22:39] ПРОФИЛЬ СИСТЕМЫ
+
+[2025-03-06 16:22:39] >>> Информация о процессоре (lscpu) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lscpu
+Архитектура:                          x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        39 bits physical, 48 bits virtual
+Порядок байт:                         Little Endian
+CPU(s):                               4
+On-line CPU(s) list:                  0-3
+ID прроизводителя:                    GenuineIntel
+Имя модели:                           11th Gen Intel(R) Core(TM) i5-1155G7 @ 2.50GHz
+BIOS Model name:                        CPU @ 0.0GHz
+BIOS CPU family:                      0
+Семейство ЦПУ:                        6
+Модель:                               140
+Потоков на ядро:                      1
+Ядер на сокет:                        4
+Сокетов:                              1
+Степпинг:                             2
+BogoMIPS:                             4992,02
+Флаги:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 movbe popcnt aes rdrand hypervisor lahf_lm abm 3dnowprefetch ibrs_enhanced fsgsbase bmi1 bmi2 invpcid rdseed adx clflushopt sha_ni arat md_clear flush_l1d arch_capabilities
+Разработчик гипервизора:              KVM
+Тип виртуализации:                    полный
+L1d cache:                            192 KiB (4 instances)
+L1i cache:                            128 KiB (4 instances)
+L2 cache:                             5 MiB (4 instances)
+L3 cache:                             32 MiB (4 instances)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-3
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Vulnerable
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; RSB filling; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+
+
+[2025-03-06 16:22:39] >>> Информация о памяти (free -h) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ free -h
+               всего        занят        своб      общая  буф/врем.   доступно
+Память:        3,8Gi       2,3Gi       182Mi       143Mi       1,7Gi       1,5Gi
+Подкачка:      511Mi          0B       511Mi
+
+
+[2025-03-06 16:22:39] >>> Информация о дисках (lsblk) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+loop0    7:0    0  74,2M  1 loop /snap/core22/1621
+loop1    7:1    0     4K  1 loop /snap/bare/5
+loop2    7:2    0   258M  1 loop /snap/firefox/5751
+loop3    7:3    0  73,9M  1 loop /snap/core22/1748
+loop4    7:4    0 257,9M  1 loop /snap/firefox/5783
+loop5    7:5    0  10,7M  1 loop /snap/firmware-updater/127
+loop6    7:6    0  11,1M  1 loop /snap/firmware-updater/167
+loop7    7:7    0   516M  1 loop /snap/gnome-42-2204/202
+loop8    7:8    0 505,1M  1 loop /snap/gnome-42-2204/176
+loop9    7:9    0  89,7M  1 loop /snap/gtk-common-themes/1536
+loop10   7:10   0   125M  1 loop /snap/gtk-theme-breeze/2
+loop11   7:11   0  91,7M  1 loop /snap/gtk-common-themes/1535
+loop12   7:12   0  13,2M  1 loop /snap/icon-theme-breeze/5
+loop13   7:13   0   264K  1 loop /snap/gtk-theme-breeze/5
+loop14   7:14   0    14M  1 loop /snap/icon-theme-breeze/3
+loop15   7:15   0  44,4M  1 loop /snap/snapd/23545
+loop16   7:16   0  44,4M  1 loop /snap/snapd/23771
+loop17   7:17   0 210,4M  1 loop /snap/thunderbird/663
+loop18   7:18   0 210,4M  1 loop /snap/thunderbird/644
+sda      8:0    0    20G  0 disk 
+└─sda1   8:1    0    20G  0 part /
+sr0     11:0    1  57,4M  0 rom  
+
+
+[2025-03-06 16:22:40] >>> Информация о сетевых интерфейсах (ip a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:9c:d2:56 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 84907sec preferred_lft 84907sec
+    inet6 fd00::6668:828b:9ba0:e9ea/64 scope global temporary dynamic 
+       valid_lft 86122sec preferred_lft 14122sec
+    inet6 fd00::80f:6263:cd47:52af/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 86122sec preferred_lft 14122sec
+    inet6 fe80::de6f:659a:67d9:e9d7/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+
+[2025-03-06 16:22:40] ИДЕНТИФИКАЦИЯ ВИРТУАЛЬНОЙ МАШИНЫ
+
+[2025-03-06 16:22:40] Система запущена в виртуальной машине.
+
+[2025-03-06 16:22:40] Тип виртуализации: oracle
+
+-----------------------------------------------------------------
+
+[2025-03-06 16:22:40] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
+
+[2025-03-06 16:22:40] >>> Информация о ядре (uname -a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ uname -a
+Linux immortal-virtualbox 6.11.0-14-generic #15-Ubuntu SMP PREEMPT_DYNAMIC Fri Jan 10 23:48:25 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+
+
+[2025-03-06 16:22:40] >>> Информация о версии ОС (lsb_release -a) <<<
+
+
+root@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ lsb_release -a
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.10
+Release:	24.10
+Codename:	oracular
+
+
+-----------------------------------------------------------------
+
+[2025-03-06 16:22:40] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.3 (Скрипт)
+
+[2025-03-06 16:22:40] Запуск скрипта ./2/2.3/2.3.sh без аргументов.
+Демонстрация работы различных функций семейства exec():
+
+--- Запуск execl ---
+Дочерний процесс [4596]: Запуск команды 'ls -l' с использованием execl...
+итого 36
+-rwxrwxr-x 1 immortal immortal    48 мар  6 16:22 2.3.sh
+-rwxr-xr-x 1 root     root     16888 мар  6 16:22 exec
+-rw-rw-r-- 1 immortal immortal  9294 мар  6 16:22 exec.c
+Дочерний процесс завершился с кодом: 0
+
+--- Запуск execlp ---
+Дочерний процесс [4597]: Запуск команды 'ls -a' с использованием execlp...
+.  ..  2.3.sh  exec  exec.c
+Дочерний процесс завершился с кодом: 0
+
+--- Запуск execle ---
+Дочерний процесс [4598]: Запуск команды 'ls -lh' с использованием execle и пользовательского окружения...
+total 36K
+-rwxrwxr-x 1 immortal immortal   48 Mar  6 16:22 2.3.sh
+-rwxr-xr-x 1 root     root      17K Mar  6 16:22 exec
+-rw-rw-r-- 1 immortal immortal 9.1K Mar  6 16:22 exec.c
+Дочерний процесс завершился с кодом: 0
+
+--- Запуск execv ---
+Дочерний процесс [4599]: Запуск команды 'ls -R' с использованием execv...
+.:
+2.3.sh	exec  exec.c
+Дочерний процесс завершился с кодом: 0
+
+--- Запуск execvp ---
+Дочерний процесс [4600]: Запуск команды 'ls -t' с использованием execvp...
+exec  exec.c  2.3.sh
+Дочерний процесс завершился с кодом: 0
+
+--- Запуск execve ---
+Дочерний процесс [4601]: Запуск команды 'ls -la' с использованием execve и пользовательского окружения...
+total 44
+drwxrwxr-x 2 immortal immortal  4096 Mar  6 16:22 .
+drwxrwxr-x 6 immortal immortal  4096 Mar  6 16:13 ..
+-rwxrwxr-x 1 immortal immortal    48 Mar  6 16:22 2.3.sh
+-rwxr-xr-x 1 root     root     16888 Mar  6 16:22 exec
+-rw-rw-r-- 1 immortal immortal  9294 Mar  6 16:22 exec.c
+Дочерний процесс завершился с кодом: 0
+
+Все дочерние процессы завершены.
+
+[2025-03-06 16:22:40] Время выполнения задания 2.3: 0 секунд.
+
+[2025-03-06 16:22:40] Общее время выполнения скрипта: 1 секунд.
+=================================================================
+                      ОТЧЁТ ЗАВЕРШЁН
+=================================================================
+
+[2025-03-06 16:22:40] Основной отчёт сохранён в файл: lab_report.log
+
+Script done on 2025-03-06 16:22:40+03:00 [COMMAND_EXIT_CODE="0"]

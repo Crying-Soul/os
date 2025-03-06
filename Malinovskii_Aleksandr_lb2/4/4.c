@@ -16,13 +16,13 @@
 volatile sig_atomic_t stop_flag = 0; // Флаг для остановки потоков
 
 // Обработчик сигналов
-void signal_handler(int sig) {
+void handle_signal(int sig) {
     stop_flag = 1;
     printf("Received signal %d, stopping threads...\n", sig);
 }
 
 // Функция для потоков, созданных через clone()
-int clone_thread(void *arg) {
+int run_clone_thread(void *arg) {
     int id = *(int *)arg;
     while (!stop_flag) {
         printf("Clone thread %d (TID: %ld)\n", id, (long)syscall(SYS_gettid));
@@ -33,7 +33,7 @@ int clone_thread(void *arg) {
 }
 
 // Функция для потоков, созданных через pthread
-void *pthread_thread(void *arg) {
+void *run_pthread_thread(void *arg) {
     int id = *(int *)arg;
     while (!stop_flag) {
         printf("Pthread thread %d (TID: %ld)\n", id, (long)syscall(SYS_gettid));
@@ -46,7 +46,7 @@ void *pthread_thread(void *arg) {
 int main(void) {
     // Настройка обработчика сигналов
     struct sigaction sa;
-    sa.sa_handler = signal_handler;
+    sa.sa_handler = handle_signal;
     sigemptyset(&sa.sa_mask);
     sa.sa_flags = 0;
 
@@ -56,18 +56,18 @@ int main(void) {
     }
 
     pthread_t pthreads[NUM_THREADS];
-    int ids[NUM_THREADS * 2]; // Идентификаторы для всех потоков
+    int thread_ids[NUM_THREADS * 2]; // Идентификаторы для всех потоков
     char *stacks[NUM_THREADS];
     pid_t clone_pids[NUM_THREADS];
 
     // Инициализация идентификаторов
     for (int i = 0; i < NUM_THREADS * 2; i++) {
-        ids[i] = i + 1;
+        thread_ids[i] = i + 1;
     }
 
     // Создание потоков через pthread_create()
     for (int i = 0; i < NUM_THREADS; i++) {
-        if (pthread_create(&pthreads[i], NULL, pthread_thread, &ids[i]) != 0) {
+        if (pthread_create(&pthreads[i], NULL, run_pthread_thread, &thread_ids[i]) != 0) {
             fprintf(stderr, "pthread_create failed: %s\n", strerror(errno));
             exit(EXIT_FAILURE);
         }
@@ -78,17 +78,24 @@ int main(void) {
         stacks[i] = malloc(STACK_SIZE);
         if (!stacks[i]) {
             perror("malloc failed");
+            // Освобождаем память, выделенную для предыдущих стеков
+            for (int j = 0; j < i; j++) {
+                free(stacks[j]);
+            }
             exit(EXIT_FAILURE);
         }
 
-        clone_pids[i] = clone(clone_thread,
+        clone_pids[i] = clone(run_clone_thread,
                               stacks[i] + STACK_SIZE,
                               CLONE_VM | CLONE_FS | CLONE_FILES | CLONE_SIGHAND | CLONE_THREAD | CLONE_SYSVSEM,
-                              &ids[i + NUM_THREADS]);
+                              &thread_ids[i + NUM_THREADS]);
 
         if (clone_pids[i] == -1) {
             fprintf(stderr, "clone failed: %s\n", strerror(errno));
-            free(stacks[i]);
+            // Освобождаем память, выделенную для стеков
+            for (int j = 0; j <= i; j++) {
+                free(stacks[j]);
+            }
             exit(EXIT_FAILURE);
         }
     }

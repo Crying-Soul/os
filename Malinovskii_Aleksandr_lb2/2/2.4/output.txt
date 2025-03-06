@@ -1,6 +1,96 @@
 ------------------------
+Запуск программы: situation_a
+Процессы до создания процесса-сына:
+    PID TTY      STAT   TIME COMMAND
+  35696 pts/2    Ss     0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
+  36743 pts/2    T      0:00  \_ yes ya loh
+  37375 pts/2    S+     0:00  \_ /bin/bash ./run_2.4.sh
+  37382 pts/2    S+     0:00      \_ ./situation_a
+  37383 pts/2    S+     0:00          \_ sh -c -- ps -H f
+  37384 pts/2    R+     0:00              \_ ps -H f
+  35446 pts/1    Ss+    0:00 /bin/bash
+  34709 tty1     Ssl+   0:00 /usr/bin/startplasma-wayland
+Процесс-отец: PID = 37382, PID сына = 37385
+Процессы после создания процесса-сына, но до его завершения:
+Процесс-сын: PID = 37385
+    PID TTY      STAT   TIME COMMAND
+  35696 pts/2    Ss     0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
+  36743 pts/2    T      0:00  \_ yes ya loh
+  37375 pts/2    S+     0:00  \_ /bin/bash ./run_2.4.sh
+  37382 pts/2    S+     0:00      \_ ./situation_a
+  37385 pts/2    S+     0:00          \_ ./situation_a
+  37386 pts/2    S+     0:00          \_ sh -c -- ps -H f
+  37387 pts/2    R+     0:00              \_ ps -H f
+  35446 pts/1    Ss+    0:00 /bin/bash
+  34709 tty1     Ssl+   0:00 /usr/bin/startplasma-wayland
+Процесс-сын завершен
+Процессы после завершения процесса-сына:
+    PID TTY      STAT   TIME COMMAND
+  35696 pts/2    Ss     0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
+  36743 pts/2    T      0:00  \_ yes ya loh
+  37375 pts/2    S+     0:00  \_ /bin/bash ./run_2.4.sh
+  37382 pts/2    S+     0:00      \_ ./situation_a
+  37401 pts/2    S+     0:00          \_ sh -c -- ps -H f
+  37402 pts/2    R+     0:00              \_ ps -H f
+  35446 pts/1    Ss+    0:00 /bin/bash
+  34709 tty1     Ssl+   0:00 /usr/bin/startplasma-wayland
+Процесс-сын завершился с кодом: 0
+Процесс-отец завершен
+Состояние процессов после запуска situation_a:
 ------------------------
 ------------------------
+Запуск программы: situation_b
+Запуск программы. Основной процесс (PID: 37410, PPID: 37375).
+Процесс-отец (PID: 37410) создал процесс-сына (PID: 37412).
+Процесс-сын (PID: 37412, PPID: 37410) запущен.
+
+Состояние процессов перед завершением отца:
+    PID    PPID    PGID     SID COMMAND
+  35696   35680   35696   35696 bash
+  36743   35696   36743   35696  \_ yes
+  37375   35696   37375   35696  \_ run_2.4.sh
+  37410   37375   37375   35696      \_ situation_b
+  37412   37410   37375   35696          \_ situation_b
+  37423   37410   37375   35696          \_ sh
+  37424   37423   37375   35696              \_ ps
+  35446   35426   35446   35446 bash
+  34709   34672   34709   34709 startplasma-way
+Процесс-отец (PID: 37410) завершается, не ожидая завершения процесса-сына.
+Состояние процессов после запуска situation_b:
+    PID    PPID    PGID     SID COMMAND
+  35696   35680   35696   35696 bash
+  36743   35696   36743   35696  \_ yes
+  37375   35696   37375   35696  \_ run_2.4.sh
+  37425   37375   37375   35696      \_ ps
+  35446   35426   35446   35446 bash
+  37412   34675   37375   35696 situation_b
+  34709   34672   34709   34709 startplasma-way
+Дополнительная информация для situation_b:
+Родительский PID для situation_b: 34675
+Процессы, связанные с PPID 34675:
+immortal   34675  0.0  0.3  21012 12404 ?        Ss   18:22   0:00 /usr/lib/systemd/systemd --user
+immortal   37435  0.0  0.0   9256  2444 pts/2    S+   19:07   0:00 grep 34675
 ------------------------
 ------------------------
+Запуск программы: situation_c
+Процесс-отец (PID: 37442) не ожидает завершения процесса-сына.
+Процесс-сын еще не завершился, процесс-отец продолжает работу.
+Процесс-сын (PID: 37443) запущен.
+Процесс-сын (PID: 37443) завершен.
+Процесс-сын (PID: 37412, PPID: 34675) после завершения отца.
+Родитель процесса-сына: 34675.
+
+Состояние процессов после завершения сына (зомби):
+    PID    PPID STAT COMMAND          SIZE
+  35696   35680 Ss   bash             2684
+  36743   35696 T    yes               360
+  37375   35696 S+   run_2.4.sh        440
+  37412   34675 S+   situation_b       360
+  37442   37375 S+   situation_c       360
+  37443   37442 Z+   situation_c         0
+  37468   37442 S+   sh                368
+  37469   37468 R+   ps               1812
+Процесс-отец (PID: 37442) завершен.
+Состояние процессов после запуска situation_c:
 ------------------------
+Процесс-сын (PID: 37412, PPID: 34675) завершен.
