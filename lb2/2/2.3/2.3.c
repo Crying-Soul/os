@@ -23,6 +23,7 @@ void run_execl(const char *path) {
     }
     if (pid == 0) {
         printf("Дочерний процесс [%d] запускает execl...\n", getpid());
+        fflush(stdout);
         execl(path, "ls", "-l", "-a", (char *)NULL);
         perror("execl failed");
         exit(EXIT_FAILURE);
@@ -39,6 +40,7 @@ void run_execlp(const char *file) {
     }
     if (pid == 0) {
         printf("Дочерний процесс [%d] запускает execlp...\n", getpid());
+        fflush(stdout);
         execlp(file, "ls", "-l", "-a", (char *)NULL);
         perror("execlp failed");
         exit(EXIT_FAILURE);
@@ -55,6 +57,7 @@ void run_execle(const char *path, char *const envp[]) {
     }
     if (pid == 0) {
         printf("Дочерний процесс [%d] запускает execle (с пользовательским окружением)...\n", getpid());
+        fflush(stdout);
         execle(path, "ls", "-l", "-a", (char *)NULL, envp);
         perror("execle failed");
         exit(EXIT_FAILURE);
@@ -71,6 +74,7 @@ void run_execv(const char *path, char *const argv[]) {
     }
     if (pid == 0) {
         printf("Дочерний процесс [%d] запускает execv...\n", getpid());
+        fflush(stdout);
         execv(path, argv);
         perror("execv failed");
         exit(EXIT_FAILURE);
@@ -87,6 +91,7 @@ void run_execvp(const char *file, char *const argv[]) {
     }
     if (pid == 0) {
         printf("Дочерний процесс [%d] запускает execvp...\n", getpid());
+        fflush(stdout);
         execvp(file, argv);
         perror("execvp failed");
         exit(EXIT_FAILURE);
@@ -103,6 +108,7 @@ void run_execve(const char *path, char *const argv[], char *const envp[]) {
     }
     if (pid == 0) {
         printf("Дочерний процесс [%d] запускает execve (с пользовательским окружением)...\n", getpid());
+        fflush(stdout);
         execve(path, argv, envp);
         perror("execve failed");
         exit(EXIT_FAILURE);
