@@ -233,6 +233,31 @@ execute_commands 0 \
 
 # execute_task 4 0
 
+# echo Определение величины кванта
+# sudo ./quant
+# echo Меняем политику планирования на RR
+# sudo taskset -c 0 ./5.4
+>"$OUTPUT_FILE"
+display_file_state "ДО ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
+execute_commands 6.1 \
+        "./lb2/6/6.1"
+
+display_file_state "ПОСЛЕ ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
+
+execute_commands 6.2 \
+        "./lb2/6/6.2"
+
+
+execute_commands 6.3 \
+        "./lb2/6/6.3"
+
+>"$OUTPUT_FILE"
+display_file_state "ДО ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
+execute_commands 6.4 \
+        "./lb2/6/6.1"
+
+display_file_state "ПОСЛЕ ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
+
 log_comment "Конец скрипта. Очистка файлов."
 
 execute_commands 0 \
