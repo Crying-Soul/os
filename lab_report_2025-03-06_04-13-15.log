@@ -1,0 +1,608 @@
+Script started on 2025-03-06 04:13:15+03:00 [COMMAND="./logger-lb2.sh" TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="165" LINES="44"]
+=================================================================
+                   ОТЧЁТ ПО ЛАБОРАТОРНОЙ РАБОТЕ
+=================================================================
+Дата исполнения отчёта: 2025-03-06 04:13:15
+Идентификация исполнителя: root
+Группа: 3343
+ФИО: Гребнев Егор Дмитриевич
+-----------------------------------------------------------------
+
+[2025-03-06 04:13:15] ПРОФИЛЬ СИСТЕМЫ
+
+[2025-03-06 04:13:15] >>> Информация о процессоре (lscpu) <<<
+----------------------------------------
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        48 bits physical, 48 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               6
+On-line CPU(s) list:                  0-5
+Vendor ID:                            AuthenticAMD
+Model name:                           AMD Ryzen 5 3600 6-Core Processor
+BIOS Model name:                        CPU @ 0.0GHz
+BIOS CPU family:                      0
+CPU family:                           23
+Model:                                113
+Thread(s) per core:                   1
+Core(s) per socket:                   6
+Socket(s):                            1
+Stepping:                             0
+BogoMIPS:                             7199.99
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch ssbd vmmcall fsgsbase bmi1 avx2 bmi2 rdseed adx clflushopt sha_ni arat nrip_save flushbyasid decodeassists
+Virtualization:                       AMD-V
+Hypervisor vendor:                    KVM
+Virtualization type:                  full
+L1d cache:                            192 KiB (6 instances)
+L1i cache:                            192 KiB (6 instances)
+L2 cache:                             3 MiB (6 instances)
+L3 cache:                             192 MiB (6 instances)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-5
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Mitigation; untrained return thunk; SMT disabled
+Vulnerability Spec rstack overflow:   Mitigation; safe RET, no microcode
+Vulnerability Spec store bypass:      Not affected
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Retpolines; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+----------------------------------------
+
+[2025-03-06 04:13:15] >>> Информация о памяти (free -h) <<<
+----------------------------------------
+               total        used        free      shared  buff/cache   available
+Mem:            23Gi       2.7Gi        19Gi        64Mi       1.8Gi        20Gi
+Swap:          974Mi          0B       974Mi
+----------------------------------------
+
+[2025-03-06 04:13:15] >>> Информация о дисках (lsblk) <<<
+----------------------------------------
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda      8:0    0   60G  0 disk 
+├─sda1   8:1    0   59G  0 part /
+├─sda2   8:2    0    1K  0 part 
+└─sda5   8:5    0  975M  0 part [SWAP]
+sr0     11:0    1 57.4M  0 rom  
+----------------------------------------
+
+[2025-03-06 04:13:15] >>> Информация о сетевых интерфейсах (ip a) <<<
+----------------------------------------
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:5c:10:fa brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 77755sec preferred_lft 77755sec
+    inet6 fd00::b480:6f:ef45:9618/64 scope global temporary dynamic 
+       valid_lft 86182sec preferred_lft 14182sec
+    inet6 fd00::a00:27ff:fe5c:10fa/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 86182sec preferred_lft 14182sec
+    inet6 fe80::a00:27ff:fe5c:10fa/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether f2:64:e5:b7:9c:24 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+4: br-b56d365599b8: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 5a:a1:e7:87:d9:bc brd ff:ff:ff:ff:ff:ff
+    inet 172.18.0.1/16 brd 172.18.255.255 scope global br-b56d365599b8
+       valid_lft forever preferred_lft forever
+----------------------------------------
+
+[2025-03-06 04:13:15] ИДЕНТИФИКАЦИЯ ВИРТУАЛЬНОЙ МАШИНЫ
+
+[2025-03-06 04:13:15] Система запущена в виртуальной машине.
+
+[2025-03-06 04:13:15] Тип виртуализации: oracle
+
+-----------------------------------------------------------------
+
+[2025-03-06 04:13:15] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
+
+[2025-03-06 04:13:15] >>> Информация о ядре (uname -a) <<<
+----------------------------------------
+Linux ASPIRIN 6.1.0-31-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.128-1 (2025-02-07) x86_64 GNU/Linux
+----------------------------------------
+
+[2025-03-06 04:13:15] >>> Информация о версии ОС (lsb_release -a) <<<
+----------------------------------------
+Distributor ID:	Debian
+Description:	Debian GNU/Linux 12 (bookworm)
+Release:	12
+Codename:	bookworm
+----------------------------------------
+
+-----------------------------------------------------------------
+
+[2025-03-06 04:13:15] НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ
+
+[2025-03-06 04:13:15] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.1 (Скрипт)
+
+[2025-03-06 04:13:15] Запуск скрипта ./lb2/1/1.1.sh без аргументов.
+Запуск фоновых процессов...
+Задание 1 (sleep 1) запущено с PID 9174
+Задание 2 (yes > /dev/null) запущено с PID 9175
+Задание 3 (sleep 4) запущено с PID 9176
+
+Анализ списка заданий:
+[1]   9174 Running                 sleep 1 &
+[2]-  9175 Running                 yes > /dev/null &
+[3]+  9176 Running                 sleep 4 &
+
+Прерывание задания 2...
+Задание 2 было прервано.
+./lb2/1/1.1.sh: line 51:  9175 Killed                  yes > /dev/null
+
+Анализ списка заданий после прерывания задания 2:
+[1]   9174 Done                    sleep 1
+[3]+  9176 Running                 sleep 4 &
+
+Ожидание завершения задания 1...
+Задание 1 успешно завершено.
+
+Итоговый анализ списка заданий:
+[3]+  9176 Running                 sleep 4 &
+
+Скрипт завершен.
+Очистка фоновых процессов...
+Останавливаем процесс с PID 9176
+
+[2025-03-06 04:13:16] Время выполнения задания 1.1: 1 секунд.
+
+[2025-03-06 04:13:16] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.3 (Скрипт)
+
+[2025-03-06 04:13:16] Запуск скрипта ./lb2/1/1.3.sh без аргументов.
+Минимальный PID: 1
+Подробная информация о процессе с PID 1:
+----------------------------------------
+  PID   UID  COMMAND         STAT  START     RSS   PPID   NI
+  1     0    systemd         Ss    01:49      13872  0      0  
+Команда запуска: /sbin/init 
+Текущий рабочий каталог: /
+Исполняемый файл: /usr/lib/systemd/systemd
+Окружение процесса:
+SHLVL=1
+HOME=/
+init=/sbin/init
+TERM=linux
+BOOT_IMAGE=/boot/vmlinuz-6.1.0-31-amd64
+drop_caps=
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+PWD=/
+rootmnt=/root
+
+Максимальный возможный PID: 4194304
+
+Самый большой активный PID в системе: 9185
+Подробная информация о процессе с PID 9185:
+----------------------------------------
+  PID   UID  COMMAND         STAT  START     RSS   PPID   NI
+  9185  0    bash            S+    04:13      3340   9129   0  
+Команда запуска: bash ./lb2/1/1.3.sh 
+Текущий рабочий каталог: /home/lotos/Documents/os
+Исполняемый файл: /usr/bin/bash
+Окружение процесса:
+SHELL=/bin/bash
+COLORTERM=truecolor
+SUDO_GID=0
+LANGUAGE=en_US.UTF-8
+SUDO_COMMAND=./logger-lb2.sh
+SUDO_USER=root
+IN_SCRIPT=1
+PWD=/home/lotos/Documents/os
+LOGNAME=root
+XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.82CR22
+HOME=/root
+LANG=en_US.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:
+XDG_CURRENT_DESKTOP=GNOME
+LOG_FILE=lab_report_2025-03-06_04-13-15.log
+TERM=xterm-256color
+USER=root
+DISPLAY=:0
+SHLVL=2
+LC_ALL=en_US.UTF-8
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+SUDO_UID=0
+MAIL=/var/mail/root
+_=/usr/bin/bash
+
+Минимальный UID: 0
+Пользователь с минимальным UID: root
+Максимальный UID: 65534
+Пользователь с максимальным UID: nobody
+
+[2025-03-06 04:13:17] Время выполнения задания 1.3: 1 секунд.
+
+[2025-03-06 04:13:17] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.4 (Скрипт)
+
+[2025-03-06 04:13:17] Запуск скрипта ./lb2/1/1.4.sh без аргументов.
+Системные процессы с привилегиями root:
+      1     0 systemd
+      2     0 kthreadd
+      3     0 rcu_gp
+      4     0 rcu_par_gp
+      5     0 slub_flushwq
+      6     0 netns
+      8     0 kworker/0:0H-events_highpri
+     10     0 mm_percpu_wq
+     11     0 rcu_tasks_kthread
+     12     0 rcu_tasks_rude_kthread
+
+Процессы с PID < 1000 (системные):
+      1 systemd
+      2 kthreadd
+      3 rcu_gp
+      4 rcu_par_gp
+      5 slub_flushwq
+      6 netns
+      8 kworker/0:0H-events_highpri
+     10 mm_percpu_wq
+     11 rcu_tasks_kthread
+     12 rcu_tasks_rude_kthread
+
+Процессы, связанные с ядром (например, kworker):
+      8 kworker/0:0H-events_highpri
+     22 kworker/1:0-events
+     23 kworker/1:0H-events_highpri
+     28 kworker/2:0H-events_highpri
+     33 kworker/3:0H-events_highpri
+     38 kworker/4:0H-events_highpri
+     43 kworker/5:0H-events_highpri
+     67 kworker/2:1H-kblockd
+     78 kworker/2:2-events
+     91 kworker/u13:0
+
+Процессы, связанные с systemd:
+      1 systemd
+    272 systemd-journal
+    309 systemd-udevd
+    554 systemd-timesyn
+    569 systemd-logind
+   1591 systemd
+
+[2025-03-06 04:13:17] Время выполнения задания 1.4: 0 секунд.
+
+[2025-03-06 04:13:17] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.5 (Скрипт)
+
+[2025-03-06 04:13:17] Запуск скрипта ./lb2/1/1.5.sh без аргументов.
+
+=== Информация о процессе c PID 9247 ===
+Name:	bash
+Umask:	0022
+State:	S (sleeping)
+Tgid:	9247
+Ngid:	0
+Pid:	9247
+PPid:	9129
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	256
+Groups:	0 
+NStgid:	9247
+NSpid:	9247
+NSpgid:	9129
+NSsid:	9129
+VmPeak:	    6932 kB
+VmSize:	    6932 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	    3280 kB
+VmRSS:	    3280 kB
+RssAnon:	     276 kB
+RssFile:	    3004 kB
+RssShmem:	       0 kB
+VmData:	     304 kB
+VmStk:	     132 kB
+VmExe:	     772 kB
+VmLib:	    1588 kB
+VmPTE:	      48 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+Threads:	1
+SigQ:	2/94980
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000010000
+SigIgn:	0000000000000004
+SigCgt:	0000000000010002
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	not vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	3f
+Cpus_allowed_list:	0-5
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	1
+nonvoluntary_ctxt_switches:	0
+
+=== Командная строка процесса ===
+tr: extra operand ‘'’
+Try 'tr --help' for more information.
+
+=== Переменные окружения ===
+SHELL=/bin/bash
+COLORTERM=truecolor
+SUDO_GID=0
+LANGUAGE=en_US.UTF-8
+SUDO_COMMAND=./logger-lb2.sh
+SUDO_USER=root
+IN_SCRIPT=1
+PWD=/home/lotos/Documents/os
+LOGNAME=root
+XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.82CR22
+HOME=/root
+LANG=en_US.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:
+XDG_CURRENT_DESKTOP=GNOME
+LOG_FILE=lab_report_2025-03-06_04-13-15.log
+TERM=xterm-256color
+USER=root
+DISPLAY=:0
+SHLVL=2
+LC_ALL=en_US.UTF-8
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+SUDO_UID=0
+MAIL=/var/mail/root
+_=/usr/bin/bash
+
+=== Открытые файлы ===
+Файл не найден: /proc/9247/fd
+
+=== Информация о памяти ===
+55aa5fc6d000-55aa5fc9c000 r--p 00000000 08:01 2622888                    /usr/bin/bash
+55aa5fc9c000-55aa5fd5d000 r-xp 0002f000 08:01 2622888                    /usr/bin/bash
+55aa5fd5d000-55aa5fd95000 r--p 000f0000 08:01 2622888                    /usr/bin/bash
+55aa5fd95000-55aa5fd99000 r--p 00128000 08:01 2622888                    /usr/bin/bash
+55aa5fd99000-55aa5fda2000 rw-p 0012c000 08:01 2622888                    /usr/bin/bash
+55aa5fda2000-55aa5fdad000 rw-p 00000000 00:00 0 
+55aa6235c000-55aa6237d000 rw-p 00000000 00:00 0                          [heap]
+7f4cfd600000-7f4cfd8e9000 r--p 00000000 08:01 2679462                    /usr/lib/locale/locale-archive
+7f4cfd8fe000-7f4cfd901000 rw-p 00000000 00:00 0 
+7f4cfd901000-7f4cfd927000 r--p 00000000 08:01 2621459                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f4cfd927000-7f4cfda7c000 r-xp 00026000 08:01 2621459                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f4cfda7c000-7f4cfdacf000 r--p 0017b000 08:01 2621459                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f4cfdacf000-7f4cfdad3000 r--p 001ce000 08:01 2621459                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f4cfdad3000-7f4cfdad5000 rw-p 001d2000 08:01 2621459                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f4cfdad5000-7f4cfdae2000 rw-p 00000000 00:00 0 
+7f4cfdae2000-7f4cfdaf1000 r--p 00000000 08:01 2624781                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+7f4cfdaf1000-7f4cfdb02000 r-xp 0000f000 08:01 2624781                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+7f4cfdb02000-7f4cfdb10000 r--p 00020000 08:01 2624781                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+7f4cfdb10000-7f4cfdb14000 r--p 0002d000 08:01 2624781                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+7f4cfdb14000-7f4cfdb15000 rw-p 00031000 08:01 2624781                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+7f4cfdb22000-7f4cfdb29000 r--s 00000000 08:01 2624387                    /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+7f4cfdb29000-7f4cfdb2b000 rw-p 00000000 00:00 0 
+7f4cfdb2b000-7f4cfdb2c000 r--p 00000000 08:01 2621455                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f4cfdb2c000-7f4cfdb51000 r-xp 00001000 08:01 2621455                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f4cfdb51000-7f4cfdb5b000 r--p 00026000 08:01 2621455                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f4cfdb5b000-7f4cfdb5d000 r--p 00030000 08:01 2621455                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f4cfdb5d000-7f4cfdb5f000 rw-p 00032000 08:01 2621455                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ffe178d6000-7ffe178f7000 rw-p 00000000 00:00 0                          [stack]
+7ffe1798d000-7ffe17991000 r--p 00000000 00:00 0                          [vvar]
+7ffe17991000-7ffe17993000 r-xp 00000000 00:00 0                          [vdso]
+./lb2/1/1.5.sh: line 42: PPID: readonly variable
+
+=== Информация о родительском процессе ===
+Name:	logger-lb2.sh
+Umask:	0022
+State:	S (sleeping)
+Tgid:	9129
+Ngid:	0
+Pid:	9129
+PPid:	9128
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	256
+Groups:	0 
+NStgid:	9129
+NSpid:	9129
+NSpgid:	9129
+NSsid:	9129
+VmPeak:	    7580 kB
+VmSize:	    7580 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	    3952 kB
+VmRSS:	    3952 kB
+RssAnon:	     908 kB
+RssFile:	    3044 kB
+RssShmem:	       0 kB
+VmData:	     952 kB
+VmStk:	     132 kB
+VmExe:	     772 kB
+VmLib:	    1588 kB
+VmPTE:	      56 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+Threads:	1
+SigQ:	2/94980
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000010000
+SigIgn:	0000000000000004
+SigCgt:	0000000000010002
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	not vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	3f
+Cpus_allowed_list:	0-5
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	84
+nonvoluntary_ctxt_switches:	1
+
+[2025-03-06 04:13:17] Время выполнения задания 1.5: 0 секунд.
+
+[2025-03-06 04:13:17] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.1
+
+[2025-03-06 04:13:17] >>> Выполнение команды: ./lb2/task-runner.sh ./lb2/2/2.1 2.1.c --run 2.1 <<<
+----------------------------------------
+Файл 2.1.c успешно скомпилирован в 2.1
+Запуск файла 2.1...
+Начало программы. Родитель: PID = 9269, var = 100, адрес = 0x7ffc9ec65c68
+Дочерний процесс: PID = 9270, PPID = 9269, var = 100, адрес = 0x7ffc9ec65c68 (до изменения)
+Дочерний процесс: PID = 9270, изменённое значение var = 150, адрес = 0x7ffc9ec65c68
+Дочерний процесс: PID = 9270, PPID = 9269, var = 150, адрес = 0x7ffc9ec65c68, итерация 0
+Родитель: PID = 9269, var = 100, адрес = 0x7ffc9ec65c68 (после fork)
+Родитель: PID = 9269, PPID = 9263, var = 100, адрес = 0x7ffc9ec65c68, итерация 0
+Дочерний процесс: PID = 9270, PPID = 9269, var = 150, адрес = 0x7ffc9ec65c68, итерация 1
+Родитель: PID = 9269, PPID = 9263, var = 100, адрес = 0x7ffc9ec65c68, итерация 1
+Родитель: PID = 9269, PPID = 9263, var = 100, адрес = 0x7ffc9ec65c68, итерация 2
+Дочерний процесс: PID = 9270, PPID = 9269, var = 150, адрес = 0x7ffc9ec65c68, итерация 2
+Родитель: PID = 9269, PPID = 9263, var = 100, адрес = 0x7ffc9ec65c68, итерация 3
+Дочерний процесс: PID = 9270, PPID = 9269, var = 150, адрес = 0x7ffc9ec65c68, итерация 3
+Родитель: PID = 9269, PPID = 9263, var = 100, адрес = 0x7ffc9ec65c68, итерация 4
+Дочерний процесс: PID = 9270, PPID = 9269, var = 150, адрес = 0x7ffc9ec65c68, итерация 4
+Дочерний процесс: PID = 9270, завершение работы
+Родитель: PID = 9269, завершение работы
+Завершение программы (PID = 9269)
+Файл 2.1 успешно выполнен
+Файл 2.1 удалён
+----------------------------------------
+
+[2025-03-06 04:13:32] Время выполнения задания 2.1: 15 секунд.
+
+[2025-03-06 04:13:32] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.2
+
+[2025-03-06 04:13:32] >>> Выполнение команды: ./lb2/task-runner.sh ./lb2/2/2.2 2.2-father.c 2.2-son.c --run 2.2-father <<<
+----------------------------------------
+Файл 2.2-father.c успешно скомпилирован в 2.2-father
+Файл 2.2-son.c успешно скомпилирован в 2.2-son
+Запуск файла 2.2-father...
+    PID TTY      STAT   TIME COMMAND
+   9118 pts/0    S+     0:00 sudo ./start.sh
+   9119 pts/1    Ss     0:00  \_ sudo ./start.sh
+   9120 pts/1    S+     0:00      \_ sh ./start.sh
+   9124 pts/1    S+     0:00          \_ sudo ./logger-lb2.sh
+   9125 pts/2    Ss     0:00              \_ sudo ./logger-lb2.sh
+   9126 pts/2    S+     0:00                  \_ /bin/bash ./logger-lb2.sh
+   9128 pts/2    S+     0:00                      \_ script -a -q -c ./logger-lb2.sh lab_report_2025-03-06_04-13-15.log
+   9129 pts/3    Ss+    0:00                          \_ /bin/bash ./logger-lb2.sh
+   9277 pts/3    S+     0:00                              \_ /bin/bash ./lb2/task-runner.sh ./lb2/2/2.2 2.2-father.c 2.2-son.c --run 2.2-father
+   9288 pts/3    S+     0:00                                  \_ ./2.2-father
+   9289 pts/3    S+     0:00                                      \_ 2.2-son
+   9290 pts/3    S+     0:00                                          \_ sh -c ps -H f | tee son_processes.log
+   9291 pts/3    R+     0:00                                              \_ ps -H f
+   9292 pts/3    S+     0:00                                              \_ tee son_processes.log
+Son process is running with PID: 9289
+Son process finished.
+    PID TTY      STAT   TIME COMMAND
+   9118 pts/0    S+     0:00 sudo ./start.sh
+   9119 pts/1    Ss     0:00  \_ sudo ./start.sh
+   9120 pts/1    S+     0:00      \_ sh ./start.sh
+   9124 pts/1    S+     0:00          \_ sudo ./logger-lb2.sh
+   9125 pts/2    Ss     0:00              \_ sudo ./logger-lb2.sh
+   9126 pts/2    S+     0:00                  \_ /bin/bash ./logger-lb2.sh
+   9128 pts/2    S+     0:00                      \_ script -a -q -c ./logger-lb2.sh lab_report_2025-03-06_04-13-15.log
+   9129 pts/3    Ss+    0:00                          \_ /bin/bash ./logger-lb2.sh
+   9277 pts/3    S+     0:00                              \_ /bin/bash ./lb2/task-runner.sh ./lb2/2/2.2 2.2-father.c 2.2-son.c --run 2.2-father
+   9288 pts/3    S+     0:00                                  \_ ./2.2-father
+   9293 pts/3    S+     0:00                                      \_ sh -c ps -H f | tee father_processes.log
+   9294 pts/3    R+     0:00                                          \_ ps -H f
+   9295 pts/3    S+     0:00                                          \_ tee father_processes.log
+Father process is running with PID: 9288
+Child process created with PID: 9289
+Father process finished.
+Файл 2.2-father успешно выполнен
+Файл 2.2-father удалён
+Файл 2.2-son удалён
+----------------------------------------
+
+[2025-03-06 04:13:32] Время выполнения задания 2.2: 0 секунд.
+
+[2025-03-06 04:13:32] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.3
+
+[2025-03-06 04:13:32] >>> Выполнение команды: ./lb2/task-runner.sh ./lb2/2/2.3 2.3.c --run 2.3 <<<
+----------------------------------------
+Файл 2.3.c успешно скомпилирован в 2.3
+Запуск файла 2.3...
+Демонстрация работы различных функций exec():
+
+Запуск execl:
+total 36
+drwxr-xr-x 2 lotos lotos  4096 Mar  6 04:13 .
+drwxr-xr-x 6 lotos lotos  4096 Mar  6 02:18 ..
+-rwxr-xr-x 1 root  root  16896 Mar  6 04:13 2.3
+-rw-r--r-- 1 lotos lotos  4813 Mar  6 03:12 2.3.c
+
+Запуск execlp:
+total 36
+drwxr-xr-x 2 lotos lotos  4096 Mar  6 04:13 .
+drwxr-xr-x 6 lotos lotos  4096 Mar  6 02:18 ..
+-rwxr-xr-x 1 root  root  16896 Mar  6 04:13 2.3
+-rw-r--r-- 1 lotos lotos  4813 Mar  6 03:12 2.3.c
+
+Запуск execle (с пользовательским окружением):
+total 36
+drwxr-xr-x 2 lotos lotos  4096 Mar  6 04:13 .
+drwxr-xr-x 6 lotos lotos  4096 Mar  6 02:18 ..
+-rwxr-xr-x 1 root  root  16896 Mar  6 04:13 2.3
+-rw-r--r-- 1 lotos lotos  4813 Mar  6 03:12 2.3.c
+
+Запуск execv:
+total 36
+drwxr-xr-x 2 lotos lotos  4096 Mar  6 04:13 .
+drwxr-xr-x 6 lotos lotos  4096 Mar  6 02:18 ..
+-rwxr-xr-x 1 root  root  16896 Mar  6 04:13 2.3
+-rw-r--r-- 1 lotos lotos  4813 Mar  6 03:12 2.3.c
+
+Запуск execvp:
+total 36
+drwxr-xr-x 2 lotos lotos  4096 Mar  6 04:13 .
+drwxr-xr-x 6 lotos lotos  4096 Mar  6 02:18 ..
+-rwxr-xr-x 1 root  root  16896 Mar  6 04:13 2.3
+-rw-r--r-- 1 lotos lotos  4813 Mar  6 03:12 2.3.c
+
+Запуск execve (с пользовательским окружением):
+total 36
+drwxr-xr-x 2 lotos lotos  4096 Mar  6 04:13 .
+drwxr-xr-x 6 lotos lotos  4096 Mar  6 02:18 ..
+-rwxr-xr-x 1 root  root  16896 Mar  6 04:13 2.3
+-rw-r--r-- 1 lotos lotos  4813 Mar  6 03:12 2.3.c
+
+Все дочерние процессы завершены.
+Файл 2.3 успешно выполнен
+Файл 2.3 удалён
+----------------------------------------
+
+[2025-03-06 04:13:32] Время выполнения задания 2.3: 0 секунд.
+
+[2025-03-06 04:13:32] Общее время выполнения скрипта: 17 секунд.
+=================================================================
+                      ОТЧЁТ ЗАВЕРШЁН
+=================================================================
+
+[2025-03-06 04:13:32] Основной отчёт сохранён в файл: lab_report_2025-03-06_04-13-15.log
+
+Script done on 2025-03-06 04:13:32+03:00 [COMMAND_EXIT_CODE="0"]

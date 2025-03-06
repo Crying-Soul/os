@@ -175,21 +175,21 @@ execute_task 1.1 0
 
 # execute_task 1.2 0
 
-# execute_task 1.3 0
+execute_task 1.3 0
 
-# execute_task 1.4 0
+execute_task 1.4 0
 
-# execute_task 1.5 0
+execute_task 1.5 0
  
-# execute_commands 2.1 \
-#         "./lb2/task-runner.sh ./lb2/2/2.1 2.1.c --run 2.1"
+execute_commands 2.1 \
+        "./lb2/task-runner.sh ./lb2/2/2.1 2.1.c --run 2.1"
 
-# execute_commands 2.2 \
-#         "./lb2/task-runner.sh ./lb2/2/2.2 2.2-father.c 2.2-son.c --run 2.2-father"
+execute_commands 2.2 \
+        "./lb2/task-runner.sh ./lb2/2/2.2 2.2-father.c 2.2-son.c --run 2.2-father"
 
 
-# execute_commands 2.3 \
-#         "./lb2/task-runner.sh ./lb2/2/2.3 2.3.c --run 2.3"
+execute_commands 2.3 \
+        "./lb2/task-runner.sh ./lb2/2/2.3 2.3.c --run 2.3"
 
 
 
