@@ -9,5 +9,7 @@
 !/lb2/**
 lb1/tests/
 lb1/*.txt
+logger-old.sh
+task-runner.sh
 lb2/**/*.txt
 lb2/**/*.log
