@@ -1,13 +1,16 @@
 #!/bin/bash
-set -euo pipefail
 
-# Файл для результатов
-result_file="task4-results.txt"
-: > "$result_file"  # очищаем файл
+# Файл для логов скрипта
+script_file="script_output.log"
+: > "$script_file"  # очищаем файл
 
-# Функция логирования: вывод в консоль и запись в файл
+# Файл для вывода программы 4
+program_file="program_out.log"
+: > "$program_file"  # очищаем файл
+
+# Функция логирования: вывод в консоль и запись в файл скрипта
 log() {
-    echo "$1" | tee -a "$result_file"
+    echo "$1" | tee -a "$script_file"
 }
 
 # Функция проверки наличия необходимых команд
@@ -23,19 +26,20 @@ for cmd in pgrep ps lsof cat; do
     check_command "$cmd"
 done
 
-# Опционально запускаем программу task4 (раскомментируйте строки, если требуется)
-# ./task4 &
-# sleep 5
+# Запускаем программу 4 в фоне, весь её вывод в program_file
+./lb2/4/4 > "$program_file" &
+prog_pid=$!
+sleep 5
 
 log "----------------------------------------"
-log "Анализ нитей и ресурсов процесса ./task4"
+log "Анализ нитей и ресурсов процесса ./4"
 log "----------------------------------------"
 
-# Получаем PID первого процесса, соответствующего ./task4
+# Получаем PID процесса 4
 PID=$(pidof 4)
 
 if [[ -z "$PID" ]]; then
-    log "Процесс ./task4 не найден"
+    log "Процесс ./4 не найден"
     exit 1
 fi
 
@@ -43,31 +47,31 @@ log "Найден процесс с PID: $PID"
 log "----------------------------------------"
 log "1. Информация о нитях процесса (ps -Lf):"
 log "----------------------------------------"
-ps -Lf -p "$PID" | tee -a "$result_file"  
+ps -Lf -p "$PID" | tee -a "$script_file"
 
 log ""
 log "----------------------------------------"
 log "2. Расширенная информация о нитях (TID, загрузка CPU, распределение по ядрам):"
 log "----------------------------------------"
-ps -L -o tid,pcpu,psr -p "$PID" | tee -a "$result_file"  
+ps -L -o tid,pcpu,psr -p "$PID" | tee -a "$script_file"
 
 log ""
 log "----------------------------------------"
 log "3. Наследуемые параметры процесса:"
 log "----------------------------------------"
-ps -p "$PID" -o pid,ppid,uid,gid,comm | tee -a "$result_file"
+ps -p "$PID" -o pid,ppid,uid,gid,comm | tee -a "$script_file"
 
 log ""
 log "----------------------------------------"
 log "4. Разделяемые ресурсы нитями (открытые файлы):"
 log "----------------------------------------"
-lsof -p "$PID" 2>/dev/null | tee -a "$result_file"
+lsof -p "$PID" 2>/dev/null | tee -a "$script_file"
 
 log ""
 log "----------------------------------------"
 log "5. Карта памяти процесса (/proc/$PID/maps):"
 log "----------------------------------------"
-cat /proc/"$PID"/maps | tee -a "$result_file"
+cat /proc/"$PID"/maps | tee -a "$script_file"
 
 log "----------------------------------------"
 log "Удаление последнего найденного TID процесса"
@@ -75,17 +79,13 @@ log "Удаление последнего найденного TID процес
 # Находим последний TID, связанный с PID
 last_tid=$(ps -Lf -p "$PID" | tail -n +2 | awk 'END {print $4}')
 
-# Проверяем, что TID найден
 if [[ -n "$last_tid" ]]; then
     log "Удаляем последний найденный TID: $last_tid"
-    # Попытка удалить нить с помощью kill
     kill -9 "$last_tid" && log "Нить с TID $last_tid успешно удалена. Вся программа завершена."
 else
     log "Ошибка: Нить для процесса с PID $PID не найдена."
 fi
 
-
-# Удаляем сам процесс
-
-# kill -SIGTERM $(pidof 4)
+# Ждём завершения программы 4 (если требуется)
+wait "$prog_pid" 2>/dev/null || true
 

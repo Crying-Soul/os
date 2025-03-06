@@ -19,6 +19,7 @@ volatile sig_atomic_t stop_flag = 0; // Флаг для остановки по�
 void signal_handler(int sig) {
     stop_flag = 1;
     printf("Received signal %d, stopping threads...\n", sig);
+    fflush(stdout);  // Сбрасываем буфер
 }
 
 // Функция для потоков, созданных через clone()
@@ -26,9 +27,11 @@ int clone_thread(void *arg) {
     int id = *(int *)arg;
     while (!stop_flag) {
         printf("Clone thread %d (TID: %ld)\n", id, (long)syscall(SYS_gettid));
+        fflush(stdout);  // Сбрасываем буфер
         sleep(1);
     }
     printf("Clone thread %d exiting\n", id);
+    fflush(stdout);  // Сбрасываем буфер
     return 0;
 }
 
@@ -37,9 +40,11 @@ void *pthread_thread(void *arg) {
     int id = *(int *)arg;
     while (!stop_flag) {
         printf("Pthread thread %d (TID: %ld)\n", id, (long)syscall(SYS_gettid));
+        fflush(stdout);  // Сбрасываем буфер
         sleep(1);
     }
     printf("Pthread thread %d exiting\n", id);
+    fflush(stdout);  // Сбрасываем буфер
     return NULL;
 }
 
@@ -114,5 +119,6 @@ int main(void) {
     }
 
     printf("All threads exited\n");
+    fflush(stdout);  // Сбрасываем буфер перед завершением
     return EXIT_SUCCESS;
 }
