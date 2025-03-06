@@ -188,11 +188,20 @@ log "НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ"
         # "./lb2/task-runner.sh ./lb2/2/2.2 2.2-father.c 2.2-son.c --run 2.2-father"
 
 
-execute_commands 2.3 \
-        "./lb2/task-runner.sh ./lb2/2/2.3 2.3.c --run 2.3"
+# execute_commands 2.3 \
+#         "./lb2/task-runner.sh ./lb2/2/2.3 2.3.c --run 2.3"
+
+execute_commands 2.4 \
+        "./lb2/task-runner.sh ./lb2/2/2.4 2.4-a.c 2.4-b.c 2.4-c.c --run 2.4-a"
 
 # execute_commands 3.1 \
         # "./lb2/task-runner.sh ./lb2/3/3.1 3.1-father.c 3.1-son1.c 3.1-son2.c 3.1-son3.c --run 3.1-father"
+
+# execute_commands 4 \
+#         "./lb2/task-runner.sh ./lb2/4 4.c --run 4"
+
+# execute_task 4 0
+
 
 # Замер общего времени выполнения скрипта
 SCRIPT_END=$(date +%s)

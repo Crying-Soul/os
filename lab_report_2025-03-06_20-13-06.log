@@ -1,16 +1,16 @@
-Script started on 2025-03-06 16:13:35+03:00 [COMMAND="./logger-lb2.sh" TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="211" LINES="40"]
+Script started on 2025-03-06 20:13:06+03:00 [COMMAND="./logger-lb2.sh" TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="116" LINES="40"]
 =================================================================
                    ОТЧЁТ ПО ЛАБОРАТОРНОЙ РАБОТЕ
 =================================================================
-Дата исполнения отчёта: 2025-03-06 16:13:35
+Дата исполнения отчёта: 2025-03-06 20:13:06
 Идентификация исполнителя: root
 Группа: 3343
 ФИО: Гребнев Егор Дмитриевич
 -----------------------------------------------------------------
 
-[2025-03-06 16:13:35] ПРОФИЛЬ СИСТЕМЫ
+[2025-03-06 20:13:06] ПРОФИЛЬ СИСТЕМЫ
 
-[2025-03-06 16:13:35] >>> Информация о процессоре (lscpu) <<<
+[2025-03-06 20:13:06] >>> Информация о процессоре (lscpu) <<<
 ----------------------------------------
 Architecture:                         x86_64
 CPU op-mode(s):                       32-bit, 64-bit
@@ -54,14 +54,14 @@ Vulnerability Srbds:                  Not affected
 Vulnerability Tsx async abort:        Not affected
 ----------------------------------------
 
-[2025-03-06 16:13:35] >>> Информация о памяти (free -h) <<<
+[2025-03-06 20:13:06] >>> Информация о памяти (free -h) <<<
 ----------------------------------------
                total        used        free      shared  buff/cache   available
-Mem:            10Gi       1.4Gi       8.3Gi        29Mi       918Mi       8.9Gi
+Mem:            10Gi       1.5Gi       8.1Gi        29Mi       970Mi       8.8Gi
 Swap:          974Mi          0B       974Mi
 ----------------------------------------
 
-[2025-03-06 16:13:35] >>> Информация о дисках (lsblk) <<<
+[2025-03-06 20:13:06] >>> Информация о дисках (lsblk) <<<
 ----------------------------------------
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
 sda      8:0    0 39.1G  0 disk 
@@ -71,7 +71,7 @@ sda      8:0    0 39.1G  0 disk
 sr0     11:0    1 57.4M  0 rom  
 ----------------------------------------
 
-[2025-03-06 16:13:35] >>> Информация о сетевых интерфейсах (ip a) <<<
+[2025-03-06 20:13:06] >>> Информация о сетевых интерфейсах (ip a) <<<
 ----------------------------------------
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -82,11 +82,11 @@ sr0     11:0    1 57.4M  0 rom
 2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 08:00:27:56:3d:72 brd ff:ff:ff:ff:ff:ff
     inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
-       valid_lft 83968sec preferred_lft 83968sec
+       valid_lft 72243sec preferred_lft 72243sec
     inet6 fd00::a0c2:7407:49e2:781e/64 scope global temporary dynamic 
-       valid_lft 86161sec preferred_lft 14161sec
+       valid_lft 86233sec preferred_lft 14233sec
     inet6 fd00::a00:27ff:fe56:3d72/64 scope global dynamic mngtmpaddr noprefixroute 
-       valid_lft 86161sec preferred_lft 14161sec
+       valid_lft 86233sec preferred_lft 14233sec
     inet6 fe80::a00:27ff:fe56:3d72/64 scope link noprefixroute 
        valid_lft forever preferred_lft forever
 3: br-08f56c2c6cce: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
@@ -99,22 +99,22 @@ sr0     11:0    1 57.4M  0 rom
        valid_lft forever preferred_lft forever
 ----------------------------------------
 
-[2025-03-06 16:13:35] ИДЕНТИФИКАЦИЯ ВИРТУАЛЬНОЙ МАШИНЫ
+[2025-03-06 20:13:06] ИДЕНТИФИКАЦИЯ ВИРТУАЛЬНОЙ МАШИНЫ
 
-[2025-03-06 16:13:35] Система запущена в виртуальной машине.
+[2025-03-06 20:13:06] Система запущена в виртуальной машине.
 
-[2025-03-06 16:13:35] Тип виртуализации: oracle
+[2025-03-06 20:13:06] Тип виртуализации: oracle
 
 -----------------------------------------------------------------
 
-[2025-03-06 16:13:35] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
+[2025-03-06 20:13:06] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
 
-[2025-03-06 16:13:35] >>> Информация о ядре (uname -a) <<<
+[2025-03-06 20:13:06] >>> Информация о ядре (uname -a) <<<
 ----------------------------------------
 Linux ASPIRIN 6.1.0-31-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.128-1 (2025-02-07) x86_64 GNU/Linux
 ----------------------------------------
 
-[2025-03-06 16:13:35] >>> Информация о версии ОС (lsb_release -a) <<<
+[2025-03-06 20:13:06] >>> Информация о версии ОС (lsb_release -a) <<<
 ----------------------------------------
 Distributor ID:	Debian
 Description:	Debian GNU/Linux 12 (bookworm)
@@ -124,76 +124,74 @@ Codename:	bookworm
 
 -----------------------------------------------------------------
 
-[2025-03-06 16:13:35] НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ
+[2025-03-06 20:13:06] НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ
 
-[2025-03-06 16:13:35] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.3
+[2025-03-06 20:13:06] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.4
 
-[2025-03-06 16:13:35] >>> Выполнение команды: ./lb2/task-runner.sh ./lb2/2/2.3 2.3.c --run 2.3 <<<
+[2025-03-06 20:13:06] >>> Выполнение команды: ./lb2/task-runner.sh ./lb2/2/2.4 2.4-a.c 2.4-b.c 2.4-c.c --run 2.4-a <<<
 ----------------------------------------
-Файл 2.3.c успешно скомпилирован в 2.3
-Запуск файла 2.3...
-Демонстрация работы различных функций exec():
-
-Запуск execl:
-Дочерний процесс [5626] запускает execl...
-total 36
-drwxr-xr-x 2 lotos lotos  4096 Mar  6 16:13 .
-drwxr-xr-x 6 lotos lotos  4096 Mar  6 13:02 ..
--rwxr-xr-x 1 root  root  16896 Mar  6 16:13 2.3
--rw-r--r-- 1 lotos lotos  4957 Mar  6 16:12 2.3.c
-
-Запуск execlp:
-Дочерний процесс [5627] запускает execlp...
-total 36
-drwxr-xr-x 2 lotos lotos  4096 Mar  6 16:13 .
-drwxr-xr-x 6 lotos lotos  4096 Mar  6 13:02 ..
--rwxr-xr-x 1 root  root  16896 Mar  6 16:13 2.3
--rw-r--r-- 1 lotos lotos  4957 Mar  6 16:12 2.3.c
-
-Запуск execle (с пользовательским окружением):
-Дочерний процесс [5628] запускает execle (с пользовательским окружением)...
-total 36
-drwxr-xr-x 2 lotos lotos  4096 Mar  6 16:13 .
-drwxr-xr-x 6 lotos lotos  4096 Mar  6 13:02 ..
--rwxr-xr-x 1 root  root  16896 Mar  6 16:13 2.3
--rw-r--r-- 1 lotos lotos  4957 Mar  6 16:12 2.3.c
-
-Запуск execv:
-Дочерний процесс [5629] запускает execv...
-total 36
-drwxr-xr-x 2 lotos lotos  4096 Mar  6 16:13 .
-drwxr-xr-x 6 lotos lotos  4096 Mar  6 13:02 ..
--rwxr-xr-x 1 root  root  16896 Mar  6 16:13 2.3
--rw-r--r-- 1 lotos lotos  4957 Mar  6 16:12 2.3.c
-
-Запуск execvp:
-Дочерний процесс [5630] запускает execvp...
-total 36
-drwxr-xr-x 2 lotos lotos  4096 Mar  6 16:13 .
-drwxr-xr-x 6 lotos lotos  4096 Mar  6 13:02 ..
--rwxr-xr-x 1 root  root  16896 Mar  6 16:13 2.3
--rw-r--r-- 1 lotos lotos  4957 Mar  6 16:12 2.3.c
-
-Запуск execve (с пользовательским окружением):
-Дочерний процесс [5631] запускает execve (с пользовательским окружением)...
-total 36
-drwxr-xr-x 2 lotos lotos  4096 Mar  6 16:13 .
-drwxr-xr-x 6 lotos lotos  4096 Mar  6 13:02 ..
--rwxr-xr-x 1 root  root  16896 Mar  6 16:13 2.3
--rw-r--r-- 1 lotos lotos  4957 Mar  6 16:12 2.3.c
-
-Все дочерние процессы завершены.
-Файл 2.3 успешно выполнен
-Файл 2.3 удалён
+Файл 2.4-a.c успешно скомпилирован в 2.4-a
+Файл 2.4-b.c успешно скомпилирован в 2.4-b
+Файл 2.4-c.c успешно скомпилирован в 2.4-c
+Запуск файла 2.4-a...
+Процессы до создания процесса-сына:
+    PID TTY      STAT   TIME COMMAND
+   7450 pts/1    T      0:00 sudo yes
+  10576 pts/0    S+     0:00 sudo ./start.sh
+  10577 pts/2    Ss     0:00  \_ sudo ./start.sh
+  10578 pts/2    S+     0:00      \_ sh ./start.sh
+  10582 pts/2    S+     0:00          \_ /bin/bash ./logger-lb2.sh
+  10584 pts/2    S+     0:00              \_ script -a -q -c ./logger-lb2.sh lab_report_2025-03-06_20-13-06.log
+  10585 pts/3    Ss+    0:00                  \_ /bin/bash ./logger-lb2.sh
+  10627 pts/3    S+     0:00                      \_ /bin/bash ./lb2/task-runner.sh ./lb2/2/2.4 2.4-a.c 2.4-b.c 2.4-c.c --run 2.4-a
+  10643 pts/3    S+     0:00                          \_ ./2.4-a
+  10644 pts/3    S+     0:00                              \_ sh -c ps -H f
+  10645 pts/3    R+     0:00                                  \_ ps -H f
+Процесс-отец: PID = 10643, PID сына = 10646
+Процессы после создания процесса-сына, но до его завершения:
+Процесс-сын: PID = 10646
+    PID TTY      STAT   TIME COMMAND
+   7450 pts/1    T      0:00 sudo yes
+  10576 pts/0    S+     0:00 sudo ./start.sh
+  10577 pts/2    Ss     0:00  \_ sudo ./start.sh
+  10578 pts/2    S+     0:00      \_ sh ./start.sh
+  10582 pts/2    S+     0:00          \_ /bin/bash ./logger-lb2.sh
+  10584 pts/2    S+     0:00              \_ script -a -q -c ./logger-lb2.sh lab_report_2025-03-06_20-13-06.log
+  10585 pts/3    Ss+    0:00                  \_ /bin/bash ./logger-lb2.sh
+  10627 pts/3    S+     0:00                      \_ /bin/bash ./lb2/task-runner.sh ./lb2/2/2.4 2.4-a.c 2.4-b.c 2.4-c.c --run 2.4-a
+  10643 pts/3    S+     0:00                          \_ ./2.4-a
+  10646 pts/3    S+     0:00                              \_ ./2.4-a
+  10647 pts/3    S+     0:00                              \_ sh -c ps -H f
+  10648 pts/3    R+     0:00                                  \_ ps -H f
+Процесс-сын завершен
+Процессы после завершения процесса-сына:
+    PID TTY      STAT   TIME COMMAND
+   7450 pts/1    T      0:00 sudo yes
+  10576 pts/0    S+     0:00 sudo ./start.sh
+  10577 pts/2    Ss     0:00  \_ sudo ./start.sh
+  10578 pts/2    S+     0:00      \_ sh ./start.sh
+  10582 pts/2    S+     0:00          \_ /bin/bash ./logger-lb2.sh
+  10584 pts/2    S+     0:00              \_ script -a -q -c ./logger-lb2.sh lab_report_2025-03-06_20-13-06.log
+  10585 pts/3    Ss+    0:00                  \_ /bin/bash ./logger-lb2.sh
+  10627 pts/3    S+     0:00                      \_ /bin/bash ./lb2/task-runner.sh ./lb2/2/2.4 2.4-a.c 2.4-b.c 2.4-c.c --run 2.4-a
+  10643 pts/3    S+     0:00                          \_ ./2.4-a
+  10650 pts/3    S+     0:00                              \_ sh -c ps -H f
+  10651 pts/3    R+     0:00                                  \_ ps -H f
+Процесс-сын завершился с кодом: 0
+Процесс-отец завершен
+Файл 2.4-a успешно выполнен
+Файл 2.4-a удалён
+Файл 2.4-b удалён
+Файл 2.4-c удалён
 ----------------------------------------
 
-[2025-03-06 16:13:35] Время выполнения задания 2.3: 0 секунд.
+[2025-03-06 20:13:09] Время выполнения задания 2.4: 3 секунд.
 
-[2025-03-06 16:13:35] Общее время выполнения скрипта: 0 секунд.
+[2025-03-06 20:13:09] Общее время выполнения скрипта: 3 секунд.
 =================================================================
                       ОТЧЁТ ЗАВЕРШЁН
 =================================================================
 
-[2025-03-06 16:13:35] Основной отчёт сохранён в файл: lab_report_2025-03-06_16-13-35.log
+[2025-03-06 20:13:09] Основной отчёт сохранён в файл: lab_report_2025-03-06_20-13-06.log
 
-Script done on 2025-03-06 16:13:35+03:00 [COMMAND_EXIT_CODE="0"]
+Script done on 2025-03-06 20:13:09+03:00 [COMMAND_EXIT_CODE="0"]
