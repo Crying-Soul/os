@@ -3,10 +3,10 @@
 #include <unistd.h>
 
 int main() {
-    int pid, ppid;
-    pid = getpid();
-    ppid = getppid();
-    printf("\nSon parameters: pid=%i, ppid=%i\n", pid, ppid);
+  int pid, ppid;
+  pid = getpid();
+  ppid = getppid();
+  printf("\nSon parameters: pid=%i, ppid=%i\n", pid, ppid);
 
-    return 5   ; // son4: return 5
+  return 5; // son4: return 5
 }
