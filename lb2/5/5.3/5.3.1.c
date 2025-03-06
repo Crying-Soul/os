@@ -4,12 +4,10 @@
 #include <sys/types.h>
 #include <sys/syscall.h>
 #include <sched.h>
-#include <time.h>
-#include <sys/time.h>
 #include <sys/resource.h>
 
-#define BUFFER_SIZE 32
 #define FIFO_PRIORITY 50
+#define ITERATIONS 5
 
 const char* get_scheduling_policy(int policy) {
     switch (policy) {
@@ -20,9 +18,15 @@ const char* get_scheduling_policy(int policy) {
     }
 }
 
+// Функция для вывода информации о процессе или потоке
+void print_thread_info(const char* thread_type, pid_t pid, int policy, struct sched_param param) {
+    printf("%-7s | PID: %-3d | TID: %-4ld | Priority: %-3d | Policy: %-12s\n",
+           thread_type, pid, syscall(SYS_gettid), 
+           param.sched_priority, get_scheduling_policy(policy));
+}
+
+// Функция, выполняемая потоками
 void* thread_function(void* arg) {
-    char timestamp[20];
-    int policy;
     struct sched_param param = {.sched_priority = FIFO_PRIORITY};
     
     // Устанавливаем политику и приоритет для текущего потока
@@ -31,15 +35,12 @@ void* thread_function(void* arg) {
         return NULL;
     }
     
-    int iteration = 0;
-    while (iteration < 5) {
+    int policy;
+    for (int iteration = 0; iteration < ITERATIONS; iteration++) {
         pthread_getschedparam(pthread_self(), &policy, &param);
-        printf("%-7s | PID: %-3d | TID: %-4ld | Priority: %-3d | Policy: %-12s\n",
-               "Thread",  getpid(), syscall(SYS_gettid), 
-               param.sched_priority, get_scheduling_policy(policy));
-          
-        iteration++;
+        print_thread_info("Thread", getpid(), policy, param);
     }
+
     return NULL;
 }
 
@@ -55,25 +56,25 @@ int main() {
     pthread_t thread1, thread2;
     
     // Создаем потоки
-    pthread_create(&thread1, NULL, thread_function, NULL);
-    pthread_create(&thread2, NULL, thread_function, NULL);
-    
-    char timestamp[20];
-    int policy;
-    int iteration = 0;
-    
-    while (iteration < 5) {
-        policy = sched_getscheduler(getpid());
-        sched_getparam(getpid(), &main_param);
-        printf("%-7s | PID: %-3d | TID: %-4ld | Priority: %-3d | Policy: %-12s\n",
-               "Main", getpid(), syscall(SYS_gettid), 
-               main_param.sched_priority, get_scheduling_policy(policy));
-          
-        iteration++;
-   
+    if (pthread_create(&thread1, NULL, thread_function, NULL) != 0) {
+        perror("pthread_create thread1");
+        return 1;
+    }
+    if (pthread_create(&thread2, NULL, thread_function, NULL) != 0) {
+        perror("pthread_create thread2");
+        return 1;
     }
 
+    int policy;
+    for (int iteration = 0; iteration < ITERATIONS; iteration++) {
+        policy = sched_getscheduler(getpid());
+        sched_getparam(getpid(), &main_param);
+        print_thread_info("Main", getpid(), policy, main_param);
+    }
+
+    // Ожидаем завершения потоков
     pthread_join(thread1, NULL);
     pthread_join(thread2, NULL);
+
     return 0;
 }
