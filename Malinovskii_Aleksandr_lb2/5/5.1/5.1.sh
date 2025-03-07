@@ -1,6 +1,7 @@
 #!/bin/bash
 
-files=("5_1_prog.c" "5.1_table.c")
+cd 5/5.1
+files=("5.1_prog.c" "5.1_table.c")
 for file in "${files[@]}"
 do
     output="${file%.*}"

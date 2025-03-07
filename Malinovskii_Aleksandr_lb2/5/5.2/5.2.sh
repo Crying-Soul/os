@@ -1,13 +1,14 @@
 #!/bin/bash
 
-files=("son1.c" "son2.c" "son3.c" "son4.c" "son5.c" "father.c")
+cd 5/5.2
+files=("5.2.c")
 for file in "${files[@]}"
 do
     output="${file%.*}"
     gcc "$file" -o "$output"
 done
 
-./father
+sudo taskset -c 0 ./5.2
 
 for file in "${files[@]}"
 do

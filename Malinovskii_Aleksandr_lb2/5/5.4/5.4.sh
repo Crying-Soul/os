@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd 5/5.4
 files=("5.4.c" "quant.c")
 for file in "${files[@]}"
 do

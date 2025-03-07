@@ -3,72 +3,65 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <stdlib.h>
-#include <fcntl.h>
+#include <math.h>
 
-// Функция для вывода информации о памяти процесса
-void print_process_maps(pid_t pid) {
-    char command[256];
-    sprintf(command, "pmap -x %d", pid);  // Используем pmap для вывода информации о памяти
-    printf("\n--- Memory usage for process %d (using pmap) ---\n", pid);
-    system(command);  // Выполнение команды pmap
-}
-
-// Функция для имитации длительных вычислений (версия 1)
-void long_computation(const char* process_name, int computations_amount) {
-    for (int i = 0; i < computations_amount; i++) {
-        printf("%s: PID = %d, PPID = %d, выполнение итерации %d\n", process_name, getpid(), getppid(), i);
+// Имитация длительных вычислений
+static void compute(const char* process_name, int* var) {
+    for (int i = 0; i < 1000000; i++) {  // Уменьшено количество итераций
+        if (i % 100000 == 0) {  // Вывод каждые 100000 итераций
+            printf("[%s] PID=%d, PPID=%d, var=%d, addr=%p, iter=%d\n", 
+                    
+                   process_name, getpid(), getppid(), *var, (void*)var, i);
+            fflush(stdout);
+        }
+        *var+=1;
     }
 }
 
-int main() {
-    // Открываем файл для записи
-    int fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-    if (fd < 0) {
-        perror("Ошибка при открытии файла");
-        return 1;
-    }
+int main(void) {
+    int shared_var = 4; // Локальная переменная, не разделяемая между процессами
 
-    // Перенаправляем стандартный вывод и вывод ошибок в файл
-    dup2(fd, STDOUT_FILENO);
-    dup2(fd, STDERR_FILENO);
+    printf("[Start] PID=%d, var=%d, addr=%p\n", getpid(), shared_var, (void*)&shared_var);
+    fflush(stdout);
+    
+    pid_t pid = fork();
+    if (pid < 0) {
+        perror("fork failed");
+        exit(EXIT_FAILURE);
+    } else if (pid == 0) {
+        // Дочерний процесс
+        printf("[Child] PID=%d, PPID=%d, var=%d, addr=%p (before change)\n",
+               getpid(), getppid(), shared_var, (void*)&shared_var);
+        fflush(stdout);
 
-    // Создаем переменную в родительском процессе
-    int parent_var = 42;
-    int *parent_var_ptr = &parent_var;
+        shared_var += 23;  // Изменяем копию переменной в дочернем процессе
+        printf("[Child] PID=%d, PPID=%d, var=%d, addr=%p (after change)\n", 
+               getpid(), getppid(), shared_var, (void*)&shared_var);
+        fflush(stdout);
 
-    printf("Родитель: Адрес переменной parent_var = %p, значение = %d\n", (void*)parent_var_ptr, *parent_var_ptr);
+        compute("Child", &shared_var);
 
-    print_process_maps(getpid());
-    pid_t ret = fork();  // Создаем новый процесс
-
-    if (ret < 0) {
-        // Ошибка при создании процесса
-        fprintf(stderr, "Ошибка при создании процесса\n");
-        return 1;
-    } else if (ret == 0) {
-        // Код, выполняемый в процессе-потомке
-        int *child_var_ptr = (int*)parent_var_ptr;  // Используем тот же адрес
-        *child_var_ptr = 100;  // Изменяем значение по этому адресу
-
-        printf("Потомок: Адрес переменной child_var = %p, значение = %d\n", (void*)child_var_ptr, *child_var_ptr);
-
-        print_process_maps(getpid());
-        long_computation("Потомок", 1000);
+        printf("[Child] PID=%d, exiting\n", getpid());
+        fflush(stdout);
+        _exit(EXIT_SUCCESS);
     } else {
-        sleep(1);
-        // Код, выполняемый в процессе-родителе
-        printf("Родитель: После fork() адрес переменной parent_var = %p, значение = %d\n", (void*)parent_var_ptr, *parent_var_ptr);
+        // Родительский процесс
+        printf("[Parent] PID=%d, PPID=%d, var=%d, addr=%p (after fork)\n", 
+               getpid(), getppid(), shared_var, (void*)&shared_var);
+        fflush(stdout);
 
-        long_computation("Родитель", 1000);
+        compute("Parent", &shared_var);
 
-        // Ожидание завершения потомка
-        wait(NULL);
+        if (waitpid(pid, NULL, 0) < 0) {
+            perror("waitpid failed");
+            exit(EXIT_FAILURE);
+        }
+
+        printf("[Parent] PID=%d, exiting\n", getpid());
+        fflush(stdout);
     }
 
-    printf("Завершение программы (PID = %d)\n", getpid());
-
-    // Закрываем файл
-    close(fd);
-
-    return 0;
+    printf("[End] PID=%d, program finished\n", getpid());
+    fflush(stdout);
+    return EXIT_SUCCESS;
 }

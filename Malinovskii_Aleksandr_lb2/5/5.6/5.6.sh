@@ -1,14 +1,14 @@
 #!/bin/bash
 
-files=("5.2.c")
+cd 5/5.6
+files=("5.6.c")
 for file in "${files[@]}"
 do
     output="${file%.*}"
     gcc "$file" -o "$output"
 done
 
-sudo taskset -c 0 ./5.2
-
+taskset -c 0 ./5.6
 for file in "${files[@]}"
 do
     output="${file%.*}"

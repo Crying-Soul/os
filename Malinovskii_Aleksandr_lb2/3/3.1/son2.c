@@ -6,7 +6,7 @@
 int main() {
     printf("Son2: Started (PID: %d)\n", getpid());
     signal(SIGINT, SIG_IGN); // Игнорируем SIGINT
-    sleep(5); // Работаем 5 секунд
-    printf("Son2: Exiting after 5 seconds.\n");
+    sleep(5); // Работаем 2 секунд
+    printf("Son2: Exiting after 2 seconds.\n");
     exit(0);
 }

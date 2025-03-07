@@ -27,7 +27,6 @@ int main(void) {
         if (sched_rr_get_interval(0, &qp) == 0)
             printf("SON: Квант процессорного времени: %g сек\n",
                    qp.tv_sec + qp.tv_nsec / 1000000000.0);
-        execl("./son", "son", NULL);
     }
 
 

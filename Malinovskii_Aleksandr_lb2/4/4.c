@@ -10,116 +10,116 @@
 #include <string.h>
 #include <errno.h>
 
-#define STACK_SIZE (1024 * 1024) // 1 МБ стека для каждого потока
-#define NUM_THREADS 3
+#define STACK_SIZE (1024 * 1024) // Размер стека для каждого потока (1 МБ)
+#define NUM_THREADS 3            // Количество потоков каждого типа
 
-volatile sig_atomic_t stop_flag = 0; // Флаг для остановки потоков
+volatile sig_atomic_t should_stop = 0; // Флаг для остановки потоков
 
 // Обработчик сигналов
-void handle_signal(int sig) {
-    stop_flag = 1;
-    printf("Received signal %d, stopping threads...\n", sig);
+void signal_handler(int signal_number) {
+    should_stop = 1; // Устанавливаем флаг остановки
+    printf("Получен сигнал %d, завершение потоков...\n", signal_number);
 }
 
 // Функция для потоков, созданных через clone()
-int run_clone_thread(void *arg) {
-    int id = *(int *)arg;
-    while (!stop_flag) {
-        printf("Clone thread %d (TID: %ld)\n", id, (long)syscall(SYS_gettid));
+int clone_thread_function(void *thread_argument) {
+    int thread_id = *(int *)thread_argument; // Получаем ID потока
+    while (!should_stop) {
+        printf("Поток clone %d (TID: %ld)\n", thread_id, (long)syscall(SYS_gettid));
         sleep(1);
     }
-    printf("Clone thread %d exiting\n", id);
+    printf("Поток clone %d завершен\n", thread_id);
     return 0;
 }
 
 // Функция для потоков, созданных через pthread
-void *run_pthread_thread(void *arg) {
-    int id = *(int *)arg;
-    while (!stop_flag) {
-        printf("Pthread thread %d (TID: %ld)\n", id, (long)syscall(SYS_gettid));
+void *pthread_thread_function(void *thread_argument) {
+    int thread_id = *(int *)thread_argument; // Получаем ID потока
+    while (!should_stop) {
+        printf("Поток pthread %d (TID: %ld)\n", thread_id, (long)syscall(SYS_gettid));
         sleep(1);
     }
-    printf("Pthread thread %d exiting\n", id);
+    printf("Поток pthread %d завершен\n", thread_id);
     return NULL;
 }
 
 int main(void) {
     // Настройка обработчика сигналов
-    struct sigaction sa;
-    sa.sa_handler = handle_signal;
-    sigemptyset(&sa.sa_mask);
-    sa.sa_flags = 0;
+    struct sigaction signal_action;
+    signal_action.sa_handler = signal_handler;
+    sigemptyset(&signal_action.sa_mask);
+    signal_action.sa_flags = 0;
 
-    if (sigaction(SIGINT, &sa, NULL) == -1 || sigaction(SIGTERM, &sa, NULL) == -1) {
-        perror("sigaction failed");
+    if (sigaction(SIGINT, &signal_action, NULL) == -1 || sigaction(SIGTERM, &signal_action, NULL) == -1) {
+        perror("Ошибка настройки обработчика сигналов");
         exit(EXIT_FAILURE);
     }
 
-    pthread_t pthreads[NUM_THREADS];
-    int thread_ids[NUM_THREADS * 2]; // Идентификаторы для всех потоков
-    char *stacks[NUM_THREADS];
-    pid_t clone_pids[NUM_THREADS];
+    pthread_t pthread_handles[NUM_THREADS]; // Массив для хранения идентификаторов pthread
+    int thread_ids[NUM_THREADS * 2];       // Идентификаторы для всех потоков
+    char *thread_stacks[NUM_THREADS];      // Стеки для потоков, созданных через clone
+    pid_t clone_thread_ids[NUM_THREADS];   // Идентификаторы потоков, созданных через clone
 
-    // Инициализация идентификаторов
+    // Инициализация идентификаторов потоков
     for (int i = 0; i < NUM_THREADS * 2; i++) {
         thread_ids[i] = i + 1;
     }
 
     // Создание потоков через pthread_create()
     for (int i = 0; i < NUM_THREADS; i++) {
-        if (pthread_create(&pthreads[i], NULL, run_pthread_thread, &thread_ids[i]) != 0) {
-            fprintf(stderr, "pthread_create failed: %s\n", strerror(errno));
+        if (pthread_create(&pthread_handles[i], NULL, pthread_thread_function, &thread_ids[i]) != 0) {
+            fprintf(stderr, "Ошибка создания pthread: %s\n", strerror(errno));
             exit(EXIT_FAILURE);
         }
     }
 
     // Создание потоков через clone()
     for (int i = 0; i < NUM_THREADS; i++) {
-        stacks[i] = malloc(STACK_SIZE);
-        if (!stacks[i]) {
-            perror("malloc failed");
+        thread_stacks[i] = malloc(STACK_SIZE); // Выделяем память для стека
+        if (!thread_stacks[i]) {
+            perror("Ошибка выделения памяти для стека");
             // Освобождаем память, выделенную для предыдущих стеков
             for (int j = 0; j < i; j++) {
-                free(stacks[j]);
+                free(thread_stacks[j]);
             }
             exit(EXIT_FAILURE);
         }
 
-        clone_pids[i] = clone(run_clone_thread,
-                              stacks[i] + STACK_SIZE,
-                              CLONE_VM | CLONE_FS | CLONE_FILES | CLONE_SIGHAND | CLONE_THREAD | CLONE_SYSVSEM,
-                              &thread_ids[i + NUM_THREADS]);
+        clone_thread_ids[i] = clone(clone_thread_function,
+                                    thread_stacks[i] + STACK_SIZE, // Указатель на верх стека
+                                    CLONE_VM | CLONE_FS | CLONE_FILES | CLONE_SIGHAND | CLONE_THREAD | CLONE_SYSVSEM,
+                                    &thread_ids[i + NUM_THREADS]);
 
-        if (clone_pids[i] == -1) {
-            fprintf(stderr, "clone failed: %s\n", strerror(errno));
+        if (clone_thread_ids[i] == -1) {
+            fprintf(stderr, "Ошибка создания clone: %s\n", strerror(errno));
             // Освобождаем память, выделенную для стеков
             for (int j = 0; j <= i; j++) {
-                free(stacks[j]);
+                free(thread_stacks[j]);
             }
             exit(EXIT_FAILURE);
         }
     }
 
     // Ожидание сигнала для завершения
-    while (!stop_flag) {
+    while (!should_stop) {
         pause();
     }
 
-    // Ожидание завершения pthread потоков
+    // Ожидание завершения потоков, созданных через pthread
     for (int i = 0; i < NUM_THREADS; i++) {
-        if (pthread_join(pthreads[i], NULL) != 0) {
-            fprintf(stderr, "pthread_join failed: %s\n", strerror(errno));
+        if (pthread_join(pthread_handles[i], NULL) != 0) {
+            fprintf(stderr, "Ошибка ожидания pthread: %s\n", strerror(errno));
         }
     }
 
-    // Ожидание завершения clone потоков
+    // Ожидание завершения потоков, созданных через clone
     for (int i = 0; i < NUM_THREADS; i++) {
-        if (waitpid(clone_pids[i], NULL, 0) == -1) {
-            fprintf(stderr, "waitpid failed: %s\n", strerror(errno));
+        if (waitpid(clone_thread_ids[i], NULL, 0) == -1) {
+            fprintf(stderr, "Ошибка ожидания clone: %s\n", strerror(errno));
         }
-        free(stacks[i]);
+        free(thread_stacks[i]); // Освобождаем память стека
     }
 
-    printf("All threads exited\n");
+    printf("Все потоки завершены\n");
     return EXIT_SUCCESS;
 }

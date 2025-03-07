@@ -1,7 +1,0 @@
-    PID TTY      STAT   TIME COMMAND
-   2809 pts/2    Ss     0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
-   4422 pts/2    S+     0:00  \_ ./father
-   4423 pts/2    S+     0:00      \_ son
-   4424 pts/2    S+     0:00          \_ sh -c -- ps -H f | head -n 7 > log_son.txt
-   4425 pts/2    R+     0:00              \_ ps -H f
-   4426 pts/2    S+     0:00              \_ head -n 7

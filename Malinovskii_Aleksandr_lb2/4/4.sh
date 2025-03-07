@@ -2,66 +2,74 @@
 #
 set -euo pipefail
 
-# Файл для результатов
-result_file="task4-results.txt"
-: > "$result_file"  # Очищаем файл
+# Файл для записи результатов
+output_file="out.txt"
+: > "$output_file"  # Очищаем файл перед началом записи
 
-# Функция логирования: вывод в консоль и запись в файл
-print() {
-    echo "$1" | tee -a "$result_file"
+# Функция для вывода сообщений и записи в файл
+log_message() {
+    echo "$1" | tee -a "$output_file"
 }
 
-# Функция проверки наличия необходимых команд
-check_command() {
+# Функция для проверки доступности команд
+verify_command() {
     if ! command -v "$1" &>/dev/null; then
-        print "Ошибка: команда '$1' не найдена. Установите необходимый пакет."
+        log_message "Ошибка: команда '$1' недоступна. Установите необходимый пакет."
         exit 1
     fi
 }
 
 # Проверяем наличие необходимых утилит
-for cmd in pgrep ps cat; do
-    check_command "$cmd"
+for tool in pgrep ps cat; do
+    verify_command "$tool"
 done
 
-print "Анализ нитей и ресурсов процесса ./4"
+log_message "Анализ потоков и ресурсов процесса ./4"
 
-# Получаем PID первого процесса, соответствующего ./task4
-PID=$(pidof 4)
+# Получаем PID процесса, соответствующего ./4
+PROCESS_PID=$(pidof 4)
 
-if [[ -z "$PID" ]]; then
-    print "Процесс ./task4 не найден"
+if [[ -z "$PROCESS_PID" ]]; then
+    log_message "Процесс ./4 не обнаружен."
     exit 1
 fi
 
-print "Найден процесс с PID: $PID"
-print "Информация о нитях процесса (ps -Lf):"
-ps -Lf -p "$PID" | tee -a "$result_file"  
+log_message "Обнаружен процесс с PID: $PROCESS_PID"
+log_message "Информация о потоках процесса (ps -Lf):"
+ps -Lf -p "$PROCESS_PID" | tee -a "$output_file"  
 
-print ""
-print "Расширенная информация о нитях (TID, загрузка CPU, распределение по ядрам):"
-ps -L -o tid,pcpu,psr -p "$PID" | tee -a "$result_file"  
+log_message ""
+log_message "Детальная информация о потоках (TID, загрузка CPU, распределение по ядрам):"
+ps -L -o tid,pcpu,psr -p "$PROCESS_PID" | tee -a "$output_file"  
 
-print ""
-print "Наследуемые параметры процесса:"
-ps -p "$PID" -o pid,ppid,uid,gid,comm | tee -a "$result_file"
+log_message ""
+log_message "Наследуемые параметры процесса:"
+ps -p "$PROCESS_PID" -o pid,ppid,uid,gid,comm | tee -a "$output_file"
 
-print ""
-print "Карта памяти процесса (/proc/$PID/maps):"
-cat /proc/"$PID"/maps | tee -a "$result_file"
+log_message ""
+log_message "Карта памяти процесса (/proc/$PROCESS_PID/maps):"
+cat /proc/"$PROCESS_PID"/maps | tee -a "$output_file"
 
-print "Удаление последнего найденного TID процесса"
+log_message "Попытка завершения последнего обнаруженного потока"
 
-# Находим последний TID, связанный с PID
-last_tid=$(ps -Lf -p "$PID" | tail -n +2 | awk 'END {print $4}')
+# Находим последний TID, связанный с PROCESS_PID
+LAST_TID=$(ps -Lf -p "$PROCESS_PID" | tail -n +2 | awk 'END {print $4}')
 
 # Проверяем, что TID найден
-if [[ -n "$last_tid" ]]; then
-    print "Удаляем последний найденный TID: $last_tid"
-    # Попытка удалить нить с помощью kill
-    kill -9 "$last_tid" && print "Нить с TID $last_tid успешно удалена."
+if [[ -n "$LAST_TID" ]]; then
+    log_message "Завершаем поток с TID: $LAST_TID"
+    # Попытка завершить поток с помощью kill
+    if kill -9 "$LAST_TID"; then
+        log_message "Поток с TID $LAST_TID успешно завершен."
+    else
+        log_message "Ошибка: Не удалось завершить поток с TID $LAST_TID."
+    fi
 else
-    print "Ошибка: Нить для процесса с PID $PID не найдена."
+    log_message "Ошибка: Поток для процесса с PID $PROCESS_PID не обнаружен."
 fi
 
-print "После удаления нити удалился процесс с $PID."
+log_message "После завершения потока процесс с PID $PROCESS_PID был остановлен."
+
+сat out.txt
+rm out.txt
+rm ./4

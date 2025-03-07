@@ -17,7 +17,7 @@ void set_scheduling_policy(int policy, int priority) {
 
 // Функция, которую выполняют процессы
 void worker(const char *name) {
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 10; i++) {
         printf("%s is running\n", name);
     }
 }
@@ -31,11 +31,11 @@ int main() {
     }
 
     if (pid == 0) { // Дочерний процесс
-        set_scheduling_policy(SCHED_FIFO, 50); // Устанавливаем SCHED_FIFO
-        worker("Child (SCHED_FIFO)");
+        set_scheduling_policy(SCHED_RR, 50); // Устанавливаем SCHED_FIFO
+        worker("Child (SCHED_RR)");
     } else { // Родительский процесс
-        set_scheduling_policy(SCHED_RR, 50); // Устанавливаем SCHED_RR
-        worker("Parent (SCHED_RR)");
+        set_scheduling_policy(SCHED_FIFO, 50); // Устанавливаем SCHED_RR
+        worker("Parent (SCHED_FIFO)");
         wait(NULL); // Ожидаем завершения дочернего процесса
     }
 

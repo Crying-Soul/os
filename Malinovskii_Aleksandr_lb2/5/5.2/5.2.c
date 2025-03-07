@@ -17,23 +17,23 @@ void print_priority(const char *process_name, pid_t pid) {
 
 int main() {
     // Пример системного процесса (например, демон cron)
-    pid_t system_process_pid = 10; // Обычно PID 1 — это systemd или init
-    printf("=== Сравнение и изменение приоритетов системного и пользовательского процессов ===\n\n");
+    //pid_t system_process_pid = 10; 
+    //printf("=== Сравнение и изменение приоритетов системного и пользовательского процессов ===\n\n");
 
     // Получаем и выводим приоритет системного процесса
-    printf("[Системный процесс]\n");
-    print_priority("Системный процесс (systemd/init)", system_process_pid);
+    //printf("[Системный процесс]\n");
+    //print_priority("Системный процесс (systemd/init)", system_process_pid);
 
     // Пытаемся изменить приоритет системного процесса
-    printf("\nПытаемся изменить приоритет системного процесса (PID: %d)...\n", system_process_pid);
-    if (setpriority(PRIO_PROCESS, system_process_pid, 10) == -1) {
-        perror("Ошибка setpriority для системного процесса (вероятно, из-за отсутствия прав)");
-    } else {
-        printf("Приоритет системного процесса изменен.\n");
-    }
+   // printf("\nПытаемся изменить приоритет системного процесса (PID: %d)...\n", system_process_pid);
+    //if (setpriority(PRIO_PROCESS, system_process_pid, 10) == -1) {
+     //   perror("Ошибка setpriority для системного процесса (вероятно, из-за отсутствия прав)");
+    //} else {
+    //    printf("Приоритет системного процесса изменен.\n");
+    //}
 
     // Проверяем приоритет системного процесса после попытки изменения
-    print_priority("Системный процесс после попытки изменения", system_process_pid);
+    //print_priority("Системный процесс после попытки изменения", system_process_pid);
 
     // Родительский процесс (пользовательский)
     printf("\n[Пользовательский процесс]\n");

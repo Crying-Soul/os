@@ -1,17 +1,3 @@
-/*
- * improved_inheritance_example.c
- *
- * Демонстрация наследования ресурсов в Linux:
- * - Наследование файловых дескрипторов.
- * - Наследование приоритетов и политики планирования.
- * - Наследование сигналов и маски сигналов.
- * - Наследование лимитов ресурсов.
- * - Наследование переменных окружения.
- * - Наследование текущей рабочей директории.
- * - Примеры с fork(), exec() и clone() с флагом CLONE_FILES.
- *
- * В эксперименте с exec() дочерний процесс вызывает exec() этой же программы с аргументом "exec_child".
- */
 
  #define _GNU_SOURCE  // Для clone()
  #include <stdio.h>
@@ -272,12 +258,6 @@
          test_signal_inheritance();
         
          test_clone_inheritance();
-         
-         /* Дополнительные тесты */
-         test_signal_mask_inheritance();
-         test_rlimit_inheritance();
-         test_env_inheritance();
-         test_working_directory_inheritance();
          
          printf("Все тесты завершены. Проверьте созданные файлы:\n");
          printf(" - testfile.txt\n - testfile_exec.txt\n - testfile_clone.txt\n");

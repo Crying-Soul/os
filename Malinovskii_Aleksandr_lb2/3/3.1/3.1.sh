@@ -1,17 +1,19 @@
 #!/bin/bash
 
-files=("5.5.c")
+cd 3/3.1
+files=("son1.c" "son2.c" "son3.c" "father.c")
 for file in "${files[@]}"
 do
     output="${file%.*}"
     gcc "$file" -o "$output"
 done
 
-echo Процессы созданные программно
-taskset -c 0 ./5.5
+./father
+
 for file in "${files[@]}"
 do
     output="${file%.*}"
     rm $output
-
 done
+cat processes_after.txt
+#rm processes_after.txt

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd 5/5.3
 files=("5.3.1.c" "5.3.2.c" "5.3.3.c")
 for file in "${files[@]}"
 do

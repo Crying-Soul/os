@@ -1,9 +1,7 @@
 #!/bin/bash
 
+cd 2/2.4
 files=("situation_a.c" "situation_b.c" "situation_c.c")
-#files=("situation_a.c")
-rm -f output.txt  # Удаляем старый файл output.txt, если он существует
-
 for file in "${files[@]}"
 do
     output="${file%.*}"  # Убираем расширение .c для получения имени выходного файла
@@ -36,3 +34,5 @@ do
     echo "------------------------" >> output.txt
     rm -f $output  # Удаляем скомпилированный файл
 done
+cat output.txt
+rm output.txt
