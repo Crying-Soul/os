@@ -1,15 +1,35 @@
 #!/bin/bash
 
-# Выводим только PID, имя процесса и пользователя
-echo -e "Системные процессы с привилегиями root:"
-ps -eo pid,uid,comm --sort=pid | grep '^ *1\|^ *[0-9]\{1,3\} ' | grep -v 'root' | head -n 10
+# Функция для проверки, является ли процесс системным
+is_system_process() {
+    local flags=$1
 
-echo -e "\nПроцессы с PID < 1000 (системные):"
-ps -eo pid,comm --sort=pid | awk '$1 < 1000 {print $0}' | head -n 10
+    # Если флаг нечетный, процесс системный
+    if (( (flags & 1) == 1 )); then
+        return 0
+    fi
 
-echo -e "\nПроцессы, связанные с ядром (например, kworker):"
-ps -eo pid,comm --sort=pid | grep 'kworker' | head -n 10
+    return 1
+}
 
-# Процессы, связанные с systemd (иногда являются системными)
-echo -e "\nПроцессы, связанные с systemd:"
-ps -eo pid,comm --sort=pid | grep 'systemd' | head -n 10
+# Получаем список всех процессов
+echo "Анализ процессов..."
+echo "==========================================================="
+
+# Выводим заголовки с выравниванием
+printf "%-10s %-15s %-27s %-1s\n" "PID" "Пользователь" "Команда" "Тип"
+
+# Используем команду ps для получения информации о процессах, включая флаги
+ps -eo pid,user,comm,flags | while read -r pid user comm flags; do
+    # Пропускаем заголовок
+    if [[ "$pid" == "PID" ]]; then
+        continue
+    fi
+
+    # Проверяем, является ли процесс системным
+    if is_system_process "$flags"; then
+        printf "%-10s %-12s %-20s %-10s\n" "$pid" "$user" "$comm" "Системный"
+    else
+        printf "%-10s %-12s %-20s %-10s\n" "$pid" "$user" "$comm" "Пользовательский"
+    fi
+done

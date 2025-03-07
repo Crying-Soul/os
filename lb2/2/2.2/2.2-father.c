@@ -13,7 +13,7 @@ int main() {
     exit(EXIT_FAILURE);
   } else if (pid == 0) {
     // Код для потомка
-    execl("./2.2-son", "2.2-son", NULL);
+    execl("./lb2/2/2.2/2.2-son", "2.2-son", NULL);
     // Если execl вернул управление, значит произошла ошибка
     perror("execl");
     exit(EXIT_FAILURE);

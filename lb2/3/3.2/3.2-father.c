@@ -8,6 +8,9 @@
 int main() {
   int i, ppid, pid[6], status[5], result[5];
   char *son[] = {"3.2-son1", "3.2-son2", "3.2-son3", "3.2-son4", "3.2-son5"};
+  char *sonPath[] = {"./lb2/3/3.2/3.2-son1", "./lb2/3/3.2/3.2-son2",
+                     "./lb2/3/3.2/3.2-son3", "./lb2/3/3.2/3.2-son4",
+                     "./lb2/3/3.2/3.2-son5"};
   int option[] = {WNOHANG, WUNTRACED, WNOHANG, WNOHANG, WNOHANG};
 
   pid[5] = getpid();
@@ -15,7 +18,7 @@ int main() {
   printf("Father parameters was: pid=%i ppid=%i\n", pid[5], ppid);
   for (i = 0; i < 5; i++) {
     if ((pid[i] = fork()) == 0) {
-      execl(son[i], son[i], NULL);
+      execl(sonPath[i], son[i], NULL);
     }
   }
 
@@ -32,6 +35,5 @@ int main() {
     } else {
       printf("Proccess pid = %d was success.\n", pid[i]);
     }
-
   return 0;
 }

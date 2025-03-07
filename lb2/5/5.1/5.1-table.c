@@ -44,6 +44,7 @@ void print_process_info(pid_t pid) {
   // Выводим информацию
   printf("PID: %d Nice: %d | Policy: %s\n", pid, param.sched_priority,
          get_scheduling_policy(policy));
+         fflush(stdout);
 }
 
 // Функция для проверки, является ли строка числом
@@ -92,6 +93,7 @@ void launch_process(const char *program) {
   } else if (pid > 0) {
     // Родительский процесс
     printf("Launched process %s with PID: %d\n", program, pid);
+    fflush(stdout);
   } else {
     perror("fork");
   }
@@ -100,14 +102,17 @@ void launch_process(const char *program) {
 int main() {
   // Читаем и выводим информацию о процессах из таблицы процессов
   printf("Process table:\n");
+  fflush(stdout);
   read_process_table();
 
   // Основной процесс также выводит свою информацию
   printf("\nMain process:\n");
+  fflush(stdout);
   print_process_info(getpid());
 
   // Запускаем процессы из таблицы процессов
   printf("\nLaunching processes...\n");
+  fflush(stdout);
   launch_process("ls");
 
   // Ждем завершения дочерних процессов

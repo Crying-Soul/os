@@ -86,6 +86,15 @@ else
     log "Ошибка: Нить для процесса с PID $PID не найдена."
 fi
 
-# Ждём завершения программы 4 (если требуется)
+
 wait "$prog_pid" 2>/dev/null || true
+
+
+{
+    echo "===== Вывод программы 4 (файл: $program_file) ====="
+    cat "$program_file"
+    echo ""
+    echo "===== Лог скрипта (файл: $script_file) ====="
+    cat "$script_file"
+} > out.txt
 

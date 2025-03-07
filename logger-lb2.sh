@@ -51,7 +51,7 @@ run_and_log() {
 # Функция для выполнения задания с замером времени выполнения
 find_script() {
     local script_name=$1
-    local search_dir=${2:-.}  # По умолчанию поиск начинается с текущей директории
+    local search_dir=${2:-.} # По умолчанию поиск начинается с текущей директории
 
     # Поиск файла с заданным именем в директории и всех поддиректориях
     local found_script=$(find "$search_dir" -type f -name "$script_name" -print -quit)
@@ -78,10 +78,9 @@ display_file_state() {
     echo "----------------------------------------"
 }
 
-
 execute_task() {
     local task_number=$1
-    local output_file_flag=${2:-1}  # По умолчанию 1 (выводить out.txt)
+    local output_file_flag=${2:-1} # По умолчанию 1 (выводить out.txt)
     shift 2
     local task_script_name="${task_number}.sh"
     local task_script=$(find_script "$task_script_name" "$LB_FOLDER")
@@ -93,19 +92,17 @@ execute_task() {
     fi
 
     log "ВЫПОЛНЕНИЕ ЗАДАНИЯ ${task_number} (Скрипт)"
-     if [[ ${#task_args[@]} -gt 0 ]]; then
+    if [[ ${#task_args[@]} -gt 0 ]]; then
         log "Запуск скрипта ${task_script} с аргументами: ${task_args[*]}"
     else
         log "Запуск скрипта ${task_script} без аргументов."
     fi
 
-
-  
     if [[ "$output_file_flag" -eq 1 && -f "$OUTPUT_FILE" ]]; then
         display_file_state "ДО ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
     fi
 
-     if [[ -f "$task_script" ]]; then
+    if [[ -f "$task_script" ]]; then
         local start_time end_time duration
         start_time=$(date +%s)
         local output
@@ -128,8 +125,6 @@ execute_task() {
         return 1
     fi
 }
-
-
 
 # Функция для выполнения отдельных команд
 execute_commands() {
@@ -192,77 +187,111 @@ else
 fi
 echo -e "\n-----------------------------------------------------------------"
 
-
-
 # Выполнение заданий
 log "НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ"
 
 log_comment "Выполним подготовку окружения для выполнения заданий. Скомпилируем все исходные файлы."
 
 execute_commands 0 \
-        "./compiller.sh lb2"
+    "./compiller.sh lb2"
 
-# execute_task 1.1 0
+execute_task 1.1 0
 
-# # execute_task 1.2 0
+execute_commands 1.2 \
+    "nohup sleep 3600 > nohup.out 2>&1 &" \
+    "ps aux | grep sleep"
+log_comment "Процесс сохраняется после reboot "
+execute_commands 1.2 \
+    "ps aux | grep sleep" \
+    "kill -9 $(ps aux | grep sleep | grep -v grep | awk '{print $2}')"
 
-# execute_task 1.3 0
+execute_task 1.3 0
 
-# execute_task 1.4 0
+execute_task 1.4 0
 
-# execute_task 1.5 0
- 
-# execute_commands 2.1 \
-        # "./lb2/task-runner.sh ./lb2/2/2.1 2.1.c --run 2.1"
+execute_task 1.5 0
 
-# execute_commands 2.2 \
-        # "./lb2/task-runner.sh ./lb2/2/2.2 2.2-father.c 2.2-son.c --run 2.2-father"
+execute_commands 2.1 \
+    "./lb2/2/2.1/2.1"
 
+execute_commands 2.2 \
+    "./lb2/2/2.2/2.2-father"
 
-# execute_commands 2.3 \
-#         "./lb2/task-runner.sh ./lb2/2/2.3 2.3.c --run 2.3"
+execute_commands 2.3 \
+    "./lb2/2/2.3/2.3"
 
-# execute_commands 2.4 \
-#         "./lb2/task-runner.sh ./lb2/2/2.4 2.4-a.c 2.4-b.c 2.4-c.c --run 2.4-a"
+execute_commands 2.4.a \
+    "./lb2/2/2.4/2.4-a" \
+    "ps -o pid,ppid,pgid,sid,comm -H f "
 
-# execute_commands 3.1 \
-        # "./lb2/task-runner.sh ./lb2/3/3.1 3.1-father.c 3.1-son1.c 3.1-son2.c 3.1-son3.c --run 3.1-father"
+execute_commands 2.4.b \
+    "./lb2/2/2.4/2.4-b" \
+    "ps -o pid,ppid,pgid,sid,comm -H f "
 
-# execute_commands 4 \
-#         "./lb2/task-runner.sh ./lb2/4 4.c --run 4"
+execute_commands 2.4.c \
+    "./lb2/2/2.4/2.4-c" \
+    "ps -o pid,ppid,pgid,sid,comm -H f "
 
-# execute_task 4 0
+execute_commands 3.1 \
+    "./lb2/3/3.1/3.1-father"
 
-# echo Определение величины кванта
-# sudo ./quant
-# echo Меняем политику планирования на RR
-# sudo taskset -c 0 ./5.4
+execute_commands 3.2 \
+    "./lb2/3/3.2/3.2-father"
+
+execute_task 4 1
+
+execute_commands 5.1\(prog\) \
+    "sudo taskset -c 0 ./lb2/5/5.1/5.1-prog"
+
+execute_commands 5.1\(table\) \
+    "./lb2/5/5.1/5.1-table"
+
+execute_commands 5.2 \
+    "./lb2/5/5.2/5.2"
+
+execute_commands 5.3.1 \
+    "sudo taskset -c 0 ./lb2/5/5.3/5.3.1"
+
+execute_commands 5.3.2 \
+    "sudo taskset -c 0 ./lb2/5/5.3/5.3.2"
+
+execute_commands 5.3.3 \
+    "sudo taskset -c 0 ./lb2/5/5.3/5.3.3"
+
+execute_commands 5.4 \
+    "sudo ./lb2/5/5.4/5.4-quant" \
+    "sudo taskset -c 0 ./lb2/5/5.4/5.4"
+
+execute_commands 5.5 \
+    "sudo taskset -c 0 ./lb2/5/5.5/5.5"
+
+execute_commands 5.6 \
+    "sudo taskset -c 0 ./lb2/5/5.6/5.6"
+
 >"$OUTPUT_FILE"
 display_file_state "ДО ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
 execute_commands 6.1 \
-        "./lb2/6/6.1"
+    "./lb2/6/6.1"
 
 display_file_state "ПОСЛЕ ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
 
 execute_commands 6.2 \
-        "./lb2/6/6.2"
-
+    "./lb2/6/6.2"
 
 execute_commands 6.3 \
-        "./lb2/6/6.3"
+    "./lb2/6/6.3"
 
 >"$OUTPUT_FILE"
 display_file_state "ДО ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
 execute_commands 6.4 \
-        "./lb2/6/6.1"
+    "./lb2/6/6.1"
 
 display_file_state "ПОСЛЕ ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
 
 log_comment "Конец скрипта. Очистка файлов."
 
 execute_commands 0 \
-        "./cleaner.sh lb2"
-
+    "./cleaner.sh lb2"
 
 # Замер общего времени выполнения скрипта
 SCRIPT_END=$(date +%s)
