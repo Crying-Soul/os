@@ -34,7 +34,7 @@ int clone_thread(void *arg) {
   fflush(stdout); // Сбрасываем буфер
   return 0;
 }
-
+  
 // Функция для потоков, созданных через pthread
 void *pthread_thread(void *arg) {
   int id = *(int *)arg;

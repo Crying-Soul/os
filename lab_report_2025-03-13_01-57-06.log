@@ -1,0 +1,2491 @@
+Script started on 2025-03-13 01:57:06+03:00 [COMMAND="./logger-lb2.sh" TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="211" LINES="40"]
+Дата исполнения отчёта: 2025-03-13 01:57:06
+Идентификация исполнителя: root
+Группа: 3343
+ФИО: Гребнев Егор Дмитриевич
+-----------------------------------------------------------------
+[2025-03-13 01:57:06] ПРОФИЛЬ СИСТЕМЫ
+[2025-03-13 01:57:06] >>> Информация о процессоре (lscpu) <<<
+----------------------------------------
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        48 bits physical, 48 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               6
+On-line CPU(s) list:                  0-5
+Vendor ID:                            AuthenticAMD
+Model name:                           AMD Ryzen 5 5600H with Radeon Graphics
+BIOS Model name:                        CPU @ 0.0GHz
+BIOS CPU family:                      0
+CPU family:                           25
+Model:                                80
+Thread(s) per core:                   1
+Core(s) per socket:                   6
+Socket(s):                            1
+Stepping:                             0
+BogoMIPS:                             4509.85
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid pni pclmulqdq ssse3 cx16 sse4_1 sse4_2 movbe popcnt aes rdrand lahf_lm cmp_legacy cr8_legacy abm sse4a misalignsse 3dnowprefetch cpb vmmcall fsgsbase bmi1 bmi2 invpcid rdseed adx clflushopt sha_ni arat
+Hypervisor vendor:                    Innotek GmbH
+Virtualization type:                  full
+L1d cache:                            192 KiB (6 instances)
+L1i cache:                            192 KiB (6 instances)
+L2 cache:                             3 MiB (6 instances)
+L3 cache:                             96 MiB (6 instances)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-5
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Not affected
+Vulnerability Spec rstack overflow:   Mitigation; safe RET
+Vulnerability Spec store bypass:      Not affected
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Retpolines; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+----------------------------------------
+[2025-03-13 01:57:06] >>> Информация о памяти (free -h) <<<
+----------------------------------------
+               total        used        free      shared  buff/cache   available
+Mem:            10Gi       2.5Gi       6.6Gi        66Mi       1.5Gi       7.8Gi
+Swap:          974Mi          0B       974Mi
+----------------------------------------
+[2025-03-13 01:57:06] >>> Информация о дисках (lsblk) <<<
+----------------------------------------
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda      8:0    0 39.1G  0 disk 
+├─sda1   8:1    0   19G  0 part /
+├─sda2   8:2    0    1K  0 part 
+└─sda5   8:5    0  975M  0 part [SWAP]
+sr0     11:0    1 57.4M  0 rom  
+----------------------------------------
+[2025-03-13 01:57:06] >>> Информация о сетевых интерфейсах (ip a) <<<
+----------------------------------------
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:56:3d:72 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 82955sec preferred_lft 82955sec
+    inet6 fd00::a63e:78bb:2267:11ae/64 scope global temporary dynamic 
+       valid_lft 86041sec preferred_lft 14041sec
+    inet6 fd00::a00:27ff:fe56:3d72/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 86041sec preferred_lft 14041sec
+    inet6 fe80::a00:27ff:fe56:3d72/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: br-08f56c2c6cce: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 02:42:d2:b9:38:b1 brd ff:ff:ff:ff:ff:ff
+    inet 172.18.0.1/16 brd 172.18.255.255 scope global br-08f56c2c6cce
+       valid_lft forever preferred_lft forever
+4: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 02:42:55:ec:74:44 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+----------------------------------------
+[2025-03-13 01:57:06] ИДЕНТИФИКАЦИЯ ВИРТУАЛЬНОЙ МАШИНЫ
+[2025-03-13 01:57:06] Система запущена в виртуальной машине.
+[2025-03-13 01:57:06] Тип виртуализации: oracle
+
+-----------------------------------------------------------------
+[2025-03-13 01:57:06] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
+[2025-03-13 01:57:06] >>> Информация о ядре (uname -a) <<<
+----------------------------------------
+Linux ASPIRIN 6.1.0-31-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.128-1 (2025-02-07) x86_64 GNU/Linux
+----------------------------------------
+[2025-03-13 01:57:06] >>> Информация о версии ОС (lsb_release -a) <<<
+----------------------------------------
+Distributor ID:	Debian
+Description:	Debian GNU/Linux 12 (bookworm)
+Release:	12
+Codename:	bookworm
+----------------------------------------
+
+-----------------------------------------------------------------
+[2025-03-13 01:57:06] НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ
+[2025-03-13 01:57:06] [КОММЕНТАРИЙ] Выполним подготовку окружения для выполнения заданий. Скомпилируем все исходные файлы.
+[2025-03-13 01:57:06] ВЫПОЛНЕНИЕ ЗАДАНИЯ 0
+[2025-03-13 01:57:06] >>> root@ASPIRIN$ ./compiller.sh lb2 <<<
+----------------------------------------
+Компиляция lb2/5/5.6/5.6.c в lb2/5/5.6/5.6
+Компиляция lb2/5/5.1/5.1-prog3.c в lb2/5/5.1/5.1-prog3
+Компиляция lb2/5/5.1/5.1-prog2.c в lb2/5/5.1/5.1-prog2
+Компиляция lb2/5/5.1/5.1-prog4.c в lb2/5/5.1/5.1-prog4
+Компиляция lb2/5/5.1/5.1-prog1.c в lb2/5/5.1/5.1-prog1
+Компиляция lb2/5/5.1/5.1-table.c в lb2/5/5.1/5.1-table
+Компиляция lb2/5/5.4/5.4.c в lb2/5/5.4/5.4
+Компиляция lb2/5/5.4/5.4-quant.c в lb2/5/5.4/5.4-quant
+Компиляция lb2/5/5.5/5.5.c в lb2/5/5.5/5.5
+Компиляция lb2/5/5.3/5.3.1.c в lb2/5/5.3/5.3.1
+Компиляция lb2/5/5.3/5.3.3/5.3.3-prog1.c в lb2/5/5.3/5.3.3/5.3.3-prog1
+Компиляция lb2/5/5.3/5.3.3/5.3.3-prog2.c в lb2/5/5.3/5.3.3/5.3.3-prog2
+Компиляция lb2/5/5.3/5.3.3/5.3.3-prog3.c в lb2/5/5.3/5.3.3/5.3.3-prog3
+Компиляция lb2/5/5.3/5.3.2.c в lb2/5/5.3/5.3.2
+Компиляция lb2/5/5.2/5.2.c в lb2/5/5.2/5.2
+Компиляция lb2/4/4.c в lb2/4/4
+Компиляция lb2/6/6.4.c в lb2/6/6.4
+Компиляция lb2/6/6.1.c в lb2/6/6.1
+Компиляция lb2/6/6.2.c в lb2/6/6.2
+Компиляция lb2/6/6.3.c в lb2/6/6.3
+Компиляция lb2/3/3.1/3.1-son3.c в lb2/3/3.1/3.1-son3
+Компиляция lb2/3/3.1/3.1-son1.c в lb2/3/3.1/3.1-son1
+Компиляция lb2/3/3.1/3.1-father.c в lb2/3/3.1/3.1-father
+Компиляция lb2/3/3.1/3.1-son2.c в lb2/3/3.1/3.1-son2
+Компиляция lb2/3/3.2/3.2-son5.c в lb2/3/3.2/3.2-son5
+Компиляция lb2/3/3.2/3.2-father.c в lb2/3/3.2/3.2-father
+Компиляция lb2/3/3.2/3.2-son4.c в lb2/3/3.2/3.2-son4
+Компиляция lb2/3/3.2/3.2-son1.c в lb2/3/3.2/3.2-son1
+Компиляция lb2/3/3.2/3.2-son3.c в lb2/3/3.2/3.2-son3
+Компиляция lb2/3/3.2/3.2-son2.c в lb2/3/3.2/3.2-son2
+Компиляция lb2/2/2.1/2.1.c в lb2/2/2.1/2.1
+Компиляция lb2/2/2.2/2.2-son.c в lb2/2/2.2/2.2-son
+Компиляция lb2/2/2.2/2.2-father.c в lb2/2/2.2/2.2-father
+Компиляция lb2/2/2.4/2.4-a.c в lb2/2/2.4/2.4-a
+Компиляция lb2/2/2.4/2.4-b.c в lb2/2/2.4/2.4-b
+Компиляция lb2/2/2.4/2.4-c.c в lb2/2/2.4/2.4-c
+Компиляция lb2/2/2.3/2.3.c в lb2/2/2.3/2.3
+----------------------------------------
+[2025-03-13 01:57:11] Время выполнения задания 0: 5 секунд.
+
+
+[2025-03-13 01:57:11] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.1 (Скрипт)
+[2025-03-13 01:57:11] Запуск скрипта ./lb2/1/1.1.sh без аргументов.
+1.1.sh >> Запуск фоновых процессов...
+1.1.sh >> Задание 1: Поиск всех .txt файлов в /tmp...
+1.1.sh >> Задание 1 (find) запущено с PID 11861
+1.1.sh >> Задание 2: Подсчет строк в файле largefile.txt...
+1.1.sh >> Задание 2 (wc) запущено с PID 11862
+1.1.sh >> Задание 3: Копирование файла largefile.txt в /tmp...
+1.1.sh >> Задание 3 (cp) запущено с PID 11863
+1.1.sh >> 
+1.1.sh >> Анализ списка заданий:
+1.1.sh >> [1]  11861 Running                 find /tmp -name "*.txt" > found_files.txt &
+1.1.sh >> [2]- 11862 Running                 wc -l largefile.txt > line_count.txt &
+1.1.sh >> [3]+ 11863 Running                 cp largefile.txt /tmp/largefile_copy.txt &
+1.1.sh >> 
+1.1.sh >> Прерывание задания 2 (wc)...
+1.1.sh >> Задание 2 (wc) было прервано.
+1.1.sh >> ./lb2/1/1.1.sh: line 55: 11862 Killed                  wc -l largefile.txt > line_count.txt
+1.1.sh >> 
+1.1.sh >> Анализ списка заданий после прерывания задания 2 (wc):
+1.1.sh >> [1]  11861 Done                    find /tmp -name "*.txt" > found_files.txt
+1.1.sh >> [3]  11863 Done                    cp largefile.txt /tmp/largefile_copy.txt
+1.1.sh >> 
+1.1.sh >> Ожидание завершения задания 1 (find)...
+1.1.sh >> Задание 1 (find) успешно завершено.
+1.1.sh >> 
+1.1.sh >> Итоговый анализ списка заданий:
+1.1.sh >> 
+1.1.sh >> Скрипт завершен.
+1.1.sh >> Очистка фоновых процессов...
+[2025-03-13 01:57:12] Время выполнения задания 1.1: 1 секунд.
+
+
+[2025-03-13 01:57:12] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.2
+[2025-03-13 01:57:12] >>> root@ASPIRIN$ nohup sleep 3600 > nohup.out 2>&1 & <<<
+[2025-03-13 01:57:12] >>> root@ASPIRIN$ ps aux | grep sleep <<<
+----------------------------------------
+root       11878  0.0  0.0   5464   896 pts/2    S+   01:57   0:00 sleep 3600
+root       11883  0.0  0.0   6932  3244 pts/2    S+   01:57   0:00 bash -c ps aux | grep sleep
+root       11885  0.0  0.0   6332  2032 pts/2    S+   01:57   0:00 grep sleep
+----------------------------------------
+[2025-03-13 01:57:12] Время выполнения задания 1.2: 0 секунд.
+
+
+[2025-03-13 01:57:12] [КОММЕНТАРИЙ] Процесс сохраняется после reboot 
+[2025-03-13 01:57:12] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.2
+[2025-03-13 01:57:12] >>> root@ASPIRIN$ ps aux | grep sleep <<<
+----------------------------------------
+root       11878  0.0  0.0   5464   896 pts/2    S+   01:57   0:00 sleep 3600
+root       11900  0.0  0.0   6932  3168 pts/2    S+   01:57   0:00 bash -c ps aux | grep sleep
+root       11902  0.0  0.0   6332  2064 pts/2    S+   01:57   0:00 grep sleep
+----------------------------------------
+[2025-03-13 01:57:12] >>> root@ASPIRIN$ kill -9 11878 <<<
+[2025-03-13 01:57:12] Время выполнения задания 1.2: 0 секунд.
+
+
+[2025-03-13 01:57:12] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.3 (Скрипт)
+[2025-03-13 01:57:12] Запуск скрипта ./lb2/1/1.3.sh без аргументов.
+1.3.sh >> Минимальный PID: 1
+1.3.sh >> Подробная информация о процессе с PID 1:
+1.3.sh >> ----------------------------------------
+1.3.sh >>   PID   UID  COMMAND         STAT  START     RSS   PPID   NI
+1.3.sh >>   1     0    systemd         Ss    00:59      12540  0      0  
+1.3.sh >> Команда запуска: /sbin/init 
+1.3.sh >> Текущий рабочий каталог: /
+1.3.sh >> Исполняемый файл: /usr/lib/systemd/systemd
+1.3.sh >> Окружение процесса:
+1.3.sh >> SHLVL=1
+1.3.sh >> HOME=/
+1.3.sh >> init=/sbin/init
+1.3.sh >> TERM=linux
+1.3.sh >> BOOT_IMAGE=/boot/vmlinuz-6.1.0-31-amd64
+1.3.sh >> drop_caps=
+1.3.sh >> PATH=/sbin:/usr/sbin:/bin:/usr/bin
+1.3.sh >> PWD=/
+1.3.sh >> rootmnt=/root
+1.3.sh >> 
+1.3.sh >> Максимальный возможный PID: 4194304
+1.3.sh >> 
+1.3.sh >> Самый большой активный PID в системе: 11916
+1.3.sh >> Подробная информация о процессе с PID 11916:
+1.3.sh >> ----------------------------------------
+1.3.sh >>   PID   UID  COMMAND         STAT  START     RSS   PPID   NI
+1.3.sh >>   11916 0    bash            S+    01:57      3352   11915  0  
+1.3.sh >> Команда запуска: bash ./lb2/1/1.3.sh 
+1.3.sh >> Текущий рабочий каталог: /home/lotos/Documents/os
+1.3.sh >> Исполняемый файл: /usr/bin/bash
+1.3.sh >> Окружение процесса:
+1.3.sh >> SHELL=/bin/bash
+1.3.sh >> COLORTERM=truecolor
+1.3.sh >> SUDO_GID=1000
+1.3.sh >> LANGUAGE=en_US.UTF-8
+1.3.sh >> SUDO_COMMAND=./start.sh
+1.3.sh >> SUDO_USER=lotos
+1.3.sh >> IN_SCRIPT=1
+1.3.sh >> PWD=/home/lotos/Documents/os
+1.3.sh >> LOGNAME=root
+1.3.sh >> XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.FQ0U32
+1.3.sh >> HOME=/root
+1.3.sh >> LANG=en_US.UTF-8
+1.3.sh >> LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:
+1.3.sh >> XDG_CURRENT_DESKTOP=GNOME
+1.3.sh >> LOG_FILE=lab_report_2025-03-13_01-57-06.log
+1.3.sh >> TERM=xterm-256color
+1.3.sh >> USER=root
+1.3.sh >> DISPLAY=:0
+1.3.sh >> SHLVL=2
+1.3.sh >> LC_ALL=en_US.UTF-8
+1.3.sh >> PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+1.3.sh >> SUDO_UID=1000
+1.3.sh >> MAIL=/var/mail/root
+1.3.sh >> _=/usr/bin/bash
+1.3.sh >> 
+1.3.sh >> Минимальный UID: 0
+1.3.sh >> Пользователь с минимальным UID: root
+1.3.sh >> Максимальный UID: 65534
+1.3.sh >> Пользователь с максимальным UID: nobody
+[2025-03-13 01:57:13] Время выполнения задания 1.3: 1 секунд.
+
+
+[2025-03-13 01:57:13] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.4 (Скрипт)
+[2025-03-13 01:57:13] Запуск скрипта ./lb2/1/1.4.sh без аргументов.
+1.4.sh >> Анализ процессов...
+1.4.sh >> ===========================================================
+1.4.sh >> PID        Пользователь Команда              Тип
+1.4.sh >> 1          root         systemd              Пользовательский
+1.4.sh >> 2          root         kthreadd             Системный
+1.4.sh >> 3          root         rcu_gp               Системный
+1.4.sh >> 4          root         rcu_par_gp           Системный
+1.4.sh >> 5          root         slub_flushwq         Системный
+1.4.sh >> 6          root         netns                Системный
+1.4.sh >> 8          root         kworker/0:0H-ev      Системный
+1.4.sh >> 10         root         mm_percpu_wq         Системный
+1.4.sh >> 11         root         rcu_tasks_kthre      Системный
+1.4.sh >> 12         root         rcu_tasks_rude_      Системный
+1.4.sh >> 13         root         rcu_tasks_trace      Системный
+1.4.sh >> 14         root         ksoftirqd/0          Системный
+1.4.sh >> 15         root         rcu_preempt          Системный
+1.4.sh >> 16         root         migration/0          Системный
+1.4.sh >> 18         root         cpuhp/0              Системный
+1.4.sh >> 19         root         cpuhp/1              Системный
+1.4.sh >> 20         root         migration/1          Системный
+1.4.sh >> 21         root         ksoftirqd/1          Системный
+1.4.sh >> 23         root         kworker/1:0H-ev      Системный
+1.4.sh >> 24         root         cpuhp/2              Системный
+1.4.sh >> 25         root         migration/2          Системный
+1.4.sh >> 26         root         ksoftirqd/2          Системный
+1.4.sh >> 27         root         kworker/2:0-eve      Системный
+1.4.sh >> 28         root         kworker/2:0H-ev      Системный
+1.4.sh >> 29         root         cpuhp/3              Системный
+1.4.sh >> 30         root         migration/3          Системный
+1.4.sh >> 31         root         ksoftirqd/3          Системный
+1.4.sh >> 33         root         kworker/3:0H-ev      Системный
+1.4.sh >> 34         root         cpuhp/4              Системный
+1.4.sh >> 35         root         migration/4          Системный
+1.4.sh >> 36         root         ksoftirqd/4          Системный
+1.4.sh >> 38         root         kworker/4:0H-ev      Системный
+1.4.sh >> 39         root         cpuhp/5              Системный
+1.4.sh >> 40         root         migration/5          Системный
+1.4.sh >> 41         root         ksoftirqd/5          Системный
+1.4.sh >> 43         root         kworker/5:0H-ev      Системный
+1.4.sh >> 50         root         kdevtmpfs            Системный
+1.4.sh >> 51         root         inet_frag_wq         Системный
+1.4.sh >> 52         root         kauditd              Системный
+1.4.sh >> 53         root         khungtaskd           Системный
+1.4.sh >> 54         root         oom_reaper           Системный
+1.4.sh >> 55         root         writeback            Системный
+1.4.sh >> 56         root         kcompactd0           Системный
+1.4.sh >> 57         root         ksmd                 Системный
+1.4.sh >> 58         root         khugepaged           Системный
+1.4.sh >> 59         root         kintegrityd          Системный
+1.4.sh >> 60         root         kblockd              Системный
+1.4.sh >> 61         root         blkcg_punt_bio       Системный
+1.4.sh >> 62         root         tpm_dev_wq           Системный
+1.4.sh >> 63         root         edac-poller          Системный
+1.4.sh >> 64         root         devfreq_wq           Системный
+1.4.sh >> 65         root         kworker/1:1-eve      Системный
+1.4.sh >> 66         root         kworker/0:1H-kb      Системный
+1.4.sh >> 67         root         kswapd0              Системный
+1.4.sh >> 73         root         kworker/5:1-cgr      Системный
+1.4.sh >> 75         root         kthrotld             Системный
+1.4.sh >> 77         root         acpi_thermal_pm      Системный
+1.4.sh >> 78         root         kworker/1:2-ine      Системный
+1.4.sh >> 79         root         mld                  Системный
+1.4.sh >> 80         root         ipv6_addrconf        Системный
+1.4.sh >> 81         root         kworker/1:1H-kb      Системный
+1.4.sh >> 86         root         kstrp                Системный
+1.4.sh >> 91         root         zswap-shrink         Системный
+1.4.sh >> 92         root         kworker/u13:0        Системный
+1.4.sh >> 104        root         kworker/4:1-eve      Системный
+1.4.sh >> 143        root         kworker/3:1H-kb      Системный
+1.4.sh >> 145        root         kworker/5:1H-kb      Системный
+1.4.sh >> 146        root         kworker/2:1H-kb      Системный
+1.4.sh >> 148        root         kworker/4:1H-kb      Системный
+1.4.sh >> 163        root         ata_sff              Системный
+1.4.sh >> 166        root         scsi_eh_0            Системный
+1.4.sh >> 167        root         scsi_tmf_0           Системный
+1.4.sh >> 170        root         scsi_eh_1            Системный
+1.4.sh >> 171        root         scsi_eh_2            Системный
+1.4.sh >> 172        root         scsi_tmf_1           Системный
+1.4.sh >> 173        root         scsi_tmf_2           Системный
+1.4.sh >> 174        root         irq/18-vmwgfx        Системный
+1.4.sh >> 186        root         kworker/5:2-eve      Системный
+1.4.sh >> 223        root         jbd2/sda1-8          Системный
+1.4.sh >> 224        root         ext4-rsv-conver      Системный
+1.4.sh >> 266        root         systemd-journal      Пользовательский
+1.4.sh >> 301        root         systemd-udevd        Пользовательский
+1.4.sh >> 437        root         iprt-VBoxWQueue      Системный
+1.4.sh >> 438        root         cryptd               Системный
+1.4.sh >> 563        systemd+     systemd-timesyn      Пользовательский
+1.4.sh >> 566        root         accounts-daemon      Пользовательский
+1.4.sh >> 568        avahi        avahi-daemon         Пользовательский
+1.4.sh >> 569        root         cron                 Пользовательский
+1.4.sh >> 570        message+     dbus-daemon          Пользовательский
+1.4.sh >> 572        root         low-memory-moni      Пользовательский
+1.4.sh >> 573        polkitd      polkitd              Пользовательский
+1.4.sh >> 574        root         power-profiles-      Пользовательский
+1.4.sh >> 575        root         switcheroo-cont      Пользовательский
+1.4.sh >> 576        root         systemd-logind       Пользовательский
+1.4.sh >> 577        root         udisksd              Пользовательский
+1.4.sh >> 594        avahi        avahi-daemon         Системный
+1.4.sh >> 600        root         NetworkManager       Пользовательский
+1.4.sh >> 607        root         psimon               Системный
+1.4.sh >> 617        root         wpa_supplicant       Пользовательский
+1.4.sh >> 659        root         ModemManager         Пользовательский
+1.4.sh >> 747        root         cupsd                Пользовательский
+1.4.sh >> 762        root         containerd           Пользовательский
+1.4.sh >> 784        root         kworker/3:3-eve      Системный
+1.4.sh >> 803        root         sshd                 Пользовательский
+1.4.sh >> 827        root         VBoxDRMClient        Пользовательский
+1.4.sh >> 834        root         VBoxService          Системный
+1.4.sh >> 872        root         gdm3                 Пользовательский
+1.4.sh >> 975        root         cups-browsed         Пользовательский
+1.4.sh >> 1024       root         iprt-VBoxWQueue      Системный
+1.4.sh >> 1027       root         iprt-VBoxTscThr      Системный
+1.4.sh >> 1036       root         dockerd              Пользовательский
+1.4.sh >> 1067       root         kworker/2:3-eve      Системный
+1.4.sh >> 1085       rtkit        rtkit-daemon         Пользовательский
+1.4.sh >> 1407       root         upowerd              Пользовательский
+1.4.sh >> 1415       geoclue      geoclue              Пользовательский
+1.4.sh >> 1426       colord       colord               Пользовательский
+1.4.sh >> 1679       root         gdm-session-wor      Пользовательский
+1.4.sh >> 1693       lotos        systemd              Пользовательский
+1.4.sh >> 1697       lotos        (sd-pam)             Системный
+1.4.sh >> 1713       lotos        pipewire             Пользовательский
+1.4.sh >> 1717       lotos        wireplumber          Пользовательский
+1.4.sh >> 1719       lotos        pipewire-pulse       Пользовательский
+1.4.sh >> 1720       lotos        dbus-daemon          Пользовательский
+1.4.sh >> 1722       lotos        gnome-keyring-d      Пользовательский
+1.4.sh >> 1732       lotos        gvfsd                Пользовательский
+1.4.sh >> 1740       lotos        gvfsd-fuse           Пользовательский
+1.4.sh >> 1759       lotos        tracker-miner-f      Пользовательский
+1.4.sh >> 1766       lotos        gdm-wayland-ses      Пользовательский
+1.4.sh >> 1773       lotos        gnome-session-b      Пользовательский
+1.4.sh >> 1831       lotos        gvfs-udisks2-vo      Пользовательский
+1.4.sh >> 1836       lotos        gcr-ssh-agent        Пользовательский
+1.4.sh >> 1838       lotos        gnome-session-c      Пользовательский
+1.4.sh >> 1839       lotos        ssh-agent            Пользовательский
+1.4.sh >> 1852       lotos        gnome-session-b      Пользовательский
+1.4.sh >> 1853       lotos        gvfs-afc-volume      Пользовательский
+1.4.sh >> 1860       lotos        gvfs-mtp-volume      Пользовательский
+1.4.sh >> 1864       lotos        gvfs-goa-volume      Пользовательский
+1.4.sh >> 1868       lotos        goa-daemon           Пользовательский
+1.4.sh >> 1877       lotos        goa-identity-se      Пользовательский
+1.4.sh >> 1891       lotos        gvfs-gphoto2-vo      Пользовательский
+1.4.sh >> 1895       lotos        at-spi-bus-laun      Пользовательский
+1.4.sh >> 1896       lotos        gnome-shell          Пользовательский
+1.4.sh >> 1905       lotos        dbus-daemon          Пользовательский
+1.4.sh >> 1959       lotos        xdg-permission-      Пользовательский
+1.4.sh >> 1961       lotos        gnome-shell-cal      Пользовательский
+1.4.sh >> 1971       lotos        evolution-sourc      Пользовательский
+1.4.sh >> 1986       lotos        evolution-calen      Пользовательский
+1.4.sh >> 1991       lotos        gjs                  Пользовательский
+1.4.sh >> 1992       lotos        at-spi2-registr      Пользовательский
+1.4.sh >> 2008       lotos        sh                   Пользовательский
+1.4.sh >> 2009       lotos        gsd-a11y-settin      Пользовательский
+1.4.sh >> 2012       lotos        gsd-color            Пользовательский
+1.4.sh >> 2015       lotos        gsd-datetime         Пользовательский
+1.4.sh >> 2016       lotos        gsd-housekeepin      Пользовательский
+1.4.sh >> 2018       lotos        gsd-keyboard         Пользовательский
+1.4.sh >> 2020       lotos        gsd-media-keys       Пользовательский
+1.4.sh >> 2022       lotos        gsd-power            Пользовательский
+1.4.sh >> 2026       lotos        gsd-print-notif      Пользовательский
+1.4.sh >> 2033       lotos        gsd-rfkill           Пользовательский
+1.4.sh >> 2034       lotos        gsd-screensaver      Пользовательский
+1.4.sh >> 2035       lotos        ibus-daemon          Пользовательский
+1.4.sh >> 2037       lotos        gsd-sharing          Пользовательский
+1.4.sh >> 2043       lotos        gsd-smartcard        Пользовательский
+1.4.sh >> 2048       lotos        gsd-sound            Пользовательский
+1.4.sh >> 2063       lotos        gsd-usb-protect      Пользовательский
+1.4.sh >> 2065       lotos        gsd-wacom            Пользовательский
+1.4.sh >> 2069       lotos        evolution-addre      Пользовательский
+1.4.sh >> 2086       lotos        evolution-alarm      Пользовательский
+1.4.sh >> 2100       lotos        gsd-disk-utilit      Пользовательский
+1.4.sh >> 2106       lotos        gnome-software       Пользовательский
+1.4.sh >> 2171       lotos        gsd-printer          Пользовательский
+1.4.sh >> 2173       lotos        ibus-memconf         Пользовательский
+1.4.sh >> 2176       lotos        ibus-extension-      Пользовательский
+1.4.sh >> 2179       lotos        gjs                  Пользовательский
+1.4.sh >> 2183       lotos        ibus-portal          Пользовательский
+1.4.sh >> 2227       lotos        Xwayland             Пользовательский
+1.4.sh >> 2235       lotos        ibus-engine-sim      Пользовательский
+1.4.sh >> 2255       lotos        xdg-desktop-por      Пользовательский
+1.4.sh >> 2262       lotos        xdg-document-po      Пользовательский
+1.4.sh >> 2270       root         fusermount3          Пользовательский
+1.4.sh >> 2281       lotos        xdg-desktop-por      Пользовательский
+1.4.sh >> 2295       lotos        gsd-xsettings        Пользовательский
+1.4.sh >> 2317       lotos        xdg-desktop-por      Пользовательский
+1.4.sh >> 2328       lotos        ibus-x11             Пользовательский
+1.4.sh >> 2330       lotos        dconf-service        Пользовательский
+1.4.sh >> 2341       lotos        VBoxClient           Системный
+1.4.sh >> 2343       lotos        VBoxClient           Системный
+1.4.sh >> 2365       lotos        VBoxClient           Системный
+1.4.sh >> 2366       lotos        VBoxClient           Системный
+1.4.sh >> 2374       root         fwupd                Пользовательский
+1.4.sh >> 2406       lotos        gnome-terminal-      Пользовательский
+1.4.sh >> 2432       lotos        bash                 Пользовательский
+1.4.sh >> 2672       lotos        gvfsd-metadata       Пользовательский
+1.4.sh >> 2749       lotos        code                 Пользовательский
+1.4.sh >> 2752       lotos        code                 Пользовательский
+1.4.sh >> 2753       lotos        code                 Пользовательский
+1.4.sh >> 2755       lotos        code                 Системный
+1.4.sh >> 2774       lotos        chrome_crashpad      Пользовательский
+1.4.sh >> 2790       lotos        code                 Системный
+1.4.sh >> 2794       lotos        code                 Пользовательский
+1.4.sh >> 2841       lotos        code                 Пользовательский
+1.4.sh >> 3156       lotos        code                 Системный
+1.4.sh >> 3174       lotos        code                 Пользовательский
+1.4.sh >> 3184       lotos        code                 Пользовательский
+1.4.sh >> 3251       lotos        code                 Пользовательский
+1.4.sh >> 3361       lotos        code                 Системный
+1.4.sh >> 3378       lotos        code                 Пользовательский
+1.4.sh >> 3379       lotos        code                 Пользовательский
+1.4.sh >> 3429       lotos        cpptools             Пользовательский
+1.4.sh >> 3476       lotos        cpptools-srv         Пользовательский
+1.4.sh >> 3492       lotos        cpptools             Пользовательский
+1.4.sh >> 3649       lotos        cpptools-srv         Пользовательский
+1.4.sh >> 4841       root         kworker/3:0          Системный
+1.4.sh >> 5997       root         kworker/0:0-ata      Системный
+1.4.sh >> 6906       root         kworker/u12:2-e      Системный
+1.4.sh >> 7732       root         kworker/u12:1-e      Системный
+1.4.sh >> 8159       root         kworker/4:2-cgr      Системный
+1.4.sh >> 10153      lotos        cpptools-srv         Пользовательский
+1.4.sh >> 10170      lotos        cpptools-srv         Пользовательский
+1.4.sh >> 10184      lotos        cpptools-srv         Пользовательский
+1.4.sh >> 10202      root         kworker/0:1-ata      Системный
+1.4.sh >> 10532      root         kworker/u12:0-e      Системный
+1.4.sh >> 10883      root         kworker/u12:3-e      Системный
+1.4.sh >> 11593      root         kworker/0:2-eve      Системный
+1.4.sh >> 11602      root         sudo                 Пользовательский
+1.4.sh >> 11603      root         sudo                 Системный
+1.4.sh >> 11604      root         sh                   Пользовательский
+1.4.sh >> 11608      root         logger-lb2.sh        Пользовательский
+1.4.sh >> 11610      root         script               Пользовательский
+1.4.sh >> 11611      root         logger-lb2.sh        Пользовательский
+1.4.sh >> 11959      root         logger-lb2.sh        Системный
+1.4.sh >> 11960      root         bash                 Пользовательский
+1.4.sh >> 11961      root         ps                   Пользовательский
+1.4.sh >> 11962      root         bash                 Системный
+[2025-03-13 01:57:13] Время выполнения задания 1.4: 0 секунд.
+
+
+[2025-03-13 01:57:13] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.5 (Скрипт)
+[2025-03-13 01:57:13] Запуск скрипта ./lb2/1/1.5.sh без аргументов.
+1.5.sh >> 
+1.5.sh >> === Информация о процессе c PID 11974 ===
+1.5.sh >> Name:	bash
+1.5.sh >> Umask:	0022
+1.5.sh >> State:	S (sleeping)
+1.5.sh >> Tgid:	11974
+1.5.sh >> Ngid:	0
+1.5.sh >> Pid:	11974
+1.5.sh >> PPid:	11973
+1.5.sh >> TracerPid:	0
+1.5.sh >> Uid:	0	0	0	0
+1.5.sh >> Gid:	0	0	0	0
+1.5.sh >> FDSize:	256
+1.5.sh >> Groups:	0 
+1.5.sh >> NStgid:	11974
+1.5.sh >> NSpid:	11974
+1.5.sh >> NSpgid:	11611
+1.5.sh >> NSsid:	11611
+1.5.sh >> VmPeak:	    6932 kB
+1.5.sh >> VmSize:	    6932 kB
+1.5.sh >> VmLck:	       0 kB
+1.5.sh >> VmPin:	       0 kB
+1.5.sh >> VmHWM:	    3344 kB
+1.5.sh >> VmRSS:	    3344 kB
+1.5.sh >> RssAnon:	     264 kB
+1.5.sh >> RssFile:	    3080 kB
+1.5.sh >> RssShmem:	       0 kB
+1.5.sh >> VmData:	     304 kB
+1.5.sh >> VmStk:	     132 kB
+1.5.sh >> VmExe:	     772 kB
+1.5.sh >> VmLib:	    1588 kB
+1.5.sh >> VmPTE:	      52 kB
+1.5.sh >> VmSwap:	       0 kB
+1.5.sh >> HugetlbPages:	       0 kB
+1.5.sh >> CoreDumping:	0
+1.5.sh >> THP_enabled:	1
+1.5.sh >> Threads:	1
+1.5.sh >> SigQ:	2/41936
+1.5.sh >> SigPnd:	0000000000000000
+1.5.sh >> ShdPnd:	0000000000000000
+1.5.sh >> SigBlk:	0000000000010000
+1.5.sh >> SigIgn:	0000000000000004
+1.5.sh >> SigCgt:	0000000000010002
+1.5.sh >> CapInh:	0000000000000000
+1.5.sh >> CapPrm:	000001ffffffffff
+1.5.sh >> CapEff:	000001ffffffffff
+1.5.sh >> CapBnd:	000001ffffffffff
+1.5.sh >> CapAmb:	0000000000000000
+1.5.sh >> NoNewPrivs:	0
+1.5.sh >> Seccomp:	0
+1.5.sh >> Seccomp_filters:	0
+1.5.sh >> Speculation_Store_Bypass:	not vulnerable
+1.5.sh >> SpeculationIndirectBranch:	always enabled
+1.5.sh >> Cpus_allowed:	3f
+1.5.sh >> Cpus_allowed_list:	0-5
+1.5.sh >> Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+1.5.sh >> Mems_allowed_list:	0
+1.5.sh >> voluntary_ctxt_switches:	1
+1.5.sh >> nonvoluntary_ctxt_switches:	0
+1.5.sh >> 
+1.5.sh >> === Командная строка процесса ===
+1.5.sh >> tr: extra operand ‘'’
+1.5.sh >> Try 'tr --help' for more information.
+1.5.sh >> 
+1.5.sh >> === Переменные окружения ===
+1.5.sh >> SHELL=/bin/bash
+1.5.sh >> COLORTERM=truecolor
+1.5.sh >> SUDO_GID=1000
+1.5.sh >> LANGUAGE=en_US.UTF-8
+1.5.sh >> SUDO_COMMAND=./start.sh
+1.5.sh >> SUDO_USER=lotos
+1.5.sh >> IN_SCRIPT=1
+1.5.sh >> PWD=/home/lotos/Documents/os
+1.5.sh >> LOGNAME=root
+1.5.sh >> XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.FQ0U32
+1.5.sh >> HOME=/root
+1.5.sh >> LANG=en_US.UTF-8
+1.5.sh >> LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:
+1.5.sh >> XDG_CURRENT_DESKTOP=GNOME
+1.5.sh >> LOG_FILE=lab_report_2025-03-13_01-57-06.log
+1.5.sh >> TERM=xterm-256color
+1.5.sh >> USER=root
+1.5.sh >> DISPLAY=:0
+1.5.sh >> SHLVL=2
+1.5.sh >> LC_ALL=en_US.UTF-8
+1.5.sh >> PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+1.5.sh >> SUDO_UID=1000
+1.5.sh >> MAIL=/var/mail/root
+1.5.sh >> _=/usr/bin/bash
+1.5.sh >> 
+1.5.sh >> === Открытые файлы ===
+1.5.sh >> Файл не найден: /proc/11974/fd
+1.5.sh >> 
+1.5.sh >> === Информация о памяти ===
+1.5.sh >> 556ddfedb000-556ddff0a000 r--p 00000000 08:01 1045928                    /usr/bin/bash
+1.5.sh >> 556ddff0a000-556ddffcb000 r-xp 0002f000 08:01 1045928                    /usr/bin/bash
+1.5.sh >> 556ddffcb000-556de0003000 r--p 000f0000 08:01 1045928                    /usr/bin/bash
+1.5.sh >> 556de0003000-556de0007000 r--p 00128000 08:01 1045928                    /usr/bin/bash
+1.5.sh >> 556de0007000-556de0010000 rw-p 0012c000 08:01 1045928                    /usr/bin/bash
+1.5.sh >> 556de0010000-556de001b000 rw-p 00000000 00:00 0 
+1.5.sh >> 556e0a658000-556e0a679000 rw-p 00000000 00:00 0                          [heap]
+1.5.sh >> 7fc185600000-7fc1858e9000 r--p 00000000 08:01 1053880                    /usr/lib/locale/locale-archive
+1.5.sh >> 7fc18594d000-7fc185950000 rw-p 00000000 00:00 0 
+1.5.sh >> 7fc185950000-7fc185976000 r--p 00000000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+1.5.sh >> 7fc185976000-7fc185acb000 r-xp 00026000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+1.5.sh >> 7fc185acb000-7fc185b1e000 r--p 0017b000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+1.5.sh >> 7fc185b1e000-7fc185b22000 r--p 001ce000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+1.5.sh >> 7fc185b22000-7fc185b24000 rw-p 001d2000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+1.5.sh >> 7fc185b24000-7fc185b31000 rw-p 00000000 00:00 0 
+1.5.sh >> 7fc185b31000-7fc185b40000 r--p 00000000 08:01 1047821                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+1.5.sh >> 7fc185b40000-7fc185b51000 r-xp 0000f000 08:01 1047821                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+1.5.sh >> 7fc185b51000-7fc185b5f000 r--p 00020000 08:01 1047821                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+1.5.sh >> 7fc185b5f000-7fc185b63000 r--p 0002d000 08:01 1047821                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+1.5.sh >> 7fc185b63000-7fc185b64000 rw-p 00031000 08:01 1047821                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+1.5.sh >> 7fc185b71000-7fc185b78000 r--s 00000000 08:01 1047427                    /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+1.5.sh >> 7fc185b78000-7fc185b7a000 rw-p 00000000 00:00 0 
+1.5.sh >> 7fc185b7a000-7fc185b7b000 r--p 00000000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+1.5.sh >> 7fc185b7b000-7fc185ba0000 r-xp 00001000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+1.5.sh >> 7fc185ba0000-7fc185baa000 r--p 00026000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+1.5.sh >> 7fc185baa000-7fc185bac000 r--p 00030000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+1.5.sh >> 7fc185bac000-7fc185bae000 rw-p 00032000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+1.5.sh >> 7fffa3ba1000-7fffa3bc2000 rw-p 00000000 00:00 0                          [stack]
+1.5.sh >> 7fffa3bf3000-7fffa3bf7000 r--p 00000000 00:00 0                          [vvar]
+1.5.sh >> 7fffa3bf7000-7fffa3bf9000 r-xp 00000000 00:00 0                          [vdso]
+1.5.sh >> ./lb2/1/1.5.sh: line 42: PPID: readonly variable
+1.5.sh >> 
+1.5.sh >> === Информация о родительском процессе ===
+1.5.sh >> Name:	logger-lb2.sh
+1.5.sh >> Umask:	0022
+1.5.sh >> State:	S (sleeping)
+1.5.sh >> Tgid:	11973
+1.5.sh >> Ngid:	0
+1.5.sh >> Pid:	11973
+1.5.sh >> PPid:	11611
+1.5.sh >> TracerPid:	0
+1.5.sh >> Uid:	0	0	0	0
+1.5.sh >> Gid:	0	0	0	0
+1.5.sh >> FDSize:	256
+1.5.sh >> Groups:	0 
+1.5.sh >> NStgid:	11973
+1.5.sh >> NSpid:	11973
+1.5.sh >> NSpgid:	11611
+1.5.sh >> NSsid:	11611
+1.5.sh >> VmPeak:	    7120 kB
+1.5.sh >> VmSize:	    7120 kB
+1.5.sh >> VmLck:	       0 kB
+1.5.sh >> VmPin:	       0 kB
+1.5.sh >> VmHWM:	    2088 kB
+1.5.sh >> VmRSS:	    2088 kB
+1.5.sh >> RssAnon:	     488 kB
+1.5.sh >> RssFile:	    1600 kB
+1.5.sh >> RssShmem:	       0 kB
+1.5.sh >> VmData:	     492 kB
+1.5.sh >> VmStk:	     132 kB
+1.5.sh >> VmExe:	     772 kB
+1.5.sh >> VmLib:	    1588 kB
+1.5.sh >> VmPTE:	      56 kB
+1.5.sh >> VmSwap:	       0 kB
+1.5.sh >> HugetlbPages:	       0 kB
+1.5.sh >> CoreDumping:	0
+1.5.sh >> THP_enabled:	1
+1.5.sh >> Threads:	1
+1.5.sh >> SigQ:	2/41936
+1.5.sh >> SigPnd:	0000000000000000
+1.5.sh >> ShdPnd:	0000000000000000
+1.5.sh >> SigBlk:	0000000000010000
+1.5.sh >> SigIgn:	0000000000000000
+1.5.sh >> SigCgt:	0000000000010002
+1.5.sh >> CapInh:	0000000000000000
+1.5.sh >> CapPrm:	000001ffffffffff
+1.5.sh >> CapEff:	000001ffffffffff
+1.5.sh >> CapBnd:	000001ffffffffff
+1.5.sh >> CapAmb:	0000000000000000
+1.5.sh >> NoNewPrivs:	0
+1.5.sh >> Seccomp:	0
+1.5.sh >> Seccomp_filters:	0
+1.5.sh >> Speculation_Store_Bypass:	not vulnerable
+1.5.sh >> SpeculationIndirectBranch:	always enabled
+1.5.sh >> Cpus_allowed:	3f
+1.5.sh >> Cpus_allowed_list:	0-5
+1.5.sh >> Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+1.5.sh >> Mems_allowed_list:	0
+1.5.sh >> voluntary_ctxt_switches:	1
+1.5.sh >> nonvoluntary_ctxt_switches:	0
+[2025-03-13 01:57:13] Время выполнения задания 1.5: 0 секунд.
+
+
+[2025-03-13 01:57:13] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.1
+[2025-03-13 01:57:13] >>> root@ASPIRIN$ ./lb2/2/2.1/2.1 <<<
+----------------------------------------
+Начало программы | PID = 11996 | var = 100 | адрес = 0x7fffaed29508
+Родитель         | PID = 11996 | PPID = 11995 | var = 100 | адрес = 0x7fffaed29508 | (после fork)
+Родитель         | PID = 11996 | PPID = 11995 | var = 100 | адрес = 0x7fffaed29508 | Итерация = 0         
+Дочерний процесс | PID = 11997 | PPID = 11996 | var = 100 | адрес = 0x7fffaed29508 | (до изменения)
+Дочерний процесс | PID = 11997 | PPID = 11996 | var = 150 | адрес = 0x7fffaed29508 | (после изменения)
+Дочерний процесс | PID = 11997 | PPID = 11996 | var = 150 | адрес = 0x7fffaed29508 | Итерация = 0         
+Родитель         | PID = 11996 | PPID = 11995 | var = 100 | адрес = 0x7fffaed29508 | Итерация = 10000000  
+Дочерний процесс | PID = 11997 | PPID = 11996 | var = 150 | адрес = 0x7fffaed29508 | Итерация = 10000000  
+Родитель         | PID = 11996 | PPID = 11995 | var = 100 | адрес = 0x7fffaed29508 | Итерация = 20000000  
+Дочерний процесс | PID = 11997 | PPID = 11996 | var = 150 | адрес = 0x7fffaed29508 | Итерация = 20000000  
+Родитель         | PID = 11996 | PPID = 11995 | var = 100 | адрес = 0x7fffaed29508 | Итерация = 30000000  
+Дочерний процесс | PID = 11997 | PPID = 11996 | var = 150 | адрес = 0x7fffaed29508 | Итерация = 30000000  
+Родитель         | PID = 11996 | PPID = 11995 | var = 100 | адрес = 0x7fffaed29508 | Итерация = 40000000  
+Дочерний процесс | PID = 11997 | PPID = 11996 | var = 150 | адрес = 0x7fffaed29508 | Итерация = 40000000  
+Родитель         | PID = 11996 | PPID = 11995 | var = 100 | адрес = 0x7fffaed29508 | Итерация = 50000000  
+Дочерний процесс | PID = 11997 | PPID = 11996 | var = 150 | адрес = 0x7fffaed29508 | Итерация = 50000000  
+Родитель         | PID = 11996 | PPID = 11995 | var = 100 | адрес = 0x7fffaed29508 | Итерация = 60000000  
+Дочерний процесс | PID = 11997 | PPID = 11996 | var = 150 | адрес = 0x7fffaed29508 | Итерация = 60000000  
+Родитель         | PID = 11996 | PPID = 11995 | var = 100 | адрес = 0x7fffaed29508 | Итерация = 70000000  
+Дочерний процесс | PID = 11997 | PPID = 11996 | var = 150 | адрес = 0x7fffaed29508 | Итерация = 70000000  
+Родитель         | PID = 11996 | PPID = 11995 | var = 100 | адрес = 0x7fffaed29508 | Итерация = 80000000  
+Дочерний процесс | PID = 11997 | PPID = 11996 | var = 150 | адрес = 0x7fffaed29508 | Итерация = 80000000  
+Родитель         | PID = 11996 | PPID = 11995 | var = 100 | адрес = 0x7fffaed29508 | Итерация = 90000000  
+Дочерний процесс | PID = 11997 | PPID = 11996 | var = 150 | адрес = 0x7fffaed29508 | Итерация = 90000000  
+Дочерний процесс | PID = 11997 | Завершение работы
+Родитель         | PID = 11996 | Завершение работы
+Конец            | PID = 11996 | Завершение программы
+----------------------------------------
+[2025-03-13 01:57:13] Время выполнения задания 2.1: 0 секунд.
+
+
+[2025-03-13 01:57:13] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.2
+[2025-03-13 01:57:13] >>> root@ASPIRIN$ ./lb2/2/2.2/2.2-father <<<
+----------------------------------------
+    PID TTY      STAT   TIME COMMAND
+  11602 pts/0    S+     0:00 sudo ./start.sh
+  11603 pts/1    Ss     0:00  \_ sudo ./start.sh
+  11604 pts/1    S+     0:00      \_ sh ./start.sh
+  11608 pts/1    S+     0:00          \_ /bin/bash ./logger-lb2.sh
+  11610 pts/1    S+     0:00              \_ script -a -q -c ./logger-lb2.sh lab_report_2025-03-13_01-57-06.log
+  11611 pts/2    Ss+    0:00                  \_ /bin/bash ./logger-lb2.sh
+  12005 pts/2    S+     0:00                      \_ /bin/bash ./logger-lb2.sh
+  12006 pts/2    S+     0:00                          \_ ./lb2/2/2.2/2.2-father
+  12007 pts/2    S+     0:00                              \_ 2.2-son
+  12008 pts/2    S+     0:00                                  \_ sh -c ps -H f | tee son_processes.log
+  12009 pts/2    R+     0:00                                      \_ ps -H f
+  12010 pts/2    S+     0:00                                      \_ tee son_processes.log
+Son process is running with PID: 12007
+Son process finished.
+    PID TTY      STAT   TIME COMMAND
+  11602 pts/0    S+     0:00 sudo ./start.sh
+  11603 pts/1    Ss     0:00  \_ sudo ./start.sh
+  11604 pts/1    S+     0:00      \_ sh ./start.sh
+  11608 pts/1    S+     0:00          \_ /bin/bash ./logger-lb2.sh
+  11610 pts/1    S+     0:00              \_ script -a -q -c ./logger-lb2.sh lab_report_2025-03-13_01-57-06.log
+  11611 pts/2    Ss+    0:00                  \_ /bin/bash ./logger-lb2.sh
+  12005 pts/2    S+     0:00                      \_ /bin/bash ./logger-lb2.sh
+  12006 pts/2    S+     0:00                          \_ ./lb2/2/2.2/2.2-father
+  12011 pts/2    S+     0:00                              \_ sh -c ps -H f | tee father_processes.log
+  12012 pts/2    R+     0:00                                  \_ ps -H f
+  12013 pts/2    S+     0:00                                  \_ tee father_processes.log
+Father process is running with PID: 12006
+Child process created with PID: 12007
+Father process finished.
+----------------------------------------
+[2025-03-13 01:57:13] Время выполнения задания 2.2: 0 секунд.
+
+
+[2025-03-13 01:57:13] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.3
+[2025-03-13 01:57:13] >>> root@ASPIRIN$ ./lb2/2/2.3/2.3 <<<
+----------------------------------------
+Демонстрация работы различных функций exec():
+
+Запуск execl:
+Дочерний процесс [12023] запускает execl...
+total 120
+drwxr-xr-x 5 lotos lotos  4096 Mar 13 01:57 .
+drwxr-xr-x 6 lotos lotos  4096 Mar 12 16:56 ..
+-rwxr-xr-x 1 lotos lotos   435 Mar 13 01:06 cleaner.sh
+-rwxr-xr-x 1 lotos lotos   671 Mar 13 01:19 compiller.sh
+-rw-r--r-- 1 root  root    860 Mar 13 01:57 father_processes.log
+drwxr-xr-x 8 lotos lotos  4096 Mar 12 16:05 .git
+-rw-r--r-- 1 lotos lotos   150 Mar  7 11:15 .gitignore
+-rw-r--r-- 1 root  root  53248 Mar 13 01:57 lab_report_2025-03-13_01-57-06.log
+drwxr-xr-x 2 lotos lotos  4096 Mar  4 20:24 lb1
+drwxr-xr-x 8 lotos lotos  4096 Mar 13 01:56 lb2
+-rwxr-xr-x 1 lotos lotos 11052 Mar  7 11:15 logger-lb1.sh
+-rwxr-xr-x 1 lotos lotos  9297 Mar 13 01:56 logger-lb2.sh
+-rw-r--r-- 1 root  root      0 Mar 13 01:57 nohup.out
+-rw-r--r-- 1 root  root    935 Mar 13 01:57 son_processes.log
+-rwxr-xr-x 1 lotos lotos    36 Mar  6 17:48 start.sh
+
+Запуск execlp:
+Дочерний процесс [12024] запускает execlp...
+total 120
+drwxr-xr-x 5 lotos lotos  4096 Mar 13 01:57 .
+drwxr-xr-x 6 lotos lotos  4096 Mar 12 16:56 ..
+-rwxr-xr-x 1 lotos lotos   435 Mar 13 01:06 cleaner.sh
+-rwxr-xr-x 1 lotos lotos   671 Mar 13 01:19 compiller.sh
+-rw-r--r-- 1 root  root    860 Mar 13 01:57 father_processes.log
+drwxr-xr-x 8 lotos lotos  4096 Mar 12 16:05 .git
+-rw-r--r-- 1 lotos lotos   150 Mar  7 11:15 .gitignore
+-rw-r--r-- 1 root  root  53248 Mar 13 01:57 lab_report_2025-03-13_01-57-06.log
+drwxr-xr-x 2 lotos lotos  4096 Mar  4 20:24 lb1
+drwxr-xr-x 8 lotos lotos  4096 Mar 13 01:56 lb2
+-rwxr-xr-x 1 lotos lotos 11052 Mar  7 11:15 logger-lb1.sh
+-rwxr-xr-x 1 lotos lotos  9297 Mar 13 01:56 logger-lb2.sh
+-rw-r--r-- 1 root  root      0 Mar 13 01:57 nohup.out
+-rw-r--r-- 1 root  root    935 Mar 13 01:57 son_processes.log
+-rwxr-xr-x 1 lotos lotos    36 Mar  6 17:48 start.sh
+
+Запуск execle (с пользовательским окружением):
+Дочерний процесс [12025] запускает execle (с пользовательским окружением)...
+total 120
+drwxr-xr-x 5 lotos lotos  4096 Mar 13 01:57 .
+drwxr-xr-x 6 lotos lotos  4096 Mar 12 16:56 ..
+drwxr-xr-x 8 lotos lotos  4096 Mar 12 16:05 .git
+-rw-r--r-- 1 lotos lotos   150 Mar  7 11:15 .gitignore
+-rwxr-xr-x 1 lotos lotos   435 Mar 13 01:06 cleaner.sh
+-rwxr-xr-x 1 lotos lotos   671 Mar 13 01:19 compiller.sh
+-rw-r--r-- 1 root  root    860 Mar 13 01:57 father_processes.log
+-rw-r--r-- 1 root  root  53248 Mar 13 01:57 lab_report_2025-03-13_01-57-06.log
+drwxr-xr-x 2 lotos lotos  4096 Mar  4 20:24 lb1
+drwxr-xr-x 8 lotos lotos  4096 Mar 13 01:56 lb2
+-rwxr-xr-x 1 lotos lotos 11052 Mar  7 11:15 logger-lb1.sh
+-rwxr-xr-x 1 lotos lotos  9297 Mar 13 01:56 logger-lb2.sh
+-rw-r--r-- 1 root  root      0 Mar 13 01:57 nohup.out
+-rw-r--r-- 1 root  root    935 Mar 13 01:57 son_processes.log
+-rwxr-xr-x 1 lotos lotos    36 Mar  6 17:48 start.sh
+
+Запуск execv:
+Дочерний процесс [12026] запускает execv...
+total 120
+drwxr-xr-x 5 lotos lotos  4096 Mar 13 01:57 .
+drwxr-xr-x 6 lotos lotos  4096 Mar 12 16:56 ..
+-rwxr-xr-x 1 lotos lotos   435 Mar 13 01:06 cleaner.sh
+-rwxr-xr-x 1 lotos lotos   671 Mar 13 01:19 compiller.sh
+-rw-r--r-- 1 root  root    860 Mar 13 01:57 father_processes.log
+drwxr-xr-x 8 lotos lotos  4096 Mar 12 16:05 .git
+-rw-r--r-- 1 lotos lotos   150 Mar  7 11:15 .gitignore
+-rw-r--r-- 1 root  root  53248 Mar 13 01:57 lab_report_2025-03-13_01-57-06.log
+drwxr-xr-x 2 lotos lotos  4096 Mar  4 20:24 lb1
+drwxr-xr-x 8 lotos lotos  4096 Mar 13 01:56 lb2
+-rwxr-xr-x 1 lotos lotos 11052 Mar  7 11:15 logger-lb1.sh
+-rwxr-xr-x 1 lotos lotos  9297 Mar 13 01:56 logger-lb2.sh
+-rw-r--r-- 1 root  root      0 Mar 13 01:57 nohup.out
+-rw-r--r-- 1 root  root    935 Mar 13 01:57 son_processes.log
+-rwxr-xr-x 1 lotos lotos    36 Mar  6 17:48 start.sh
+
+Запуск execvp:
+Дочерний процесс [12027] запускает execvp...
+total 120
+drwxr-xr-x 5 lotos lotos  4096 Mar 13 01:57 .
+drwxr-xr-x 6 lotos lotos  4096 Mar 12 16:56 ..
+-rwxr-xr-x 1 lotos lotos   435 Mar 13 01:06 cleaner.sh
+-rwxr-xr-x 1 lotos lotos   671 Mar 13 01:19 compiller.sh
+-rw-r--r-- 1 root  root    860 Mar 13 01:57 father_processes.log
+drwxr-xr-x 8 lotos lotos  4096 Mar 12 16:05 .git
+-rw-r--r-- 1 lotos lotos   150 Mar  7 11:15 .gitignore
+-rw-r--r-- 1 root  root  53248 Mar 13 01:57 lab_report_2025-03-13_01-57-06.log
+drwxr-xr-x 2 lotos lotos  4096 Mar  4 20:24 lb1
+drwxr-xr-x 8 lotos lotos  4096 Mar 13 01:56 lb2
+-rwxr-xr-x 1 lotos lotos 11052 Mar  7 11:15 logger-lb1.sh
+-rwxr-xr-x 1 lotos lotos  9297 Mar 13 01:56 logger-lb2.sh
+-rw-r--r-- 1 root  root      0 Mar 13 01:57 nohup.out
+-rw-r--r-- 1 root  root    935 Mar 13 01:57 son_processes.log
+-rwxr-xr-x 1 lotos lotos    36 Mar  6 17:48 start.sh
+
+Запуск execve (с пользовательским окружением):
+Дочерний процесс [12028] запускает execve (с пользовательским окружением)...
+total 120
+drwxr-xr-x 5 lotos lotos  4096 Mar 13 01:57 .
+drwxr-xr-x 6 lotos lotos  4096 Mar 12 16:56 ..
+drwxr-xr-x 8 lotos lotos  4096 Mar 12 16:05 .git
+-rw-r--r-- 1 lotos lotos   150 Mar  7 11:15 .gitignore
+-rwxr-xr-x 1 lotos lotos   435 Mar 13 01:06 cleaner.sh
+-rwxr-xr-x 1 lotos lotos   671 Mar 13 01:19 compiller.sh
+-rw-r--r-- 1 root  root    860 Mar 13 01:57 father_processes.log
+-rw-r--r-- 1 root  root  53248 Mar 13 01:57 lab_report_2025-03-13_01-57-06.log
+drwxr-xr-x 2 lotos lotos  4096 Mar  4 20:24 lb1
+drwxr-xr-x 8 lotos lotos  4096 Mar 13 01:56 lb2
+-rwxr-xr-x 1 lotos lotos 11052 Mar  7 11:15 logger-lb1.sh
+-rwxr-xr-x 1 lotos lotos  9297 Mar 13 01:56 logger-lb2.sh
+-rw-r--r-- 1 root  root      0 Mar 13 01:57 nohup.out
+-rw-r--r-- 1 root  root    935 Mar 13 01:57 son_processes.log
+-rwxr-xr-x 1 lotos lotos    36 Mar  6 17:48 start.sh
+
+Все дочерние процессы завершены.
+----------------------------------------
+[2025-03-13 01:57:13] Время выполнения задания 2.3: 0 секунд.
+
+
+[2025-03-13 01:57:13] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2.4 (Скрипт)
+[2025-03-13 01:57:13] Запуск скрипта ./lb2/2/2.4/2.4.sh без аргументов.
+
+>>> СОСТОЯНИЕ out.txt ПОСЛЕ ВЫПОЛНЕНИЯ СКРИПТА<<<
+----------------------------------------
+------------------------
+Запуск программы: lb2/2/2.4/2.4-a
+Процессы до создания процесса-сына:
+    PID TTY      STAT   TIME COMMAND
+  11602 pts/0    S+     0:00 sudo ./start.sh
+  11603 pts/1    Ss     0:00  \_ sudo ./start.sh
+  11604 pts/1    S+     0:00      \_ sh ./start.sh
+  11608 pts/1    S+     0:00          \_ /bin/bash ./logger-lb2.sh
+  11610 pts/1    S+     0:00              \_ script -a -q -c ./logger-lb2.sh lab_report_2025-03-13_01-57-06.log
+  11611 pts/2    Ss+    0:00                  \_ /bin/bash ./logger-lb2.sh
+  12036 pts/2    S+     0:00                      \_ /bin/bash ./logger-lb2.sh
+  12037 pts/2    S+     0:00                          \_ bash ./lb2/2/2.4/2.4.sh
+  12038 pts/2    S+     0:00                              \_ ./lb2/2/2.4/2.4-a
+  12039 pts/2    S+     0:00                                  \_ sh -c ps -H f
+  12040 pts/2    R+     0:00                                      \_ ps -H f
+Процесс-отец: PID = 12038, PID сына = 12041
+Процессы после создания процесса-сына, но до его завершения:
+Процесс-сын: PID = 12041
+    PID TTY      STAT   TIME COMMAND
+  11602 pts/0    S+     0:00 sudo ./start.sh
+  11603 pts/1    Ss     0:00  \_ sudo ./start.sh
+  11604 pts/1    S+     0:00      \_ sh ./start.sh
+  11608 pts/1    S+     0:00          \_ /bin/bash ./logger-lb2.sh
+  11610 pts/1    S+     0:00              \_ script -a -q -c ./logger-lb2.sh lab_report_2025-03-13_01-57-06.log
+  11611 pts/2    Ss+    0:00                  \_ /bin/bash ./logger-lb2.sh
+  12036 pts/2    S+     0:00                      \_ /bin/bash ./logger-lb2.sh
+  12037 pts/2    S+     0:00                          \_ bash ./lb2/2/2.4/2.4.sh
+  12038 pts/2    S+     0:00                              \_ ./lb2/2/2.4/2.4-a
+  12041 pts/2    S+     0:00                                  \_ ./lb2/2/2.4/2.4-a
+  12042 pts/2    S+     0:00                                  \_ sh -c ps -H f
+  12043 pts/2    R+     0:00                                      \_ ps -H f
+Процесс-сын завершен
+Процессы после завершения процесса-сына:
+    PID TTY      STAT   TIME COMMAND
+  11602 pts/0    S+     0:00 sudo ./start.sh
+  11603 pts/1    Ss     0:00  \_ sudo ./start.sh
+  11604 pts/1    S+     0:00      \_ sh ./start.sh
+  11608 pts/1    S+     0:00          \_ /bin/bash ./logger-lb2.sh
+  11610 pts/1    S+     0:00              \_ script -a -q -c ./logger-lb2.sh lab_report_2025-03-13_01-57-06.log
+  11611 pts/2    Ss+    0:00                  \_ /bin/bash ./logger-lb2.sh
+  12036 pts/2    S+     0:00                      \_ /bin/bash ./logger-lb2.sh
+  12037 pts/2    S+     0:00                          \_ bash ./lb2/2/2.4/2.4.sh
+  12038 pts/2    S+     0:00                              \_ ./lb2/2/2.4/2.4-a
+  12044 pts/2    S+     0:00                                  \_ sh -c ps -H f
+  12045 pts/2    R+     0:00                                      \_ ps -H f
+Процесс-сын завершился с кодом: 0
+Процесс-отец завершен
+Состояние процессов после запуска lb2/2/2.4/2.4-a:
+    PID    PPID    PGID     SID COMMAND
+  11602    2432   11602    2432 sudo
+  11603   11602   11603   11603  \_ sudo
+  11604   11603   11604   11603      \_ sh
+  11608   11604   11604   11603          \_ logger-lb2.sh
+  11610   11608   11604   11603              \_ script
+  11611   11610   11611   11611                  \_ logger-lb2.sh
+  12036   11611   11611   11611                      \_ logger-lb2.sh
+  12037   12036   11611   11611                          \_ bash
+  12046   12037   11611   11611                              \_ ps
+------------------------
+------------------------
+Запуск программы: lb2/2/2.4/2.4-b
+Запуск программы. Основной процесс (PID: 12047, PPID: 12037).
+Процесс-отец (PID: 12047) создал процесс-сына (PID: 12048).
+Процесс-сын (PID: 12048, PPID: 12047) запущен.
+
+Состояние процессов перед завершением отца:
+    PID    PPID    PGID     SID COMMAND
+  11602    2432   11602    2432 sudo
+  11603   11602   11603   11603  \_ sudo
+  11604   11603   11604   11603      \_ sh
+  11608   11604   11604   11603          \_ logger-lb2.sh
+  11610   11608   11604   11603              \_ script
+  11611   11610   11611   11611                  \_ logger-lb2.sh
+  12036   11611   11611   11611                      \_ logger-lb2.sh
+  12037   12036   11611   11611                          \_ bash
+  12047   12037   11611   11611                              \_ 2.4-b
+  12048   12047   11611   11611                                  \_ 2.4-b
+  12049   12047   11611   11611                                  \_ sh
+  12050   12049   11611   11611                                      \_ ps
+Процесс-отец (PID: 12047) завершается, не ожидая завершения процесса-сына.
+Состояние процессов после запуска lb2/2/2.4/2.4-b:
+    PID    PPID    PGID     SID COMMAND
+  11602    2432   11602    2432 sudo
+  11603   11602   11603   11603  \_ sudo
+  11604   11603   11604   11603      \_ sh
+  11608   11604   11604   11603          \_ logger-lb2.sh
+  11610   11608   11604   11603              \_ script
+  11611   11610   11611   11611                  \_ logger-lb2.sh
+  12036   11611   11611   11611                      \_ logger-lb2.sh
+  12037   12036   11611   11611                          \_ bash
+  12051   12037   11611   11611                              \_ ps
+  12048    1693   11611   11611 2.4-b
+Дополнительная информация для 2.4-b:
+Родительский PID для 2.4-b: 1693
+Процессы, связанные с PPID 1693:
+lotos       1693  0.0  0.1  19636 11376 ?        Ss   00:59   0:00 /lib/systemd/systemd --user
+------------------------
+------------------------
+Запуск программы: lb2/2/2.4/2.4-c
+Процесс-отец (PID: 12059) не ожидает завершения процесса-сына.
+Процесс-сын еще не завершился, процесс-отец продолжает работу.
+Процесс-сын (PID: 12060) запущен.
+Процесс-сын (PID: 12060) завершен.
+Процесс-сын (PID: 12048, PPID: 1693) после завершения отца.
+Родитель процесса-сына: 1693.
+
+Состояние процессов после завершения сына (зомби):
+    PID    PPID STAT COMMAND          SIZE
+  11611   11610 Ss+  logger-lb2.sh     624
+  12036   11611 S+   logger-lb2.sh     624
+  12037   12036 S+   bash              436
+  12048    1693 S+   2.4-b             356
+  12059   12037 S+   2.4-c             356
+  12060   12059 Z+   2.4-c               0
+  12061   12059 S+   sh                364
+  12062   12061 R+   ps               2364
+Процесс-отец (PID: 12059) завершен.
+Состояние процессов после запуска lb2/2/2.4/2.4-c:
+    PID    PPID    PGID     SID COMMAND
+  11602    2432   11602    2432 sudo
+  11603   11602   11603   11603  \_ sudo
+  11604   11603   11604   11603      \_ sh
+  11608   11604   11604   11603          \_ logger-lb2.sh
+  11610   11608   11604   11603              \_ script
+  11611   11610   11611   11611                  \_ logger-lb2.sh
+  12036   11611   11611   11611                      \_ logger-lb2.sh
+  12037   12036   11611   11611                          \_ bash
+  12063   12037   11611   11611                              \_ ps
+  12048    1693   11611   11611 2.4-b
+------------------------
+Процесс-сын (PID: 12048, PPID: 1693) завершен.
+----------------------------------------
+[2025-03-13 01:57:21] Время выполнения задания 2.4: 7 секунд.
+
+
+[2025-03-13 01:57:21] ВЫПОЛНЕНИЕ ЗАДАНИЯ 3.1
+[2025-03-13 01:57:21] >>> root@ASPIRIN$ ./lb2/3/3.1/3.1-father <<<
+----------------------------------------
+execl son1 failed: No such file or directory
+  UID     PID          PENDING          BLOCKED          IGNORED           CAUGHT STAT TTY        TIME COMMAND
+    0   11602 0000000000000000 0000000000000000 0000000000301000 0000000008096a07 S+   pts/0      0:00 sudo ./start.sh
+    0   11603 0000000000000000 0000000000000000 0000000000301000 0000000000096a07 Ss   pts/1      0:00 sudo ./start.sh
+    0   11604 0000000000000000 0000000000000000 0000000000000000 0000000000010002 S+   pts/1      0:00 sh ./start.sh
+    0   11608 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/1      0:00 /bin/bash ./logger-lb2.sh
+    0   11610 0000000000000000 fffffffe7ffbfeff 0000000000000000 0000000000000000 S+   pts/1      0:00 script -a -q -c ./logger-lb2.sh lab_report_2025-03-13_01-57-06.log
+    0   11611 0000000000000000 0000000000000002 0000000000000004 0000000000010000 Ss+  pts/2      0:00 /bin/bash ./logger-lb2.sh
+    0   12072 0000000000000000 0000000000010000 0000000000000000 0000000000010002 S+   pts/2      0:00 /bin/bash ./logger-lb2.sh
+    0   12073 0000000000000000 0000000000010000 0000000000000006 0000000000000000 S+   pts/2      0:00 ./lb2/3/3.1/3.1-father
+    0   12075 0000000000000000 0000000000000000 0000000000000000 0000000000000000 Z+   pts/2      0:00 [3.1-father] <defunct>
+    0   12076 0000000000000000 0000000000000000 0000000180000000 0000000000010002 S+   pts/2      0:00 sh -c ps -s | tee processes_after.txt
+    0   12077 0000000000000000 0000000000000000 0000000180000000 000000007391fef9 R+   pts/2      0:00 ps -s
+    0   12078 0000000000000000 0000000000000000 0000000180000000 0000000000000000 S+   pts/2      0:00 tee processes_after.txt
+execl son2 failed: No such file or directory
+Father: Sending SIGINT to son1 (PID: 12075)
+  UID     PID          PENDING          BLOCKED          IGNORED           CAUGHT STAT TTY        TIME COMMAND
+    0   11602 0000000000000000 0000000000000000 0000000000301000 0000000008096a07 S+   pts/0      0:00 sudo ./start.sh
+    0   11603 0000000000000000 0000000000000000 0000000000301000 0000000000096a07 Ss   pts/1      0:00 sudo ./start.sh
+    0   11604 0000000000000000 0000000000000000 0000000000000000 0000000000010002 S+   pts/1      0:00 sh ./start.sh
+    0   11608 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/1      0:00 /bin/bash ./logger-lb2.sh
+    0   11610 0000000000000000 fffffffe7ffbfeff 0000000000000000 0000000000000000 S+   pts/1      0:00 script -a -q -c ./logger-lb2.sh lab_report_2025-03-13_01-57-06.log
+    0   11611 0000000000000000 0000000000000002 0000000000000004 0000000000010000 Ss+  pts/2      0:00 /bin/bash ./logger-lb2.sh
+    0   12072 0000000000000000 0000000000010000 0000000000000000 0000000000010002 S+   pts/2      0:00 /bin/bash ./logger-lb2.sh
+    0   12073 0000000000000000 0000000000010000 0000000000000006 0000000000000000 S+   pts/2      0:00 ./lb2/3/3.1/3.1-father
+    0   12079 0000000000000000 0000000000000000 0000000000000000 0000000000000000 Z+   pts/2      0:00 [3.1-father] <defunct>
+    0   12080 0000000000000000 0000000000000000 0000000180000000 0000000000010002 S+   pts/2      0:00 sh -c ps -s | tee processes_after.txt
+    0   12081 0000000000000000 0000000000000000 0000000180000000 000000007391fef9 R+   pts/2      0:00 ps -s
+    0   12082 0000000000000000 0000000000000000 0000000180000000 0000000000000000 S+   pts/2      0:00 tee processes_after.txt
+execl son3 failed: No such file or directory
+Father: Sending SIGINT to son1 (PID: 12075)
+Father: Sending SIGINT to son2 (PID: 12079)
+  UID     PID          PENDING          BLOCKED          IGNORED           CAUGHT STAT TTY        TIME COMMAND
+    0   11602 0000000000000000 0000000000000000 0000000000301000 0000000008096a07 S+   pts/0      0:00 sudo ./start.sh
+    0   11603 0000000000000000 0000000000000000 0000000000301000 0000000000096a07 Ss   pts/1      0:00 sudo ./start.sh
+    0   11604 0000000000000000 0000000000000000 0000000000000000 0000000000010002 S+   pts/1      0:00 sh ./start.sh
+    0   11608 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/1      0:00 /bin/bash ./logger-lb2.sh
+    0   11610 0000000000000000 fffffffe7ffbfeff 0000000000000000 0000000000000000 S+   pts/1      0:00 script -a -q -c ./logger-lb2.sh lab_report_2025-03-13_01-57-06.log
+    0   11611 0000000000000000 0000000000000002 0000000000000004 0000000000010000 Ss+  pts/2      0:00 /bin/bash ./logger-lb2.sh
+    0   12072 0000000000000000 0000000000010000 0000000000000000 0000000000010002 S+   pts/2      0:00 /bin/bash ./logger-lb2.sh
+    0   12073 0000000000000000 0000000000010000 0000000000000006 0000000000000000 S+   pts/2      0:00 ./lb2/3/3.1/3.1-father
+    0   12083 0000000000000000 0000000000000000 0000000000000000 0000000000000000 Z+   pts/2      0:00 [3.1-father] <defunct>
+    0   12084 0000000000000000 0000000000000000 0000000180000000 0000000000010002 S+   pts/2      0:00 sh -c ps -s | tee processes_after.txt
+    0   12085 0000000000000000 0000000000000000 0000000180000000 000000007391fef9 R+   pts/2      0:00 ps -s
+    0   12086 0000000000000000 0000000000000000 0000000180000000 0000000000000000 S+   pts/2      0:00 tee processes_after.txt
+Father: Sending SIGINT to son1 (PID: 12075)
+Father: Sending SIGINT to son2 (PID: 12079)
+Father: Sending SIGINT to son3 (PID: 12083)
+Father: All children have exited.
+----------------------------------------
+[2025-03-13 01:57:24] Время выполнения задания 3.1: 3 секунд.
+
+
+[2025-03-13 01:57:24] ВЫПОЛНЕНИЕ ЗАДАНИЯ 3.2
+[2025-03-13 01:57:24] >>> root@ASPIRIN$ ./lb2/3/3.2/3.2-father <<<
+----------------------------------------
+
+Son parameters: pid=12096, ppid=12095
+
+Son parameters: pid=12098, ppid=12095
+
+Son parameters: pid=12099, ppid=12095
+
+Son parameters: pid=12097, ppid=12095
+
+Son parameters: pid=12100, ppid=12095
+Father parameters was: pid=12095 ppid=12094
+1) Child with pid = 12096 is finished with status 0
+2) Child with pid = 12097 is finished with status 256
+3) Child with pid = 12098 is finished with status 65280
+4) Child with pid = 12099 is finished with status 1280
+5) Child with pid = 12100 is finished with status 62976
+Proccess pid = 12096 was success.
+Proccess pid = 12097 was success.
+Proccess pid = 12098 was success.
+Proccess pid = 12099 was success.
+Proccess pid = 12100 was success.
+----------------------------------------
+[2025-03-13 01:57:24] Время выполнения задания 3.2: 0 секунд.
+
+
+[2025-03-13 01:57:24] ВЫПОЛНЕНИЕ ЗАДАНИЯ 4 (Скрипт)
+[2025-03-13 01:57:24] Запуск скрипта ./lb2/4/4.sh без аргументов.
+
+>>> СОСТОЯНИЕ out.txt ДО ВЫПОЛНЕНИЯ СКРИПТА<<<
+----------------------------------------
+Файл out.txt пуст.
+----------------------------------------
+4.sh >> ----------------------------------------
+4.sh >> Анализ нитей и ресурсов процесса ./4
+4.sh >> ----------------------------------------
+4.sh >> Найден процесс с PID: 12112
+4.sh >> ----------------------------------------
+4.sh >> 1. Информация о нитях процесса (ps -Lf):
+4.sh >> ----------------------------------------
+4.sh >> UID          PID    PPID     LWP  C NLWP STIME TTY          TIME CMD
+4.sh >> root       12112   12111   12112  0    7 01:57 pts/2    00:00:00 ./lb2/4/4
+4.sh >> root       12112   12111   12114  0    7 01:57 pts/2    00:00:00 ./lb2/4/4
+4.sh >> root       12112   12111   12115  0    7 01:57 pts/2    00:00:00 ./lb2/4/4
+4.sh >> root       12112   12111   12116  0    7 01:57 pts/2    00:00:00 ./lb2/4/4
+4.sh >> root       12112   12111   12117  0    7 01:57 pts/2    00:00:00 ./lb2/4/4
+4.sh >> root       12112   12111   12118  0    7 01:57 pts/2    00:00:00 ./lb2/4/4
+4.sh >> root       12112   12111   12119  0    7 01:57 pts/2    00:00:00 ./lb2/4/4
+4.sh >> 
+4.sh >> ----------------------------------------
+4.sh >> 2. Расширенная информация о нитях (TID, загрузка CPU, распределение по ядрам):
+4.sh >> ----------------------------------------
+4.sh >>     TID %CPU PSR
+4.sh >>   12112  0.3   2
+4.sh >>   12114  0.0   4
+4.sh >>   12115  0.0   4
+4.sh >>   12116  0.0   2
+4.sh >>   12117  0.0   2
+4.sh >>   12118  0.0   1
+4.sh >>   12119  0.0   0
+4.sh >> 
+4.sh >> ----------------------------------------
+4.sh >> 3. Наследуемые параметры процесса:
+4.sh >> ----------------------------------------
+4.sh >>     PID    PPID   UID   GID COMMAND
+4.sh >>   12112   12111     0     0 4
+4.sh >> 
+4.sh >> ----------------------------------------
+4.sh >> 4. Разделяемые ресурсы нитями (открытые файлы):
+4.sh >> ----------------------------------------
+4.sh >> COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF    NODE NAME
+4.sh >> 4       12112 root  cwd    DIR    8,1     4096  261719 /home/lotos/Documents/os
+4.sh >> 4       12112 root  rtd    DIR    8,1     4096       2 /
+4.sh >> 4       12112 root  txt    REG    8,1    17112  267598 /home/lotos/Documents/os/lb2/4/4
+4.sh >> 4       12112 root  mem    REG    8,1  1922136 1044499 /usr/lib/x86_64-linux-gnu/libc.so.6
+4.sh >> 4       12112 root  mem    REG    8,1   210904 1044495 /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+4.sh >> 4       12112 root    0r   CHR    1,3      0t0       4 /dev/null
+4.sh >> 4       12112 root    1w   REG    8,1     1044  267643 /home/lotos/Documents/os/program_out.log
+4.sh >> 4       12112 root    2w  FIFO   0,13      0t0   60325 pipe
+4.sh >> 
+4.sh >> ----------------------------------------
+4.sh >> 5. Карта памяти процесса (/proc/12112/maps):
+4.sh >> ----------------------------------------
+4.sh >> 5645c47d6000-5645c47d7000 r--p 00000000 08:01 267598                     /home/lotos/Documents/os/lb2/4/4
+4.sh >> 5645c47d7000-5645c47d8000 r-xp 00001000 08:01 267598                     /home/lotos/Documents/os/lb2/4/4
+4.sh >> 5645c47d8000-5645c47d9000 r--p 00002000 08:01 267598                     /home/lotos/Documents/os/lb2/4/4
+4.sh >> 5645c47d9000-5645c47da000 r--p 00002000 08:01 267598                     /home/lotos/Documents/os/lb2/4/4
+4.sh >> 5645c47da000-5645c47db000 rw-p 00003000 08:01 267598                     /home/lotos/Documents/os/lb2/4/4
+4.sh >> 5645ec459000-5645ec47a000 rw-p 00000000 00:00 0                          [heap]
+4.sh >> 7f0fc77cc000-7f0fc77cd000 ---p 00000000 00:00 0 
+4.sh >> 7f0fc77cd000-7f0fc7fcd000 rw-p 00000000 00:00 0 
+4.sh >> 7f0fc8000000-7f0fc8021000 rw-p 00000000 00:00 0 
+4.sh >> 7f0fc8021000-7f0fcc000000 ---p 00000000 00:00 0 
+4.sh >> 7f0fcfcca000-7f0fcffcd000 rw-p 00000000 00:00 0 
+4.sh >> 7f0fcffcd000-7f0fcffce000 ---p 00000000 00:00 0 
+4.sh >> 7f0fcffce000-7f0fd07ce000 rw-p 00000000 00:00 0 
+4.sh >> 7f0fd07ce000-7f0fd07cf000 ---p 00000000 00:00 0 
+4.sh >> 7f0fd07cf000-7f0fd0fd2000 rw-p 00000000 00:00 0 
+4.sh >> 7f0fd0fd2000-7f0fd0ff8000 r--p 00000000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+4.sh >> 7f0fd0ff8000-7f0fd114d000 r-xp 00026000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+4.sh >> 7f0fd114d000-7f0fd11a0000 r--p 0017b000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+4.sh >> 7f0fd11a0000-7f0fd11a4000 r--p 001ce000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+4.sh >> 7f0fd11a4000-7f0fd11a6000 rw-p 001d2000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+4.sh >> 7f0fd11a6000-7f0fd11b3000 rw-p 00000000 00:00 0 
+4.sh >> 7f0fd11c7000-7f0fd11c9000 rw-p 00000000 00:00 0 
+4.sh >> 7f0fd11c9000-7f0fd11ca000 r--p 00000000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+4.sh >> 7f0fd11ca000-7f0fd11ef000 r-xp 00001000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+4.sh >> 7f0fd11ef000-7f0fd11f9000 r--p 00026000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+4.sh >> 7f0fd11f9000-7f0fd11fb000 r--p 00030000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+4.sh >> 7f0fd11fb000-7f0fd11fd000 rw-p 00032000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+4.sh >> 7ffd0c062000-7ffd0c083000 rw-p 00000000 00:00 0                          [stack]
+4.sh >> 7ffd0c1a4000-7ffd0c1a8000 r--p 00000000 00:00 0                          [vvar]
+4.sh >> 7ffd0c1a8000-7ffd0c1aa000 r-xp 00000000 00:00 0                          [vdso]
+4.sh >> ----------------------------------------
+4.sh >> Удаление последнего найденного TID процесса
+4.sh >> Удаляем последний найденный TID: 12119
+4.sh >> Нить с TID 12119 успешно удалена. Вся программа завершена.
+4.sh >> ./lb2/4/4.sh: line 12: 12112 Killed                  ./lb2/4/4 > "$program_file"
+
+>>> СОСТОЯНИЕ out.txt ПОСЛЕ ВЫПОЛНЕНИЯ СКРИПТА<<<
+----------------------------------------
+===== Вывод программы 4 (файл: program_out.log) =====
+Pthread thread 1 (TID: 12114)
+Pthread thread 2 (TID: 12115)
+Pthread thread 3 (TID: 12116)
+Clone thread 4 (TID: 12117)
+Clone thread 5 (TID: 12118)
+Clone thread 6 (TID: 12119)
+Pthread thread 2 (TID: 12115)
+Pthread thread 3 (TID: 12116)
+Pthread thread 1 (TID: 12114)
+Clone thread 5 (TID: 12118)
+Clone thread 4 (TID: 12117)
+Clone thread 6 (TID: 12119)
+Pthread thread 2 (TID: 12115)
+Pthread thread 3 (TID: 12116)
+Clone thread 4 (TID: 12117)
+Pthread thread 1 (TID: 12114)
+Clone thread 5 (TID: 12118)
+Clone thread 6 (TID: 12119)
+Pthread thread 2 (TID: 12115)
+Pthread thread 3 (TID: 12116)
+Pthread thread 1 (TID: 12114)
+Clone thread 6 (TID: 12119)
+Clone thread 4 (TID: 12117)
+Clone thread 5 (TID: 12118)
+Pthread thread 3 (TID: 12116)
+Clone thread 6 (TID: 12119)
+Pthread thread 2 (TID: 12115)
+Clone thread 5 (TID: 12118)
+Pthread thread 1 (TID: 12114)
+Clone thread 4 (TID: 12117)
+Clone thread 6 (TID: 12119)
+Pthread thread 3 (TID: 12116)
+Pthread thread 2 (TID: 12115)
+Clone thread 5 (TID: 12118)
+Clone thread 4 (TID: 12117)
+Pthread thread 1 (TID: 12114)
+
+===== Лог скрипта (файл: script_output.log) =====
+----------------------------------------
+Анализ нитей и ресурсов процесса ./4
+----------------------------------------
+Найден процесс с PID: 12112
+----------------------------------------
+1. Информация о нитях процесса (ps -Lf):
+----------------------------------------
+UID          PID    PPID     LWP  C NLWP STIME TTY          TIME CMD
+root       12112   12111   12112  0    7 01:57 pts/2    00:00:00 ./lb2/4/4
+root       12112   12111   12114  0    7 01:57 pts/2    00:00:00 ./lb2/4/4
+root       12112   12111   12115  0    7 01:57 pts/2    00:00:00 ./lb2/4/4
+root       12112   12111   12116  0    7 01:57 pts/2    00:00:00 ./lb2/4/4
+root       12112   12111   12117  0    7 01:57 pts/2    00:00:00 ./lb2/4/4
+root       12112   12111   12118  0    7 01:57 pts/2    00:00:00 ./lb2/4/4
+root       12112   12111   12119  0    7 01:57 pts/2    00:00:00 ./lb2/4/4
+
+----------------------------------------
+2. Расширенная информация о нитях (TID, загрузка CPU, распределение по ядрам):
+----------------------------------------
+    TID %CPU PSR
+  12112  0.3   2
+  12114  0.0   4
+  12115  0.0   4
+  12116  0.0   2
+  12117  0.0   2
+  12118  0.0   1
+  12119  0.0   0
+
+----------------------------------------
+3. Наследуемые параметры процесса:
+----------------------------------------
+    PID    PPID   UID   GID COMMAND
+  12112   12111     0     0 4
+
+----------------------------------------
+4. Разделяемые ресурсы нитями (открытые файлы):
+----------------------------------------
+COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF    NODE NAME
+4       12112 root  cwd    DIR    8,1     4096  261719 /home/lotos/Documents/os
+4       12112 root  rtd    DIR    8,1     4096       2 /
+4       12112 root  txt    REG    8,1    17112  267598 /home/lotos/Documents/os/lb2/4/4
+4       12112 root  mem    REG    8,1  1922136 1044499 /usr/lib/x86_64-linux-gnu/libc.so.6
+4       12112 root  mem    REG    8,1   210904 1044495 /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+4       12112 root    0r   CHR    1,3      0t0       4 /dev/null
+4       12112 root    1w   REG    8,1     1044  267643 /home/lotos/Documents/os/program_out.log
+4       12112 root    2w  FIFO   0,13      0t0   60325 pipe
+
+----------------------------------------
+5. Карта памяти процесса (/proc/12112/maps):
+----------------------------------------
+5645c47d6000-5645c47d7000 r--p 00000000 08:01 267598                     /home/lotos/Documents/os/lb2/4/4
+5645c47d7000-5645c47d8000 r-xp 00001000 08:01 267598                     /home/lotos/Documents/os/lb2/4/4
+5645c47d8000-5645c47d9000 r--p 00002000 08:01 267598                     /home/lotos/Documents/os/lb2/4/4
+5645c47d9000-5645c47da000 r--p 00002000 08:01 267598                     /home/lotos/Documents/os/lb2/4/4
+5645c47da000-5645c47db000 rw-p 00003000 08:01 267598                     /home/lotos/Documents/os/lb2/4/4
+5645ec459000-5645ec47a000 rw-p 00000000 00:00 0                          [heap]
+7f0fc77cc000-7f0fc77cd000 ---p 00000000 00:00 0 
+7f0fc77cd000-7f0fc7fcd000 rw-p 00000000 00:00 0 
+7f0fc8000000-7f0fc8021000 rw-p 00000000 00:00 0 
+7f0fc8021000-7f0fcc000000 ---p 00000000 00:00 0 
+7f0fcfcca000-7f0fcffcd000 rw-p 00000000 00:00 0 
+7f0fcffcd000-7f0fcffce000 ---p 00000000 00:00 0 
+7f0fcffce000-7f0fd07ce000 rw-p 00000000 00:00 0 
+7f0fd07ce000-7f0fd07cf000 ---p 00000000 00:00 0 
+7f0fd07cf000-7f0fd0fd2000 rw-p 00000000 00:00 0 
+7f0fd0fd2000-7f0fd0ff8000 r--p 00000000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f0fd0ff8000-7f0fd114d000 r-xp 00026000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f0fd114d000-7f0fd11a0000 r--p 0017b000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f0fd11a0000-7f0fd11a4000 r--p 001ce000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f0fd11a4000-7f0fd11a6000 rw-p 001d2000 08:01 1044499                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7f0fd11a6000-7f0fd11b3000 rw-p 00000000 00:00 0 
+7f0fd11c7000-7f0fd11c9000 rw-p 00000000 00:00 0 
+7f0fd11c9000-7f0fd11ca000 r--p 00000000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f0fd11ca000-7f0fd11ef000 r-xp 00001000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f0fd11ef000-7f0fd11f9000 r--p 00026000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f0fd11f9000-7f0fd11fb000 r--p 00030000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f0fd11fb000-7f0fd11fd000 rw-p 00032000 08:01 1044495                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ffd0c062000-7ffd0c083000 rw-p 00000000 00:00 0                          [stack]
+7ffd0c1a4000-7ffd0c1a8000 r--p 00000000 00:00 0                          [vvar]
+7ffd0c1a8000-7ffd0c1aa000 r-xp 00000000 00:00 0                          [vdso]
+----------------------------------------
+Удаление последнего найденного TID процесса
+Удаляем последний найденный TID: 12119
+Нить с TID 12119 успешно удалена. Вся программа завершена.
+----------------------------------------
+[2025-03-13 01:57:30] Время выполнения задания 4: 6 секунд.
+
+
+[2025-03-13 01:57:30] ВЫПОЛНЕНИЕ ЗАДАНИЯ 5.1(table)
+[2025-03-13 01:57:30] >>> root@ASPIRIN$ ./lb2/5/5.1/5.1-table <<<
+----------------------------------------
+Process table:
+PID: 1 Nice: 0 | Policy: SCHED_OTHER
+PID: 2 Nice: 0 | Policy: SCHED_OTHER
+PID: 3 Nice: 0 | Policy: SCHED_OTHER
+PID: 4 Nice: 0 | Policy: SCHED_OTHER
+PID: 5 Nice: 0 | Policy: SCHED_OTHER
+PID: 6 Nice: 0 | Policy: SCHED_OTHER
+PID: 8 Nice: 0 | Policy: SCHED_OTHER
+PID: 10 Nice: 0 | Policy: SCHED_OTHER
+PID: 11 Nice: 0 | Policy: SCHED_OTHER
+PID: 12 Nice: 0 | Policy: SCHED_OTHER
+PID: 13 Nice: 0 | Policy: SCHED_OTHER
+PID: 14 Nice: 0 | Policy: SCHED_OTHER
+PID: 15 Nice: 0 | Policy: SCHED_OTHER
+PID: 16 Nice: 99 | Policy: SCHED_FIFO
+PID: 18 Nice: 0 | Policy: SCHED_OTHER
+PID: 19 Nice: 0 | Policy: SCHED_OTHER
+PID: 20 Nice: 99 | Policy: SCHED_FIFO
+PID: 21 Nice: 0 | Policy: SCHED_OTHER
+PID: 23 Nice: 0 | Policy: SCHED_OTHER
+PID: 24 Nice: 0 | Policy: SCHED_OTHER
+PID: 25 Nice: 99 | Policy: SCHED_FIFO
+PID: 26 Nice: 0 | Policy: SCHED_OTHER
+PID: 27 Nice: 0 | Policy: SCHED_OTHER
+PID: 28 Nice: 0 | Policy: SCHED_OTHER
+PID: 29 Nice: 0 | Policy: SCHED_OTHER
+PID: 30 Nice: 99 | Policy: SCHED_FIFO
+PID: 31 Nice: 0 | Policy: SCHED_OTHER
+PID: 33 Nice: 0 | Policy: SCHED_OTHER
+PID: 34 Nice: 0 | Policy: SCHED_OTHER
+PID: 35 Nice: 99 | Policy: SCHED_FIFO
+PID: 36 Nice: 0 | Policy: SCHED_OTHER
+PID: 38 Nice: 0 | Policy: SCHED_OTHER
+PID: 39 Nice: 0 | Policy: SCHED_OTHER
+PID: 40 Nice: 99 | Policy: SCHED_FIFO
+PID: 41 Nice: 0 | Policy: SCHED_OTHER
+PID: 43 Nice: 0 | Policy: SCHED_OTHER
+PID: 50 Nice: 0 | Policy: SCHED_OTHER
+PID: 51 Nice: 0 | Policy: SCHED_OTHER
+PID: 52 Nice: 0 | Policy: SCHED_OTHER
+PID: 53 Nice: 0 | Policy: SCHED_OTHER
+PID: 54 Nice: 0 | Policy: SCHED_OTHER
+PID: 55 Nice: 0 | Policy: SCHED_OTHER
+PID: 56 Nice: 0 | Policy: SCHED_OTHER
+PID: 57 Nice: 0 | Policy: SCHED_OTHER
+PID: 58 Nice: 0 | Policy: SCHED_OTHER
+PID: 59 Nice: 0 | Policy: SCHED_OTHER
+PID: 60 Nice: 0 | Policy: SCHED_OTHER
+PID: 61 Nice: 0 | Policy: SCHED_OTHER
+PID: 62 Nice: 0 | Policy: SCHED_OTHER
+PID: 63 Nice: 0 | Policy: SCHED_OTHER
+PID: 64 Nice: 0 | Policy: SCHED_OTHER
+PID: 65 Nice: 0 | Policy: SCHED_OTHER
+PID: 66 Nice: 0 | Policy: SCHED_OTHER
+PID: 67 Nice: 0 | Policy: SCHED_OTHER
+PID: 73 Nice: 0 | Policy: SCHED_OTHER
+PID: 75 Nice: 0 | Policy: SCHED_OTHER
+PID: 77 Nice: 0 | Policy: SCHED_OTHER
+PID: 78 Nice: 0 | Policy: SCHED_OTHER
+PID: 79 Nice: 0 | Policy: SCHED_OTHER
+PID: 80 Nice: 0 | Policy: SCHED_OTHER
+PID: 81 Nice: 0 | Policy: SCHED_OTHER
+PID: 86 Nice: 0 | Policy: SCHED_OTHER
+PID: 91 Nice: 0 | Policy: SCHED_OTHER
+PID: 92 Nice: 0 | Policy: SCHED_OTHER
+PID: 104 Nice: 0 | Policy: SCHED_OTHER
+PID: 143 Nice: 0 | Policy: SCHED_OTHER
+PID: 145 Nice: 0 | Policy: SCHED_OTHER
+PID: 146 Nice: 0 | Policy: SCHED_OTHER
+PID: 148 Nice: 0 | Policy: SCHED_OTHER
+PID: 163 Nice: 0 | Policy: SCHED_OTHER
+PID: 166 Nice: 0 | Policy: SCHED_OTHER
+PID: 167 Nice: 0 | Policy: SCHED_OTHER
+PID: 170 Nice: 0 | Policy: SCHED_OTHER
+PID: 171 Nice: 0 | Policy: SCHED_OTHER
+PID: 172 Nice: 0 | Policy: SCHED_OTHER
+PID: 173 Nice: 0 | Policy: SCHED_OTHER
+PID: 174 Nice: 50 | Policy: SCHED_FIFO
+PID: 186 Nice: 0 | Policy: SCHED_OTHER
+PID: 223 Nice: 0 | Policy: SCHED_OTHER
+PID: 224 Nice: 0 | Policy: SCHED_OTHER
+PID: 266 Nice: 0 | Policy: SCHED_OTHER
+PID: 301 Nice: 0 | Policy: SCHED_OTHER
+PID: 437 Nice: 0 | Policy: SCHED_OTHER
+PID: 438 Nice: 0 | Policy: SCHED_OTHER
+PID: 563 Nice: 0 | Policy: SCHED_OTHER
+PID: 566 Nice: 0 | Policy: SCHED_OTHER
+PID: 568 Nice: 0 | Policy: SCHED_OTHER
+PID: 569 Nice: 0 | Policy: SCHED_OTHER
+PID: 570 Nice: 0 | Policy: SCHED_OTHER
+PID: 572 Nice: 1 | Policy: SCHED_FIFO
+PID: 573 Nice: 0 | Policy: SCHED_OTHER
+PID: 574 Nice: 0 | Policy: SCHED_OTHER
+PID: 575 Nice: 0 | Policy: SCHED_OTHER
+PID: 576 Nice: 0 | Policy: SCHED_OTHER
+PID: 577 Nice: 0 | Policy: SCHED_OTHER
+PID: 594 Nice: 0 | Policy: SCHED_OTHER
+PID: 600 Nice: 0 | Policy: SCHED_OTHER
+PID: 607 Nice: 1 | Policy: SCHED_FIFO
+PID: 617 Nice: 0 | Policy: SCHED_OTHER
+PID: 659 Nice: 0 | Policy: SCHED_OTHER
+PID: 747 Nice: 0 | Policy: SCHED_OTHER
+PID: 762 Nice: 0 | Policy: SCHED_OTHER
+PID: 784 Nice: 0 | Policy: SCHED_OTHER
+PID: 803 Nice: 0 | Policy: SCHED_OTHER
+PID: 827 Nice: 0 | Policy: SCHED_OTHER
+PID: 834 Nice: 0 | Policy: SCHED_OTHER
+PID: 872 Nice: 0 | Policy: SCHED_OTHER
+PID: 975 Nice: 0 | Policy: SCHED_OTHER
+PID: 1024 Nice: 0 | Policy: SCHED_OTHER
+PID: 1027 Nice: 0 | Policy: SCHED_OTHER
+PID: 1036 Nice: 0 | Policy: SCHED_OTHER
+PID: 1067 Nice: 0 | Policy: SCHED_OTHER
+PID: 1085 Nice: 0 | Policy: SCHED_OTHER
+PID: 1407 Nice: 0 | Policy: SCHED_OTHER
+PID: 1415 Nice: 0 | Policy: SCHED_OTHER
+PID: 1426 Nice: 0 | Policy: SCHED_OTHER
+PID: 1679 Nice: 0 | Policy: SCHED_OTHER
+PID: 1693 Nice: 0 | Policy: SCHED_OTHER
+PID: 1697 Nice: 0 | Policy: SCHED_OTHER
+PID: 1713 Nice: 0 | Policy: UNKNOWN
+PID: 1717 Nice: 0 | Policy: UNKNOWN
+PID: 1719 Nice: 0 | Policy: UNKNOWN
+PID: 1720 Nice: 0 | Policy: SCHED_OTHER
+PID: 1722 Nice: 0 | Policy: SCHED_OTHER
+PID: 1732 Nice: 0 | Policy: SCHED_OTHER
+PID: 1740 Nice: 0 | Policy: SCHED_OTHER
+PID: 1759 Nice: 0 | Policy: UNKNOWN
+PID: 1766 Nice: 0 | Policy: SCHED_OTHER
+PID: 1773 Nice: 0 | Policy: SCHED_OTHER
+PID: 1831 Nice: 0 | Policy: SCHED_OTHER
+PID: 1836 Nice: 0 | Policy: SCHED_OTHER
+PID: 1838 Nice: 0 | Policy: SCHED_OTHER
+PID: 1839 Nice: 0 | Policy: SCHED_OTHER
+PID: 1852 Nice: 0 | Policy: SCHED_OTHER
+PID: 1853 Nice: 0 | Policy: SCHED_OTHER
+PID: 1860 Nice: 0 | Policy: SCHED_OTHER
+PID: 1864 Nice: 0 | Policy: SCHED_OTHER
+PID: 1868 Nice: 0 | Policy: SCHED_OTHER
+PID: 1877 Nice: 0 | Policy: SCHED_OTHER
+PID: 1891 Nice: 0 | Policy: SCHED_OTHER
+PID: 1895 Nice: 0 | Policy: SCHED_OTHER
+PID: 1896 Nice: 0 | Policy: SCHED_OTHER
+PID: 1905 Nice: 0 | Policy: SCHED_OTHER
+PID: 1959 Nice: 0 | Policy: SCHED_OTHER
+PID: 1961 Nice: 0 | Policy: SCHED_OTHER
+PID: 1971 Nice: 0 | Policy: SCHED_OTHER
+PID: 1986 Nice: 0 | Policy: SCHED_OTHER
+PID: 1991 Nice: 0 | Policy: SCHED_OTHER
+PID: 1992 Nice: 0 | Policy: SCHED_OTHER
+PID: 2008 Nice: 0 | Policy: SCHED_OTHER
+PID: 2009 Nice: 0 | Policy: SCHED_OTHER
+PID: 2012 Nice: 0 | Policy: SCHED_OTHER
+PID: 2015 Nice: 0 | Policy: SCHED_OTHER
+PID: 2016 Nice: 0 | Policy: SCHED_OTHER
+PID: 2018 Nice: 0 | Policy: SCHED_OTHER
+PID: 2020 Nice: 0 | Policy: SCHED_OTHER
+PID: 2022 Nice: 0 | Policy: SCHED_OTHER
+PID: 2026 Nice: 0 | Policy: SCHED_OTHER
+PID: 2033 Nice: 0 | Policy: SCHED_OTHER
+PID: 2034 Nice: 0 | Policy: SCHED_OTHER
+PID: 2035 Nice: 0 | Policy: SCHED_OTHER
+PID: 2037 Nice: 0 | Policy: SCHED_OTHER
+PID: 2043 Nice: 0 | Policy: SCHED_OTHER
+PID: 2048 Nice: 0 | Policy: SCHED_OTHER
+PID: 2063 Nice: 0 | Policy: SCHED_OTHER
+PID: 2065 Nice: 0 | Policy: SCHED_OTHER
+PID: 2069 Nice: 0 | Policy: SCHED_OTHER
+PID: 2086 Nice: 0 | Policy: SCHED_OTHER
+PID: 2100 Nice: 0 | Policy: SCHED_OTHER
+PID: 2106 Nice: 0 | Policy: SCHED_OTHER
+PID: 2171 Nice: 0 | Policy: SCHED_OTHER
+PID: 2173 Nice: 0 | Policy: SCHED_OTHER
+PID: 2176 Nice: 0 | Policy: SCHED_OTHER
+PID: 2179 Nice: 0 | Policy: SCHED_OTHER
+PID: 2183 Nice: 0 | Policy: SCHED_OTHER
+PID: 2227 Nice: 0 | Policy: SCHED_OTHER
+PID: 2235 Nice: 0 | Policy: SCHED_OTHER
+PID: 2255 Nice: 0 | Policy: SCHED_OTHER
+PID: 2262 Nice: 0 | Policy: SCHED_OTHER
+PID: 2270 Nice: 0 | Policy: SCHED_OTHER
+PID: 2281 Nice: 0 | Policy: SCHED_OTHER
+PID: 2295 Nice: 0 | Policy: SCHED_OTHER
+PID: 2317 Nice: 0 | Policy: SCHED_OTHER
+PID: 2328 Nice: 0 | Policy: SCHED_OTHER
+PID: 2330 Nice: 0 | Policy: SCHED_OTHER
+PID: 2341 Nice: 0 | Policy: SCHED_OTHER
+PID: 2343 Nice: 0 | Policy: SCHED_OTHER
+PID: 2365 Nice: 0 | Policy: SCHED_OTHER
+PID: 2366 Nice: 0 | Policy: SCHED_OTHER
+PID: 2374 Nice: 0 | Policy: SCHED_OTHER
+PID: 2406 Nice: 0 | Policy: SCHED_OTHER
+PID: 2432 Nice: 0 | Policy: SCHED_OTHER
+PID: 2672 Nice: 0 | Policy: SCHED_OTHER
+PID: 2749 Nice: 0 | Policy: SCHED_OTHER
+PID: 2752 Nice: 0 | Policy: SCHED_OTHER
+PID: 2753 Nice: 0 | Policy: SCHED_OTHER
+PID: 2755 Nice: 0 | Policy: SCHED_OTHER
+PID: 2774 Nice: 0 | Policy: SCHED_OTHER
+PID: 2790 Nice: 0 | Policy: SCHED_OTHER
+PID: 2794 Nice: 0 | Policy: SCHED_OTHER
+PID: 2841 Nice: 0 | Policy: SCHED_OTHER
+PID: 3156 Nice: 0 | Policy: SCHED_OTHER
+PID: 3174 Nice: 0 | Policy: SCHED_OTHER
+PID: 3184 Nice: 0 | Policy: SCHED_OTHER
+PID: 3251 Nice: 0 | Policy: SCHED_OTHER
+PID: 3361 Nice: 0 | Policy: SCHED_OTHER
+PID: 3378 Nice: 0 | Policy: SCHED_OTHER
+PID: 3379 Nice: 0 | Policy: SCHED_OTHER
+PID: 3429 Nice: 0 | Policy: SCHED_OTHER
+PID: 3476 Nice: 0 | Policy: SCHED_OTHER
+PID: 3492 Nice: 0 | Policy: SCHED_OTHER
+PID: 3649 Nice: 0 | Policy: SCHED_OTHER
+PID: 4841 Nice: 0 | Policy: SCHED_OTHER
+PID: 5997 Nice: 0 | Policy: SCHED_OTHER
+PID: 6906 Nice: 0 | Policy: SCHED_OTHER
+PID: 7732 Nice: 0 | Policy: SCHED_OTHER
+PID: 8159 Nice: 0 | Policy: SCHED_OTHER
+PID: 10153 Nice: 0 | Policy: SCHED_OTHER
+PID: 10170 Nice: 0 | Policy: SCHED_OTHER
+PID: 10184 Nice: 0 | Policy: SCHED_OTHER
+PID: 10202 Nice: 0 | Policy: SCHED_OTHER
+PID: 10532 Nice: 0 | Policy: SCHED_OTHER
+PID: 10883 Nice: 0 | Policy: SCHED_OTHER
+PID: 11593 Nice: 0 | Policy: SCHED_OTHER
+PID: 11602 Nice: 0 | Policy: SCHED_OTHER
+PID: 11603 Nice: 0 | Policy: SCHED_OTHER
+PID: 11604 Nice: 0 | Policy: SCHED_OTHER
+PID: 11608 Nice: 0 | Policy: SCHED_OTHER
+PID: 11610 Nice: 0 | Policy: SCHED_OTHER
+PID: 11611 Nice: 0 | Policy: SCHED_OTHER
+PID: 12203 Nice: 0 | Policy: SCHED_OTHER
+PID: 12204 Nice: 0 | Policy: SCHED_OTHER
+
+Main process:
+PID: 12204 Nice: 0 | Policy: SCHED_OTHER
+
+Launching processes...
+Launched process ls with PID: 12205
+cleaner.sh
+compiller.sh
+father_processes.log
+file.txt
+lab_report_2025-03-13_01-57-06.log
+lb1
+lb2
+logger-lb1.sh
+logger-lb2.sh
+nohup.out
+out.txt
+processes_after.txt
+program_out.log
+script_output.log
+son_processes.log
+start.sh
+----------------------------------------
+[2025-03-13 01:57:30] Время выполнения задания 5.1(table): 0 секунд.
+
+
+[2025-03-13 01:57:30] ВЫПОЛНЕНИЕ ЗАДАНИЯ 5.1 (Скрипт)
+[2025-03-13 01:57:30] Запуск скрипта ./lb2/5/5.1/5.1.sh без аргументов.
+5.1.sh >> Запуск теста: Одинаковые значения nice
+5.1.sh >> Результаты теста: Одинаковые значения nice
+5.1.sh >> Процесс lb2/5/5.1/5.1-prog1 выполнился 269599 раз (nice=0) - 28.46%
+5.1.sh >> Процесс lb2/5/5.1/5.1-prog2 выполнился 275224 раз (nice=0) - 29.05%
+5.1.sh >> Процесс lb2/5/5.1/5.1-prog3 выполнился 196512 раз (nice=0) - 20.74%
+5.1.sh >> Процесс lb2/5/5.1/5.1-prog4 выполнился 205833 раз (nice=0) - 21.73%
+5.1.sh >> ----------------------------
+5.1.sh >> Запуск теста: Разные значения nice
+5.1.sh >> Результаты теста: Разные значения nice
+5.1.sh >> Процесс lb2/5/5.1/5.1-prog1 выполнился 454804 раз (nice=-15) - 75.42%
+5.1.sh >> Процесс lb2/5/5.1/5.1-prog2 выполнился 129355 раз (nice=-10) - 21.45%
+5.1.sh >> Процесс lb2/5/5.1/5.1-prog3 выполнился 16620 раз (nice=0) - 2.75%
+5.1.sh >> Процесс lb2/5/5.1/5.1-prog4 выполнился 2172 раз (nice=10) - 0.36%
+5.1.sh >> ----------------------------
+[2025-03-13 01:57:40] Время выполнения задания 5.1: 10 секунд.
+
+
+[2025-03-13 01:57:40] ВЫПОЛНЕНИЕ ЗАДАНИЯ 5.2
+[2025-03-13 01:57:40] >>> root@ASPIRIN$ ./lb2/5/5.2/5.2 <<<
+----------------------------------------
+=== Сравнение и изменение приоритетов системного и пользовательского процессов ===
+
+[Системный процесс]
+Системный процесс (systemd/init) (PID: 10): Текущий приоритет (значение nice): 10
+
+Пытаемся изменить приоритет системного процесса (PID: 10)...
+Приоритет системного процесса изменен.
+Системный процесс после попытки изменения (PID: 10): Текущий приоритет (значение nice): 10
+
+[Пользовательский процесс]
+Родительский процесс (пользовательский) (PID: 12325): Текущий приоритет (значение nice): 0
+
+[Дочерний процесс]
+Дочерний процесс до изменения nice (PID: 12326): Текущий приоритет (значение nice): 0
+
+Пытаемся установить значение nice на -10...
+Дочерний процесс после изменения nice (PID: 12326): Текущий приоритет (значение nice): -10
+
+Пытаемся установить значение nice на 10...
+Дочерний процесс после изменения nice (PID: 12326): Текущий приоритет (значение nice): 0
+=== Сравнение и изменение приоритетов системного и пользовательского процессов ===
+
+[Системный процесс]
+Системный процесс (systemd/init) (PID: 10): Текущий приоритет (значение nice): 10
+
+Пытаемся изменить приоритет системного процесса (PID: 10)...
+Приоритет системного процесса изменен.
+Системный процесс после попытки изменения (PID: 10): Текущий приоритет (значение nice): 10
+
+[Пользовательский процесс]
+Родительский процесс (пользовательский) (PID: 12325): Текущий приоритет (значение nice): 0
+
+[Родительский процесс]
+Родительский процесс до изменения приоритета (PID: 12325): Текущий приоритет (значение nice): 0
+
+Пытаемся установить приоритет на -10...
+Родительский процесс после изменения приоритета (PID: 12325): Текущий приоритет (значение nice): -10
+
+Пытаемся установить приоритет на 10...
+Родительский процесс после изменения приоритета (PID: 12325): Текущий приоритет (значение nice): 10
+
+=== Завершение программы ===
+----------------------------------------
+[2025-03-13 01:57:40] Время выполнения задания 5.2: 0 секунд.
+
+
+[2025-03-13 01:57:40] ВЫПОЛНЕНИЕ ЗАДАНИЯ 5.3.1
+[2025-03-13 01:57:40] >>> root@ASPIRIN$ sudo taskset -c 0 ./lb2/5/5.3/5.3.1 <<<
+----------------------------------------
+Main    | PID: 12337 | TID: 12337 | Priority: 50  | Policy: SCHED_FIFO  
+Main    | PID: 12337 | TID: 12337 | Priority: 50  | Policy: SCHED_FIFO  
+Main    | PID: 12337 | TID: 12337 | Priority: 50  | Policy: SCHED_FIFO  
+Main    | PID: 12337 | TID: 12337 | Priority: 50  | Policy: SCHED_FIFO  
+Main    | PID: 12337 | TID: 12337 | Priority: 50  | Policy: SCHED_FIFO  
+Thread  | PID: 12337 | TID: 12338 | Priority: 50  | Policy: SCHED_FIFO  
+Thread  | PID: 12337 | TID: 12338 | Priority: 50  | Policy: SCHED_FIFO  
+Thread  | PID: 12337 | TID: 12338 | Priority: 50  | Policy: SCHED_FIFO  
+Thread  | PID: 12337 | TID: 12338 | Priority: 50  | Policy: SCHED_FIFO  
+Thread  | PID: 12337 | TID: 12338 | Priority: 50  | Policy: SCHED_FIFO  
+Thread  | PID: 12337 | TID: 12339 | Priority: 50  | Policy: SCHED_FIFO  
+Thread  | PID: 12337 | TID: 12339 | Priority: 50  | Policy: SCHED_FIFO  
+Thread  | PID: 12337 | TID: 12339 | Priority: 50  | Policy: SCHED_FIFO  
+Thread  | PID: 12337 | TID: 12339 | Priority: 50  | Policy: SCHED_FIFO  
+Thread  | PID: 12337 | TID: 12339 | Priority: 50  | Policy: SCHED_FIFO  
+----------------------------------------
+[2025-03-13 01:57:41] Время выполнения задания 5.3.1: 1 секунд.
+
+
+[2025-03-13 01:57:41] ВЫПОЛНЕНИЕ ЗАДАНИЯ 5.3.2
+[2025-03-13 01:57:41] >>> root@ASPIRIN$ sudo taskset -c 0 ./lb2/5/5.3/5.3.2 <<<
+----------------------------------------
+Policy		Min Priority	Max Priority
+---------------------------------------------
+SCHED_FIFO  	    1		   99
+SCHED_RR    	    1		   99
+SCHED_OTHER 	    0		    0
+----------------------------------------
+[2025-03-13 01:57:41] Время выполнения задания 5.3.2: 0 секунд.
+
+
+[2025-03-13 01:57:41] ВЫПОЛНЕНИЕ ЗАДАНИЯ 5.3.3 (Скрипт)
+[2025-03-13 01:57:41] Запуск скрипта ./lb2/5/5.3/5.3.3/5.3.3.sh без аргументов.
+5.3.3.sh >> Запуск тестов с одинаковыми приоритетами (30)...
+5.3.3.sh >> Запуск lb2/5/5.3/5.3.3/5.3.3-prog1 с приоритетом 30
+5.3.3.sh >> Запуск lb2/5/5.3/5.3.3/5.3.3-prog2 с приоритетом 30
+5.3.3.sh >> Запуск lb2/5/5.3/5.3.3/5.3.3-prog3 с приоритетом 30
+5.3.3.sh >> Процесс: process1
+5.3.3.sh >> PID: 12365
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process1
+5.3.3.sh >> PID: 12365
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process1
+5.3.3.sh >> PID: 12365
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process1
+5.3.3.sh >> PID: 12365
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process1
+5.3.3.sh >> PID: 12365
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process3
+5.3.3.sh >> PID: 12368
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process3
+5.3.3.sh >> PID: 12368
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process3
+5.3.3.sh >> PID: 12368
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process3
+5.3.3.sh >> PID: 12368
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process3
+5.3.3.sh >> PID: 12368
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process2
+5.3.3.sh >> PID: 12366
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process2
+5.3.3.sh >> PID: 12366
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process2
+5.3.3.sh >> PID: 12366
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process2
+5.3.3.sh >> PID: 12366
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process2
+5.3.3.sh >> PID: 12366
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 30
+5.3.3.sh >> ------------------------
+5.3.3.sh >> ---------------------------------------------
+5.3.3.sh >> Запуск тестов с разными приоритетами...
+5.3.3.sh >> Запуск lb2/5/5.3/5.3.3/5.3.3-prog1 с приоритетом 20
+5.3.3.sh >> Запуск lb2/5/5.3/5.3.3/5.3.3-prog2 с приоритетом 99
+5.3.3.sh >> Запуск lb2/5/5.3/5.3.3/5.3.3-prog3 с приоритетом 40
+5.3.3.sh >> Процесс: process2
+5.3.3.sh >> PID: 12375
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 99
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process2
+5.3.3.sh >> PID: 12375
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 99
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process2
+5.3.3.sh >> PID: 12375
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 99
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process2
+5.3.3.sh >> PID: 12375
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 99
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process2
+5.3.3.sh >> PID: 12375
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 99
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process3
+5.3.3.sh >> PID: 12377
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 40
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process3
+5.3.3.sh >> PID: 12377
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 40
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process3
+5.3.3.sh >> PID: 12377
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 40
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process3
+5.3.3.sh >> PID: 12377
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 40
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process3
+5.3.3.sh >> PID: 12377
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 40
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process1
+5.3.3.sh >> PID: 12376
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 20
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process1
+5.3.3.sh >> PID: 12376
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 20
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process1
+5.3.3.sh >> PID: 12376
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 20
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process1
+5.3.3.sh >> PID: 12376
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 20
+5.3.3.sh >> ------------------------
+5.3.3.sh >> Процесс: process1
+5.3.3.sh >> PID: 12376
+5.3.3.sh >> Политика планирования: SCHED_FIFO
+5.3.3.sh >> Приоритет: 20
+5.3.3.sh >> ------------------------
+[2025-03-13 01:58:19] Время выполнения задания 5.3.3: 38 секунд.
+
+
+[2025-03-13 01:58:19] ВЫПОЛНЕНИЕ ЗАДАНИЯ 5.4
+[2025-03-13 01:58:19] >>> root@ASPIRIN$ sudo ./lb2/5/5.4/5.4-quant <<<
+----------------------------------------
+FATHER: pid=12391, ppid=12390
+FATHER: Round-robin quantum: 0.100000000 seconds
+SON: Round-robin quantum: 0.100000000 seconds
+FATHER: pid=12391, ppid=12390
+FATHER: Round-robin quantum: 0.100000000 seconds
+----------------------------------------
+[2025-03-13 01:58:19] >>> root@ASPIRIN$ sudo taskset -c 0 ./lb2/5/5.4/5.4 <<<
+----------------------------------------
+Main Process: PID: 12399 | TID: 12399 | Priority: 40 | Policy: SCHED_RR
+Main Process: PID: 12399 | TID: 12399 | Priority: 40 | Policy: SCHED_RR
+Main Process: PID: 12399 | TID: 12399 | Priority: 40 | Policy: SCHED_RR
+Main Process: PID: 12399 | TID: 12399 | Priority: 40 | Policy: SCHED_RR
+Main Process: PID: 12399 | TID: 12399 | Priority: 40 | Policy: SCHED_RR
+Thread: PID: 12399 | TID: 12402 | Priority: 20 | Policy: SCHED_RR
+Thread: PID: 12399 | TID: 12402 | Priority: 20 | Policy: SCHED_RR
+Thread (PID: 12399) вызывает sched_yield()
+Thread: PID: 12399 | TID: 12401 | Priority: 20 | Policy: SCHED_RR
+Thread: PID: 12399 | TID: 12401 | Priority: 20 | Policy: SCHED_RR
+Thread (PID: 12399) вызывает sched_yield()
+Thread: PID: 12399 | TID: 12400 | Priority: 20 | Policy: SCHED_RR
+Thread: PID: 12399 | TID: 12400 | Priority: 20 | Policy: SCHED_RR
+Thread (PID: 12399) вызывает sched_yield()
+Thread: PID: 12399 | TID: 12402 | Priority: 20 | Policy: SCHED_RR
+Thread: PID: 12399 | TID: 12402 | Priority: 20 | Policy: SCHED_RR
+Thread: PID: 12399 | TID: 12402 | Priority: 20 | Policy: SCHED_RR
+Thread: PID: 12399 | TID: 12401 | Priority: 20 | Policy: SCHED_RR
+Thread: PID: 12399 | TID: 12401 | Priority: 20 | Policy: SCHED_RR
+Thread: PID: 12399 | TID: 12401 | Priority: 20 | Policy: SCHED_RR
+Thread: PID: 12399 | TID: 12400 | Priority: 20 | Policy: SCHED_RR
+Thread: PID: 12399 | TID: 12400 | Priority: 20 | Policy: SCHED_RR
+Thread: PID: 12399 | TID: 12400 | Priority: 20 | Policy: SCHED_RR
+----------------------------------------
+[2025-03-13 01:58:19] Время выполнения задания 5.4: 0 секунд.
+
+
+[2025-03-13 01:58:19] ВЫПОЛНЕНИЕ ЗАДАНИЯ 5.5
+[2025-03-13 01:58:19] >>> root@ASPIRIN$ sudo taskset -c 0 ./lb2/5/5.5/5.5 <<<
+----------------------------------------
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Child (SCHED_FIFO) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+Parent (SCHED_RR) is running
+----------------------------------------
+[2025-03-13 01:58:19] Время выполнения задания 5.5: 0 секунд.
+
+
+[2025-03-13 01:58:19] ВЫПОЛНЕНИЕ ЗАДАНИЯ 5.6
+[2025-03-13 01:58:19] >>> root@ASPIRIN$ sudo taskset -c 0 ./lb2/5/5.6/5.6 <<<
+----------------------------------------
+Тестирование потоков в одном процессе:
+Основной поток (PID: 12425) начал выполнение.
+Основной поток: Создан поток 1 с ID 140076382168768
+Основной поток: Создан поток 2 с ID 140076373776064
+Основной поток: Создан поток 3 с ID 140076365383360
+Поток 1 (PID: 12425, TID: 140076382168768) начал выполнение:
+  - Политика: SCHED_FIFO
+  - Приоритет: 99
+  - Выполняется на CPU: 0
+Поток 1: Работает (1/5)
+Основной поток: Политика потока 1 изменена на SCHED_FIFO с приоритетом 99
+Поток 2 (PID: 12425, TID: 140076373776064) начал выполнение:
+  - Политика: SCHED_RR
+  - Приоритет: 50
+  - Выполняется на CPU: 0
+Поток 2: Работает (1/5)
+Основной поток: Политика потока 2 изменена на SCHED_RR с приоритетом 50
+Основной поток: Поток 3 остается с политикой по умолчанию (SCHED_OTHER)
+Поток 3 (PID: 12425, TID: 140076365383360) начал выполнение:
+  - Политика: SCHED_OTHER
+  - Приоритет: 0
+  - Выполняется на CPU: 0
+Поток 3: Работает (1/5)
+Поток 1: Работает (2/5)
+Поток 2: Работает (2/5)
+Поток 3: Работает (2/5)
+Поток 1: Работает (3/5)
+Поток 2: Работает (3/5)
+Поток 3: Работает (3/5)
+Поток 1: Работает (4/5)
+Поток 2: Работает (4/5)
+Поток 3: Работает (4/5)
+Поток 1: Работает (5/5)
+Поток 2: Работает (5/5)
+Поток 3: Работает (5/5)
+Поток 1 завершил выполнение.
+Поток 2 завершил выполнение.
+Основной поток: Поток 1 завершен.
+Основной поток: Поток 2 завершен.
+Поток 3 завершил выполнение.
+Основной поток: Поток 3 завершен.
+Основной поток: Все потоки завершили выполнение.
+
+Тестирование независимых процессов:
+Создание независимых процессов...
+Процесс 1 (PID: 12429) начал выполнение:
+  - Политика: SCHED_FIFO
+  - Приоритет: 99
+  - Выполняется на CPU: 0
+Процесс 1: Работает (1/5)
+Процесс 1: Работает (2/5)
+Процесс 1: Работает (3/5)
+Процесс 1: Работает (4/5)
+Процесс 1: Работает (5/5)
+Процесс 1 завершил выполнение.
+Тестирование потоков в одном процессе:
+Основной поток (PID: 12425) начал выполнение.
+Основной поток: Создан поток 1 с ID 140076382168768
+Основной поток: Создан поток 2 с ID 140076373776064
+Основной поток: Создан поток 3 с ID 140076365383360
+Поток 1 (PID: 12425, TID: 140076382168768) начал выполнение:
+  - Политика: SCHED_FIFO
+  - Приоритет: 99
+  - Выполняется на CPU: 0
+Поток 1: Работает (1/5)
+Основной поток: Политика потока 1 изменена на SCHED_FIFO с приоритетом 99
+Поток 2 (PID: 12425, TID: 140076373776064) начал выполнение:
+  - Политика: SCHED_RR
+  - Приоритет: 50
+  - Выполняется на CPU: 0
+Поток 2: Работает (1/5)
+Основной поток: Политика потока 2 изменена на SCHED_RR с приоритетом 50
+Основной поток: Поток 3 остается с политикой по умолчанию (SCHED_OTHER)
+Поток 3 (PID: 12425, TID: 140076365383360) начал выполнение:
+  - Политика: SCHED_OTHER
+  - Приоритет: 0
+  - Выполняется на CPU: 0
+Поток 3: Работает (1/5)
+Поток 1: Работает (2/5)
+Поток 2: Работает (2/5)
+Поток 3: Работает (2/5)
+Поток 1: Работает (3/5)
+Поток 2: Работает (3/5)
+Поток 3: Работает (3/5)
+Поток 1: Работает (4/5)
+Поток 2: Работает (4/5)
+Поток 3: Работает (4/5)
+Поток 1: Работает (5/5)
+Поток 2: Работает (5/5)
+Поток 3: Работает (5/5)
+Поток 1 завершил выполнение.
+Поток 2 завершил выполнение.
+Основной поток: Поток 1 завершен.
+Основной поток: Поток 2 завершен.
+Поток 3 завершил выполнение.
+Основной поток: Поток 3 завершен.
+Основной поток: Все потоки завершили выполнение.
+
+Тестирование независимых процессов:
+Создание независимых процессов...
+Процесс 2 (PID: 12430) начал выполнение:
+  - Политика: SCHED_RR
+  - Приоритет: 50
+  - Выполняется на CPU: 0
+Процесс 2: Работает (1/5)
+Процесс 2: Работает (2/5)
+Процесс 2: Работает (3/5)
+Процесс 2: Работает (4/5)
+Процесс 2: Работает (5/5)
+Процесс 2 завершил выполнение.
+Тестирование потоков в одном процессе:
+Основной поток (PID: 12425) начал выполнение.
+Основной поток: Создан поток 1 с ID 140076382168768
+Основной поток: Создан поток 2 с ID 140076373776064
+Основной поток: Создан поток 3 с ID 140076365383360
+Поток 1 (PID: 12425, TID: 140076382168768) начал выполнение:
+  - Политика: SCHED_FIFO
+  - Приоритет: 99
+  - Выполняется на CPU: 0
+Поток 1: Работает (1/5)
+Основной поток: Политика потока 1 изменена на SCHED_FIFO с приоритетом 99
+Поток 2 (PID: 12425, TID: 140076373776064) начал выполнение:
+  - Политика: SCHED_RR
+  - Приоритет: 50
+  - Выполняется на CPU: 0
+Поток 2: Работает (1/5)
+Основной поток: Политика потока 2 изменена на SCHED_RR с приоритетом 50
+Основной поток: Поток 3 остается с политикой по умолчанию (SCHED_OTHER)
+Поток 3 (PID: 12425, TID: 140076365383360) начал выполнение:
+  - Политика: SCHED_OTHER
+  - Приоритет: 0
+  - Выполняется на CPU: 0
+Поток 3: Работает (1/5)
+Поток 1: Работает (2/5)
+Поток 2: Работает (2/5)
+Поток 3: Работает (2/5)
+Поток 1: Работает (3/5)
+Поток 2: Работает (3/5)
+Поток 3: Работает (3/5)
+Поток 1: Работает (4/5)
+Поток 2: Работает (4/5)
+Поток 3: Работает (4/5)
+Поток 1: Работает (5/5)
+Поток 2: Работает (5/5)
+Поток 3: Работает (5/5)
+Поток 1 завершил выполнение.
+Поток 2 завершил выполнение.
+Основной поток: Поток 1 завершен.
+Основной поток: Поток 2 завершен.
+Поток 3 завершил выполнение.
+Основной поток: Поток 3 завершен.
+Основной поток: Все потоки завершили выполнение.
+
+Тестирование независимых процессов:
+Создание независимых процессов...
+Процесс 3 (PID: 12431) начал выполнение:
+  - Политика: SCHED_OTHER
+  - Приоритет: 0
+  - Выполняется на CPU: 0
+Процесс 3: Работает (1/5)
+Процесс 3: Работает (2/5)
+Процесс 3: Работает (3/5)
+Процесс 3: Работает (4/5)
+Процесс 3: Работает (5/5)
+Процесс 3 завершил выполнение.
+Тестирование потоков в одном процессе:
+Основной поток (PID: 12425) начал выполнение.
+Основной поток: Создан поток 1 с ID 140076382168768
+Основной поток: Создан поток 2 с ID 140076373776064
+Основной поток: Создан поток 3 с ID 140076365383360
+Поток 1 (PID: 12425, TID: 140076382168768) начал выполнение:
+  - Политика: SCHED_FIFO
+  - Приоритет: 99
+  - Выполняется на CPU: 0
+Поток 1: Работает (1/5)
+Основной поток: Политика потока 1 изменена на SCHED_FIFO с приоритетом 99
+Поток 2 (PID: 12425, TID: 140076373776064) начал выполнение:
+  - Политика: SCHED_RR
+  - Приоритет: 50
+  - Выполняется на CPU: 0
+Поток 2: Работает (1/5)
+Основной поток: Политика потока 2 изменена на SCHED_RR с приоритетом 50
+Основной поток: Поток 3 остается с политикой по умолчанию (SCHED_OTHER)
+Поток 3 (PID: 12425, TID: 140076365383360) начал выполнение:
+  - Политика: SCHED_OTHER
+  - Приоритет: 0
+  - Выполняется на CPU: 0
+Поток 3: Работает (1/5)
+Поток 1: Работает (2/5)
+Поток 2: Работает (2/5)
+Поток 3: Работает (2/5)
+Поток 1: Работает (3/5)
+Поток 2: Работает (3/5)
+Поток 3: Работает (3/5)
+Поток 1: Работает (4/5)
+Поток 2: Работает (4/5)
+Поток 3: Работает (4/5)
+Поток 1: Работает (5/5)
+Поток 2: Работает (5/5)
+Поток 3: Работает (5/5)
+Поток 1 завершил выполнение.
+Поток 2 завершил выполнение.
+Основной поток: Поток 1 завершен.
+Основной поток: Поток 2 завершен.
+Поток 3 завершил выполнение.
+Основной поток: Поток 3 завершен.
+Основной поток: Все потоки завершили выполнение.
+
+Тестирование независимых процессов:
+Создание независимых процессов...
+Все независимые процессы завершили выполнение.
+
+
+--- Анализ и выводы ---
+
+** Потоки в одном процессе: **
+- Поток с SCHED_FIFO (приоритет 99) выполняется первым.
+- Поток с SCHED_RR (приоритет 50) выполняется вторым.
+- Поток с SCHED_OTHER выполняется последним (низкий приоритет).
+
+** Независимые процессы: **
+- Процесс с SCHED_FIFO (приоритет 99) выполняется первым.
+- Процесс с SCHED_RR (приоритет 50) выполняется вторым.
+- Процесс с SCHED_OTHER выполняется последним.
+
+** Сравнение: **
+- Приоритеты и политики влияют на порядок выполнения как для потоков, так и для процессов.
+- Для потоков одного процесса планировщик работает более детально, так как потоки разделяют ресурсы.
+
+** Ответы на задание: **
+- Приоритеты влияют на порядок выполнения для SCHED_FIFO и SCHED_RR.
+- Для SCHED_OTHER приоритеты не влияют на порядок выполнения (динамическое планирование).
+- Для независимых процессов приоритеты учитываются на уровне процессов.
+- Для потоков одного процесса приоритеты применяются напрямую, что позволяет более точно управлять их выполнением.
+----------------------------------------
+[2025-03-13 01:58:36] Время выполнения задания 5.6: 17 секунд.
+
+
+
+>>> СОСТОЯНИЕ out.txt ДО ВЫПОЛНЕНИЯ СКРИПТА<<<
+----------------------------------------
+Файл out.txt пуст.
+----------------------------------------
+[2025-03-13 01:58:36] ВЫПОЛНЕНИЕ ЗАДАНИЯ 6.1
+[2025-03-13 01:58:36] >>> root@ASPIRIN$ ./lb2/6/6.1 <<<
+----------------------------------------
+=== Тест 6.1: Наследование файловых дескрипторов ===
+Child (PID 12441): Записал данные в 'out.txt'
+Parent (PID 12440): Записал данные в 'out.txt'
+Проверьте содержимое файла 'out.txt'.
+----------------------------------------
+[2025-03-13 01:58:36] Время выполнения задания 6.1: 0 секунд.
+
+
+
+>>> СОСТОЯНИЕ out.txt ПОСЛЕ ВЫПОЛНЕНИЯ СКРИПТА<<<
+----------------------------------------
+Parent writes line 1
+Child writes line 2
+Parent writes line 3
+----------------------------------------
+[2025-03-13 01:58:36] ВЫПОЛНЕНИЕ ЗАДАНИЯ 6.2
+[2025-03-13 01:58:36] >>> root@ASPIRIN$ ./lb2/6/6.2 <<<
+----------------------------------------
+=== Тест 6.2: Наследование приоритетов и политики планирования ===
+Родитель (PID 12451): приоритет = 5, политика планирования = 0
+Потомок (PID 12452): приоритет = 5, политика планирования = 0
+Завершён тест наследования приоритетов.
+----------------------------------------
+[2025-03-13 01:58:36] Время выполнения задания 6.2: 0 секунд.
+
+
+[2025-03-13 01:58:36] ВЫПОЛНЕНИЕ ЗАДАНИЯ 6.3
+[2025-03-13 01:58:36] >>> root@ASPIRIN$ ./lb2/6/6.3 <<<
+----------------------------------------
+=== Тест наследования сигналов через fork() ===
+Потомок (PID 12462): Отправляет SIGUSR1 себе
+Процесс (PID 12462) получил сигнал 10
+Родитель (PID 12461): Отправляет SIGUSR1 себе
+Процесс (PID 12461) получил сигнал 10
+Завершён тест наследования сигналов через fork().
+
+=== Тест наследования сигналов через exec() ===
+Потомок (PID 12463): Выполняет exec для запуска нового процесса
+Процесс после exec (PID 12463): Попытка отправить SIGUSR1 себе
+Завершён тест наследования сигналов через exec().
+----------------------------------------
+[2025-03-13 01:58:39] Время выполнения задания 6.3: 3 секунд.
+
+
+
+>>> СОСТОЯНИЕ out.txt ДО ВЫПОЛНЕНИЯ СКРИПТА<<<
+----------------------------------------
+Файл out.txt пуст.
+----------------------------------------
+[2025-03-13 01:58:39] ВЫПОЛНЕНИЕ ЗАДАНИЯ 6.4
+[2025-03-13 01:58:39] >>> root@ASPIRIN$ ./lb2/6/6.1 <<<
+----------------------------------------
+=== Тест 6.1: Наследование файловых дескрипторов ===
+Child (PID 12473): Записал данные в 'out.txt'
+Parent (PID 12472): Записал данные в 'out.txt'
+Проверьте содержимое файла 'out.txt'.
+----------------------------------------
+[2025-03-13 01:58:39] Время выполнения задания 6.4: 0 секунд.
+
+
+
+>>> СОСТОЯНИЕ out.txt ПОСЛЕ ВЫПОЛНЕНИЯ СКРИПТА<<<
+----------------------------------------
+Parent writes line 1
+Child writes line 2
+Parent writes line 3
+----------------------------------------
+[2025-03-13 01:58:39] [КОММЕНТАРИЙ] Конец скрипта. Очистка файлов.
+[2025-03-13 01:58:39] ВЫПОЛНЕНИЕ ЗАДАНИЯ 0
+[2025-03-13 01:58:39] >>> root@ASPIRIN$ ./cleaner.sh lb2 <<<
+----------------------------------------
+Удаление lb2/5/5.6/5.6
+Удаление lb2/5/5.1/5.1-prog3
+Удаление lb2/5/5.1/5.1-prog2
+Удаление lb2/5/5.1/5.1-prog4
+Удаление lb2/5/5.1/5.1-prog1
+Удаление lb2/5/5.1/5.1-table
+Удаление lb2/5/5.4/5.4
+Удаление lb2/5/5.4/5.4-quant
+Удаление lb2/5/5.5/5.5
+Удаление lb2/5/5.3/5.3.1
+Удаление lb2/5/5.3/5.3.3/5.3.3-prog1
+Удаление lb2/5/5.3/5.3.3/5.3.3-prog2
+Удаление lb2/5/5.3/5.3.3/5.3.3-prog3
+Удаление lb2/5/5.3/5.3.2
+Удаление lb2/5/5.2/5.2
+Удаление lb2/4/4
+Удаление lb2/6/6.4
+Удаление lb2/6/6.1
+Удаление lb2/6/6.2
+Удаление lb2/6/6.3
+Удаление lb2/3/3.1/3.1-son3
+Удаление lb2/3/3.1/3.1-son1
+Удаление lb2/3/3.1/3.1-father
+Удаление lb2/3/3.1/3.1-son2
+Удаление lb2/3/3.2/3.2-son5
+Удаление lb2/3/3.2/3.2-father
+Удаление lb2/3/3.2/3.2-son4
+Удаление lb2/3/3.2/3.2-son1
+Удаление lb2/3/3.2/3.2-son3
+Удаление lb2/3/3.2/3.2-son2
+Удаление lb2/2/2.1/2.1
+Удаление lb2/2/2.2/2.2-son
+Удаление lb2/2/2.2/2.2-father
+Удаление lb2/2/2.4/2.4-a
+Удаление lb2/2/2.4/2.4-b
+Удаление lb2/2/2.4/2.4-c
+Удаление lb2/2/2.3/2.3
+Все скомпилированные файлы удалены.
+----------------------------------------
+[2025-03-13 01:58:40] Время выполнения задания 0: 1 секунд.
+
+
+[2025-03-13 01:58:40] Общее время выполнения скрипта: 94 секунд.
+=================================================================
+                      ОТЧЁТ ЗАВЕРШЁН
+=================================================================
+[2025-03-13 01:58:40] Основной отчёт сохранён в файл: lab_report_2025-03-13_01-57-06.log
+
+Script done on 2025-03-13 01:58:40+03:00 [COMMAND_EXIT_CODE="0"]

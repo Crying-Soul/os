@@ -220,17 +220,7 @@ execute_commands 2.2 \
 execute_commands 2.3 \
     "./lb2/2/2.3/2.3"
 
-execute_commands 2.4.a \
-    "./lb2/2/2.4/2.4-a" \
-    "ps -o pid,ppid,pgid,sid,comm -H f "
-
-execute_commands 2.4.b \
-    "./lb2/2/2.4/2.4-b" \
-    "ps -o pid,ppid,pgid,sid,comm -H f "
-
-execute_commands 2.4.c \
-    "./lb2/2/2.4/2.4-c" \
-    "ps -o pid,ppid,pgid,sid,comm -H f "
+execute_task 2.4 1
 
 execute_commands 3.1 \
     "./lb2/3/3.1/3.1-father"
@@ -240,11 +230,10 @@ execute_commands 3.2 \
 
 execute_task 4 1
 
-execute_commands 5.1\(prog\) \
-    "sudo taskset -c 0 ./lb2/5/5.1/5.1-prog"
-
 execute_commands 5.1\(table\) \
     "./lb2/5/5.1/5.1-table"
+
+execute_task 5.1 0
 
 execute_commands 5.2 \
     "./lb2/5/5.2/5.2"
@@ -255,8 +244,7 @@ execute_commands 5.3.1 \
 execute_commands 5.3.2 \
     "sudo taskset -c 0 ./lb2/5/5.3/5.3.2"
 
-execute_commands 5.3.3 \
-    "sudo taskset -c 0 ./lb2/5/5.3/5.3.3"
+execute_task 5.3.3 0
 
 execute_commands 5.4 \
     "sudo ./lb2/5/5.4/5.4-quant" \

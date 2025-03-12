@@ -16,4 +16,4 @@ find "$project_dir" -type f -name "*.c" | while read c_file; do
     fi
 done
 
-echo "Все скомпилированные файлы удалены."SS
+echo "Все скомпилированные файлы удалены."

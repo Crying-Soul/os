@@ -14,7 +14,7 @@ compile_c_files() {
   find "$dir" -name "*.c" | while read -r file; do
     output_file="${file%.c}"  # Убираем расширение .c
     echo "Компиляция $file в $output_file"
-    gcc "$file" -o "$output_file"
+    gcc -O0 "$file" -o "$output_file"
   done
 }
 
