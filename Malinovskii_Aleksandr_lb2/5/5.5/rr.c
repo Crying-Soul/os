@@ -52,7 +52,6 @@ int main() {
     while (1) {
         perform_computation();
         fflush(stdout);
-        sched_yield();  // Передача управления другим процессам
     }
 
     return 0;
