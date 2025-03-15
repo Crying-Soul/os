@@ -41,5 +41,4 @@ for file in "${files[@]}"
 do
     output="${file%.*}"
     rm $output
-
 done

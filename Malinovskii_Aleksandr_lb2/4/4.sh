@@ -2,6 +2,7 @@
 #
 set -euo pipefail
 
+4/4 &
 # Файл для записи результатов
 output_file="out.txt"
 : > "$output_file"  # Очищаем файл перед началом записи
@@ -70,6 +71,5 @@ fi
 
 log_message "После завершения потока процесс с PID $PROCESS_PID был остановлен."
 
-сat out.txt
-rm out.txt
-rm ./4
+#сat "out.txt"
+#rm out.txt

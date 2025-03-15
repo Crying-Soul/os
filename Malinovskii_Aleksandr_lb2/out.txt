@@ -1,1 +1,63 @@
 Анализ потоков и ресурсов процесса ./4
+Обнаружен процесс с PID: 9783
+Информация о потоках процесса (ps -Lf):
+UID          PID    PPID     LWP  C NLWP STIME TTY          TIME CMD
+immortal    9783    9782    9783  0    7 17:24 pts/1    00:00:00 4/4
+immortal    9783    9782    9786  0    7 17:24 pts/1    00:00:00 4/4
+immortal    9783    9782    9787  0    7 17:24 pts/1    00:00:00 4/4
+immortal    9783    9782    9788  0    7 17:24 pts/1    00:00:00 4/4
+immortal    9783    9782    9789  0    7 17:24 pts/1    00:00:00 4/4
+immortal    9783    9782    9790  0    7 17:24 pts/1    00:00:00 4/4
+immortal    9783    9782    9791  0    7 17:24 pts/1    00:00:00 4/4
+
+Детальная информация о потоках (TID, загрузка CPU, распределение по ядрам):
+    TID %CPU PSR
+   9783  0.0   0
+   9786  0.0   1
+   9787  0.0   3
+   9788  0.0   1
+   9789  0.0   0
+   9790  0.0   0
+   9791  0.0   0
+
+Наследуемые параметры процесса:
+    PID    PPID   UID   GID COMMAND
+   9783    9782  1000  1000 4
+
+Карта памяти процесса (/proc/9783/maps):
+5d15aee72000-5d15aee73000 r--p 00000000 08:01 402763                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
+5d15aee73000-5d15aee74000 r-xp 00001000 08:01 402763                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
+5d15aee74000-5d15aee75000 r--p 00002000 08:01 402763                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
+5d15aee75000-5d15aee76000 r--p 00002000 08:01 402763                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
+5d15aee76000-5d15aee77000 rw-p 00003000 08:01 402763                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
+5d15c4dbb000-5d15c4ddc000 rw-p 00000000 00:00 0                          [heap]
+786fe37ff000-786fe3800000 ---p 00000000 00:00 0 
+786fe3800000-786fe4000000 rw-p 00000000 00:00 0 
+786fe4000000-786fe4021000 rw-p 00000000 00:00 0 
+786fe4021000-786fe8000000 ---p 00000000 00:00 0 
+786fe84fb000-786fe87fe000 rw-p 00000000 00:00 0 
+786fe87fe000-786fe87ff000 ---p 00000000 00:00 0 
+786fe87ff000-786fe8fff000 rw-p 00000000 00:00 0 
+786fe8fff000-786fe9000000 ---p 00000000 00:00 0 
+786fe9000000-786fe9800000 rw-p 00000000 00:00 0 
+786fe9800000-786fe9828000 r--p 00000000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+786fe9828000-786fe99be000 r-xp 00028000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+786fe99be000-786fe9a0d000 r--p 001be000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+786fe9a0d000-786fe9a11000 r--p 0020c000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+786fe9a11000-786fe9a13000 rw-p 00210000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+786fe9a13000-786fe9a20000 rw-p 00000000 00:00 0 
+786fe9a71000-786fe9a74000 rw-p 00000000 00:00 0 
+786fe9a8c000-786fe9a8e000 rw-p 00000000 00:00 0 
+786fe9a8e000-786fe9a92000 r--p 00000000 00:00 0                          [vvar]
+786fe9a92000-786fe9a94000 r-xp 00000000 00:00 0                          [vdso]
+786fe9a94000-786fe9a95000 r--p 00000000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+786fe9a95000-786fe9ac2000 r-xp 00001000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+786fe9ac2000-786fe9acc000 r--p 0002e000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+786fe9acc000-786fe9ace000 r--p 00038000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+786fe9ace000-786fe9ad0000 rw-p 0003a000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7fff55335000-7fff55357000 rw-p 00000000 00:00 0                          [stack]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+Попытка завершения последнего обнаруженного потока
+Завершаем поток с TID: 9791
+Поток с TID 9791 успешно завершен.
+После завершения потока процесс с PID 9783 был остановлен.

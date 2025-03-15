@@ -14,6 +14,7 @@
 #define NUM_THREADS 3            // Количество потоков каждого типа
 
 volatile sig_atomic_t should_stop = 0; // Флаг для остановки потоков
+int shared_variable = 0;              // Глобальная переменная, которую будут увеличивать нити
 
 // Обработчик сигналов
 void signal_handler(int signal_number) {
@@ -25,7 +26,9 @@ void signal_handler(int signal_number) {
 int clone_thread_function(void *thread_argument) {
     int thread_id = *(int *)thread_argument; // Получаем ID потока
     while (!should_stop) {
-        printf("Поток clone %d (TID: %ld)\n", thread_id, (long)syscall(SYS_gettid));
+        shared_variable++;
+        printf("Поток clone %d (TID: %ld), shared_variable = %d, адрес shared_variable: %p\n", 
+               thread_id, (long)syscall(SYS_gettid), shared_variable, &shared_variable);
         sleep(1);
     }
     printf("Поток clone %d завершен\n", thread_id);
@@ -36,7 +39,9 @@ int clone_thread_function(void *thread_argument) {
 void *pthread_thread_function(void *thread_argument) {
     int thread_id = *(int *)thread_argument; // Получаем ID потока
     while (!should_stop) {
-        printf("Поток pthread %d (TID: %ld)\n", thread_id, (long)syscall(SYS_gettid));
+        shared_variable++;
+        printf("Поток pthread %d (TID: %ld), shared_variable = %d, адрес shared_variable: %p\n", 
+               thread_id, (long)syscall(SYS_gettid), shared_variable, &shared_variable);
         sleep(1);
     }
     printf("Поток pthread %d завершен\n", thread_id);

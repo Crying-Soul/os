@@ -163,22 +163,21 @@ task(){
 
 ############### Выполнение заданий
 log "=================ЗАДАНИЕ 1======================"
-#execute_task 1.1 0
+execute_task 1.1 0
 task 1.2
 #execute_commands 1.2 "nohup sleep 3600 > nohup.out 2>&1 &"
-#execute_commands 1.2 "ps aux | grep sleep"
+execute_commands 1.2 "ps aux | grep sleep"
 log "Процесс сохраняется после reboot "
 execute_commands 1.2 "ps aux | grep sleep"
-execute_commands 1.2 "kill ps aux | grep sleep"
-
+#execute_commands 1.2 "kill ps aux | grep sleep"
 execute_task 1.3 0
 execute_task 1.4 0
-#execute_task 1.5 0
+execute_task 1.5 0
 log "=================ЗАДАНИЕ 2======================"
-#execute_task 2.1 0
-#execute_task 2.2 0
-#execute_task 2.3 0
-#execute_task 2.4 0
+execute_task 2.1 0
+execute_task 2.2 0
+execute_task 2.3 0
+execute_task 2.4 0
 log "=================ЗАДАНИЕ 3======================"
 execute_task 3.1 0
 execute_task 3.2 0
@@ -193,25 +192,3 @@ execute_task 5.5 0
 execute_task 5.6 0
 log "=================ЗАДАНИЕ 6======================"
 execute_task 6 0
-
-# execute_commands 2.1 \
-#     "./lb2/task-runner.sh ./lb2/2/2.1 2.1.c --run 2.1"
-
-# execute_commands 2.2 \
-#     "./lb2/task-runner.sh ./lb2/2/2.2 2.2-father.c 2.2-son.c --run 2.2-father"
-
-# execute_commands 2.3 \
-#     "./lb2/task-runner.sh ./lb2/2/2.3 2.3.c --run 2.3"
-
-#execute_commands 2.4 \
-    #"./lb2/task-runner.sh ./lb2/2/2.4 2.4-a.c 2.4-b.c 2.4-c.c --run 2.4-a"
-
-# execute_commands 3.1 \
-#     "./lb2/task-runner.sh ./lb2/3/3.1 3.1-father.c 3.1-son1.c 3.1-son2.c 3.1-son3.c --run 3.1-father"
-
-# execute_commands 4 \
-#     "./lb2/task-runner.sh ./lb2/4 4.c --run 4"
-
-# execute_task 4 0
-
-log "Основной отчёт сохранён в файл: $LOG_FILE"

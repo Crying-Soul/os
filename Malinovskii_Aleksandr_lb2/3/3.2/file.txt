@@ -1,16 +1,16 @@
     PID TTY      STAT   TIME COMMAND
-   2509 pts/2    Ss     0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
-  41192 pts/2    S+     0:00  \_ /bin/bash ./logger.sh
-  41193 pts/2    S+     0:00      \_ script -a -q -c ./logger.sh lab_report.log
-  41194 pts/3    Ss+    0:00          \_ /bin/bash ./logger.sh
-  41882 pts/3    S+     0:00              \_ bash ./3/3.2/3.2.sh
-  41915 pts/3    S+     0:00                  \_ ./father
-  41916 pts/3    Z+     0:00                      \_ [son1] <defunct>
-  41917 pts/3    Z+     0:00                      \_ [son2] <defunct>
-  41918 pts/3    Z+     0:00                      \_ [son3] <defunct>
-  41919 pts/3    Z+     0:00                      \_ [son4] <defunct>
-  41920 pts/3    Z+     0:00                      \_ [son5] <defunct>
-  41921 pts/3    S+     0:00                      \_ sh -c -- ps -H f > file.txt
-  41922 pts/3    R+     0:00                          \_ ps -H f
-   2263 pts/1    Ss+    0:00 /bin/bash
-   1506 tty1     Ssl+   0:00 /usr/bin/startplasma-wayland
+   2478 pts/2    Ss     0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
+   6520 pts/2    S+     0:00  \_ /bin/bash ./logger.sh
+   6521 pts/2    S+     0:00      \_ script -a -q -c ./logger.sh lab_report.log
+   6522 pts/3    Ss+    0:00          \_ /bin/bash ./logger.sh
+   6964 pts/3    S+     0:00              \_ bash ./3/3.2/3.2.sh
+   6997 pts/3    S+     0:00                  \_ ./father
+   6998 pts/3    Z+     0:00                      \_ [son1] <defunct>
+   6999 pts/3    Z+     0:00                      \_ [son2] <defunct>
+   7000 pts/3    Z+     0:00                      \_ [father] <defunct>
+   7001 pts/3    Z+     0:00                      \_ [son4] <defunct>
+   7002 pts/3    Z+     0:00                      \_ [father] <defunct>
+   7003 pts/3    S+     0:00                      \_ sh -c -- ps -H f > file.txt
+   7004 pts/3    R+     0:00                          \_ ps -H f
+   2267 pts/1    Ss+    0:00 /bin/bash
+   1491 tty1     Ssl+   0:00 /usr/bin/startplasma-wayland

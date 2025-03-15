@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Функция для очистки фоновых процессов при завершении скрипта
-cleanup() {
+clear() {
   echo "Очистка фоновых процессов..."
   for pid in "${job_pids[@]:-}"; do
     if kill -0 "$pid" 2>/dev/null; then
@@ -13,8 +13,8 @@ cleanup() {
 }
 
 touch largefile.txt
-# Трап для вызова cleanup при завершении скрипта или получении сигнала
-trap cleanup EXIT
+# Трап для вызова clear при завершении скрипта или получении сигнала
+trap clear EXIT
 
 echo "Запуск фоновых процессов..."
 

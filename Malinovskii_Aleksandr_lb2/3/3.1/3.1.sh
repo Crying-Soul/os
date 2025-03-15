@@ -16,4 +16,4 @@ do
     rm $output
 done
 cat processes_after.txt
-#rm processes_after.txt
+rm processes_after.txt
