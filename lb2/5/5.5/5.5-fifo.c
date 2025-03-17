@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
 
     set_fifo_scheduling(priority);
 
-    for (int i = 0; i < 5; i++){
+    while(1){
         volatile unsigned long dummy = 0;
         for (unsigned long j = 0; j < 1000000000UL; j++){
             dummy++;

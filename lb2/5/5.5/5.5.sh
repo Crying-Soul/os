@@ -21,7 +21,13 @@ for exe in "${EXECUTABLES[@]}"; do
     sudo taskset -c 0 "$exe" "$SAME_PRIORITY" &
     pids+=($!)
 done
-wait_for_processes "${pids[@]}"
+
+sleep 20
+
+for pid in "${pids[@]}"; do
+    kill "$pid" 2>/dev/null
+done
+
 
 
 
