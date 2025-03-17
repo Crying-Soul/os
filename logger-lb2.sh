@@ -238,20 +238,23 @@ execute_task 5.1 0
 execute_commands 5.2 \
     "./lb2/5/5.2/5.2"
 
-execute_commands 5.3.1 \
-    "sudo taskset -c 0 ./lb2/5/5.3/5.3.1"
+execute_task 5.3.1 0
 
 execute_commands 5.3.2 \
     "sudo taskset -c 0 ./lb2/5/5.3/5.3.2"
 
 execute_task 5.3.3 0
 
-execute_commands 5.4 \
-    "sudo ./lb2/5/5.4/5.4-quant" \
-    "sudo taskset -c 0 ./lb2/5/5.4/5.4"
+execute_task 5.4.1 0
 
-execute_commands 5.5 \
-    "sudo taskset -c 0 ./lb2/5/5.5/5.5"
+execute_commands 5.4.2 \
+    "sudo ./lb2/5/5.4/5.4.2-quant" \
+
+execute_task 5.4.3 0
+
+execute_task 5.4.4 0
+
+execute_task 5.5 0
 
 execute_commands 5.6 \
     "sudo taskset -c 0 ./lb2/5/5.6/5.6"
