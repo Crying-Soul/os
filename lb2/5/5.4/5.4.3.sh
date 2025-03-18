@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Пути к исполняемым файлам
-EXECUTABLES=("lb2/5/5.4/5.4-prog1" "lb2/5/5.4/5.4-prog2" "lb2/5/5.4/5.4-prog3")
+EXECUTABLES=("lb2/5/5.4/5.4-prog1" "lb2/5/5.4/5.4-prog2" "lb2/5/5.4/5.4-prog3" "lb2/5/5.4/5.4-prog4")
 
 
 
 # Приоритеты для запуска с разными приоритетами (для каждого из 3-х процессов)
-DIFFERENT_PRIORITIES=(20 99 40)
+DIFFERENT_PRIORITIES=(20 99 99 40)
 
 # Функция для ожидания завершения группы процессов
 wait_for_processes() {
@@ -25,6 +25,13 @@ for i in "${!EXECUTABLES[@]}"; do
     sudo taskset -c 0 "$exe" "$prio" &
     pids+=($!)
 done
-wait_for_processes "${pids[@]}"
+
+sleep 15
+
+for pid in "${pids[@]}"; do
+    kill "$pid" 2>/dev/null
+done
+
+
 
 

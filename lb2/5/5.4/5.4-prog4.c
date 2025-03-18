@@ -69,7 +69,7 @@ int main(int argc, char* argv[]) {
         for (unsigned long j = 0; j < 1000000000UL; j++){
             dummy++;
         }
-        print_process_info("process2");
+        print_process_info("process4");
     }
     return 0;
 }
