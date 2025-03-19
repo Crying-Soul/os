@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#cd 5/5.4/5.4.3
+cd 5/5.4/5.4.3
 # Компиляция программ
 gcc yield1.c -o rr_program1
 gcc yield2.c -o rr_program2

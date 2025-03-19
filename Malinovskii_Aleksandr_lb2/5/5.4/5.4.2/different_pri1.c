@@ -50,12 +50,7 @@ int main() {
     print_scheduling_info();
     int counter=0;
     while (1) {
-        counter++;
-        if (counter<20)
-            perform_computation();
-        else
-            break;
-
+        perform_computation();
     }
 
     return 0;

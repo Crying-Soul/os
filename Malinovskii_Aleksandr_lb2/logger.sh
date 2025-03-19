@@ -165,11 +165,13 @@ task(){
 log "=================ЗАДАНИЕ 1======================"
 execute_task 1.1 0
 task 1.2
-#execute_commands 1.2 "nohup sleep 3600 > nohup.out 2>&1 &"
+execute_commands 1.2 "nohup sleep 3600 > nohup.out 2>&1 &"
 execute_commands 1.2 "ps aux | grep sleep"
 log "Процесс сохраняется после reboot "
 execute_commands 1.2 "ps aux | grep sleep"
-#execute_commands 1.2 "kill ps aux | grep sleep"
+execute_commands 1.2 \
+    "ps aux | grep sleep" \
+    "kill -9 $(ps aux | grep sleep | grep -v grep | awk '{print $2}')"
 execute_task 1.3 0
 execute_task 1.4 0
 execute_task 1.5 0

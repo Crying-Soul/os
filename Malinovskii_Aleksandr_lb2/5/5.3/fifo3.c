@@ -34,7 +34,7 @@ void print_process_info(const char* process_name) {
         exit(EXIT_FAILURE);
     }
     printf("Приоритет: %d\n", param.sched_priority);
-    printf("------------------------\n");
+    printf("========================\n");
 }
 
 void set_fifo_scheduling(int priority) {

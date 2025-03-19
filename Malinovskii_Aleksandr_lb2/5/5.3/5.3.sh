@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd 5/5.3
 gcc -o fifo1 fifo1.c
 gcc -o fifo2 fifo2.c
 gcc -o fifo3 fifo3.c

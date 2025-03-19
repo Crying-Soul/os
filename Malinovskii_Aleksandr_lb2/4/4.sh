@@ -1,75 +1,91 @@
 #!/bin/bash
-#
-set -euo pipefail
 
-4/4 &
-# Файл для записи результатов
-output_file="out.txt"
-: > "$output_file"  # Очищаем файл перед началом записи
+# Файл для логов скрипта
+SCRIPT_LOG="script_output.log"
+> "$SCRIPT_LOG"  # Очищаем файл логов
 
-# Функция для вывода сообщений и записи в файл
+# Файл для вывода программы 4
+PROGRAM_OUTPUT="program_out.log"
+> "$PROGRAM_OUTPUT"  # Очищаем файл вывода программы
+
+# Функция для логирования: вывод в консоль и запись в файл
 log_message() {
-    echo "$1" | tee -a "$output_file"
+    echo "$1" | tee -a "$SCRIPT_LOG"
 }
 
-# Функция для проверки доступности команд
-verify_command() {
+# Функция для проверки наличия необходимых команд
+check_command_availability() {
     if ! command -v "$1" &>/dev/null; then
-        log_message "Ошибка: команда '$1' недоступна. Установите необходимый пакет."
+        log_message "Ошибка: команда '$1' не найдена. Установите необходимый пакет."
         exit 1
     fi
 }
 
-# Проверяем наличие необходимых утилит
-for tool in pgrep ps cat; do
-    verify_command "$tool"
-done
+# Запускаем программу 4 в фоне, весь её вывод в PROGRAM_OUTPUT
+./4/4 > "$PROGRAM_OUTPUT" &
+PROGRAM_PID=$!
+sleep 5  # Даем программе время на запуск
 
-log_message "Анализ потоков и ресурсов процесса ./4"
+log_message "========================================"
+log_message "Анализ нитей и ресурсов процесса ./4"
+log_message "========================================"
 
-# Получаем PID процесса, соответствующего ./4
-PROCESS_PID=$(pidof 4)
+# Получаем PID процесса 4
+PROGRAM_PID=$(pidof 4)
 
-if [[ -z "$PROCESS_PID" ]]; then
-    log_message "Процесс ./4 не обнаружен."
+if [[ -z "$PROGRAM_PID" ]]; then
+    log_message "Процесс ./4 не найден."
     exit 1
 fi
 
-log_message "Обнаружен процесс с PID: $PROCESS_PID"
-log_message "Информация о потоках процесса (ps -Lf):"
-ps -Lf -p "$PROCESS_PID" | tee -a "$output_file"  
+log_message "=================== Задание 4.2 ======================="
+log_message "Найден процесс с PID: $PROGRAM_PID"
+log_message " Информация о нитях процесса (ps -Lf):"
+ps -Lf -p "$PROGRAM_PID" | tee -a "$SCRIPT_LOG"
 
 log_message ""
-log_message "Детальная информация о потоках (TID, загрузка CPU, распределение по ядрам):"
-ps -L -o tid,pcpu,psr -p "$PROCESS_PID" | tee -a "$output_file"  
+log_message " Расширенная информация о нитях (TID, загрузка CPU, распределение по ядрам):"
+ps -L -o tid,pcpu,psr -p "$PROGRAM_PID" | tee -a "$SCRIPT_LOG"
 
 log_message ""
-log_message "Наследуемые параметры процесса:"
-ps -p "$PROCESS_PID" -o pid,ppid,uid,gid,comm | tee -a "$output_file"
+log_message " Наследуемые параметры процесса:"
+ps -p "$PROGRAM_PID" -o pid,ppid,uid,gid,comm | tee -a "$SCRIPT_LOG"
+
+log_message "=================== Задание 4.3 ======================="
+log_message ""
+log_message " Разделяемые ресурсы нитями (открытые файлы):"
+lsof -p "$PROGRAM_PID" 2>/dev/null | tee -a "$SCRIPT_LOG"
 
 log_message ""
-log_message "Карта памяти процесса (/proc/$PROCESS_PID/maps):"
-cat /proc/"$PROCESS_PID"/maps | tee -a "$output_file"
+log_message "Карта памяти процесса (/proc/$PROGRAM_PID/maps):"
+cat /proc/"$PROGRAM_PID"/maps | tee -a "$SCRIPT_LOG"
 
-log_message "Попытка завершения последнего обнаруженного потока"
+log_message "Удаление последнего найденного TID процесса"
 
-# Находим последний TID, связанный с PROCESS_PID
-LAST_TID=$(ps -Lf -p "$PROCESS_PID" | tail -n +2 | awk 'END {print $4}')
+log_message "=================== Задание 4.4 ======================="
+# Находим последний TID, связанный с PID
+LAST_TID=$(ps -Lf -p "$PROGRAM_PID" | tail -n +2 | awk 'END {print $4}')
 
-# Проверяем, что TID найден
 if [[ -n "$LAST_TID" ]]; then
-    log_message "Завершаем поток с TID: $LAST_TID"
-    # Попытка завершить поток с помощью kill
+    log_message "Удаляем последний найденный TID: $LAST_TID"
     if kill -9 "$LAST_TID"; then
-        log_message "Поток с TID $LAST_TID успешно завершен."
+        log_message "Нить с TID $LAST_TID успешно удалена. Вся программа завершена."
     else
-        log_message "Ошибка: Не удалось завершить поток с TID $LAST_TID."
+        log_message "Ошибка: не удалось удалить нить с TID $LAST_TID."
     fi
 else
-    log_message "Ошибка: Поток для процесса с PID $PROCESS_PID не обнаружен."
+    log_message "Ошибка: Нить для процесса с PID $PROGRAM_PID не найдена."
 fi
 
-log_message "После завершения потока процесс с PID $PROCESS_PID был остановлен."
+wait "$PROGRAM_PID" 2>/dev/null || true
 
-#сat "out.txt"
-#rm out.txt
+# Собираем итоговый отчет
+{
+    echo "===== Вывод программы 4 (файл: $PROGRAM_OUTPUT) ====="
+    cat "$PROGRAM_OUTPUT"
+    echo ""
+    echo "===== Лог скрипта (файл: $SCRIPT_LOG) ====="
+    cat "$SCRIPT_LOG"
+} > final_report.txt
+
+log_message "Анализ завершен. Итоговый отчет сохранен в final_report.txt."

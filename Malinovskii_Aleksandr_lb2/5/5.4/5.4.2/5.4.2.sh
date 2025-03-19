@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#cd 5/5.4/5.4.2
+cd 5/5.4/5.4.2
 # Компиляция программ
 gcc -o program1 different_pri1.c
 gcc -o program2 different_pri2.c

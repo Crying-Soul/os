@@ -51,11 +51,7 @@ int main() {
 
     int counter=0;
     while (1) {
-        counter++;
-        if (counter<20)
-            perform_computation();
-        else
-            break;
+        perform_computation();
 
     }
 

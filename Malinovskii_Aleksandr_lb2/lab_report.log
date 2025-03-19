@@ -1,11 +1,10 @@
-Script started on 2025-03-12 16:43:43+03:00 [COMMAND="./logger.sh" TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="189" LINES="8"]
-Дата исполнения отчёта: 2025-03-12 16:43:43
-Идентификация: immortal
+Дата исполнения отчёта: 2025-03-19 22:30:44
+Идентификация: root
 Малиновский Александр Алексеевич
 
-[2025-03-12 16:43:44] ПРОФИЛЬ СИСТЕМЫ
+[2025-03-19 22:30:44] ПРОФИЛЬ СИСТЕМЫ
 
-[2025-03-12 16:43:44] lscpu
+[2025-03-19 22:30:44] lscpu
 Архитектура:                          x86_64
 CPU op-mode(s):                       32-bit, 64-bit
 Address sizes:                        39 bits physical, 48 bits virtual
@@ -14,6 +13,8 @@ CPU(s):                               4
 On-line CPU(s) list:                  0-3
 ID прроизводителя:                    GenuineIntel
 Имя модели:                           11th Gen Intel(R) Core(TM) i5-1155G7 @ 2.50GHz
+BIOS Model name:                        CPU @ 0.0GHz
+BIOS CPU family:                      0
 Семейство ЦПУ:                        6
 Модель:                               140
 Потоков на ядро:                      1
@@ -45,37 +46,37 @@ Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; RSB
 Vulnerability Srbds:                  Not affected
 Vulnerability Tsx async abort:        Not affected
 
-[2025-03-12 16:43:44] free -h
+[2025-03-19 22:30:44] free -h
                всего        занят        своб      общая  буф/врем.   доступно
-Память:        3,8Gi       2,4Gi       310Mi       143Mi       1,5Gi       1,4Gi
+Память:        3,8Gi       2,4Gi       147Mi       126Mi       1,6Gi       1,4Gi
 Подкачка:      511Mi          0B       511Mi
 
-[2025-03-12 16:43:44] lsblk
+[2025-03-19 22:30:44] lsblk
 NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 loop0    7:0    0  74,2M  1 loop /snap/core22/1621
 loop1    7:1    0     4K  1 loop /snap/bare/5
-loop2    7:2    0 257,9M  1 loop /snap/firefox/5783
+loop2    7:2    0 257,8M  1 loop /snap/firefox/5836
 loop3    7:3    0  73,9M  1 loop /snap/core22/1748
 loop4    7:4    0  10,7M  1 loop /snap/firmware-updater/127
-loop5    7:5    0 505,1M  1 loop /snap/gnome-42-2204/176
-loop6    7:6    0  11,1M  1 loop /snap/firmware-updater/167
-loop7    7:7    0  91,7M  1 loop /snap/gtk-common-themes/1535
-loop8    7:8    0  89,7M  1 loop /snap/gtk-common-themes/1536
-loop9    7:9    0   516M  1 loop /snap/gnome-42-2204/202
-loop10   7:10   0 257,8M  1 loop /snap/firefox/5836
+loop5    7:5    0 258,3M  1 loop /snap/firefox/5889
+loop6    7:6    0 505,1M  1 loop /snap/gnome-42-2204/176
+loop7    7:7    0  11,1M  1 loop /snap/firmware-updater/167
+loop8    7:8    0  91,7M  1 loop /snap/gtk-common-themes/1535
+loop9    7:9    0  89,7M  1 loop /snap/gtk-common-themes/1536
+loop10   7:10   0   516M  1 loop /snap/gnome-42-2204/202
 loop11   7:11   0   125M  1 loop /snap/gtk-theme-breeze/2
-loop12   7:12   0    14M  1 loop /snap/icon-theme-breeze/3
-loop13   7:13   0  13,2M  1 loop /snap/icon-theme-breeze/5
-loop14   7:14   0   264K  1 loop /snap/gtk-theme-breeze/5
+loop12   7:12   0   264K  1 loop /snap/gtk-theme-breeze/5
+loop13   7:13   0    14M  1 loop /snap/icon-theme-breeze/3
+loop14   7:14   0  13,2M  1 loop /snap/icon-theme-breeze/5
 loop15   7:15   0  44,4M  1 loop /snap/snapd/23771
 loop16   7:16   0 210,4M  1 loop /snap/thunderbird/663
-loop17   7:17   0 210,8M  1 loop /snap/thunderbird/682
-loop18   7:18   0  44,4M  1 loop /snap/snapd/23545
+loop17   7:17   0  44,4M  1 loop /snap/snapd/23545
+loop18   7:18   0 210,8M  1 loop /snap/thunderbird/682
 sda      8:0    0    20G  0 disk 
 └─sda1   8:1    0    20G  0 part /
 sr0     11:0    1  57,4M  0 rom  
 
-[2025-03-12 16:43:44] ip a
+[2025-03-19 22:30:44] ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
@@ -85,106 +86,103 @@ sr0     11:0    1  57,4M  0 rom
 2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 08:00:27:9c:d2:56 brd ff:ff:ff:ff:ff:ff
     inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
-       valid_lft 83962sec preferred_lft 83962sec
-    inet6 fd00::4db9:897c:312b:17fe/64 scope global temporary dynamic 
-       valid_lft 86274sec preferred_lft 14274sec
+       valid_lft 84549sec preferred_lft 84549sec
+    inet6 fd00::e64d:c4a8:e1f5:cc58/64 scope global temporary dynamic 
+       valid_lft 86278sec preferred_lft 14278sec
     inet6 fd00::80f:6263:cd47:52af/64 scope global dynamic mngtmpaddr noprefixroute 
-       valid_lft 86274sec preferred_lft 14274sec
+       valid_lft 86278sec preferred_lft 14278sec
     inet6 fe80::de6f:659a:67d9:e9d7/64 scope link noprefixroute 
        valid_lft forever preferred_lft forever
 
-[2025-03-12 16:43:44] Тип виртуализации: oracle
+[2025-03-19 22:30:44] Тип виртуализации: oracle
 
-[2025-03-12 16:43:44] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
+[2025-03-19 22:30:44] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
 
-[2025-03-12 16:43:44] uname -a
+[2025-03-19 22:30:44] uname -a
 Linux immortal-virtualbox 6.11.0-19-generic #19-Ubuntu SMP PREEMPT_DYNAMIC Wed Feb 12 21:43:43 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
 
-[2025-03-12 16:43:44] lsb_release -a
+[2025-03-19 22:30:44] lsb_release -a
 Distributor ID:	Ubuntu
 Description:	Ubuntu 24.10
 Release:	24.10
 Codename:	oracular
 
-[2025-03-12 16:43:44] =================ЗАДАНИЕ 1======================
+[2025-03-19 22:30:44] =================ЗАДАНИЕ 1======================
 
-[2025-03-12 16:43:44] ----------------- ЗАДАНИЕ 1.1 -------------------------
+[2025-03-19 22:30:44] ----------------- ЗАДАНИЕ 1.1 -------------------------
 
-[2025-03-12 16:43:44] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./1/1.1.sh
+[2025-03-19 22:30:45] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./1/1.1.sh
 Запуск фоновых процессов...
 Задание 1: Поиск всех .txt файлов в /tmp...
-Задание 1 (find) запущено с PID 6567
+Задание 1 (find) запущено с PID 4187
 Задание 2: Подсчет строк в файле largefile.txt...
-Задание 2 (wc) запущено с PID 6568
+Задание 2 (wc) запущено с PID 4188
 Задание 3: Копирование файла largefile.txt в /tmp...
-Задание 3 (cp) запущено с PID 6569
+Задание 3 (cp) запущено с PID 4189
 
 Анализ списка заданий:
-[1]   6567 Запущен          find /tmp -name "*.txt" > found_files.txt &
-[2]-  6568 Запущен          wc -l largefile.txt > line_count.txt &
-[3]+  6569 Запущен          cp largefile.txt /tmp/largefile_copy.txt &
+[1]   4187 Запущен          find /tmp -name "*.txt" > found_files.txt &
+[2]-  4188 Запущен          wc -l largefile.txt > line_count.txt &
+[3]+  4189 Запущен          cp largefile.txt /tmp/largefile_copy.txt &
 
 Прерывание задания 2 (wc)...
 Задание 2 (wc) было прервано.
-find: ‘/tmp/snap-private-tmp’: Отказано в доступе
-find: ‘/tmp/systemd-private-e892139014e94c3ebc0d61e07298dfe4-systemd-resolved.service-gFiXDA’: Отказано в доступе
-find: ‘/tmp/systemd-private-e892139014e94c3ebc0d61e07298dfe4-systemd-timesyncd.service-4yKaSd’: Отказано в доступе
-find: ‘/tmp/systemd-private-e892139014e94c3ebc0d61e07298dfe4-polkit.service-5oym0r’: Отказано в доступе
-find: ‘/tmp/systemd-private-e892139014e94c3ebc0d61e07298dfe4-switcheroo-control.service-15YWTo’: Отказано в доступе
-find: ‘/tmp/systemd-private-e892139014e94c3ebc0d61e07298dfe4-systemd-logind.service-3tN1ax’: Отказано в доступе
-find: ‘/tmp/systemd-private-e892139014e94c3ebc0d61e07298dfe4-ModemManager.service-gafAwS’: Отказано в доступе
-find: ‘/tmp/systemd-private-e892139014e94c3ebc0d61e07298dfe4-power-profiles-daemon.service-MB5TYo’: Отказано в доступе
-find: ‘/tmp/systemd-private-e892139014e94c3ebc0d61e07298dfe4-upower.service-BVQBl8’: Отказано в доступе
-find: ‘/tmp/systemd-private-e892139014e94c3ebc0d61e07298dfe4-fwupd.service-u6lxqH’: Отказано в доступе
-./1/1.1.sh: строка 55:  6568 Убито              wc -l largefile.txt > line_count.txt
+./1/1.1.sh: строка 55:  4188 Убито              wc -l largefile.txt > line_count.txt
 
 Анализ списка заданий после прерывания задания 2 (wc):
-[1]   6567 Выход 1            find /tmp -name "*.txt" > found_files.txt
-[3]   6569 Завершён        cp largefile.txt /tmp/largefile_copy.txt
+[1]   4187 Завершён        find /tmp -name "*.txt" > found_files.txt
+[3]   4189 Завершён        cp largefile.txt /tmp/largefile_copy.txt
 
 Ожидание завершения задания 1 (find)...
-Задание 1 (find) завершилось с ошибкой.
+Задание 1 (find) успешно завершено.
 
 Итоговый анализ списка заданий:
 
 Скрипт завершен.
 Очистка фоновых процессов...
 
-[2025-03-12 16:43:45] ----------------- ЗАДАНИЕ 1.2 -------------------------
+[2025-03-19 22:30:46] ----------------- ЗАДАНИЕ 1.2 -------------------------
 
-[2025-03-12 16:43:45] /home/immortal/labs/Malinovskii_Aleksandr_lb2/$ ps aux | grep sleep 
-immortal    5405  0.0  0.0   8852  2424 ?        S    16:40   0:00 sleep 3600
-immortal    6584  0.0  0.0   8852  2412 ?        S    16:43   0:00 sleep 1
-immortal    6592  0.0  0.0  10044  3552 pts/3    S+   16:43   0:00 bash -c ps aux | grep sleep
-immortal    6594  0.0  0.0   9256  2364 pts/3    S+   16:43   0:00 grep sleep
+[2025-03-19 22:30:46] /home/immortal/labs/Malinovskii_Aleksandr_lb2/$ nohup sleep 3600 > nohup.out 2>&1 & 
 
-[2025-03-12 16:43:45] Процесс сохраняется после reboot 
+[2025-03-19 22:30:46] /home/immortal/labs/Malinovskii_Aleksandr_lb2/$ ps aux | grep sleep 
+root        4199  0.0  0.0   8848  2384 pts/4    S+   22:30   0:00 sleep 3600
+root        4205  0.0  0.0  10040  3424 pts/4    S+   22:30   0:00 bash -c ps aux | grep sleep
+root        4207  0.0  0.0   9252  2344 pts/4    S+   22:30   0:00 grep sleep
 
-[2025-03-12 16:43:45] /home/immortal/labs/Malinovskii_Aleksandr_lb2/$ ps aux | grep sleep 
-immortal    5405  0.0  0.0   8852  2424 ?        S    16:40   0:00 sleep 3600
-immortal    6584  0.0  0.0   8852  2412 ?        S    16:43   0:00 sleep 1
-immortal    6601  0.0  0.0  10044  3660 pts/3    S+   16:43   0:00 bash -c ps aux | grep sleep
-immortal    6603  0.0  0.0   9256  2340 pts/3    S+   16:43   0:00 grep sleep
+[2025-03-19 22:30:46] Процесс сохраняется после reboot 
 
-[2025-03-12 16:43:45] ----------------- ЗАДАНИЕ 1.3 -------------------------
+[2025-03-19 22:30:46] /home/immortal/labs/Malinovskii_Aleksandr_lb2/$ ps aux | grep sleep 
+root        4199  0.0  0.0   8848  2384 pts/4    S+   22:30   0:00 sleep 3600
+root        4214  0.0  0.0  10040  3424 pts/4    S+   22:30   0:00 bash -c ps aux | grep sleep
+root        4216  0.0  0.0   9252  2364 pts/4    S+   22:30   0:00 grep sleep
 
-[2025-03-12 16:43:45] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./1/1.3.sh
+[2025-03-19 22:30:46] /home/immortal/labs/Malinovskii_Aleksandr_lb2/$ ps aux | grep sleep 
+root        4199  0.0  0.0   8848  2384 pts/4    S+   22:30   0:00 sleep 3600
+root        4227  0.0  0.0  10040  3496 pts/4    S+   22:30   0:00 bash -c ps aux | grep sleep
+root        4229  0.0  0.0   9252  2340 pts/4    S+   22:30   0:00 grep sleep
+
+[2025-03-19 22:30:46] /home/immortal/labs/Malinovskii_Aleksandr_lb2/$ kill -9 4199 
+
+[2025-03-19 22:30:46] ----------------- ЗАДАНИЕ 1.3 -------------------------
+
+[2025-03-19 22:30:46] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./1/1.3.sh
 Минимальный PID: 1
 Подробная информация о процессе с PID 1:
 ----------------------------------------
   PID   UID  COMMAND         STAT  START     RSS   PPID   NI
-  1     0    systemd         Ss    16:02      14488  0      0  
+  1     0    systemd         Ss    21:59      14264  0      0  
 Команда запуска: /sbin/init splash 
-Текущий рабочий каталог: 
-Исполняемый файл: 
+Текущий рабочий каталог: /
+Исполняемый файл: /usr/lib/systemd/systemd
 
 Максимальный возможный PID: 4194304
 
-Самый большой активный PID в системе: 6612
-Подробная информация о процессе с PID 6612:
+Самый большой активный PID в системе: 4241
+Подробная информация о процессе с PID 4241:
 ----------------------------------------
   PID   UID  COMMAND         STAT  START     RSS   PPID   NI
-  6612  1000 bash            S+    16:43      3660   6522   0  
+  4241  0    bash            S+    22:30      3656   4142   0  
 Команда запуска: bash ./1/1.3.sh 
 Текущий рабочий каталог: /home/immortal/labs/Malinovskii_Aleksandr_lb2
 Исполняемый файл: /usr/bin/bash
@@ -194,9 +192,9 @@ immortal    6603  0.0  0.0   9256  2340 pts/3    S+   16:43   0:00 grep sleep
 Максимальный UID: 65534
 Пользователь с максимальным UID: nobody
 
-[2025-03-12 16:43:45] ----------------- ЗАДАНИЕ 1.4 -------------------------
+[2025-03-19 22:30:46] ----------------- ЗАДАНИЕ 1.4 -------------------------
 
-[2025-03-12 16:43:45] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./1/1.4.sh
+[2025-03-19 22:30:46] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./1/1.4.sh
 Анализ запущенных процессов...
 ===============================
 PID        Пользователь Команда       Тип процесса
@@ -208,6 +206,7 @@ PID        Пользователь Команда       Тип процесса
 5          root            kworker/R-sync_      Системный
 6          root            kworker/R-slub_      Системный
 7          root            kworker/R-netns      Системный
+8          root            kworker/0:0-eve      Системный
 10         root            kworker/0:0H-ev      Системный
 11         root            kworker/u16:0-i      Системный
 12         root            kworker/R-mm_pe      Системный
@@ -225,19 +224,19 @@ PID        Пользователь Команда       Тип процесса
 24         root            idle_inject/1        Системный
 25         root            migration/1          Системный
 26         root            ksoftirqd/1          Системный
+28         root            kworker/1:0H-ev      Системный
 29         root            cpuhp/2              Системный
 30         root            idle_inject/2        Системный
 31         root            migration/2          Системный
 32         root            ksoftirqd/2          Системный
-34         root            kworker/2:0H-ev      Системный
 35         root            cpuhp/3              Системный
 36         root            idle_inject/3        Системный
 37         root            migration/3          Системный
 38         root            ksoftirqd/3          Системный
-41         root            kworker/u17:0-e      Системный
+39         root            kworker/3:0-cgr      Системный
+42         root            kworker/u18:0-e      Системный
 45         root            kdevtmpfs            Системный
 46         root            kworker/R-inet_      Системный
-47         root            kworker/u17:1-e      Системный
 48         root            kauditd              Системный
 49         root            khungtaskd           Системный
 50         root            oom_reaper           Системный
@@ -249,7 +248,7 @@ PID        Пользователь Команда       Тип процесса
 57         root            kworker/R-kbloc      Системный
 58         root            kworker/R-blkcg      Системный
 59         root            irq/9-acpi           Системный
-60         root            kworker/2:1-cgw      Системный
+60         root            kworker/3:1-eve      Системный
 62         root            kworker/R-tpm_d      Системный
 63         root            kworker/R-ata_s      Системный
 64         root            kworker/R-md         Системный
@@ -257,217 +256,216 @@ PID        Пользователь Команда       Тип процесса
 66         root            kworker/R-edac-      Системный
 67         root            kworker/R-devfr      Системный
 68         root            watchdogd            Системный
-70         root            kworker/u19:1-f      Системный
-71         root            kworker/2:1H-kb      Системный
+69         root            kworker/u20:1-e      Системный
+71         root            kworker/3:1H-kb      Системный
 72         root            kswapd0              Системный
 73         root            ecryptfs-kthrea      Системный
 74         root            kworker/R-kthro      Системный
 75         root            kworker/R-acpi_      Системный
-77         root            kworker/u20:1-f      Системный
-78         root            scsi_eh_0            Системный
-79         root            kworker/R-scsi_      Системный
-80         root            scsi_eh_1            Системный
-81         root            kworker/R-scsi_      Системный
-85         root            kworker/R-mld        Системный
-86         root            kworker/R-ipv6_      Системный
-87         root            kworker/u16:1-i      Системный
-90         root            kworker/2:2-eve      Системный
+76         root            kworker/u18:1-f      Системный
+77         root            scsi_eh_0            Системный
+78         root            kworker/R-scsi_      Системный
+79         root            scsi_eh_1            Системный
+80         root            kworker/R-scsi_      Системный
+81         root            kworker/u17:3-e      Системный
+82         root            kworker/R-mld        Системный
+83         root            kworker/R-ipv6_      Системный
+84         root            kworker/0:1H-kb      Системный
+85         root            kworker/u16:1-i      Системный
+87         root            kworker/u19:1-e      Системный
+89         root            kworker/2:2-cgr      Системный
 95         root            kworker/R-kstrp      Системный
-98         root            kworker/u21:0        Системный
-99         root            kworker/u22:0        Системный
-100        root            kworker/u23:0        Системный
-101        root            kworker/u24:0-t      Системный
-102        root            kworker/u25:0-t      Системный
-107        root            kworker/R-crypt      Системный
-110        root            kworker/u20:2-e      Системный
-117        root            kworker/R-charg      Системный
-118        root            kworker/0:1H-kb      Системный
-142        root            kworker/1:1H-kb      Системный
-146        root            kworker/3:1H-kb      Системный
-182        root            scsi_eh_2            Системный
-183        root            kworker/R-scsi_      Системный
-214        root            kworker/0:2-mm_      Системный
-237        root            jbd2/sda1-8          Системный
-238        root            kworker/R-ext4-      Системный
-285        root            systemd-journal      Пользовательский
-342        root            kworker/1:2-eve      Системный
+97         root            kworker/u21:0        Системный
+98         root            kworker/u22:0-t      Системный
+99         root            kworker/u23:0        Системный
+100        root            kworker/u24:0        Системный
+101        root            kworker/u25:0-t      Системный
+106        root            kworker/R-crypt      Системный
+114        root            kworker/u18:2-e      Системный
+116        root            kworker/R-charg      Системный
+142        root            kworker/2:1H-kb      Системный
+144        root            kworker/1:1H-kb      Системный
+172        root            scsi_eh_2            Системный
+173        root            kworker/R-scsi_      Системный
+174        root            kworker/1:2-eve      Системный
+186        root            kworker/u20:2-e      Системный
+236        root            jbd2/sda1-8          Системный
+237        root            kworker/R-ext4-      Системный
+284        root            systemd-journal      Пользовательский
 350        root            systemd-udevd        Пользовательский
 356        root            psimon               Системный
-419        root            kworker/R-iprt-      Системный
-450        root            irq/18-vmwgfx        Системный
-451        root            kworker/R-ttm        Системный
-662        systemd+        systemd-resolve      Пользовательский
-666        systemd+        systemd-timesyn      Пользовательский
+433        root            kworker/R-iprt-      Системный
+451        root            irq/18-vmwgfx        Системный
+452        root            kworker/R-ttm        Системный
+526        root            kworker/u17:4-e      Системный
+637        systemd+        systemd-resolve      Пользовательский
+639        systemd+        systemd-timesyn      Пользовательский
 838        root            accounts-daemon      Пользовательский
-840        avahi           avahi-daemon         Пользовательский
-841        root            cron                 Пользовательский
-842        message+        dbus-daemon          Пользовательский
+841        avahi           avahi-daemon         Пользовательский
+842        root            cron                 Пользовательский
+843        message+        dbus-daemon          Пользовательский
 851        polkitd         polkitd              Пользовательский
-857        root            snapd                Пользовательский
-858        root            switcheroo-cont      Пользовательский
-860        root            systemd-logind       Пользовательский
-861        root            udisksd              Пользовательский
-877        avahi           avahi-daemon         Системный
-900        root            NetworkManager       Пользовательский
-902        root            wpa_supplicant       Пользовательский
-911        syslog          rsyslogd             Пользовательский
-980        root            ModemManager         Пользовательский
-1229       root            cupsd                Пользовательский
-1234       root            unattended-upgr      Пользовательский
-1334       root            sddm                 Пользовательский
-1340       cups-br+        cups-browsed         Пользовательский
-1345       root            VBoxDRMClient        Пользовательский
-1348       root            VBoxService          Системный
-1377       kernoops        kerneloops           Системный
-1384       root            kworker/R-iprt-      Системный
-1385       root            iprt-VBoxTscThr      Системный
-1400       root            Xorg                 Пользовательский
-1407       root            power-profiles-      Пользовательский
-1437       root            kworker/u23:1        Системный
-1438       root            kworker/u24:1        Системный
-1471       root            sddm-helper          Пользовательский
-1474       immortal        systemd              Пользовательский
-1476       root            psimon               Системный
-1477       immortal        (sd-pam)             Системный
-1488       immortal        pipewire             Пользовательский
-1489       immortal        pipewire             Пользовательский
-1490       immortal        wireplumber          Пользовательский
-1491       immortal        startplasma-way      Пользовательский
-1492       immortal        pipewire-pulse       Пользовательский
-1493       immortal        dbus-daemon          Пользовательский
-1499       rtkit           rtkit-daemon         Пользовательский
-1502       root            kworker/u25:1        Системный
-1562       immortal        kwin_wayland_wr      Пользовательский
-1568       immortal        kwin_wayland         Пользовательский
-1582       immortal        xdg-desktop-por      Пользовательский
-1587       immortal        xdg-document-po      Пользовательский
-1592       immortal        xdg-permission-      Пользовательский
-1599       root            fusermount3          Пользовательский
-1603       immortal        xdg-desktop-por      Пользовательский
-1635       immortal        at-spi-bus-laun      Пользовательский
-1642       immortal        Xwayland             Пользовательский
-1644       immortal        dbus-daemon          Пользовательский
-1655       immortal        at-spi2-registr      Пользовательский
-1695       immortal        ksmserver            Пользовательский
-1697       immortal        kded6                Пользовательский
-1743       immortal        plasmashell          Пользовательский
-1745       immortal        kactivitymanage      Пользовательский
-1779       immortal        dconf-service        Пользовательский
-1788       immortal        gmenudbusmenupr      Пользовательский
-1789       immortal        polkit-kde-auth      Пользовательский
-1790       immortal        org_kde_powerde      Пользовательский
-1791       immortal        xdg-desktop-por      Пользовательский
-1792       immortal        xembedsniproxy       Пользовательский
-1813       root            upowerd              Пользовательский
-1866       immortal        xsettingsd           Пользовательский
-1868       immortal        obexd                Пользовательский
-1936       immortal        kdeconnectd          Пользовательский
-1940       immortal        xwaylandvideobr      Пользовательский
-1964       immortal        agent                Пользовательский
-1972       immortal        kaccess              Пользовательский
-1976       immortal        DiscoverNotifie      Пользовательский
-2022       immortal        VBoxClient           Системный
-2023       immortal        VBoxClient           Системный
-2060       immortal        VBoxClient           Системный
-2061       immortal        VBoxClient           Системный
-2170       immortal        fcitx5               Системный
-2242       root            kworker/u18:3-f      Системный
-2250       immortal        konsole              Пользовательский
-2267       immortal        bash                 Пользовательский
-2309       immortal        code                 Пользовательский
-2312       immortal        code                 Пользовательский
-2313       immortal        code                 Пользовательский
-2315       immortal        code                 Системный
-2334       immortal        chrome_crashpad      Пользовательский
-2348       immortal        code                 Системный
-2353       immortal        code                 Пользовательский
-2385       immortal        code                 Системный
-2411       immortal        code                 Пользовательский
-2421       immortal        code                 Пользовательский
-2422       immortal        code                 Пользовательский
-2461       immortal        code                 Пользовательский
-2478       immortal        bash                 Пользовательский
-2495       immortal        kwalletd6            Пользовательский
-2560       immortal        cpptools             Пользовательский
-2570       immortal        code                 Пользовательский
-2610       root            kworker/3:2H         Системный
-2982       root            kworker/1:0-cgr      Системный
-3146       root            kworker/3:2-mm_      Системный
-3195       root            kworker/u19:0-e      Системный
-3255       root            kworker/u18:1-e      Системный
-3298       root            kworker/0:0          Системный
-3304       immortal        cpptools-srv         Пользовательский
-3319       root            kworker/u19:2-e      Системный
-3424       immortal        cpptools-srv         Пользовательский
-3451       root            fwupd                Пользовательский
-3789       root            kworker/u18:0-e      Системный
-3888       root            kworker/u17:2-e      Системный
-4360       root            kworker/3:3-eve      Системный
-4601       root            kworker/1:0H-kb      Системный
-5038       root            kworker/u20:0-e      Системный
-5297       root            kworker/1:1-cgr      Системный
-5298       root            kworker/1:3          Системный
-5405       immortal        sleep                Пользовательский
-6520       immortal        logger.sh            Пользовательский
-6521       immortal        script               Пользовательский
-6522       immortal        logger.sh            Пользовательский
-6575       immortal        sh                   Пользовательский
-6576       immortal        cpuUsage.sh          Пользовательский
-6584       immortal        sleep                Пользовательский
-6649       immortal        bash                 Пользовательский
-6650       immortal        ps                   Пользовательский
-6651       immortal        bash                 Системный
+856        root            snapd                Пользовательский
+859        root            switcheroo-cont      Пользовательский
+862        root            systemd-logind       Пользовательский
+866        root            udisksd              Пользовательский
+886        avahi           avahi-daemon         Системный
+912        syslog          rsyslogd             Пользовательский
+931        root            NetworkManager       Пользовательский
+937        root            wpa_supplicant       Пользовательский
+952        root            ModemManager         Пользовательский
+1200       root            cupsd                Пользовательский
+1213       root            unattended-upgr      Пользовательский
+1263       lp              dbus                 Пользовательский
+1315       cups-br+        cups-browsed         Пользовательский
+1323       kernoops        kerneloops           Системный
+1336       root            sddm                 Пользовательский
+1348       root            VBoxDRMClient        Пользовательский
+1351       root            VBoxService          Системный
+1360       root            kworker/R-iprt-      Системный
+1367       root            iprt-VBoxTscThr      Системный
+1384       root            Xorg                 Пользовательский
+1401       root            power-profiles-      Пользовательский
+1440       root            kworker/u22:1        Системный
+1441       root            kworker/u25:1-t      Системный
+1475       root            sddm-helper          Пользовательский
+1477       root            psimon               Системный
+1479       immortal        systemd              Пользовательский
+1480       immortal        (sd-pam)             Системный
+1491       immortal        pipewire             Пользовательский
+1492       immortal        pipewire             Пользовательский
+1493       immortal        startplasma-way      Пользовательский
+1494       immortal        wireplumber          Пользовательский
+1495       immortal        pipewire-pulse       Пользовательский
+1496       immortal        dbus-daemon          Пользовательский
+1506       rtkit           rtkit-daemon         Пользовательский
+1565       immortal        kwin_wayland_wr      Пользовательский
+1574       immortal        kwin_wayland         Пользовательский
+1583       immortal        xdg-desktop-por      Пользовательский
+1591       immortal        xdg-document-po      Пользовательский
+1595       immortal        xdg-permission-      Пользовательский
+1602       root            fusermount3          Пользовательский
+1605       immortal        xdg-desktop-por      Пользовательский
+1638       immortal        at-spi-bus-laun      Пользовательский
+1645       immortal        dbus-daemon          Пользовательский
+1647       immortal        Xwayland             Пользовательский
+1658       immortal        at-spi2-registr      Пользовательский
+1699       immortal        ksmserver            Пользовательский
+1701       immortal        kded6                Пользовательский
+1739       immortal        plasmashell          Пользовательский
+1742       immortal        kactivitymanage      Пользовательский
+1774       immortal        dconf-service        Пользовательский
+1790       immortal        gmenudbusmenupr      Пользовательский
+1792       immortal        polkit-kde-auth      Пользовательский
+1793       immortal        org_kde_powerde      Пользовательский
+1794       immortal        xdg-desktop-por      Пользовательский
+1795       immortal        xembedsniproxy       Пользовательский
+1798       root            upowerd              Пользовательский
+1853       immortal        xsettingsd           Пользовательский
+1857       immortal        obexd                Пользовательский
+1917       immortal        kdeconnectd          Пользовательский
+1921       immortal        xwaylandvideobr      Пользовательский
+1948       immortal        agent                Пользовательский
+1949       immortal        kaccess              Пользовательский
+1960       immortal        DiscoverNotifie      Пользовательский
+1983       immortal        VBoxClient           Системный
+1984       immortal        VBoxClient           Системный
+2047       immortal        VBoxClient           Системный
+2048       immortal        VBoxClient           Системный
+2153       immortal        fcitx5               Системный
+2226       root            kworker/2:2H         Системный
+2240       immortal        konsole              Пользовательский
+2262       immortal        bash                 Пользовательский
+2295       immortal        code                 Пользовательский
+2298       immortal        code                 Пользовательский
+2299       immortal        code                 Пользовательский
+2301       immortal        code                 Системный
+2320       immortal        chrome_crashpad      Пользовательский
+2332       immortal        code                 Системный
+2338       immortal        code                 Пользовательский
+2364       immortal        code                 Системный
+2392       immortal        code                 Пользовательский
+2393       immortal        code                 Пользовательский
+2403       immortal        code                 Пользовательский
+2404       immortal        code                 Пользовательский
+2459       immortal        bash                 Пользовательский
+2475       immortal        kwalletd6            Пользовательский
+2533       immortal        cpptools             Пользовательский
+2545       immortal        code                 Пользовательский
+3083       root            kworker/1:0-eve      Системный
+3093       root            kworker/u19:0-e      Системный
+3262       root            kworker/2:3-eve      Системный
+3466       root            kworker/0:2-eve      Системный
+3616       root            kworker/u18:4        Системный
+3690       root            kworker/u20:0-e      Системный
+3695       root            kworker/u17:1-e      Системный
+3776       root            fwupd                Пользовательский
+3807       root            kworker/3:2H         Системный
+3813       immortal        cpptools-srv         Пользовательский
+4012       root            kworker/0:1          Системный
+4017       immortal        cpptools-srv         Пользовательский
+4038       root            kworker/u19:2-e      Системный
+4114       root            kworker/u20:3        Системный
+4115       root            kworker/2:0-cgr      Системный
+4138       root            sudo                 Пользовательский
+4139       root            sudo                 Системный
+4140       root            logger.sh            Пользовательский
+4141       root            script               Пользовательский
+4142       root            logger.sh            Пользовательский
+4278       root            bash                 Пользовательский
+4279       root            ps                   Пользовательский
+4280       root            bash                 Системный
 
-[2025-03-12 16:43:45] ----------------- ЗАДАНИЕ 1.5 -------------------------
+[2025-03-19 22:30:46] ----------------- ЗАДАНИЕ 1.5 -------------------------
 
-[2025-03-12 16:43:45] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./1/1.5.sh
-=== Информация о процессе c PID 6660===
+[2025-03-19 22:30:46] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./1/1.5.sh
+=== Информация о процессе c PID 4289===
 Name:	bash
-Umask:	0002
+Umask:	0022
 State:	S (sleeping)
-Tgid:	6660
+Tgid:	4289
 Ngid:	0
-Pid:	6660
-PPid:	6522
+Pid:	4289
+PPid:	4142
 TracerPid:	0
-Uid:	1000	1000	1000	1000
-Gid:	1000	1000	1000	1000
+Uid:	0	0	0	0
+Gid:	0	0	0	0
 FDSize:	256
-Groups:	4 24 27 30 46 114 988 1000 
-NStgid:	6660
-NSpid:	6660
-NSpgid:	6522
-NSsid:	6522
+Groups:	0 
+NStgid:	4289
+NSpid:	4289
+NSpgid:	4142
+NSsid:	4142
 Kthread:	0
-VmPeak:	   10044 kB
-VmSize:	   10044 kB
+VmPeak:	   10040 kB
+VmSize:	   10040 kB
 VmLck:	       0 kB
 VmPin:	       0 kB
-VmHWM:	    3636 kB
-VmRSS:	    3636 kB
-RssAnon:	     256 kB
+VmHWM:	    3508 kB
+VmRSS:	    3508 kB
+RssAnon:	     128 kB
 RssFile:	    3380 kB
 RssShmem:	       0 kB
 VmData:	     304 kB
-VmStk:	     136 kB
+VmStk:	     132 kB
 VmExe:	     984 kB
 VmLib:	    1888 kB
-VmPTE:	      60 kB
+VmPTE:	      64 kB
 VmSwap:	       0 kB
 HugetlbPages:	       0 kB
 CoreDumping:	0
 THP_enabled:	1
 untag_mask:	0xffffffffffffffff
 Threads:	1
-SigQ:	0/15333
+SigQ:	2/15333
 SigPnd:	0000000000000000
 ShdPnd:	0000000000000000
 SigBlk:	0000000000010000
 SigIgn:	0000000000000004
 SigCgt:	0000000000010002
 CapInh:	0000000000000000
-CapPrm:	0000000000000000
-CapEff:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
 CapBnd:	000001ffffffffff
 CapAmb:	0000000000000000
 NoNewPrivs:	0
@@ -479,8 +477,8 @@ Cpus_allowed:	f
 Cpus_allowed_list:	0-3
 Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
 Mems_allowed_list:	0
-voluntary_ctxt_switches:	1
-nonvoluntary_ctxt_switches:	4
+voluntary_ctxt_switches:	2
+nonvoluntary_ctxt_switches:	2
 x86_Thread_features:	
 x86_Thread_features_locked:	
 
@@ -489,418 +487,352 @@ bash ./1/1.5.sh
 
 === Переменные окружения ===
 SHELL=/bin/bash
-SESSION_MANAGER=local/immortal-virtualbox:@/tmp/.ICE-unix/1695,unix/immortal-virtualbox:/tmp/.ICE-unix/1695
-WINDOWID=4
-QT_ACCESSIBILITY=1
 COLORTERM=truecolor
-XDG_CONFIG_DIRS=/home/immortal/.config/kdedefaults:/etc/xdg:/usr/share/kubuntu-default-settings/kf5-settings
-KGLOBALACCELD_PLATFORM=org.kde.kwin
-XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
-XDG_MENU_PREFIX=plasma-
-TERM_PROGRAM_VERSION=1.97.2
-GTK_IM_MODULE=fcitx
-ICEAUTHORITY=/run/user/1000/iceauth_vWMBhA
+SUDO_GID=1000
 LANGUAGE=
 LC_ADDRESS=ru_RU.UTF-8
 LC_NAME=ru_RU.UTF-8
-SSH_AUTH_SOCK=/run/user/1000/gnupg/S.gpg-agent.ssh
-SHELL_SESSION_ID=1450ed08e1474ebc88b96785877476a6
-MEMORY_PRESSURE_WRITE=c29tZSAyMDAwMDAgMjAwMDAwMAA=
-XMODIFIERS=@im=fcitx
-DESKTOP_SESSION=plasma
+SUDO_COMMAND=./logger.sh
 LC_MONETARY=ru_RU.UTF-8
-GTK_RC_FILES=/etc/gtk/gtkrc:/home/immortal/.gtkrc:/home/immortal/.config/gtkrc
+SUDO_USER=immortal
 IN_SCRIPT=1
-XDG_SEAT=seat0
 PWD=/home/immortal/labs/Malinovskii_Aleksandr_lb2
-LOGNAME=immortal
-XDG_SESSION_DESKTOP=KDE
-XDG_SESSION_TYPE=wayland
-SYSTEMD_EXEC_PID=1562
-XAUTHORITY=/run/user/1000/xauth_LxZlpQ
-VSCODE_GIT_ASKPASS_NODE=/usr/share/code/code
-XKB_DEFAULT_MODEL=pc105
-GTK2_RC_FILES=/etc/gtk-2.0/gtkrc:/home/immortal/.gtkrc-2.0:/home/immortal/.config/gtkrc-2.0
-HOME=/home/immortal
-IM_CONFIG_PHASE=1
-SSH_ASKPASS=/usr/bin/ksshaskpass
+LOGNAME=root
+XAUTHORITY=/run/user/1000/xauth_sxPHPV
+HOME=/root
 LANG=ru_RU.UTF-8
 LC_PAPER=ru_RU.UTF-8
 LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:
 XDG_CURRENT_DESKTOP=KDE
-KONSOLE_DBUS_SERVICE=:1.77
-MEMORY_PRESSURE_WATCH=/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/plasma-kwin_wayland.service/memory.pressure
-WAYLAND_DISPLAY=wayland-0
-KONSOLE_DBUS_SESSION=/Sessions/1
-PROFILEHOME=
-GIT_ASKPASS=/usr/share/code/resources/app/extensions/git/dist/askpass.sh
-XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
 LOG_FILE=lab_report.log
-INVOCATION_ID=b60266ef08a645f59bbf1ab75b9ecc1f
-QTWEBENGINE_DICTIONARIES_PATH=/usr/share/hunspell-bdic/
-KONSOLE_VERSION=240801
-MANAGERPID=1474
-CHROME_DESKTOP=code.desktop
-CLUTTER_IM_MODULE=xim
-KDE_SESSION_UID=1000
-VSCODE_GIT_ASKPASS_EXTRA_ARGS=
-XKB_DEFAULT_LAYOUT=us,ru
-SDL_IM_MODULE=fcitx
-LESSCLOSE=/usr/bin/lesspipe %s %s
-XDG_SESSION_CLASS=user
-TERM=xterm-256color
 LC_IDENTIFICATION=ru_RU.UTF-8
-LESSOPEN=| /usr/bin/lesspipe %s
-USER=immortal
-VSCODE_GIT_IPC_HANDLE=/run/user/1000/vscode-git-07e8384acf.sock
-COLORFGBG=15;0
-QT_WAYLAND_RECONNECT=1
-KDE_SESSION_VERSION=6
+TERM=xterm-256color
+USER=root
 DISPLAY=:1
-SHLVL=4
-GSM_SKIP_SSH_AGENT_WORKAROUND=true
+SHLVL=2
 LC_TELEPHONE=ru_RU.UTF-8
-QT_IM_MODULE=fcitx
 LC_MEASUREMENT=ru_RU.UTF-8
-XDG_VTNR=1
-XDG_SESSION_ID=1
-XDG_RUNTIME_DIR=/run/user/1000
-DEBUGINFOD_URLS=https://debuginfod.ubuntu.com 
 LC_TIME=ru_RU.UTF-8
-XKB_DEFAULT_VARIANT=ruchey_en
-VSCODE_GIT_ASKPASS_MAIN=/usr/share/code/resources/app/extensions/git/dist/askpass-main.js
-QT_AUTO_SCREEN_SCALE_FACTOR=0
-JOURNAL_STREAM=9:14041
-XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
-KDE_FULL_SESSION=true
-GDK_BACKEND=x11
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-ORIGINAL_XDG_CURRENT_DESKTOP=KDE
-DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
-KDE_APPLICATIONS_AS_SCOPE=1
-XKB_DEFAULT_OPTIONS=grp:alt_shift_toggle
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+SUDO_UID=1000
+MAIL=/var/mail/root
 LC_NUMERIC=ru_RU.UTF-8
-OLDPWD=/home/immortal/labs
-TERM_PROGRAM=vscode
-KONSOLE_DBUS_WINDOW=/Windows/1
 _=/usr/bin/bash
 
 === Открытые файлы ===
 итого 0
-lrwx------ 1 immortal immortal 64 мар 12 16:43 0 -> /dev/pts/3
-lrwx------ 1 immortal immortal 64 мар 12 16:43 1 -> /dev/pts/3
-lr-x------ 1 immortal immortal 64 мар 12 16:43 103 -> /usr/share/code/v8_context_snapshot.bin
-lrwx------ 1 immortal immortal 64 мар 12 16:43 2 -> /dev/pts/3
-lr-x------ 1 immortal immortal 64 мар 12 16:43 255 -> /home/immortal/labs/Malinovskii_Aleksandr_lb2/1/1.5.sh
-l-wx------ 1 immortal immortal 64 мар 12 16:43 43 -> /home/immortal/.config/Code/logs/20250312T160421/ptyhost.log
+lrwx------ 1 root root 64 мар 19 22:30 0 -> /dev/pts/4
+lrwx------ 1 root root 64 мар 19 22:30 1 -> /dev/pts/4
+lrwx------ 1 root root 64 мар 19 22:30 2 -> /dev/pts/4
+lr-x------ 1 root root 64 мар 19 22:30 255 -> /home/immortal/labs/Malinovskii_Aleksandr_lb2/1/1.5.sh
 
 === Информация о памяти ===
-5afa9f826000-5afa9f856000 r--p 00000000 08:01 1048950                    /usr/bin/bash
-5afa9f856000-5afa9f94c000 r-xp 00030000 08:01 1048950                    /usr/bin/bash
-5afa9f94c000-5afa9f981000 r--p 00126000 08:01 1048950                    /usr/bin/bash
-5afa9f981000-5afa9f985000 r--p 0015b000 08:01 1048950                    /usr/bin/bash
-5afa9f985000-5afa9f98e000 rw-p 0015f000 08:01 1048950                    /usr/bin/bash
-5afa9f98e000-5afa9f999000 rw-p 00000000 00:00 0 
-5afad8e6d000-5afad8e8e000 rw-p 00000000 00:00 0                          [heap]
-7ad82b400000-7ad82b977000 r--p 00000000 08:01 1049750                    /usr/lib/locale/locale-archive
-7ad82ba00000-7ad82ba28000 r--p 00000000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
-7ad82ba28000-7ad82bbbe000 r-xp 00028000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
-7ad82bbbe000-7ad82bc0d000 r--p 001be000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
-7ad82bc0d000-7ad82bc11000 r--p 0020c000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
-7ad82bc11000-7ad82bc13000 rw-p 00210000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
-7ad82bc13000-7ad82bc20000 rw-p 00000000 00:00 0 
-7ad82bd5f000-7ad82bd62000 rw-p 00000000 00:00 0 
-7ad82bd62000-7ad82bd70000 r--p 00000000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
-7ad82bd70000-7ad82bd83000 r-xp 0000e000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
-7ad82bd83000-7ad82bd91000 r--p 00021000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
-7ad82bd91000-7ad82bd95000 r--p 0002e000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
-7ad82bd95000-7ad82bd96000 rw-p 00032000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
-7ad82bda7000-7ad82bdae000 r--s 00000000 08:01 1052410                    /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
-7ad82bdae000-7ad82bdb0000 rw-p 00000000 00:00 0 
-7ad82bdb0000-7ad82bdb4000 r--p 00000000 00:00 0                          [vvar]
-7ad82bdb4000-7ad82bdb6000 r-xp 00000000 00:00 0                          [vdso]
-7ad82bdb6000-7ad82bdb7000 r--p 00000000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
-7ad82bdb7000-7ad82bde4000 r-xp 00001000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
-7ad82bde4000-7ad82bdee000 r--p 0002e000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
-7ad82bdee000-7ad82bdf0000 r--p 00038000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
-7ad82bdf0000-7ad82bdf2000 rw-p 0003a000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
-7ffc7cdb7000-7ffc7cdd9000 rw-p 00000000 00:00 0                          [stack]
+57f769558000-57f769588000 r--p 00000000 08:01 1048950                    /usr/bin/bash
+57f769588000-57f76967e000 r-xp 00030000 08:01 1048950                    /usr/bin/bash
+57f76967e000-57f7696b3000 r--p 00126000 08:01 1048950                    /usr/bin/bash
+57f7696b3000-57f7696b7000 r--p 0015b000 08:01 1048950                    /usr/bin/bash
+57f7696b7000-57f7696c0000 rw-p 0015f000 08:01 1048950                    /usr/bin/bash
+57f7696c0000-57f7696cb000 rw-p 00000000 00:00 0 
+57f7a2488000-57f7a24a9000 rw-p 00000000 00:00 0                          [heap]
+7b243f200000-7b243f777000 r--p 00000000 08:01 1049750                    /usr/lib/locale/locale-archive
+7b243f800000-7b243f828000 r--p 00000000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7b243f828000-7b243f9be000 r-xp 00028000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7b243f9be000-7b243fa0d000 r--p 001be000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7b243fa0d000-7b243fa11000 r--p 0020c000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7b243fa11000-7b243fa13000 rw-p 00210000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7b243fa13000-7b243fa20000 rw-p 00000000 00:00 0 
+7b243fb68000-7b243fb6b000 rw-p 00000000 00:00 0 
+7b243fb6b000-7b243fb79000 r--p 00000000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
+7b243fb79000-7b243fb8c000 r-xp 0000e000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
+7b243fb8c000-7b243fb9a000 r--p 00021000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
+7b243fb9a000-7b243fb9e000 r--p 0002e000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
+7b243fb9e000-7b243fb9f000 rw-p 00032000 08:01 1074603                    /usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
+7b243fbb0000-7b243fbb7000 r--s 00000000 08:01 1052410                    /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+7b243fbb7000-7b243fbb9000 rw-p 00000000 00:00 0 
+7b243fbb9000-7b243fbbd000 r--p 00000000 00:00 0                          [vvar]
+7b243fbbd000-7b243fbbf000 r-xp 00000000 00:00 0                          [vdso]
+7b243fbbf000-7b243fbc0000 r--p 00000000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7b243fbc0000-7b243fbed000 r-xp 00001000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7b243fbed000-7b243fbf7000 r--p 0002e000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7b243fbf7000-7b243fbf9000 r--p 00038000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7b243fbf9000-7b243fbfb000 rw-p 0003a000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ffd54e7b000-7ffd54e9c000 rw-p 00000000 00:00 0                          [stack]
 ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
 
-[2025-03-12 16:43:45] =================ЗАДАНИЕ 2======================
+[2025-03-19 22:30:46] =================ЗАДАНИЕ 2======================
 
-[2025-03-12 16:43:45] ----------------- ЗАДАНИЕ 2.1 -------------------------
+[2025-03-19 22:30:46] ----------------- ЗАДАНИЕ 2.1 -------------------------
 
-[2025-03-12 16:43:45] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./2/2.1/2.1.sh
+[2025-03-19 22:30:46] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./2/2.1/2.1.sh
 Пример единичный вычислений в родителе и потомке
-Родитель: PID = 6688, PPID = 6677
-Потомок: PID = 6689, PPID = 6688
-Единичное вычисление потомкаЗавершение программы (PID = 6689)
-Единичное вычисление родителяЗавершение программы (PID = 6688)
+Родитель: PID = 4317, PPID = 4306
+Потомок: PID = 4318, PPID = 4317
+Единичное вычисление потомкаЗавершение программы (PID = 4318)
+Единичное вычисление родителяЗавершение программы (PID = 4317)
 Пример множественных вычислений в родителе и потомке и демонстрация того что у родителя и потомка разное адресное пространство
-[Start] PID=6690, var=4, addr=0x7ffc62216e50
-[Parent] PID=6690, PPID=6677, var=4, addr=0x7ffc62216e50 (after fork)
-[Parent] PID=6690, PPID=6677, var=4, addr=0x7ffc62216e50, iter=0
-[Parent] PID=6690, PPID=6677, var=100004, addr=0x7ffc62216e50, iter=100000
-[Child] PID=6691, PPID=6690, var=4, addr=0x7ffc62216e50 (before change)
-[Child] PID=6691, PPID=6690, var=27, addr=0x7ffc62216e50 (after change)
-[Child] PID=6691, PPID=6690, var=27, addr=0x7ffc62216e50, iter=0
-[Child] PID=6691, PPID=6690, var=100027, addr=0x7ffc62216e50, iter=100000
-[Child] PID=6691, PPID=6690, var=200027, addr=0x7ffc62216e50, iter=200000
-[Child] PID=6691, PPID=6690, var=300027, addr=0x7ffc62216e50, iter=300000
-[Child] PID=6691, PPID=6690, var=400027, addr=0x7ffc62216e50, iter=400000
-[Child] PID=6691, PPID=6690, var=500027, addr=0x7ffc62216e50, iter=500000
-[Child] PID=6691, PPID=6690, var=600027, addr=0x7ffc62216e50, iter=600000
-[Child] PID=6691, PPID=6690, var=700027, addr=0x7ffc62216e50, iter=700000
-[Child] PID=6691, PPID=6690, var=800027, addr=0x7ffc62216e50, iter=800000
-[Child] PID=6691, PPID=6690, var=900027, addr=0x7ffc62216e50, iter=900000
-[Child] PID=6691, exiting
-[Parent] PID=6690, PPID=6677, var=200004, addr=0x7ffc62216e50, iter=200000
-[Parent] PID=6690, PPID=6677, var=300004, addr=0x7ffc62216e50, iter=300000
-[Parent] PID=6690, PPID=6677, var=400004, addr=0x7ffc62216e50, iter=400000
-[Parent] PID=6690, PPID=6677, var=500004, addr=0x7ffc62216e50, iter=500000
-[Parent] PID=6690, PPID=6677, var=600004, addr=0x7ffc62216e50, iter=600000
-[Parent] PID=6690, PPID=6677, var=700004, addr=0x7ffc62216e50, iter=700000
-[Parent] PID=6690, PPID=6677, var=800004, addr=0x7ffc62216e50, iter=800000
-[Parent] PID=6690, PPID=6677, var=900004, addr=0x7ffc62216e50, iter=900000
-[Parent] PID=6690, exiting
-[End] PID=6690, program finished
+[Start] PID=4319, var=4, addr=0x7fffdefa2e30
+[Parent] PID=4319, PPID=4306, var=4, addr=0x7fffdefa2e30 (after fork)
+[Parent] PID=4319, PPID=4306, var=4, addr=0x7fffdefa2e30, iter=0
+[Child] PID=4320, PPID=4319, var=4, addr=0x7fffdefa2e30 (before change)
+[Child] PID=4320, PPID=4319, var=27, addr=0x7fffdefa2e30 (after change)
+[Child] PID=4320, PPID=4319, var=27, addr=0x7fffdefa2e30, iter=0
+[Child] PID=4320, PPID=4319, var=100027, addr=0x7fffdefa2e30, iter=100000
+[Child] PID=4320, PPID=4319, var=200027, addr=0x7fffdefa2e30, iter=200000
+[Parent] PID=4319, PPID=4306, var=100004, addr=0x7fffdefa2e30, iter=100000
+[Child] PID=4320, PPID=4319, var=300027, addr=0x7fffdefa2e30, iter=300000
+[Parent] PID=4319, PPID=4306, var=200004, addr=0x7fffdefa2e30, iter=200000
+[Child] PID=4320, PPID=4319, var=400027, addr=0x7fffdefa2e30, iter=400000
+[Parent] PID=4319, PPID=4306, var=300004, addr=0x7fffdefa2e30, iter=300000
+[Child] PID=4320, PPID=4319, var=500027, addr=0x7fffdefa2e30, iter=500000
+[Parent] PID=4319, PPID=4306, var=400004, addr=0x7fffdefa2e30, iter=400000
+[Child] PID=4320, PPID=4319, var=600027, addr=0x7fffdefa2e30, iter=600000
+[Child] PID=4320, PPID=4319, var=700027, addr=0x7fffdefa2e30, iter=700000
+[Parent] PID=4319, PPID=4306, var=500004, addr=0x7fffdefa2e30, iter=500000
+[Child] PID=4320, PPID=4319, var=800027, addr=0x7fffdefa2e30, iter=800000
+[Parent] PID=4319, PPID=4306, var=600004, addr=0x7fffdefa2e30, iter=600000
+[Child] PID=4320, PPID=4319, var=900027, addr=0x7fffdefa2e30, iter=900000
+[Parent] PID=4319, PPID=4306, var=700004, addr=0x7fffdefa2e30, iter=700000
+[Parent] PID=4319, PPID=4306, var=800004, addr=0x7fffdefa2e30, iter=800000
+[Child] PID=4320, exiting
+[Parent] PID=4319, PPID=4306, var=900004, addr=0x7fffdefa2e30, iter=900000
+[Parent] PID=4319, exiting
+[End] PID=4319, program finished
 
-[2025-03-12 16:43:45] ----------------- ЗАДАНИЕ 2.2 -------------------------
+[2025-03-19 22:30:46] ----------------- ЗАДАНИЕ 2.2 -------------------------
 
-[2025-03-12 16:43:46] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./2/2.2/2.2.sh
-FATHER PARAM: pid=6723 ppid=6701
-SON PARAMS: pid=6724 ppid=6723
+[2025-03-19 22:30:46] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./2/2.2/2.2.sh
+FATHER PARAM: pid=4341 ppid=4330
+SON PARAMS: pid=4342 ppid=4341
 son process is finished
 father process is finished with status: 0
 Процессы при запуске отца
     PID TTY      STAT   TIME COMMAND
-   2478 pts/2    Ss     0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
-   6520 pts/2    S+     0:00  \_ /bin/bash ./logger.sh
-   6521 pts/2    S+     0:00      \_ script -a -q -c ./logger.sh lab_report.log
-   6522 pts/3    Ss+    0:00          \_ /bin/bash ./logger.sh
-   6701 pts/3    S+     0:00              \_ bash ./2/2.2/2.2.sh
+   4138 pts/1    S+     0:00 sudo ./logger.sh
+   4139 pts/3    Ss     0:00  \_ sudo ./logger.sh
+   4140 pts/3    S+     0:00      \_ /bin/bash ./logger.sh
+   4141 pts/3    S+     0:00          \_ script -a -q -c ./logger.sh lab_report.log
+   4142 pts/4    Ss+    0:00              \_ /bin/bash ./logger.sh
 Процессы при запуске сынв
     PID TTY      STAT   TIME COMMAND
-   2478 pts/2    Ss     0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
-   6520 pts/2    S+     0:00  \_ /bin/bash ./logger.sh
-   6521 pts/2    S+     0:00      \_ script -a -q -c ./logger.sh lab_report.log
-   6522 pts/3    Ss+    0:00          \_ /bin/bash ./logger.sh
-   6701 pts/3    S+     0:00              \_ bash ./2/2.2/2.2.sh
-   6723 pts/3    S+     0:00                  \_ ./father
+   4138 pts/1    S+     0:00 sudo ./logger.sh
+   4139 pts/3    Ss     0:00  \_ sudo ./logger.sh
+   4140 pts/3    S+     0:00      \_ /bin/bash ./logger.sh
+   4141 pts/3    S+     0:00          \_ script -a -q -c ./logger.sh lab_report.log
+   4142 pts/4    Ss+    0:00              \_ /bin/bash ./logger.sh
+   4330 pts/4    S+     0:00                  \_ bash ./2/2.2/2.2.sh
 
-[2025-03-12 16:43:46] ----------------- ЗАДАНИЕ 2.3 -------------------------
+[2025-03-19 22:30:47] ----------------- ЗАДАНИЕ 2.3 -------------------------
 
-[2025-03-12 16:43:46] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./2/2.3/2.3.sh
+[2025-03-19 22:30:47] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./2/2.3/2.3.sh
 Демонстрация работы различных функций семейства exec():
 
 --- Запуск execl ---
-Дочерний процесс [6750]: Запуск команды 'ls -l' с использованием execl...
+Дочерний процесс [4368]: Запуск команды 'ls -l' с использованием execl...
 итого 36
 -rwxrwxr-x 1 immortal immortal    57 мар  7 01:36 2.3.sh
--rwxrwxr-x 1 immortal immortal 16888 мар 12 16:43 exec
+-rwxr-xr-x 1 root     root     16888 мар 19 22:30 exec
 -rw-rw-r-- 1 immortal immortal  9294 мар  6 16:22 exec.c
 Дочерний процесс завершился с кодом: 0
 
 --- Запуск execlp ---
-Дочерний процесс [6751]: Запуск команды 'ls -a' с использованием execlp...
+Дочерний процесс [4369]: Запуск команды 'ls -a' с использованием execlp...
 .  ..  2.3.sh  exec  exec.c
 Дочерний процесс завершился с кодом: 0
 
 --- Запуск execle ---
-Дочерний процесс [6752]: Запуск команды 'ls -lh' с использованием execle и пользовательского окружения...
+Дочерний процесс [4370]: Запуск команды 'ls -lh' с использованием execle и пользовательского окружения...
 total 36K
 -rwxrwxr-x 1 immortal immortal   57 Mar  7 01:36 2.3.sh
--rwxrwxr-x 1 immortal immortal  17K Mar 12 16:43 exec
+-rwxr-xr-x 1 root     root      17K Mar 19 22:30 exec
 -rw-rw-r-- 1 immortal immortal 9.1K Mar  6 16:22 exec.c
 Дочерний процесс завершился с кодом: 0
 
 --- Запуск execv ---
-Дочерний процесс [6753]: Запуск команды 'ls -R' с использованием execv...
+Дочерний процесс [4371]: Запуск команды 'ls -R' с использованием execv...
 .:
 2.3.sh	exec  exec.c
 Дочерний процесс завершился с кодом: 0
 
 --- Запуск execvp ---
-Дочерний процесс [6754]: Запуск команды 'ls -t' с использованием execvp...
+Дочерний процесс [4372]: Запуск команды 'ls -t' с использованием execvp...
 exec  2.3.sh  exec.c
 Дочерний процесс завершился с кодом: 0
 
 --- Запуск execve ---
-Дочерний процесс [6755]: Запуск команды 'ls -la' с использованием execve и пользовательского окружения...
+Дочерний процесс [4373]: Запуск команды 'ls -la' с использованием execve и пользовательского окружения...
 total 44
-drwxrwxr-x 2 immortal immortal  4096 Mar 12 16:43 .
+drwxrwxr-x 2 immortal immortal  4096 Mar 19 22:30 .
 drwxrwxr-x 6 immortal immortal  4096 Mar  7 03:04 ..
 -rwxrwxr-x 1 immortal immortal    57 Mar  7 01:36 2.3.sh
--rwxrwxr-x 1 immortal immortal 16888 Mar 12 16:43 exec
+-rwxr-xr-x 1 root     root     16888 Mar 19 22:30 exec
 -rw-rw-r-- 1 immortal immortal  9294 Mar  6 16:22 exec.c
 Дочерний процесс завершился с кодом: 0
 
 Все дочерние процессы завершены.
 
-[2025-03-12 16:43:47] ----------------- ЗАДАНИЕ 2.4 -------------------------
+[2025-03-19 22:30:47] ----------------- ЗАДАНИЕ 2.4 -------------------------
 
-[2025-03-12 16:43:47] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./2/2.4/2.4.sh
+[2025-03-19 22:30:47] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./2/2.4/2.4.sh
 ------------------------
 Запуск программы: situation_a
 Процессы до создания процесса-сына:
     PID TTY      STAT   TIME COMMAND
-   2478 pts/2    Ss     0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
-   6520 pts/2    S+     0:00  \_ /bin/bash ./logger.sh
-   6521 pts/2    S+     0:00      \_ script -a -q -c ./logger.sh lab_report.log
-   6522 pts/3    Ss+    0:00          \_ /bin/bash ./logger.sh
-   6765 pts/3    S+     0:00              \_ bash ./2/2.4/2.4.sh
-   6771 pts/3    S+     0:00                  \_ ./situation_a
-   6772 pts/3    S+     0:00                      \_ sh -c -- ps -H f
-   6773 pts/3    R+     0:00                          \_ ps -H f
-   2267 pts/1    Ss+    0:00 /bin/bash
-   1491 tty1     Ssl+   0:00 /usr/bin/startplasma-wayland
-Процесс-отец: PID = 6771, PID сына = 6774
+   4138 pts/1    S+     0:00 sudo ./logger.sh
+   4139 pts/3    Ss     0:00  \_ sudo ./logger.sh
+   4140 pts/3    S+     0:00      \_ /bin/bash ./logger.sh
+   4141 pts/3    S+     0:00          \_ script -a -q -c ./logger.sh lab_report.log
+   4142 pts/4    Ss+    0:00              \_ /bin/bash ./logger.sh
+   4383 pts/4    S+     0:00                  \_ bash ./2/2.4/2.4.sh
+   4389 pts/4    S+     0:00                      \_ ./situation_a
+   4390 pts/4    S+     0:00                          \_ sh -c -- ps -H f
+   4391 pts/4    R+     0:00                              \_ ps -H f
+   1384 tty2     Ssl+   0:00 /usr/lib/xorg/Xorg -nolisten tcp -background none -seat seat0 vt2 -auth /run/sddm/xauth_SXiQxF -noreset -displayfd 16
+Процесс-отец: PID = 4389, PID сына = 4392
 Процессы после создания процесса-сына, но до его завершения:
-Процесс-сын: PID = 6774
+Процесс-сын: PID = 4392
     PID TTY      STAT   TIME COMMAND
-   2478 pts/2    Ss     0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
-   6520 pts/2    S+     0:00  \_ /bin/bash ./logger.sh
-   6521 pts/2    S+     0:00      \_ script -a -q -c ./logger.sh lab_report.log
-   6522 pts/3    Ss+    0:00          \_ /bin/bash ./logger.sh
-   6765 pts/3    S+     0:00              \_ bash ./2/2.4/2.4.sh
-   6771 pts/3    S+     0:00                  \_ ./situation_a
-   6774 pts/3    S+     0:00                      \_ ./situation_a
-   6775 pts/3    S+     0:00                      \_ sh -c -- ps -H f
-   6776 pts/3    R+     0:00                          \_ ps -H f
-   2267 pts/1    Ss+    0:00 /bin/bash
-   1491 tty1     Ssl+   0:00 /usr/bin/startplasma-wayland
+   4138 pts/1    S+     0:00 sudo ./logger.sh
+   4139 pts/3    Ss     0:00  \_ sudo ./logger.sh
+   4140 pts/3    S+     0:00      \_ /bin/bash ./logger.sh
+   4141 pts/3    S+     0:00          \_ script -a -q -c ./logger.sh lab_report.log
+   4142 pts/4    Ss+    0:00              \_ /bin/bash ./logger.sh
+   4383 pts/4    S+     0:00                  \_ bash ./2/2.4/2.4.sh
+   4389 pts/4    S+     0:00                      \_ ./situation_a
+   4392 pts/4    S+     0:00                          \_ ./situation_a
+   4393 pts/4    S+     0:00                          \_ sh -c -- ps -H f
+   4394 pts/4    R+     0:00                              \_ ps -H f
+   1384 tty2     Ssl+   0:00 /usr/lib/xorg/Xorg -nolisten tcp -background none -seat seat0 vt2 -auth /run/sddm/xauth_SXiQxF -noreset -displayfd 16
 Процесс-сын завершен
 Процессы после завершения процесса-сына:
     PID TTY      STAT   TIME COMMAND
-   2478 pts/2    Ss     0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
-   6520 pts/2    S+     0:00  \_ /bin/bash ./logger.sh
-   6521 pts/2    S+     0:00      \_ script -a -q -c ./logger.sh lab_report.log
-   6522 pts/3    Ss+    0:00          \_ /bin/bash ./logger.sh
-   6765 pts/3    S+     0:00              \_ bash ./2/2.4/2.4.sh
-   6771 pts/3    S+     0:00                  \_ ./situation_a
-   6810 pts/3    S+     0:00                      \_ sh -c -- ps -H f
-   6811 pts/3    R+     0:00                          \_ ps -H f
-   2267 pts/1    Ss+    0:00 /bin/bash
-   1491 tty1     Ssl+   0:00 /usr/bin/startplasma-wayland
+   4138 pts/1    S+     0:00 sudo ./logger.sh
+   4139 pts/3    Ss     0:00  \_ sudo ./logger.sh
+   4140 pts/3    S+     0:00      \_ /bin/bash ./logger.sh
+   4141 pts/3    S+     0:00          \_ script -a -q -c ./logger.sh lab_report.log
+   4142 pts/4    Ss+    0:00              \_ /bin/bash ./logger.sh
+   4383 pts/4    S+     0:00                  \_ bash ./2/2.4/2.4.sh
+   4389 pts/4    S+     0:00                      \_ ./situation_a
+   4396 pts/4    S+     0:00                          \_ sh -c -- ps -H f
+   4397 pts/4    R+     0:00                              \_ ps -H f
+   1384 tty2     Ssl+   0:00 /usr/lib/xorg/Xorg -nolisten tcp -background none -seat seat0 vt2 -auth /run/sddm/xauth_SXiQxF -noreset -displayfd 16
 Процесс-сын завершился с кодом: 0
 Процесс-отец завершен
 Состояние процессов после запуска situation_a:
 ------------------------
 ------------------------
 Запуск программы: situation_b
-Запуск программы. Основной процесс (PID: 6821, PPID: 6765).
-Процесс-отец (PID: 6821) создал процесс-сына (PID: 6822).
-Процесс-сын (PID: 6822, PPID: 6821) запущен.
+Запуск программы. Основной процесс (PID: 4404, PPID: 4383).
+Процесс-отец (PID: 4404) создал процесс-сына (PID: 4405).
+Процесс-сын (PID: 4405, PPID: 4404) запущен.
 
 Состояние процессов перед завершением отца:
     PID    PPID    PGID     SID COMMAND
-   2478    2461    2478    2478 bash
-   6520    2478    6520    2478  \_ logger.sh
-   6521    6520    6520    2478      \_ script
-   6522    6521    6522    6522          \_ logger.sh
-   6765    6522    6522    6522              \_ bash
-   6821    6765    6522    6522                  \_ situation_b
-   6822    6821    6522    6522                      \_ situation_b
-   6823    6821    6522    6522                      \_ sh
-   6824    6823    6522    6522                          \_ ps
-   2267    2250    2267    2267 bash
-   1491    1471    1491    1491 startplasma-way
-Процесс-отец (PID: 6821) завершается, не ожидая завершения процесса-сына.
+   4138    2262    4138    2262 sudo
+   4139    4138    4139    4139  \_ sudo
+   4140    4139    4140    4139      \_ logger.sh
+   4141    4140    4140    4139          \_ script
+   4142    4141    4142    4142              \_ logger.sh
+   4383    4142    4142    4142                  \_ bash
+   4404    4383    4142    4142                      \_ situation_b
+   4405    4404    4142    4142                          \_ situation_b
+   4407    4404    4142    4142                          \_ sh
+   4408    4407    4142    4142                              \_ ps
+   1384    1336    1384    1384 Xorg
+Процесс-отец (PID: 4404) завершается, не ожидая завершения процесса-сына.
 Состояние процессов после запуска situation_b:
     PID    PPID    PGID     SID COMMAND
-   2478    2461    2478    2478 bash
-   6520    2478    6520    2478  \_ logger.sh
-   6521    6520    6520    2478      \_ script
-   6522    6521    6522    6522          \_ logger.sh
-   6765    6522    6522    6522              \_ bash
-   6825    6765    6522    6522                  \_ ps
-   2267    2250    2267    2267 bash
-   6822    1474    6522    6522 situation_b
-   1491    1471    1491    1491 startplasma-way
+   4138    2262    4138    2262 sudo
+   4139    4138    4139    4139  \_ sudo
+   4140    4139    4140    4139      \_ logger.sh
+   4141    4140    4140    4139          \_ script
+   4142    4141    4142    4142              \_ logger.sh
+   4383    4142    4142    4142                  \_ bash
+   4409    4383    4142    4142                      \_ ps
+   4405    1479    4142    4142 situation_b
+   1384    1336    1384    1384 Xorg
 Дополнительная информация для situation_b:
-Родительский PID для situation_b: 1474
-Процессы, связанные с PPID 1474:
-immortal    1474  0.0  0.3  21072 12268 ?        Ss   16:03   0:00 /usr/lib/systemd/systemd --user
-immortal    6835  0.0  0.0   9256  2364 pts/3    S+   16:43   0:00 grep 1474
+Родительский PID для situation_b: 1479
+Процессы, связанные с PPID 1479:
+immortal    1479  0.0  0.3  21052 12244 ?        Ss   21:59   0:00 /usr/lib/systemd/systemd --user
+root        4419  0.0  0.0   9252  2360 pts/4    S+   22:30   0:00 grep 1479
 ------------------------
 ------------------------
 Запуск программы: situation_c
-Процесс-отец (PID: 6842) не ожидает завершения процесса-сына.
+Процесс-отец (PID: 4426) не ожидает завершения процесса-сына.
 Процесс-сын еще не завершился, процесс-отец продолжает работу.
-Процесс-сын (PID: 6843) запущен.
-Процесс-сын (PID: 6843) завершен.
-Процесс-сын (PID: 6822, PPID: 1474) после завершения отца.
-Родитель процесса-сына: 1474.
+Процесс-сын (PID: 4427) запущен.
+Процесс-сын (PID: 4427) завершен.
+Процесс-сын (PID: 4405, PPID: 1479) после завершения отца.
+Родитель процесса-сына: 1479.
 
 Состояние процессов после завершения сына (зомби):
     PID    PPID STAT COMMAND          SIZE
-   6522    6521 Ss+  logger.sh         832
-   6765    6522 S+   bash              440
-   6822    1474 S+   situation_b       360
-   6842    6765 S+   situation_c       360
-   6843    6842 Z+   situation_c         0
-   6874    6842 S+   sh                368
-   6875    6874 R+   ps               1944
-Процесс-отец (PID: 6842) завершен.
+   4142    4141 Ss+  logger.sh         828
+   4383    4142 S+   bash              436
+   4405    1479 S+   situation_b       356
+   4426    4383 S+   situation_c       356
+   4427    4426 Z+   situation_c         0
+   4428    4426 S+   sh                364
+   4429    4428 R+   ps               1940
+Процесс-отец (PID: 4426) завершен.
 Состояние процессов после запуска situation_c:
 ------------------------
 
-[2025-03-12 16:43:54] =================ЗАДАНИЕ 3======================
+[2025-03-19 22:30:55] =================ЗАДАНИЕ 3======================
 
-[2025-03-12 16:43:54] ----------------- ЗАДАНИЕ 3.1 -------------------------
+[2025-03-19 22:30:55] ----------------- ЗАДАНИЕ 3.1 -------------------------
 
-[2025-03-12 16:43:54] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./3/3.1/3.1.sh
-Son1: Started (PID: 6911)
-Father: Sending SIGINT to son1 (PID: 6911)
-Son2: Started (PID: 6914)
-Father: Sending SIGINT to son2 (PID: 6914)
+[2025-03-19 22:30:55] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./3/3.1/3.1.sh
+Son1: Started (PID: 4465)
+Father: Sending SIGINT to son1 (PID: 4465)
+Son2: Started (PID: 4468)
+Father: Sending SIGINT to son2 (PID: 4468)
 Son2: Exiting after 2 seconds.
-Son3: Started (PID: 6947)
-Father: Sending SIGINT to son3 (PID: 6947)
+Son3: Started (PID: 4471)
+Father: Sending SIGINT to son3 (PID: 4471)
 Son3: Received signal. still work2
 Son3: Exiting after 2 seconds.
 Father: All children have exited.
   UID     PID          PENDING          BLOCKED          IGNORED           CAUGHT STAT TTY        TIME COMMAND
- 1000    1491 0000000000000000 0000000000000000 0000000000000000 0000000100004000 Ssl+ tty1       0:00 /usr/bin/startplasma-wayland
- 1000    2267 0000000000000000 0000000000000000 0000000000384004 000000004b813efb Ss+  pts/1      0:00 /bin/bash
- 1000    2478 0000000000000000 0000000000010000 0000000000384004 000000004b813efb Ss   pts/2      0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
- 1000    6520 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/2      0:00 /bin/bash ./logger.sh
- 1000    6521 0000000000000000 fffffffe7ffbfeff 0000000000000000 0000000000000000 S+   pts/2      0:00 script -a -q -c ./logger.sh lab_report.log
- 1000    6522 0000000000000000 0000000000010000 0000000000000004 0000000000010002 Ss+  pts/3      0:00 /bin/bash ./logger.sh
- 1000    6888 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/3      0:00 bash ./3/3.1/3.1.sh
- 1000    6909 0000000000010000 0000000000010000 0000000000000006 0000000000000000 S+   pts/3      0:00 ./father
- 1000    6911 0000000000000002 0000000000000000 0000000000000000 0000000000000000 Z+   pts/3      0:00 [son1] <defunct>
- 1000    6912 0000000000000000 0000000000000000 0000000000000000 0000000000010002 S+   pts/3      0:00 sh -c -- ps -s >> processes_after.txt
- 1000    6913 0000000000000000 0000000000000000 0000000000000000 000000007391fef9 R+   pts/3      0:00 ps -s
+    0    1384 0000000000000000 0000000000000000 0000000000001000 00000001418066ef Ssl+ tty2       0:00 /usr/lib/xorg/Xorg -nolisten tcp -background none -seat seat0 vt2 -auth /run/sddm/xauth_SXiQxF -noreset -displayfd 16
+    0    4138 0000000000000000 0000000000000000 0000000000301000 00000000080b6a07 S+   pts/1      0:00 sudo ./logger.sh
+    0    4139 0000000000000000 0000000000000000 0000000000301000 0000000000096a07 Ss   pts/3      0:00 sudo ./logger.sh
+    0    4140 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/3      0:00 /bin/bash ./logger.sh
+    0    4141 0000000000000000 fffffffe7ffbfeff 0000000000000000 0000000000000000 S+   pts/3      0:00 script -a -q -c ./logger.sh lab_report.log
+    0    4142 0000000000000000 0000000000010000 0000000000000004 0000000000010002 Ss+  pts/4      0:00 /bin/bash ./logger.sh
+    0    4442 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/4      0:00 bash ./3/3.1/3.1.sh
+    0    4463 0000000000010000 0000000000010000 0000000000000006 0000000000000000 S+   pts/4      0:00 ./father
+    0    4465 0000000000000002 0000000000000000 0000000000000000 0000000000000000 Z+   pts/4      0:00 [son1] <defunct>
+    0    4466 0000000000000000 0000000000000000 0000000000000000 0000000000010002 S+   pts/4      0:00 sh -c -- ps -s >> processes_after.txt
+    0    4467 0000000000000000 0000000000000000 0000000000000000 000000007391fef9 R+   pts/4      0:00 ps -s
   UID     PID          PENDING          BLOCKED          IGNORED           CAUGHT STAT TTY        TIME COMMAND
- 1000    1491 0000000000000000 0000000000000000 0000000000000000 0000000100004000 Ssl+ tty1       0:00 /usr/bin/startplasma-wayland
- 1000    2267 0000000000000000 0000000000000000 0000000000384004 000000004b813efb Ss+  pts/1      0:00 /bin/bash
- 1000    2478 0000000000000000 0000000000010000 0000000000384004 000000004b813efb Ss   pts/2      0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
- 1000    6520 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/2      0:00 /bin/bash ./logger.sh
- 1000    6521 0000000000000000 fffffffe7ffbfeff 0000000000000000 0000000000000000 S+   pts/2      0:00 script -a -q -c ./logger.sh lab_report.log
- 1000    6522 0000000000000000 0000000000010000 0000000000000004 0000000000010002 Ss+  pts/3      0:00 /bin/bash ./logger.sh
- 1000    6888 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/3      0:00 bash ./3/3.1/3.1.sh
- 1000    6909 0000000000000000 0000000000010000 0000000000000006 0000000000000000 S+   pts/3      0:00 ./father
- 1000    6914 0000000000000000 0000000000000000 0000000000000002 0000000000000000 S+   pts/3      0:00 son2
- 1000    6915 0000000000000000 0000000000000000 0000000000000000 0000000000010002 S+   pts/3      0:00 sh -c -- ps -s >> processes_after.txt
- 1000    6916 0000000000000000 0000000000000000 0000000000000000 000000007391fef9 R+   pts/3      0:00 ps -s
+    0    1384 0000000000000000 0000000000000000 0000000000001000 00000001418066ef Ssl+ tty2       0:00 /usr/lib/xorg/Xorg -nolisten tcp -background none -seat seat0 vt2 -auth /run/sddm/xauth_SXiQxF -noreset -displayfd 16
+    0    4138 0000000000000000 0000000000000000 0000000000301000 00000000080b6a07 S+   pts/1      0:00 sudo ./logger.sh
+    0    4139 0000000000000000 0000000000000000 0000000000301000 0000000000096a07 Ss   pts/3      0:00 sudo ./logger.sh
+    0    4140 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/3      0:00 /bin/bash ./logger.sh
+    0    4141 0000000000000000 fffffffe7ffbfeff 0000000000000000 0000000000000000 S+   pts/3      0:00 script -a -q -c ./logger.sh lab_report.log
+    0    4142 0000000000000000 0000000000010000 0000000000000004 0000000000010002 Ss+  pts/4      0:00 /bin/bash ./logger.sh
+    0    4442 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/4      0:00 bash ./3/3.1/3.1.sh
+    0    4463 0000000000000000 0000000000010000 0000000000000006 0000000000000000 S+   pts/4      0:00 ./father
+    0    4468 0000000000000000 0000000000000000 0000000000000002 0000000000000000 S+   pts/4      0:00 son2
+    0    4469 0000000000000000 0000000000000000 0000000000000000 0000000000010002 S+   pts/4      0:00 sh -c -- ps -s >> processes_after.txt
+    0    4470 0000000000000000 0000000000000000 0000000000000000 000000007391fef9 R+   pts/4      0:00 ps -s
   UID     PID          PENDING          BLOCKED          IGNORED           CAUGHT STAT TTY        TIME COMMAND
- 1000    1491 0000000000000000 0000000000000000 0000000000000000 0000000100004000 Ssl+ tty1       0:00 /usr/bin/startplasma-wayland
- 1000    2267 0000000000000000 0000000000000000 0000000000384004 000000004b813efb Ss+  pts/1      0:00 /bin/bash
- 1000    2478 0000000000000000 0000000000010000 0000000000384004 000000004b813efb Ss   pts/2      0:00 /usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh
- 1000    6520 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/2      0:00 /bin/bash ./logger.sh
- 1000    6521 0000000000000000 fffffffe7ffbfeff 0000000000000000 0000000000000000 S+   pts/2      0:00 script -a -q -c ./logger.sh lab_report.log
- 1000    6522 0000000000000000 0000000000010000 0000000000000004 0000000000010002 Ss+  pts/3      0:00 /bin/bash ./logger.sh
- 1000    6888 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/3      0:00 bash ./3/3.1/3.1.sh
- 1000    6909 0000000000010000 0000000000010000 0000000000000006 0000000000000000 S+   pts/3      0:00 ./father
- 1000    6947 0000000000000000 0000000000000000 0000000000000000 0000000000000002 Z+   pts/3      0:00 [son3] <defunct>
- 1000    6948 0000000000000000 0000000000000000 0000000000000000 0000000000010002 S+   pts/3      0:00 sh -c -- ps -s >> processes_after.txt
- 1000    6949 0000000000000000 0000000000000000 0000000000000000 000000007391fef9 R+   pts/3      0:00 ps -s
+    0    1384 0000000000000000 0000000000000000 0000000000001000 00000001418066ef Ssl+ tty2       0:00 /usr/lib/xorg/Xorg -nolisten tcp -background none -seat seat0 vt2 -auth /run/sddm/xauth_SXiQxF -noreset -displayfd 16
+    0    4138 0000000000000000 0000000000000000 0000000000301000 00000000080b6a07 S+   pts/1      0:00 sudo ./logger.sh
+    0    4139 0000000000000000 0000000000000000 0000000000301000 0000000000096a07 Ss   pts/3      0:00 sudo ./logger.sh
+    0    4140 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/3      0:00 /bin/bash ./logger.sh
+    0    4141 0000000000000000 fffffffe7ffbfeff 0000000000000000 0000000000000000 S+   pts/3      0:00 script -a -q -c ./logger.sh lab_report.log
+    0    4142 0000000000000000 0000000000010000 0000000000000004 0000000000010002 Ss+  pts/4      0:00 /bin/bash ./logger.sh
+    0    4442 0000000000000000 0000000000010000 0000000000000004 0000000000010002 S+   pts/4      0:00 bash ./3/3.1/3.1.sh
+    0    4463 0000000000010000 0000000000010000 0000000000000006 0000000000000000 S+   pts/4      0:00 ./father
+    0    4471 0000000000000000 0000000000000000 0000000000000000 0000000000000002 Z+   pts/4      0:00 [son3] <defunct>
+    0    4472 0000000000000000 0000000000000000 0000000000000000 0000000000010002 S+   pts/4      0:00 sh -c -- ps -s >> processes_after.txt
+    0    4473 0000000000000000 0000000000000000 0000000000000000 000000007391fef9 R+   pts/4      0:00 ps -s
 
-[2025-03-12 16:44:01] ----------------- ЗАДАНИЕ 3.2 -------------------------
+[2025-03-19 22:31:02] ----------------- ЗАДАНИЕ 3.2 -------------------------
 
-[2025-03-12 16:44:01] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./3/3.2/3.2.sh
+[2025-03-19 22:31:02] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./3/3.2/3.2.sh
 Проверим wait для существуюшего фонового процесса
 hello
 Процесс завершился успешно.
@@ -908,353 +840,1294 @@ hello
 ./3/3.2/3.2.sh: строка 20: nonexistent_command: команда не найдена
 Отловили процесс завёршенный с ошибкой. Статус: 127
 Создаём сыновей с разными кодами завершения и waitpid ждём их завершения
-Father parameters was: pid=6997 ppid=6964
-Father: Sending SIGTERM(15) to son3 (pid=7000)
-Father: Sending SIGKILL(9) to son3 (pid=7000)
+Father parameters was: pid=4521 ppid=4488
+Father: Sending SIGTERM(15) to son3 (pid=4524)
+Father: Sending SIGKILL(9) to son3 (pid=4524)
 
-Son parameters: pid=6998, ppid=6997
+Son parameters: pid=4522, ppid=4521
 
+Son parameters: pid=4523, ppid=4521
 
-Son parameters: pid=6999, ppid=6997
-Son parameters: pid=7001, ppid=6997
-1) Child with pid = 6998 is finished with status 0
-2) Child with pid = 6999 is finished with status 256
-3) Child with pid = 7000 is finished with status 15
-4) Child with pid = 7001 is finished with status 1280
-5) Child with pid = 7002 is finished with status 9
-Process pid = 6998 exited with status 0
-Process pid = 6999 exited with status 1
-Process pid = 7000 was terminated by signal 15
-Process pid = 7001 exited with status 5
-Process pid = 7002 was terminated by signal 9
+Son parameters: pid=4525, ppid=4521
+1) Child with pid = 4522 is finished with status 0
+2) Child with pid = 4523 is finished with status 256
+3) Child with pid = 4524 is finished with status 15
+4) Child with pid = 4525 is finished with status 1280
+5) Child with pid = 4526 is finished with status 9
+Process pid = 4522 exited with status 0
+Process pid = 4523 exited with status 1
+Process pid = 4524 was terminated by signal 15
+Process pid = 4525 exited with status 5
+Process pid = 4526 was terminated by signal 9
 
-[2025-03-12 16:44:02] =================ЗАДАНИЕ 4======================
+[2025-03-19 22:31:02] =================ЗАДАНИЕ 4======================
 
-[2025-03-12 16:44:02] ----------------- ЗАДАНИЕ 4 -------------------------
-
-[2025-03-12 16:44:02] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./4/4.sh
-Поток pthread 1 (TID: 7024)
-Поток pthread 3 (TID: 7026)
-Поток clone 5 (TID: 7028)
-Поток clone 4 (TID: 7027)
-Поток pthread 2 (TID: 7025)
-Поток clone 6 (TID: 7029)
-Анализ потоков и ресурсов процесса ./4
-Обнаружен процесс с PID: 7021
-Информация о потоках процесса (ps -Lf):
-UID          PID    PPID     LWP  C NLWP STIME TTY          TIME CMD
-immortal    7021    7020    7021  0    7 16:44 pts/3    00:00:00 4/4
-immortal    7021    7020    7024  0    7 16:44 pts/3    00:00:00 4/4
-immortal    7021    7020    7025  0    7 16:44 pts/3    00:00:00 4/4
-immortal    7021    7020    7026  0    7 16:44 pts/3    00:00:00 4/4
-immortal    7021    7020    7027  0    7 16:44 pts/3    00:00:00 4/4
-immortal    7021    7020    7028  0    7 16:44 pts/3    00:00:00 4/4
-immortal    7021    7020    7029  0    7 16:44 pts/3    00:00:00 4/4
-
-Детальная информация о потоках (TID, загрузка CPU, распределение по ядрам):
-    TID %CPU PSR
-   7021  0.0   3
-   7024  0.0   2
-   7025  0.0   0
-   7026  0.0   2
-   7027  0.0   1
-   7028  0.0   3
-   7029  0.0   0
-
-Наследуемые параметры процесса:
-    PID    PPID   UID   GID COMMAND
-   7021    7020  1000  1000 4
-
-Карта памяти процесса (/proc/7021/maps):
-5c6d50140000-5c6d50141000 r--p 00000000 08:01 402763                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
-5c6d50141000-5c6d50142000 r-xp 00001000 08:01 402763                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
-5c6d50142000-5c6d50143000 r--p 00002000 08:01 402763                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
-5c6d50143000-5c6d50144000 r--p 00002000 08:01 402763                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
-5c6d50144000-5c6d50145000 rw-p 00003000 08:01 402763                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
-5c6d7e4c9000-5c6d7e4ea000 rw-p 00000000 00:00 0                          [heap]
-744070000000-744070021000 rw-p 00000000 00:00 0 
-744070021000-744074000000 ---p 00000000 00:00 0 
-744074ffb000-7440751fd000 rw-p 00000000 00:00 0 
-7440751fd000-7440751fe000 ---p 00000000 00:00 0 
-7440751fe000-7440759fe000 rw-p 00000000 00:00 0 
-7440759fe000-7440759ff000 ---p 00000000 00:00 0 
-7440759ff000-7440761ff000 rw-p 00000000 00:00 0 
-7440761ff000-744076200000 ---p 00000000 00:00 0 
-744076200000-744076a00000 rw-p 00000000 00:00 0 
-744076a00000-744076a28000 r--p 00000000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
-744076a28000-744076bbe000 r-xp 00028000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
-744076bbe000-744076c0d000 r--p 001be000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
-744076c0d000-744076c11000 r--p 0020c000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
-744076c11000-744076c13000 rw-p 00210000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
-744076c13000-744076c20000 rw-p 00000000 00:00 0 
-744076cfb000-744076dff000 rw-p 00000000 00:00 0 
-744076e17000-744076e19000 rw-p 00000000 00:00 0 
-744076e19000-744076e1d000 r--p 00000000 00:00 0                          [vvar]
-744076e1d000-744076e1f000 r-xp 00000000 00:00 0                          [vdso]
-744076e1f000-744076e20000 r--p 00000000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
-744076e20000-744076e4d000 r-xp 00001000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
-744076e4d000-744076e57000 r--p 0002e000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
-744076e57000-744076e59000 r--p 00038000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
-744076e59000-744076e5b000 rw-p 0003a000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
-7ffec964f000-7ffec9671000 rw-p 00000000 00:00 0                          [stack]
-ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
-Попытка завершения последнего обнаруженного потока
-Завершаем поток с TID: 7029
-Поток с TID 7029 успешно завершен.
-./4/4.sh: строка 11:  7021 Убито              4/4
-После завершения потока процесс с PID 7021 был остановлен.
-
-[2025-03-12 16:44:02] =================ЗАДАНИЕ 5======================
-
-[2025-03-12 16:44:02] ----------------- ЗАДАНИЕ 5.1 -------------------------
-
-[2025-03-12 16:44:02] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./5/5.1/5.1.sh
-Процессы созданные программно
- Main process : PID: 7087 | TID: 7087 | Nice: 0 | Policy: SCHED_OTHER
- Main process : PID: 7087 | TID: 7087 | Nice: 0 | Policy: SCHED_OTHER
- Main process : PID: 7087 | TID: 7087 | Nice: 0 | Policy: SCHED_OTHER
- Thread :PID: 7087 | TID: 7088 | Nice: 0 | Policy: SCHED_OTHER
- Thread :PID: 7087 | TID: 7088 | Nice: 0 | Policy: SCHED_OTHER
- Thread :PID: 7087 | TID: 7088 | Nice: 0 | Policy: SCHED_OTHER
- Thread :PID: 7087 | TID: 7088 | Nice: 0 | Policy: SCHED_OTHER
- Thread :PID: 7087 | TID: 7088 | Nice: 0 | Policy: SCHED_OTHER
- Main process : PID: 7087 | TID: 7087 | Nice: 0 | Policy: SCHED_OTHER
- Main process : PID: 7087 | TID: 7087 | Nice: 0 | Policy: SCHED_OTHER
- Thread :PID: 7087 | TID: 7089 | Nice: 0 | Policy: SCHED_OTHER
- Thread :PID: 7087 | TID: 7089 | Nice: 0 | Policy: SCHED_OTHER
- Thread :PID: 7087 | TID: 7089 | Nice: 0 | Policy: SCHED_OTHER
- Thread :PID: 7087 | TID: 7089 | Nice: 0 | Policy: SCHED_OTHER
- Thread :PID: 7087 | TID: 7089 | Nice: 0 | Policy: SCHED_OTHER
-Процессы взятые из таблицы процессов
-Process table:
-PID: 1 Nice: 0 | Policy: SCHED_OTHER
-PID: 2 Nice: 0 | Policy: SCHED_OTHER
-PID: 3 Nice: 0 | Policy: SCHED_OTHER
-PID: 4 Nice: 0 | Policy: SCHED_OTHER
-PID: 5 Nice: 0 | Policy: SCHED_OTHER
-PID: 6 Nice: 0 | Policy: SCHED_OTHER
-PID: 7 Nice: 0 | Policy: SCHED_OTHER
-PID: 10 Nice: 0 | Policy: SCHED_OTHER
-PID: 11 Nice: 0 | Policy: SCHED_OTHER
-PID: 12 Nice: 0 | Policy: SCHED_OTHER
-PID: 13 Nice: 0 | Policy: SCHED_OTHER
-PID: 14 Nice: 0 | Policy: SCHED_OTHER
-PID: 15 Nice: 0 | Policy: SCHED_OTHER
-PID: 16 Nice: 0 | Policy: SCHED_OTHER
-PID: 17 Nice: 0 | Policy: SCHED_OTHER
-PID: 18 Nice: 0 | Policy: SCHED_OTHER
-PID: 19 Nice: 0 | Policy: SCHED_OTHER
-PID: 20 Nice: 99 | Policy: SCHED_FIFO
-PID: 21 Nice: 50 | Policy: SCHED_FIFO
-PID: 22 Nice: 0 | Policy: SCHED_OTHER
-PID: 23 Nice: 0 | Policy: SCHED_OTHER
-PID: 24 Nice: 50 | Policy: SCHED_FIFO
-PID: 25 Nice: 99 | Policy: SCHED_FIFO
-PID: 26 Nice: 0 | Policy: SCHED_OTHER
-PID: 29 Nice: 0 | Policy: SCHED_OTHER
-PID: 30 Nice: 50 | Policy: SCHED_FIFO
-PID: 31 Nice: 99 | Policy: SCHED_FIFO
-PID: 32 Nice: 0 | Policy: SCHED_OTHER
-PID: 34 Nice: 0 | Policy: SCHED_OTHER
-PID: 35 Nice: 0 | Policy: SCHED_OTHER
-PID: 36 Nice: 50 | Policy: SCHED_FIFO
-PID: 37 Nice: 99 | Policy: SCHED_FIFO
-PID: 38 Nice: 0 | Policy: SCHED_OTHER
-PID: 41 Nice: 0 | Policy: SCHED_OTHER
-PID: 45 Nice: 0 | Policy: SCHED_OTHER
-PID: 46 Nice: 0 | Policy: SCHED_OTHER
-PID: 47 Nice: 0 | Policy: SCHED_OTHER
-PID: 48 Nice: 0 | Policy: SCHED_OTHER
-PID: 49 Nice: 0 | Policy: SCHED_OTHER
-PID: 50 Nice: 0 | Policy: SCHED_OTHER
-PID: 52 Nice: 0 | Policy: SCHED_OTHER
-PID: 53 Nice: 0 | Policy: SCHED_OTHER
-PID: 54 Nice: 0 | Policy: SCHED_OTHER
-PID: 55 Nice: 0 | Policy: SCHED_OTHER
-PID: 56 Nice: 0 | Policy: SCHED_OTHER
-PID: 57 Nice: 0 | Policy: SCHED_OTHER
-PID: 58 Nice: 0 | Policy: SCHED_OTHER
-PID: 59 Nice: 50 | Policy: SCHED_FIFO
-PID: 60 Nice: 0 | Policy: SCHED_OTHER
-PID: 62 Nice: 0 | Policy: SCHED_OTHER
-PID: 63 Nice: 0 | Policy: SCHED_OTHER
-PID: 64 Nice: 0 | Policy: SCHED_OTHER
-PID: 65 Nice: 0 | Policy: SCHED_OTHER
-PID: 66 Nice: 0 | Policy: SCHED_OTHER
-PID: 67 Nice: 0 | Policy: SCHED_OTHER
-PID: 68 Nice: 50 | Policy: SCHED_FIFO
-PID: 70 Nice: 0 | Policy: SCHED_OTHER
-PID: 71 Nice: 0 | Policy: SCHED_OTHER
-PID: 72 Nice: 0 | Policy: SCHED_OTHER
-PID: 73 Nice: 0 | Policy: SCHED_OTHER
-PID: 74 Nice: 0 | Policy: SCHED_OTHER
-PID: 75 Nice: 0 | Policy: SCHED_OTHER
-PID: 77 Nice: 0 | Policy: SCHED_OTHER
-PID: 78 Nice: 0 | Policy: SCHED_OTHER
-PID: 79 Nice: 0 | Policy: SCHED_OTHER
-PID: 80 Nice: 0 | Policy: SCHED_OTHER
-PID: 81 Nice: 0 | Policy: SCHED_OTHER
-PID: 85 Nice: 0 | Policy: SCHED_OTHER
-PID: 86 Nice: 0 | Policy: SCHED_OTHER
-PID: 87 Nice: 0 | Policy: SCHED_OTHER
-PID: 90 Nice: 0 | Policy: SCHED_OTHER
-PID: 95 Nice: 0 | Policy: SCHED_OTHER
-PID: 98 Nice: 0 | Policy: SCHED_OTHER
-PID: 99 Nice: 0 | Policy: SCHED_OTHER
-PID: 100 Nice: 0 | Policy: SCHED_OTHER
-PID: 101 Nice: 0 | Policy: SCHED_OTHER
-PID: 102 Nice: 0 | Policy: SCHED_OTHER
-PID: 107 Nice: 0 | Policy: SCHED_OTHER
-PID: 110 Nice: 0 | Policy: SCHED_OTHER
-PID: 117 Nice: 0 | Policy: SCHED_OTHER
-PID: 118 Nice: 0 | Policy: SCHED_OTHER
-PID: 142 Nice: 0 | Policy: SCHED_OTHER
-PID: 146 Nice: 0 | Policy: SCHED_OTHER
-PID: 182 Nice: 0 | Policy: SCHED_OTHER
-PID: 183 Nice: 0 | Policy: SCHED_OTHER
-PID: 214 Nice: 0 | Policy: SCHED_OTHER
-PID: 237 Nice: 0 | Policy: SCHED_OTHER
-PID: 238 Nice: 0 | Policy: SCHED_OTHER
-PID: 285 Nice: 0 | Policy: SCHED_OTHER
-PID: 342 Nice: 0 | Policy: SCHED_OTHER
-PID: 350 Nice: 0 | Policy: SCHED_OTHER
-PID: 356 Nice: 1 | Policy: SCHED_FIFO
-PID: 419 Nice: 0 | Policy: SCHED_OTHER
-PID: 450 Nice: 50 | Policy: SCHED_FIFO
-PID: 451 Nice: 0 | Policy: SCHED_OTHER
-PID: 662 Nice: 0 | Policy: SCHED_OTHER
-PID: 666 Nice: 0 | Policy: SCHED_OTHER
-PID: 838 Nice: 0 | Policy: SCHED_OTHER
-PID: 840 Nice: 0 | Policy: SCHED_OTHER
-PID: 841 Nice: 0 | Policy: SCHED_OTHER
-PID: 842 Nice: 0 | Policy: SCHED_OTHER
-PID: 851 Nice: 0 | Policy: SCHED_OTHER
-PID: 857 Nice: 0 | Policy: SCHED_OTHER
-PID: 858 Nice: 0 | Policy: SCHED_OTHER
-PID: 860 Nice: 0 | Policy: SCHED_OTHER
-PID: 861 Nice: 0 | Policy: SCHED_OTHER
-PID: 877 Nice: 0 | Policy: SCHED_OTHER
-PID: 900 Nice: 0 | Policy: SCHED_OTHER
-PID: 902 Nice: 0 | Policy: SCHED_OTHER
-PID: 911 Nice: 0 | Policy: SCHED_OTHER
-PID: 980 Nice: 0 | Policy: SCHED_OTHER
-PID: 1229 Nice: 0 | Policy: SCHED_OTHER
-PID: 1234 Nice: 0 | Policy: SCHED_OTHER
-PID: 1334 Nice: 0 | Policy: SCHED_OTHER
-PID: 1340 Nice: 0 | Policy: SCHED_OTHER
-PID: 1345 Nice: 0 | Policy: SCHED_OTHER
-PID: 1348 Nice: 0 | Policy: SCHED_OTHER
-PID: 1377 Nice: 0 | Policy: SCHED_OTHER
-PID: 1384 Nice: 0 | Policy: SCHED_OTHER
-PID: 1385 Nice: 0 | Policy: SCHED_OTHER
-PID: 1400 Nice: 0 | Policy: SCHED_OTHER
-PID: 1407 Nice: 0 | Policy: SCHED_OTHER
-PID: 1437 Nice: 0 | Policy: SCHED_OTHER
-PID: 1438 Nice: 0 | Policy: SCHED_OTHER
-PID: 1471 Nice: 0 | Policy: SCHED_OTHER
-PID: 1474 Nice: 0 | Policy: SCHED_OTHER
-PID: 1476 Nice: 1 | Policy: SCHED_FIFO
-PID: 1477 Nice: 0 | Policy: SCHED_OTHER
-PID: 1488 Nice: 0 | Policy: UNKNOWN
-PID: 1489 Nice: 0 | Policy: SCHED_OTHER
-PID: 1490 Nice: 0 | Policy: UNKNOWN
-PID: 1491 Nice: 0 | Policy: SCHED_OTHER
-PID: 1492 Nice: 0 | Policy: UNKNOWN
-PID: 1493 Nice: 0 | Policy: SCHED_OTHER
-PID: 1499 Nice: 0 | Policy: SCHED_OTHER
-PID: 1502 Nice: 0 | Policy: SCHED_OTHER
-PID: 1562 Nice: 0 | Policy: SCHED_OTHER
-PID: 1568 Nice: 1 | Policy: UNKNOWN
-PID: 1582 Nice: 0 | Policy: SCHED_OTHER
-PID: 1587 Nice: 0 | Policy: SCHED_OTHER
-PID: 1592 Nice: 0 | Policy: SCHED_OTHER
-PID: 1599 Nice: 0 | Policy: SCHED_OTHER
-PID: 1603 Nice: 0 | Policy: SCHED_OTHER
-PID: 1635 Nice: 0 | Policy: SCHED_OTHER
-PID: 1642 Nice: 0 | Policy: SCHED_OTHER
-PID: 1644 Nice: 0 | Policy: SCHED_OTHER
-PID: 1655 Nice: 0 | Policy: SCHED_OTHER
-PID: 1695 Nice: 0 | Policy: SCHED_OTHER
-PID: 1697 Nice: 0 | Policy: SCHED_OTHER
-PID: 1743 Nice: 0 | Policy: SCHED_OTHER
-PID: 1745 Nice: 0 | Policy: SCHED_OTHER
-PID: 1779 Nice: 0 | Policy: SCHED_OTHER
-PID: 1788 Nice: 0 | Policy: SCHED_OTHER
-PID: 1789 Nice: 0 | Policy: SCHED_OTHER
-PID: 1790 Nice: 0 | Policy: SCHED_OTHER
-PID: 1791 Nice: 0 | Policy: SCHED_OTHER
-PID: 1792 Nice: 0 | Policy: SCHED_OTHER
-PID: 1813 Nice: 0 | Policy: SCHED_OTHER
-PID: 1866 Nice: 0 | Policy: SCHED_OTHER
-PID: 1868 Nice: 0 | Policy: SCHED_OTHER
-PID: 1936 Nice: 0 | Policy: SCHED_OTHER
-PID: 1940 Nice: 0 | Policy: SCHED_OTHER
-PID: 1964 Nice: 0 | Policy: SCHED_OTHER
-PID: 1972 Nice: 0 | Policy: SCHED_OTHER
-PID: 1976 Nice: 0 | Policy: SCHED_OTHER
-PID: 2022 Nice: 0 | Policy: SCHED_OTHER
-PID: 2023 Nice: 0 | Policy: SCHED_OTHER
-PID: 2060 Nice: 0 | Policy: SCHED_OTHER
-PID: 2061 Nice: 0 | Policy: SCHED_OTHER
-PID: 2170 Nice: 0 | Policy: SCHED_OTHER
-PID: 2242 Nice: 0 | Policy: SCHED_OTHER
-PID: 2250 Nice: 0 | Policy: SCHED_OTHER
-PID: 2267 Nice: 0 | Policy: SCHED_OTHER
-PID: 2309 Nice: 0 | Policy: SCHED_OTHER
-PID: 2312 Nice: 0 | Policy: SCHED_OTHER
-PID: 2313 Nice: 0 | Policy: SCHED_OTHER
-PID: 2315 Nice: 0 | Policy: SCHED_OTHER
-PID: 2334 Nice: 0 | Policy: SCHED_OTHER
-PID: 2348 Nice: 0 | Policy: SCHED_OTHER
-PID: 2353 Nice: 0 | Policy: SCHED_OTHER
-PID: 2385 Nice: 0 | Policy: SCHED_OTHER
-PID: 2411 Nice: 0 | Policy: SCHED_OTHER
-PID: 2421 Nice: 0 | Policy: SCHED_OTHER
-PID: 2422 Nice: 0 | Policy: SCHED_OTHER
-PID: 2461 Nice: 0 | Policy: SCHED_OTHER
-PID: 2478 Nice: 0 | Policy: SCHED_OTHER
-PID: 2495 Nice: 0 | Policy: SCHED_OTHER
-PID: 2560 Nice: 0 | Policy: SCHED_OTHER
-PID: 2570 Nice: 0 | Policy: SCHED_OTHER
-PID: 2610 Nice: 0 | Policy: SCHED_OTHER
-PID: 2982 Nice: 0 | Policy: SCHED_OTHER
-PID: 3146 Nice: 0 | Policy: SCHED_OTHER
-PID: 3195 Nice: 0 | Policy: SCHED_OTHER
-PID: 3255 Nice: 0 | Policy: SCHED_OTHER
-PID: 3298 Nice: 0 | Policy: SCHED_OTHER
-PID: 3304 Nice: 0 | Policy: SCHED_OTHER
-PID: 3319 Nice: 0 | Policy: SCHED_OTHER
-PID: 3424 Nice: 0 | Policy: SCHED_OTHER
-PID: 3451 Nice: 0 | Policy: SCHED_OTHER
-PID: 3789 Nice: 0 | Policy: SCHED_OTHER
-PID: 3888 Nice: 0 | Policy: SCHED_OTHER
-PID: 4360 Nice: 0 | Policy: SCHED_OTHER
-PID: 4601 Nice: 0 | Policy: SCHED_OTHER
-PID: 5038 Nice: 0 | Policy: SCHED_OTHER
-PID: 5297 Nice: 0 | Policy: SCHED_OTHER
-PID: 5298 Nice: 0 | Policy: SCHED_OTHER
-PID: 5405 Nice: 0 | Policy: SCHED_OTHER
-PID: 6520 Nice: 0 | Policy: SCHED_OTHER
-PID: 6521 Nice: 0 | Policy: SCHED_OTHER
-PID: 6522 Nice: 0 | Policy: SCHED_OTHER
-PID: 7076 Nice: 0 | Policy: SCHED_OTHER
-PID: 7090 Nice: 0 | Policy: SCHED_OTHER
-
-Main process:
-PID: 7090 Nice: 0 | Policy: SCHED_OTHER
-
-Launching processes...
-Launched process ls with PID: 7091
-5.1_prog  5.1_prog.c  5.1.sh  5.1_table  5.1_table.c
-
-[2025-03-12 16:44:02] ----------------- ЗАДАНИЕ 5.2 -------------------------
-
-[2025-03-12 16:44:02] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./5/5.2/5.2.sh
+[2025-03-19 22:31:02] ----------------- ЗАДАНИЕ 4.1 -------------------------
+immortal@immortal-virtualbox:~/labs/Malinovskii_Aleksandr_lb2$ sudo ./4.4
 [sudo] пароль для immortal: 
-sudo: требуется указать пароль
+sudo: ./4.4: команда не найдена
+immortal@immortal-virtualbox:~/labs/Malinovskii_Aleksandr_lb2$ sudo ./4/4
+Поток pthread 1 (TID: 5077), shared_variable = 1, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 2, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 3, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 4, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 5, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 6, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 7, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 8, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 9, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 10, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 11, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 11, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 12, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 13, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 14, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 15, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 16, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 17, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 18, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 19, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 20, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 21, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 22, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 23, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 24, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 25, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 26, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 27, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 28, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 29, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 30, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 31, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 32, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 35, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 35, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 33, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 34, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 36, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 37, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 38, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 39, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 40, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 41, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 42, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 43, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 44, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 45, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 46, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 47, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 48, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 49, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 50, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 53, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 54, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 51, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 52, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 55, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 56, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 57, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 58, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 59, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 60, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 61, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 62, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 63, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 64, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 65, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 66, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 67, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 68, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 69, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 70, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 71, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 72, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 73, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 74, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 75, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 76, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 77, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 78, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 79, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 80, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 81, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 82, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 83, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 84, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 85, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 86, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 87, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 88, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 89, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 90, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 91, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 92, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 93, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 94, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 94, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 95, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 96, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 97, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 98, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 99, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 100, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 101, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 102, адрес shared_variable: 0x588edf5e0030
+Поток clone 5 (TID: 5081), shared_variable = 103, адрес shared_variable: 0x588edf5e0030
+Поток pthread 1 (TID: 5077), shared_variable = 104, адрес shared_variable: 0x588edf5e0030
+Поток pthread 3 (TID: 5079), shared_variable = 105, адрес shared_variable: 0x588edf5e0030
+Поток clone 4 (TID: 5080), shared_variable = 106, адрес shared_variable: 0x588edf5e0030
+Поток clone 6 (TID: 5082), shared_variable = 107, адрес shared_variable: 0x588edf5e0030
+Поток pthread 2 (TID: 5078), shared_variable = 108, адрес shared_variable: 0x588edf5e0030
+Получен сигнал 15, завершение потоков...
+Поток clone 5 завершен
+Поток pthread 1 завершен
+Поток pthread 3 завершен
+Поток clone 4 завершен
+Поток clone 6 завершен
+Поток pthread 2 завершен
+Ошибка ожидания clone: No child processes
+Ошибка ожидания clone: No child processes
+Ошибка ожидания clone: No child processes
+Все потоки завершены
 
-[2025-03-12 16:46:34] ----------------- ЗАДАНИЕ 5.3 -------------------------
+[2025-03-19 22:31:02] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./4/4.sh
+========================================
+Анализ нитей и ресурсов процесса ./4
+========================================
+=================== Задание 4.2 =======================
+Найден процесс с PID: 4545
+ Информация о нитях процесса (ps -Lf):
+UID          PID    PPID     LWP  C NLWP STIME TTY          TIME CMD
+root        4545    4544    4545  0    7 22:31 pts/4    00:00:00 ./4/4
+root        4545    4544    4547  0    7 22:31 pts/4    00:00:00 ./4/4
+root        4545    4544    4548  0    7 22:31 pts/4    00:00:00 ./4/4
+root        4545    4544    4549  0    7 22:31 pts/4    00:00:00 ./4/4
+root        4545    4544    4550  0    7 22:31 pts/4    00:00:00 ./4/4
+root        4545    4544    4551  0    7 22:31 pts/4    00:00:00 ./4/4
+root        4545    4544    4552  0    7 22:31 pts/4    00:00:00 ./4/4
 
-[2025-03-12 16:46:34] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./5/5.3/5.3.sh
-^C
-Script done on 2025-03-12 16:46:35+03:00 [COMMAND_EXIT_CODE="130"]
+ Расширенная информация о нитях (TID, загрузка CPU, распределение по ядрам):
+    TID %CPU PSR
+   4545  0.0   1
+   4547  0.0   3
+   4548  0.0   3
+   4549  0.0   3
+   4550  0.0   3
+   4551  0.0   2
+   4552  0.0   3
+
+ Наследуемые параметры процесса:
+    PID    PPID   UID   GID COMMAND
+   4545    4544     0     0 4
+=================== Задание 4.3 =======================
+
+ Разделяемые ресурсы нитями (открытые файлы):
+COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF    NODE NAME
+4       4545 root  cwd    DIR    8,1     4096  400383 /home/immortal/labs/Malinovskii_Aleksandr_lb2
+4       4545 root  rtd    DIR    8,1     4096       2 /
+4       4545 root  txt    REG    8,1    17072  393683 /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
+4       4545 root  mem    REG    8,1  2182752 1052421 /usr/lib/x86_64-linux-gnu/libc.so.6
+4       4545 root  mem    REG    8,1   244816 1052418 /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+4       4545 root    0r   CHR    1,3      0t0       5 /dev/null
+4       4545 root    1w   REG    8,1        0  401189 /home/immortal/labs/Malinovskii_Aleksandr_lb2/program_out.log
+4       4545 root    2u   CHR  136,4      0t0       7 /dev/pts/4
+
+Карта памяти процесса (/proc/4545/maps):
+5dd928c28000-5dd928c29000 r--p 00000000 08:01 393683                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
+5dd928c29000-5dd928c2a000 r-xp 00001000 08:01 393683                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
+5dd928c2a000-5dd928c2b000 r--p 00002000 08:01 393683                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
+5dd928c2b000-5dd928c2c000 r--p 00002000 08:01 393683                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
+5dd928c2c000-5dd928c2d000 rw-p 00003000 08:01 393683                     /home/immortal/labs/Malinovskii_Aleksandr_lb2/4/4
+5dd94a6b5000-5dd94a6d6000 rw-p 00000000 00:00 0                          [heap]
+7c4af37ff000-7c4af3800000 ---p 00000000 00:00 0 
+7c4af3800000-7c4af4000000 rw-p 00000000 00:00 0 
+7c4af4000000-7c4af4021000 rw-p 00000000 00:00 0 
+7c4af4021000-7c4af8000000 ---p 00000000 00:00 0 
+7c4af81fc000-7c4af83fe000 rw-p 00000000 00:00 0 
+7c4af83fe000-7c4af83ff000 ---p 00000000 00:00 0 
+7c4af83ff000-7c4af8bff000 rw-p 00000000 00:00 0 
+7c4af8bff000-7c4af8c00000 ---p 00000000 00:00 0 
+7c4af8c00000-7c4af9400000 rw-p 00000000 00:00 0 
+7c4af9400000-7c4af9428000 r--p 00000000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7c4af9428000-7c4af95be000 r-xp 00028000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7c4af95be000-7c4af960d000 r--p 001be000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7c4af960d000-7c4af9611000 r--p 0020c000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7c4af9611000-7c4af9613000 rw-p 00210000 08:01 1052421                    /usr/lib/x86_64-linux-gnu/libc.so.6
+7c4af9613000-7c4af9620000 rw-p 00000000 00:00 0 
+7c4af9677000-7c4af977b000 rw-p 00000000 00:00 0 
+7c4af9793000-7c4af9795000 rw-p 00000000 00:00 0 
+7c4af9795000-7c4af9799000 r--p 00000000 00:00 0                          [vvar]
+7c4af9799000-7c4af979b000 r-xp 00000000 00:00 0                          [vdso]
+7c4af979b000-7c4af979c000 r--p 00000000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7c4af979c000-7c4af97c9000 r-xp 00001000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7c4af97c9000-7c4af97d3000 r--p 0002e000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7c4af97d3000-7c4af97d5000 r--p 00038000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7c4af97d5000-7c4af97d7000 rw-p 0003a000 08:01 1052418                    /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ffcd863f000-7ffcd8660000 rw-p 00000000 00:00 0                          [stack]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+Удаление последнего найденного TID процесса
+=================== Задание 4.4 =======================
+Удаляем последний найденный TID: 4552
+Нить с TID 4552 успешно удалена. Вся программа завершена.
+./4/4.sh: строка 12:  4545 Убито              ./4/4 > "$PROGRAM_OUTPUT"
+Анализ завершен. Итоговый отчет сохранен в final_report.txt.
+
+[2025-03-19 22:31:08] =================ЗАДАНИЕ 5======================
+
+[2025-03-19 22:31:08] ----------------- ЗАДАНИЕ 5.1 -------------------------
+
+[2025-03-19 22:31:08] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./5/5.1/5.1.sh
+Запуск процессов...
+Процессы запущены.
+Ожидание выполнения процессов (5 секунд)...
+Время выполнения истекло.
+Остановка процессов...
+Процессы остановлены.
+Подсчет количества выполнений...
+==============================================
+Результаты выполнения процессов:
+----------------------------------------------
+Процесс p1 (nice=-20):
+  Количество выполнений: 389283
+  Процент выполнения: 85.8200%
+----------------------------------------------
+Процесс p2 (nice=-10):
+  Количество выполнений: 40802
+  Процент выполнения: 8.9900%
+----------------------------------------------
+Процесс p3 (nice=0):
+  Количество выполнений: 4403
+  Процент выполнения: .9700%
+----------------------------------------------
+Процесс p4 (nice=10):
+  Количество выполнений: 448
+  Процент выполнения: .0900%
+----------------------------------------------
+Процесс p5 (nice=-5):
+  Количество выполнений: 15920
+  Процент выполнения: 3.5000%
+----------------------------------------------
+Процесс p6 (nice=5):
+  Количество выполнений: 2733
+  Процент выполнения: .6000%
+----------------------------------------------
+Общее количество выполнений всех процессов: 453589
+==============================================
+Очистка временных файлов...
+Временные файлы удалены.
+
+[2025-03-19 22:31:13] ----------------- ЗАДАНИЕ 5.2 -------------------------
+
+[2025-03-19 22:31:13] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./5/5.2/5.2.sh
+
+[Пользовательский процесс]
+Родительский процесс (пользовательский) (PID: 4713): Текущий приоритет (значение nice): 0
+
+
+[Родительский процесс]
+Родительский процесс до изменения приоритета (PID: 4713): Текущий приоритет (значение nice): 0
+
+Пытаемся установить приоритет на -10...
+Родительский процесс после изменения приоритета (PID: 4713): Текущий приоритет (значение nice): -10
+[Дочерний процесс]
+
+Пытаемся установить приоритет на 20...
+Родительский процесс после изменения приоритета (PID: 4713): Текущий приоритет (значение nice): 19
+Дочерний процесс до изменения nice (PID: 4714): Текущий приоритет (значение nice): 0
+
+Пытаемся установить значение nice на 10...
+Дочерний процесс после изменения nice (PID: 4714): Текущий приоритет (значение nice): -10
+
+Пытаемся установить значение nice на 10...
+Дочерний процесс после изменения nice (PID: 4714): Текущий приоритет (значение nice): 0
+
+=== Завершение программы ===
+
+[2025-03-19 22:31:13] ----------------- ЗАДАНИЕ 5.3 -------------------------
+
+[2025-03-19 22:31:13] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./5/5.3/5.3.sh
+==========================5.3.1==================================
+Запуск тестов с одинаковыми приоритетами (50)...
+Запуск fifo1 с приоритетом 50
+Запуск fifo2 с приоритетом 50
+Запуск fifo3 с приоритетом 50
+Процесс: process1
+
+PID: 4753
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+Процесс: process1
+
+PID: 4753
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+Процесс: process1
+
+PID: 4753
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+Процесс: process1
+
+PID: 4753
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+Процесс: process1
+
+PID: 4753
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+Процесс: process3
+
+PID: 4751
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+Процесс: process3
+
+PID: 4751
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+Процесс: process3
+
+PID: 4751
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+Процесс: process3
+
+PID: 4751
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+Процесс: process3
+
+PID: 4751
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+Процесс: process2
+
+PID: 4750
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+Процесс: process2
+
+PID: 4750
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+Процесс: process2
+
+PID: 4750
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+Процесс: process2
+
+PID: 4750
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+Процесс: process2
+
+PID: 4750
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 50
+
+========================
+
+==========================5.3.2==================================
+SCHED_FIFO:
+  Минимальный приоритет = 1
+  Максимальный приоритет = 99
+  Описание: Политика реального времени с планированием FIFO. Процессы с более высоким приоритетом выполняются первыми.
+  Примеры процессов с SCHED_FIFO:
+  PID: 20 | Приоритет: 99 | Политика: SCHED_FIFO
+  PID: 21 | Приоритет: 50 | Политика: SCHED_FIFO
+  PID: 24 | Приоритет: 50 | Политика: SCHED_FIFO
+  PID: 25 | Приоритет: 99 | Политика: SCHED_FIFO
+  PID: 30 | Приоритет: 50 | Политика: SCHED_FIFO
+  PID: 31 | Приоритет: 99 | Политика: SCHED_FIFO
+  PID: 36 | Приоритет: 50 | Политика: SCHED_FIFO
+  PID: 37 | Приоритет: 99 | Политика: SCHED_FIFO
+  PID: 59 | Приоритет: 50 | Политика: SCHED_FIFO
+  PID: 68 | Приоритет: 50 | Политика: SCHED_FIFO
+  PID: 356 | Приоритет: 1 | Политика: SCHED_FIFO
+  PID: 451 | Приоритет: 50 | Политика: SCHED_FIFO
+  PID: 1477 | Приоритет: 1 | Политика: SCHED_FIFO
+
+SCHED_RR:
+  Минимальный приоритет = 1
+  Максимальный приоритет = 99
+  Описание: Политика реального времени с планированием Round-Robin. Процессы с одинаковым приоритетом выполняются по очереди с использованием квантов времени.
+  Примеры процессов с SCHED_RR:
+
+SCHED_OTHER:
+  Минимальный приоритет = 0
+  Максимальный приоритет = 0
+  Описание: Стандартная политика планирования Linux с разделением времени. Использует динамические приоритеты на основе значения nice.
+  Примеры процессов с SCHED_OTHER:
+  PID: 1 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 3 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 4 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 5 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 6 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 7 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 8 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 10 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 11 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 12 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 13 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 14 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 15 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 16 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 17 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 18 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 19 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 22 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 23 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 26 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 28 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 29 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 32 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 35 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 38 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 39 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 42 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 45 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 46 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 48 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 49 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 50 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 52 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 53 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 54 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 55 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 56 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 57 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 58 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 60 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 62 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 63 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 64 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 65 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 66 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 67 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 69 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 71 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 72 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 73 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 74 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 75 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 76 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 77 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 78 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 79 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 80 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 81 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 82 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 83 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 84 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 85 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 87 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 89 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 95 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 97 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 98 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 99 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 100 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 101 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 106 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 114 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 116 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 142 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 144 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 172 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 173 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 174 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 186 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 236 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 237 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 284 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 350 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 433 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 452 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 526 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 637 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 639 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 838 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 841 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 842 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 843 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 851 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 856 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 859 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 862 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 866 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 886 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 912 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 931 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 937 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 952 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1200 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1213 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1263 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1315 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1323 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1336 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1348 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1351 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1360 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1367 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1384 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1401 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1440 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1441 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1475 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1479 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1480 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1492 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1493 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1496 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1506 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1565 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1583 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1591 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1595 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1602 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1605 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1638 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1645 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1647 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1658 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1699 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1701 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1739 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1742 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1774 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1790 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1792 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1793 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1794 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1795 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1798 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1853 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1857 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1917 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1921 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1948 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1949 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1960 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1983 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 1984 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2047 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2048 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2153 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2226 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2240 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2262 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2295 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2298 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2299 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2301 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2320 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2332 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2338 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2364 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2392 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2393 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2403 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2404 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2459 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2475 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2533 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 2545 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 3083 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 3093 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 3262 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 3466 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 3616 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 3690 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 3695 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 3776 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 3807 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 3813 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 4012 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 4017 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 4038 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 4114 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 4115 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 4138 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 4139 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 4140 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 4141 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 4142 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 4395 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 4724 | Приоритет: 0 | Политика: SCHED_OTHER
+  PID: 4754 | Приоритет: 0 | Политика: SCHED_OTHER
+
+==========================5.3.3==================================
+Запуск тестов с разными приоритетами...
+Запуск fifo1 с приоритетом 30
+Запуск fifo2 с приоритетом 99
+Запуск fifo3 с приоритетом 70
+Процесс: process2
+
+PID: 4761
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 99
+
+========================
+
+Процесс: process2
+
+PID: 4761
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 99
+
+========================
+
+Процесс: process2
+
+PID: 4761
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 99
+
+========================
+
+Процесс: process2
+
+PID: 4761
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 99
+
+========================
+
+Процесс: process2
+
+PID: 4761
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 99
+
+========================
+
+Процесс: process3
+
+PID: 4760
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 70
+
+========================
+
+Процесс: process3
+
+PID: 4760
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 70
+
+========================
+
+Процесс: process3
+
+PID: 4760
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 70
+
+========================
+
+Процесс: process3
+
+PID: 4760
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 70
+
+========================
+
+Процесс: process3
+
+PID: 4760
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 70
+
+========================
+
+Процесс: process1
+
+PID: 4763
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 30
+
+========================
+
+Процесс: process1
+
+PID: 4763
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 30
+
+========================
+
+Процесс: process1
+
+PID: 4763
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 30
+
+========================
+
+Процесс: process1
+
+PID: 4763
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 30
+
+========================
+
+Процесс: process1
+
+PID: 4763
+
+Политика планирования: SCHED_FIFO
+
+Приоритет: 30
+
+========================
+
+
+[2025-03-19 22:31:37] ----------------- ЗАДАНИЕ 5.4 -------------------------
+
+[2025-03-19 22:31:37] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./5/5.4/5.4.sh
+Определение величины кванта
+=================
+FATHER PARAMS: pid=4781  ppid=4780
+Квант при циклическом планировании: 0.1 сек
+SON: Квант процессорного времени: 0.1 сек
+=================
+Меняем политику планирования на RR
+
+==========================5.4.1==================================
+Запуск процессов с одинаковыми приоритетами
+
+./5.4.1.sh: строка 3: cd: 5/5.4/5.4.1: Нет такого файла или каталога
+Program 3: PID 4803 Computation 0, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 1, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 2, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 3, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 4, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 5, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 6, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 7, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 8, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 9, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 10, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 11, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 12, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 13, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 14, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 15, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 16, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 17, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 18, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 19, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4801 Computation 0, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 0, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 20, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4801 Computation 1, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4801 Computation 2, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 1, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 2, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 3, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 21, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 22, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 23, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4801 Computation 3, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4801 Computation 4, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4801 Computation 5, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4801 Computation 6, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4801 Computation 7, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 4, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 5, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 6, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 24, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 25, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 26, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 27, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4801 Computation 8, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4801 Computation 9, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4801 Computation 10, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 7, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 8, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 9, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 28, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 29, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 30, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4801 Computation 11, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 10, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 11, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 12, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 31, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 32, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 13, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 14, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 33, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 34, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 15, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 35, Scheduling Policy: SCHED_RR, Priority: 99
+Program 3: PID 4803 Computation 36, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 16, Scheduling Policy: SCHED_RR, Priority: 99
+Program 2: PID 4802 Computation 17, Scheduling Policy: SCHED_RR, Priority: 99
+
+==========================5.4.2==================================
+Запуск процессов с разными приоритетами
+
+./5.4.2.sh: строка 3: cd: 5/5.4/5.4.2: Нет такого файла или каталога
+Program 2: PID 4830 Computation 0, Scheduling Policy: SCHED_RR, Priority: 50
+Program 2: PID 4830 Computation 1, Scheduling Policy: SCHED_RR, Priority: 50
+Program 3: PID 4831 Computation 0, Scheduling Policy: SCHED_RR, Priority: 1
+Program 1: PID 4829 Computation 0, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 1, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 2, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 3, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 4, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 5, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 6, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 7, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 8, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 9, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 10, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 11, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 12, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 13, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 14, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 15, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 16, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 17, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 18, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 19, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 20, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 21, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 22, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 23, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 24, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 25, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 26, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 27, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 28, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 29, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 30, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 31, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 32, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 33, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 34, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 35, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 36, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 37, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 38, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 39, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 40, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 41, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 42, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 43, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 44, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 45, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 46, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 47, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 48, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 49, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 50, Scheduling Policy: SCHED_RR, Priority: 99
+Program 1: PID 4829 Computation 51, Scheduling Policy: SCHED_RR, Priority: 99
+
+==========================5.4.3==================================
+Пример использование yield
+
+./5.4.3.sh: строка 3: cd: 5/5.4/5.4.3: Нет такого файла или каталога
+Program 3: PID 4862 Computation 0, Scheduling Policy: SCHED_RR, Priority: 99
+
+Program 3: PID 4862 Computation 1, Scheduling Policy: SCHED_RR, Priority: 99
+
+Program 3: PID 4862 Computation 2, Scheduling Policy: SCHED_RR, Priority: 99
+
+Program 3: sched_yield_called
+
+Program 1: PID 4865 Computation 0, Scheduling Policy: SCHED_RR, Priority: 99
+
+Program 2: PID 4863 Computation 0, Scheduling Policy: SCHED_RR, Priority: 99
+
+Program 3: PID 4862 Computation 3, Scheduling Policy: SCHED_RR, Priority: 99
+
+Program 3: sched_yield_called
+
+Program 2: PID 4863 Computation 1, Scheduling Policy: SCHED_RR, Priority: 99
+
+Program 2: sched_yield_called
+
+Program 1: PID 4865 Computation 1, Scheduling Policy: SCHED_RR, Priority: 99
+
+Program 1: sched_yield_called
+
+Program 2: PID 4863 Computation 2, Scheduling Policy: SCHED_RR, Priority: 99
+
+Program 2: sched_yield_called
+
+Program 3: PID 4862 Computation 4, Scheduling Policy: SCHED_RR, Priority: 99
+
+Program 3: sched_yield_called
+
+Все программы завершены.
+
+[2025-03-19 22:32:01] ----------------- ЗАДАНИЕ 5.5 -------------------------
+
+[2025-03-19 22:32:01] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./5/5.5/5.5.sh
+Компиляция программ...
+Запуск программ...
+Ожидание 10 секунд...
+Program 3: PID 4902: Computation 0, Scheduling Policy: SCHED_OTHER, Priority: 0
+
+Program 2: PID 4901: Computation 0, Scheduling Policy: SCHED_RR, Priority: 99
+
+Program 1: PID 4904: Computation 0, Scheduling Policy: SCHED_FIFO, Priority: 99
+
+Program 1: PID 4904: Computation 1, Scheduling Policy: SCHED_FIFO, Priority: 99
+
+Program 1: PID 4904: Computation 2, Scheduling Policy: SCHED_FIFO, Priority: 99
+
+Program 1: PID 4904: Computation 3, Scheduling Policy: SCHED_FIFO, Priority: 99
+
+Program 1: PID 4904: Computation 4, Scheduling Policy: SCHED_FIFO, Priority: 99
+
+Program 1: PID 4904: Computation 5, Scheduling Policy: SCHED_FIFO, Priority: 99
+
+Program 1: PID 4904: Computation 6, Scheduling Policy: SCHED_FIFO, Priority: 99
+
+
+[2025-03-19 22:32:12] ----------------- ЗАДАНИЕ 5.6 -------------------------
+
+[2025-03-19 22:32:12] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./5/5.6/5.6.sh
+вызов команды cat /proc/sys/kernel/sched_rt_runtime_us
+950000
+/proc/sys/kernel/sched_rt_runtime_us определяет, сколько микросекунд (µs) процессорного времени выделяется задачам реального времени (RT) в каждом 1-секундном интервале (1000000 µs).
+По умолчанию его значение — 950000, что означает, что задачи реального времени могут использовать до 950000 микросекунд (95%) CPU в секунду.
+Оставшиеся 5% (50000 µs) зарезервированы для обычных (не RT) процессов, чтобы система оставалась отзывчивой.
+
+5.6.1
+
+| Thread_SCHED_RR | TID: 136531100559040 | Policy: SCHED_RR | Priority: 99
+| Thread_SCHED_RR | TID: 136531100559040 | Policy: SCHED_RR | Priority: 99
+| Thread_SCHED_RR | TID: 136531100559040 | Policy: SCHED_RR | Priority: 99
+| Thread_SCHED_RR | TID: 136531100559040 | Policy: SCHED_RR | Priority: 99
+| Thread_SCHED_RR | TID: 136531100559040 | Policy: SCHED_RR | Priority: 99
+| Thread_SCHED_RR | TID: 136531100559040 | Policy: SCHED_RR | Priority: 99
+| Thread_SCHED_RR | TID: 136531100559040 | Policy: SCHED_RR | Priority: 99
+| Thread_SCHED_RR | TID: 136531100559040 | Policy: SCHED_RR | Priority: 99
+| Thread_SCHED_RR | TID: 136531100559040 | Policy: SCHED_RR | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_OTHER | TID: 136531108951744 | Policy: SCHED_OTHER | Priority: 0
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+| Thread_SCHED_FIFO | TID: 136531092166336 | Policy: SCHED_FIFO | Priority: 99
+
+5.6.2
+ rr=40 fifo=30
+
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_OTHER | TID: 126440972482240 | Policy: SCHED_OTHER | Priority: 0
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+| Thread_SCHED_RR | TID: 126440964089536 | Policy: SCHED_RR | Priority: 40
+
+5.6.2
+ rr=30 fifo=40
+
+| Thread_SCHED_OTHER | TID: 137788496279232 | Policy: SCHED_OTHER | Priority: 0
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_OTHER | TID: 137788496279232 | Policy: SCHED_OTHER | Priority: 0
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+| Thread_SCHED_FIFO | TID: 137788479493824 | Policy: SCHED_FIFO | Priority: 40
+
+[2025-03-19 22:32:27] =================ЗАДАНИЕ 6======================
+
+[2025-03-19 22:32:27] ----------------- ЗАДАНИЕ 6 -------------------------
+
+[2025-03-19 22:32:27] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb2$ ./6/6.sh
+=== Демонстрация наследования ресурсов в Linux (fork, exec, clone) ===
+[Родитель] PID 4970: Запущен.
+
+=== Тест 6.1.1: Наследование файловых дескрипторов через fork() ===
+[Потомок] PID 4971: Данные записаны в 'testfile_fork.txt'
+22:32:27.799124 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=4971, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+[Родитель] PID 4970: Данные записаны в 'testfile_fork.txt'
+Проверьте содержимое файла 'testfile_fork.txt'.
+
+=== Тест 6.1.2: Наследование файловых дескрипторов через exec() ===
+=== Exec Child Process ===
+[Exec-потомок] PID 4972: Запущен через exec(), проверка наследования.
+[Exec-потомок] PID 4972: Обработчик SIGUSR1 сброшен к значению по умолчанию.
+Ошибка записи (exec-потомок): Bad file descriptor
+[Exec-потомок] PID 4972: Посылаю SIGUSR1 самому себе.
+22:32:27.809698 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=4972, si_uid=0, si_status=SIGUSR1, si_utime=0, si_stime=0} ---
+Тест exec завершён. Проверьте содержимое файла 'testfile_exec.txt'.
+
+=== Тест 6.1.3: Наследование файловых дескрипторов через clone() ===
+[Родитель] PID 4970: Записано 68 байт в файл.
+[Clone-потомок] PID 4973: Запущен. Использую файловый дескриптор: 3
+[Clone-потомок] PID 4973: Записано 55 байт в файл.
+22:32:27.827898 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=4973, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+[Родитель] PID 4970: Записано 68 байт в файл.
+Тест clone (файловые дескрипторы) завершён. Проверьте содержимое файла 'testfile_clone_fd.txt'.
+
+=== Тест 6.2.1: Наследование приоритетов и политики планирования через fork() ===
+[Родитель] PID 4970: Приоритет = 5, Политика планирования = 0
+[Потомок] PID 4974: Приоритет = 5, Политика планирования = 0
+22:32:27.847119 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=4974, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+Тест наследования приоритетов через fork() завершён.
+
+=== Тест 6.2.2: Наследование приоритетов и политики планирования через exec() ===
+[Родитель] PID 4970: Приоритет = 99, Политика планирования = 1
+=== Exec Child Process (Priority) ===
+[Exec-потомок] PID 4975: Запущен через exec(), проверка наследования приоритетов.
+[Exec-потомок] PID 4975: Приоритет = 10, Политика планирования = 1
+22:32:27.858990 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=4975, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+Тест наследования приоритетов через exec() завершён.
+
+=== Тест 6.2.3: Наследование приоритетов и политики планирования через clone() ===
+[Родитель] PID 4970: Приоритет = 99, Политика планирования = 1
+[Clone-потомок] PID 4976: Запущен. Проверка наследования приоритетов и политики планирования.
+[Clone-потомок] PID 4976: Приоритет = 10, Политика планирования = 1
+22:32:27.860570 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=4976, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+Тест clone (приоритеты и политика планирования) завершён.
+
+=== Тест 6.3.1: Наследование сигналов через fork() ===
+22:32:27.860992 rt_sigaction(SIGUSR1, {sa_handler=0x630dafe43509, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7d5bdd845250}, NULL, 8) = 0
+[Потомок] PID 4977: Отправляю SIGUSR1 себе
+[Сигнал] Процесс (PID 4977) получил сигнал 10
+22:32:28.868526 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=4977, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+[Родитель] PID 4970: Отправляю SIGUSR1 потомку (PID 4977)
+22:32:29.865597 tgkill(4970, 4970, SIGUSR1) = 0
+22:32:29.865773 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_TKILL, si_pid=4970, si_uid=0} ---
+[Сигнал] Процесс (PID 4970) получил сигнал 10
+22:32:29.865814 rt_sigreturn({mask=[]}) = 0
+Тест наследования сигналов через fork() завершён.
+
+=== Тест 6.3.2: Наследование сигналов через exec() ===
+22:32:29.873020 rt_sigaction(SIGUSR1, {sa_handler=0x630dafe43509, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7d5bdd845250}, NULL, 8) = 0
+=== Exec Child Process (Signal) ===
+[Exec-потомок] PID 4978: Запущен через exec(), проверка наследования сигналов.
+[Exec-потомок] PID 4978: Обработчик SIGUSR1 сброшен это значение по умолчанию.
+[Exec-потомок] PID 4978: Посылаю SIGUSR1 самому себе.
+22:32:29.876428 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=4978, si_uid=0, si_status=SIGUSR1, si_utime=0, si_stime=0} ---
+Тест наследования сигналов через exec() завершён.
+
+=== Тест 6.3.3: Наследование сигналов через clone() ===
+22:32:29.878698 rt_sigaction(SIGUSR1, {sa_handler=0x630dafe43509, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7d5bdd845250}, NULL, 8) = 0
+[Clone-потомок] PID 4979: Запущен. Проверка наследования сигналов.
+[Clone-потомок] PID 4979: Обработчик SIGUSR1 унаследован.
+[Clone-потомок] PID 4979: Посылаю SIGUSR1 самому себе.
+[Сигнал] Процесс (PID 4979) получил сигнал 10
+22:32:29.880864 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=4979, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+Тест clone (сигналы) завершён.
+
+Все тесты завершены. Проверьте созданные файлы:
+ - testfile_fork.txt
+ - testfile_exec.txt
+ - testfile_clone.txt
+22:32:29.884438 +++ exited with 0 +++
+
+testfile_fork.txt:
+
+Родитель записывает строку 1 (fork)
+Потомок записывает строку 2 (fork)
+Родитель записывает строку 3 (fork)
+
+testfile_exec.txt:
+
+Родитель записывает строку перед exec
+
+testfile_clone:
+
+Родитель записывает строку перед clone
+Clone-потомок записывает строку
+Родитель записывает строку после clone

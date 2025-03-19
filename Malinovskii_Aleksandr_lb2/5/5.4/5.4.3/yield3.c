@@ -28,7 +28,7 @@ void print_scheduling_info() {
     int priority = param.sched_priority;
 
     printf("Program 3: PID %d Computation %d, Scheduling Policy: %s, Priority: %d\n", getpid(), count++, policy_name, priority);
-    fflush(stdout);
+
 }
 
 void perform_computation() {

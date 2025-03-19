@@ -1,162 +1,144 @@
-#define _GNU_SOURCE
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <pthread.h>
 #include <sched.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include <errno.h>
 #include <string.h>
-#include <sys/types.h>
-#include <sys/wait.h>
 
-// Функция для получения строкового представления политики планирования
-const char* get_policy_name(int policy) {
-    switch (policy) {
-        case SCHED_OTHER: return "SCHED_OTHER";
-        case SCHED_FIFO:  return "SCHED_FIFO";
-        case SCHED_RR:    return "SCHED_RR";
-        default:          return "Unknown";
-    }
-}
+#define NUM_THREADS 3
 
-// Функция, выполняемая каждым потоком
-void* thread_function(void* arg) {
-    int thread_num = *((int*)arg);
+typedef struct {
+    const char* name;
+    int policy;
+    int priority;
+} thread_info;
+
+void print_thread_info(const char* thread_name) {
     int policy;
     struct sched_param param;
-
-    // Получаем текущую политику и приоритет потока
-    pthread_getschedparam(pthread_self(), &policy, &param);
-
-    // Выводим информацию о потоке
-    printf("Поток %d (PID: %d, TID: %lu) начал выполнение:\n", thread_num, getpid(), pthread_self());
-    printf("  - Политика: %s\n", get_policy_name(policy));
-    printf("  - Приоритет: %d\n", param.sched_priority);
-    printf("  - Выполняется на CPU: %d\n", sched_getcpu());
-
-    // Имитация работы потока
-    for (int i = 0; i < 5; i++) {
-        printf("Поток %d: Работает (%d/5)\n", thread_num, i + 1);
+    if (pthread_getschedparam(pthread_self(), &policy, &param) != 0) {
+        perror("pthread_getschedparam failed");
+        return;
     }
 
-    printf("Поток %d завершил выполнение.\n", thread_num);
+    const char* policy_name;
+    switch (policy) {
+        case SCHED_FIFO: policy_name = "SCHED_FIFO"; break;
+        case SCHED_RR: policy_name = "SCHED_RR"; break;
+        case SCHED_OTHER: policy_name = "SCHED_OTHER"; break;
+        default: policy_name = "UNKNOWN";
+    }
+
+    printf("| %s | TID: %lu | Policy: %s | Priority: %d\n", 
+           thread_name, (unsigned long)pthread_self(), policy_name, param.sched_priority);
+    fflush(stdout);
+}
+
+void* thread_func(void* arg) {
+    thread_info* info = (thread_info*) arg;
+    while (1) {
+        volatile unsigned long dummy = 0;
+        for (unsigned long j = 0; j < 100000000UL; j++) {
+            dummy++;
+        }
+        print_thread_info(info->name);
+    }
     return NULL;
 }
 
-// Функция для создания потоков с разными политиками и приоритетами
-void create_threads() {
-    pthread_t threads[3];
-    int thread_nums[3] = {1, 2, 3};
-    struct sched_param param;
+int main(int argc, char* argv[]) {
+    pthread_t threads[NUM_THREADS];
+    thread_info thread_data[NUM_THREADS];
+    int ret;
 
-    printf("Основной поток (PID: %d) начал выполнение.\n", getpid());
+    int policies[NUM_THREADS] = {SCHED_OTHER, SCHED_RR, SCHED_FIFO};
 
-    // Создаем три потока
-    for (int i = 0; i < 3; i++) {
-        pthread_create(&threads[i], NULL, thread_function, &thread_nums[i]);
-        printf("Основной поток: Создан поток %d с ID %lu\n", thread_nums[i], threads[i]);
-    }
+    // Получаем минимальный и максимальный приоритеты
+    int min_fifo = sched_get_priority_min(SCHED_FIFO);
+    int max_fifo = sched_get_priority_max(SCHED_FIFO);
+    int min_rr = sched_get_priority_min(SCHED_RR);
+    int max_rr = sched_get_priority_max(SCHED_RR);
 
-    // Изменяем политику планирования для первого потока на SCHED_FIFO с высоким приоритетом
-    param.sched_priority = 99;
-    pthread_setschedparam(threads[0], SCHED_FIFO, &param);
-    printf("Основной поток: Политика потока 1 изменена на SCHED_FIFO с приоритетом %d\n", param.sched_priority);
+    // Устанавливаем приоритеты по умолчанию (средние значения)
+    int fifo_priority = (min_fifo + max_fifo) / 2;
+    int rr_priority = (min_rr + max_rr) / 2;
 
-    // Изменяем политику планирования для второго потока на SCHED_RR с средним приоритетом
-    param.sched_priority = 50;
-    pthread_setschedparam(threads[1], SCHED_RR, &param);
-    printf("Основной поток: Политика потока 2 изменена на SCHED_RR с приоритетом %d\n", param.sched_priority);
+    // Если переданы аргументы, задаём приоритеты
+    if (argc > 2) {
+        fifo_priority = atoi(argv[1]);
+        rr_priority = atoi(argv[2]);
 
-    // Третий поток остается с политикой SCHED_OTHER (по умолчанию)
-    printf("Основной поток: Поток 3 остается с политикой по умолчанию (SCHED_OTHER)\n");
-
-    // Ждем завершения всех потоков
-    for (int i = 0; i < 3; i++) {
-        pthread_join(threads[i], NULL);
-        printf("Основной поток: Поток %d завершен.\n", thread_nums[i]);
-    }
-
-    printf("Основной поток: Все потоки завершили выполнение.\n");
-}
-
-// Функция для создания независимых процессов (потоков разных процессов)
-void create_processes() {
-    printf("Создание независимых процессов...\n");
-
-    for (int i = 1; i <= 3; i++) {
-        pid_t pid = fork();
-        if (pid == 0) { // Дочерний процесс
-            int policy;
-            struct sched_param param;
-
-            // Устанавливаем политику и приоритет для каждого процесса
-            if (i == 1) {
-                param.sched_priority = 99;
-                sched_setscheduler(0, SCHED_FIFO, &param);
-            } else if (i == 2) {
-                param.sched_priority = 50;
-                sched_setscheduler(0, SCHED_RR, &param);
-            } else {
-                param.sched_priority = 0;
-                sched_setscheduler(0, SCHED_OTHER, &param);
-            }
-
-            // Получаем текущую политику и приоритет
-            sched_getparam(0, &param);
-            policy = sched_getscheduler(0);
-
-            // Выводим информацию о процессе
-            printf("Процесс %d (PID: %d) начал выполнение:\n", i, getpid());
-            printf("  - Политика: %s\n", get_policy_name(policy));
-            printf("  - Приоритет: %d\n", param.sched_priority);
-            printf("  - Выполняется на CPU: %d\n", sched_getcpu());
-
-            // Имитация работы процесса
-            for (int j = 0; j < 5; j++) {
-                printf("Процесс %d: Работает (%d/5)\n", i, j + 1);
-            }
-
-            printf("Процесс %d завершил выполнение.\n", i);
-            exit(0);
+        // Проверяем границы значений
+        if (fifo_priority < min_fifo || fifo_priority > max_fifo) {
+            printf("Ошибка: приоритет FIFO должен быть в диапазоне [%d, %d]\n", min_fifo, max_fifo);
+            return 1;
         }
+        if (rr_priority < min_rr || rr_priority > max_rr) {
+            printf("Ошибка: приоритет RR должен быть в диапазоне [%d, %d]\n", min_rr, max_rr);
+            return 1;
+        }
+    } else {
+        printf("Использование: %s <FIFO_priority> <RR_priority>\n", argv[0]);
+        printf("По умолчанию FIFO=%d, RR=%d\n", fifo_priority, rr_priority);
     }
 
-    // Ожидаем завершения всех дочерних процессов
-    for (int i = 0; i < 3; i++) {
-        wait(NULL);
+    for (int i = 0; i < NUM_THREADS; i++) {
+        switch(i) {
+            case 0: thread_data[i].name = "Thread_SCHED_OTHER"; break;
+            case 1: thread_data[i].name = "Thread_SCHED_RR"; break;
+            case 2: thread_data[i].name = "Thread_SCHED_FIFO"; break;
+        }
+        thread_data[i].policy = policies[i];
+
+        pthread_attr_t attr;
+        ret = pthread_attr_init(&attr);
+        if (ret != 0) {
+            fprintf(stderr, "Ошибка pthread_attr_init: %s\n", strerror(ret));
+            exit(EXIT_FAILURE);
+        }
+
+        ret = pthread_attr_setinheritsched(&attr, PTHREAD_EXPLICIT_SCHED);
+        if (ret != 0) {
+            fprintf(stderr, "Ошибка pthread_attr_setinheritsched: %s\n", strerror(ret));
+            exit(EXIT_FAILURE);
+        }
+
+        ret = pthread_attr_setschedpolicy(&attr, thread_data[i].policy);
+        if (ret != 0) {
+            fprintf(stderr, "Ошибка pthread_attr_setschedpolicy для %s: %s\n", 
+                    thread_data[i].name, strerror(ret));
+        }
+
+        struct sched_param param;
+        if (thread_data[i].policy == SCHED_FIFO) {
+            param.sched_priority = fifo_priority;
+        } else if (thread_data[i].policy == SCHED_RR) {
+            param.sched_priority = rr_priority;
+        } else {
+            param.sched_priority = 0;
+        }
+
+
+        ret = pthread_attr_setschedparam(&attr, &param);
+        if (ret != 0) {
+            fprintf(stderr, "Ошибка pthread_attr_setschedparam для %s: %s\n", 
+                    thread_data[i].name, strerror(ret));
+        }
+        thread_data[i].priority = param.sched_priority;
+
+        ret = pthread_create(&threads[i], &attr, thread_func, &thread_data[i]);
+        if (ret != 0) {
+            fprintf(stderr, "Ошибка создания потока %s: %s\n", 
+                    thread_data[i].name, strerror(ret));
+            exit(EXIT_FAILURE);
+        }
+        pthread_attr_destroy(&attr);
     }
 
-    printf("Все независимые процессы завершили выполнение.\n");
-}
-
-int main() {
-    printf("Тестирование потоков в одном процессе:\n");
-    create_threads();
-
-    printf("\nТестирование независимых процессов:\n");
-    create_processes();
-
-    // Вывод анализа результатов
-    printf("\n\n--- Анализ и выводы ---\n");
-
-    printf("\n** Потоки в одном процессе: **\n");
-    printf("- Поток с SCHED_FIFO (приоритет 99) выполняется первым.\n");
-    printf("- Поток с SCHED_RR (приоритет 50) выполняется вторым.\n");
-    printf("- Поток с SCHED_OTHER выполняется последним (низкий приоритет).\n");
-
-    printf("\n** Независимые процессы: **\n");
-    printf("- Процесс с SCHED_FIFO (приоритет 99) выполняется первым.\n");
-    printf("- Процесс с SCHED_RR (приоритет 50) выполняется вторым.\n");
-    printf("- Процесс с SCHED_OTHER выполняется последним.\n");
-
-    printf("\n** Сравнение: **\n");
-    printf("- Приоритеты и политики влияют на порядок выполнения как для потоков, так и для процессов.\n");
-    printf("- Для потоков одного процесса планировщик работает более детально, так как потоки разделяют ресурсы.\n");
-
-    printf("\n** Ответы на задание: **\n");
-    printf("- Приоритеты влияют на порядок выполнения для SCHED_FIFO и SCHED_RR.\n");
-    printf("- Для SCHED_OTHER приоритеты не влияют на порядок выполнения (динамическое планирование).\n");
-    printf("- Для независимых процессов приоритеты учитываются на уровне процессов.\n");
-    printf("- Для потоков одного процесса приоритеты применяются напрямую, что позволяет более точно управлять их выполнением.\n");
+    for (int i = 0; i < NUM_THREADS; i++) {
+        pthread_join(threads[i], NULL);
+    }
 
     return 0;
 }
