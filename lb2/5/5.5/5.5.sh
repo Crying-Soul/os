@@ -22,7 +22,7 @@ for exe in "${EXECUTABLES[@]}"; do
     pids+=($!)
 done
 
-sleep 20
+sleep 30
 
 for pid in "${pids[@]}"; do
     kill "$pid" 2>/dev/null

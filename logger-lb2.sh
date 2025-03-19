@@ -105,11 +105,8 @@ execute_task() {
     if [[ -f "$task_script" ]]; then
         local start_time end_time duration
         start_time=$(date +%s)
-        local output
-        output=$(bash "$task_script" "${task_args[@]}" 2>&1)
-        if [[ -n "$output" ]]; then
-            echo "$output" | sed "s/^/$(basename "$task_script") >> /"
-        fi
+
+        bash "$task_script" "${task_args[@]}"
         end_time=$(date +%s)
         duration=$((end_time - start_time))
 
@@ -195,94 +192,76 @@ log_comment "Выполним подготовку окружения для в�
 execute_commands 0 \
     "./compiller.sh lb2"
 
-execute_task 1.1 0
+# execute_task 1.1 0
 
-execute_commands 1.2 \
-    "nohup sleep 3600 > nohup.out 2>&1 &" \
-    "ps aux | grep sleep"
-log_comment "Процесс сохраняется после reboot "
-execute_commands 1.2 \
-    "ps aux | grep sleep" \
-    "kill -9 $(ps aux | grep sleep | grep -v grep | awk '{print $2}')"
+# execute_commands 1.2 \
+#     "nohup sleep 3600 > nohup.out 2>&1 &" \
+#     "ps aux | grep sleep"
+# log_comment "Процесс сохраняется после reboot "
+# execute_commands 1.2 \
+#     "ps aux | grep sleep" \
+#     "kill -9 $(ps aux | grep sleep | grep -v grep | awk '{print $2}')"
 
-execute_task 1.3 0
+# execute_task 1.3 0
 
-execute_task 1.4 0
+# execute_task 1.4 0
 
-execute_task 1.5 0
+# execute_task 1.5 0
 
-execute_commands 2.1 \
-    "./lb2/2/2.1/2.1"
+# execute_commands 2.1 \
+#     "./lb2/2/2.1/2.1"
 
-execute_commands 2.2 \
-    "./lb2/2/2.2/2.2-father"
+# execute_commands 2.2 \
+#     "./lb2/2/2.2/2.2-father"
 
-execute_commands 2.3 \
-    "./lb2/2/2.3/2.3"
+# execute_commands 2.3 \
+#     "./lb2/2/2.3/2.3"
 
-execute_task 2.4 1
+# execute_task 2.4 1
 
-execute_commands 3.1 \
-    "./lb2/3/3.1/3.1-father"
+# execute_commands 3.1 \
+#     "./lb2/3/3.1/3.1-father"
 
-execute_commands 3.2 \
-    "./lb2/3/3.2/3.2-father"
+# execute_commands 3.2 \
+#     "./lb2/3/3.2/3.2-father"
 
-execute_task 4 1
+# execute_task 4 1
 
-execute_commands 5.1\(table\) \
-    "./lb2/5/5.1/5.1-table"
+# execute_commands 5.1\(table\) \
+#     "./lb2/5/5.1/5.1-table"
 
 execute_task 5.1 0
 
-execute_commands 5.2 \
-    "./lb2/5/5.2/5.2"
+# execute_commands 5.2 \
+#     "./lb2/5/5.2/5.2"
 
-execute_task 5.3.1 0
+# execute_task 5.3.1 0
 
-execute_commands 5.3.2 \
-    "sudo taskset -c 0 ./lb2/5/5.3/5.3.2"
+# execute_commands 5.3.2 \
+#     "sudo taskset -c 0 ./lb2/5/5.3/5.3.2"
 
-execute_task 5.3.3 0
+# execute_task 5.3.3 0
 
-execute_task 5.4.1 0
+# execute_task 5.4.1 0
 
-execute_commands 5.4.2 \
-    "sudo ./lb2/5/5.4/5.4.2-quant" \
+# execute_commands 5.4.2 \
+#     "sudo ./lb2/5/5.4/5.4.2-quant" \
 
-execute_task 5.4.3 0
+# execute_task 5.4.3 0
 
-execute_task 5.4.4 0
+# execute_task 5.4.4 0
 
-execute_task 5.5 0
+# execute_task 5.5 0
 
-execute_commands 5.6 \
-    "sudo taskset -c 0 ./lb2/5/5.6/5.6"
+# execute_task 5.6 0
 
->"$OUTPUT_FILE"
-display_file_state "ДО ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
-execute_commands 6.1 \
-    "./lb2/6/6.1"
+# execute_task 6 0
 
-display_file_state "ПОСЛЕ ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
-
-execute_commands 6.2 \
-    "./lb2/6/6.2"
-
-execute_commands 6.3 \
-    "./lb2/6/6.3"
-
->"$OUTPUT_FILE"
-display_file_state "ДО ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
-execute_commands 6.4 \
-    "./lb2/6/6.1"
-
-display_file_state "ПОСЛЕ ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
 
 log_comment "Конец скрипта. Очистка файлов."
 
 execute_commands 0 \
-    "./cleaner.sh lb2"
+    "./cleaner.sh lb2"\
 
 # Замер общего времени выполнения скрипта
 SCRIPT_END=$(date +%s)
