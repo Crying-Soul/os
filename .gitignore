@@ -3,6 +3,8 @@
 !/lab_*
 !/.gitignore
 !/logger.sh
+!/final_log/
+!/final_log/**
 !/lb1/
 !/lb1/**
 !/lb2/
