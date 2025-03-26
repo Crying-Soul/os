@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Пути к исполняемым файлам
-EXECUTABLES=("lb2/5/5.5/5.5-other" "lb2/5/5.5/5.5-fifo" "lb2/5/5.5/5.5-rr")
+EXECUTABLES=("src/5/5.5/5.5-other" "src/5/5.5/5.5-fifo" "src/5/5.5/5.5-rr")
 
 # Приоритет для запуска с одинаковыми приоритетами
 SAME_PRIORITY=30
