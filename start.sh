@@ -1,1 +1,1 @@
-sudo rm -rf lab_* && ./logger-lb2.sh
+sudo rm -rf lab_* && ./logger-lb3.sh

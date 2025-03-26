@@ -1,84 +1,91 @@
 #!/bin/bash
+# Улучшенный скрипт бенчмарка с точным выводом чисел.
 
+# Пути к исполняемым файлам
 POSIX_EXEC="./lb3/5/5-posix"
 SYSV_EXEC="./lb3/5/5-systemv"
-THREADS_EXEC="./lb3/5/5-threads"
-ITERATIONS=1000
+PTHREAD_EXEC="./lb3/5/5-pthread"
+
+BENCHMARK_EXEC="./lb3/5/5-benchmark"
+
+# Количество итераций
+ITER=10000
+# Количество запусков
 RUNS=5
 
-echo "Benchmarking..."
+# Проверка исполняемого файла
+check_exec() {
+    if [ ! -x "$1" ]; then
+        echo "Предупреждение: $1 не найден или не исполняемый. Пропускаем." >&2
+        return 1
+    fi
+    return 0
+}
 
-get_cpu_usage() {
-    local pid=$1
-    local cpu_usage=0
+# Запуск benchmark и вычисление средних значений
+run_benchmark() {
+    local name=$1
+    shift
+
+    if ! check_exec "$1"; then
+        averages["$name,real"]="n/a"
+        averages["$name,cpu"]="n/a"
+        return
+    fi
+
+    local sum_real=0
+    local sum_cpu=0
     local count=0
-    
-    while kill -0 $pid 2>/dev/null; do
-        current_cpu=$(ps -p $pid -o %cpu 2>/dev/null | tail -n 1 | awk '{print $1}')
-        # Проверяем, что current_cpu - это число
-        if [[ $current_cpu =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
-            cpu_usage=$(echo "$cpu_usage + $current_cpu" | bc 2>/dev/null || echo "$cpu_usage")
-            count=$((count + 1))
+    local real_time cpu_load out
+
+    for ((i=1; i<=RUNS; i++)); do
+        out=$("$BENCHMARK_EXEC" "$1" "$ITER" 2>/dev/null)
+        real_time=$(echo "$out" | awk '{print $1}')
+        cpu_load=$(echo "$out" | awk '{print $2}')
+
+        # Проверяем, что получили валидные числа
+        if [[ ! "$real_time" =~ ^[0-9]+(\.[0-9]+)?$ || ! "$cpu_load" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+            echo "Ошибка в выводе benchmark ($out). Пропуск итерации." >&2
+            continue
         fi
-        sleep 0.1
+
+        sum_real=$(echo "$sum_real + $real_time" | bc -l)
+        sum_cpu=$(echo "$sum_cpu + $cpu_load" | bc -l)
+        ((count++))
     done
-    
-    if [ $count -gt 0 ]; then
-        echo "scale=2; $cpu_usage / $count" | bc 2>/dev/null || echo "0"
+
+    if ((count > 0)); then
+        local avg_real=$(echo "scale=9; $sum_real / $count" | bc -l)
+        local avg_cpu=$(echo "scale=2; $sum_cpu / $count" | bc -l)
+        averages["$name,real"]=$avg_real
+        averages["$name,cpu"]=$avg_cpu
+        echo "$name: avg real time = ${avg_real}s, avg CPU load = ${avg_cpu}%"
     else
-        echo "0"
+        averages["$name,real"]="n/a"
+        averages["$name,cpu"]="n/a"
     fi
 }
 
-run_benchmark() {
-    local name=$1
-    local exec=$2
-    local total_time=0
-    local total_cpu=0
-    
-    echo "=== $name ==="
-    for ((i=1; i<=$RUNS; i++)); do
-        start_time=$(date +%s.%N)
-        $exec $ITERATIONS > /dev/null &
-        pid=$!
-        cpu=$(get_cpu_usage $pid)
-        wait $pid
-        end_time=$(date +%s.%N)
-        elapsed=$(echo "$end_time - $start_time" | bc)
-        
-        total_time=$(echo "$total_time + $elapsed" | bc)
-        total_cpu=$(echo "$total_cpu + $cpu" | bc)
-        echo "Run $i: Time: $(printf "%.4f" $elapsed) sec, CPU: $(printf "%.2f" $cpu)%"
-    done
-    
-    avg_time=$(echo "scale=4; $total_time / $RUNS" | bc)
-    avg_cpu=$(echo "scale=2; $total_cpu / $RUNS" | bc)
-    echo "Average: Time: $(printf "%.4f" $avg_time) sec, CPU: $(printf "%.2f" $avg_cpu)%"
-    echo ""
-    
-    # Возвращаем результаты через глобальные переменные
-    BENCH_TIME=$avg_time
-    BENCH_CPU=$avg_cpu
-}
+declare -A averages
 
-# Запускаем тесты
-run_benchmark "POSIX shared memory + semaphores" "$POSIX_EXEC"
-POSIX_TIME=$BENCH_TIME
-POSIX_CPU=$BENCH_CPU
+echo "Запуск бенчмарков (ITER=$ITER, RUNS=$RUNS)..."
+echo "-----------------------------------------------"
 
-run_benchmark "System V shared memory + semaphores" "$SYSV_EXEC"
-SYSV_TIME=$BENCH_TIME
-SYSV_CPU=$BENCH_CPU
+run_benchmark "POSIX_IPC" "$POSIX_EXEC"
+run_benchmark "SystemV_IPC" "$SYSV_EXEC"
+run_benchmark "Pthread" "$PTHREAD_EXEC"
 
-run_benchmark "Pthreads mutex + condition variables" "$THREADS_EXEC"
-PTHREADS_TIME=$BENCH_TIME
-PTHREADS_CPU=$BENCH_CPU
+methods=("POSIX_IPC" "SystemV_IPC" "Pthread")
 
-# Выводим итоговые результаты
-echo "=== Final Results ==="
-echo "1. POSIX shared memory + semaphores:"
-echo "   Time: $(printf "%.4f" $POSIX_TIME) sec, CPU: $(printf "%.2f" $POSIX_CPU)%"
-echo "2. System V shared memory + semaphores:"
-echo "   Time: $(printf "%.4f" $SYSV_TIME) sec, CPU: $(printf "%.2f" $SYSV_CPU)%"
-echo "3. Pthreads mutex + condition variables:"
-echo "   Time: $(printf "%.4f" $PTHREADS_TIME) sec, CPU: $(printf "%.2f" $PTHREADS_CPU)%"
+echo ""
+
+printf "%22s %17s %15s\n" "Реализация" "Real Time (s)" "CPU Load (%)"
+printf "%s %s %s\n" "--------------" "-----------------" "------------"
+
+for name in "${methods[@]}"; do
+    real_val=${averages["$name,real"]}
+    cpu_val=${averages["$name,cpu"]}
+    if [ -n "$real_val" ]; then
+        printf "%12s %17.9f %10.2f\n" "$name" "$real_val" "$cpu_val"
+    fi
+done

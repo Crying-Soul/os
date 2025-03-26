@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -36,10 +37,10 @@ void setup_handler(int signo) {
 
 // Эксперимент 4.1 и 4.2: Проверка приоритетов сигналов реального времени
 void experiment_priorities() {
-    printf("Эксперимент 4.1 и 4.2: Приоритеты сигналов\n");
+    printf("Эксперимент 4.1 и 4.2: Приоритеты сигналов\n"); fflush(stdout);
     printf("SIGRTMIN = %d\n", SIGRTMIN);
     printf("SIGRTMAX = %d\n", SIGRTMAX);
-    printf("Приоритет: меньший номер => более высокий приоритет.\n");
+    printf("Приоритет: меньший номер => более высокий приоритет.\n"); fflush(stdout);
     
     // Устанавливаем обработчики для двух сигналов реального времени: SIGRTMIN и SIGRTMIN+1
     setup_handler(SIGRTMIN);
@@ -77,7 +78,7 @@ void experiment_priorities() {
 
 // Эксперимент 4.3.1: Очередь обычных сигналов
 void experiment_normal_queue() {
-    printf("Эксперимент 4.3.1: Очередь обычных сигналов (например, SIGUSR1)\n");
+    printf("Эксперимент 4.3.1: Очередь обычных сигналов (например, SIGUSR1)\n"); fflush(stdout);
     setup_handler(SIGUSR1);
 
     // Блокируем SIGUSR1
@@ -111,7 +112,7 @@ void experiment_normal_queue() {
 
 // Эксперимент 4.3.2: Очередь сигналов реального времени
 void experiment_realtime_queue() {
-    printf("Эксперимент 4.3.2: Очередь сигналов реального времени\n");
+    printf("Эксперимент 4.3.2: Очередь сигналов реального времени\n"); fflush(stdout);
     // Выбираем один сигнал реального времени
     int rt_sig = SIGRTMIN + 2;
     setup_handler(rt_sig);
@@ -148,7 +149,7 @@ void experiment_realtime_queue() {
 
 // Эксперимент 4.3.3: Очередь смешанного набора сигналов (обычный + реального времени)
 void experiment_mixed_queue() {
-    printf("Эксперимент 4.3.3: Очередь смешанного набора сигналов\n");
+    printf("Эксперимент 4.3.3: Очередь смешанного набора сигналов\n"); fflush(stdout);
     // Используем SIGUSR2 как обычный и SIGRTMIN+3 как реального времени
     int rt_sig = SIGRTMIN + 3;
     setup_handler(SIGUSR2);
@@ -186,12 +187,12 @@ void experiment_mixed_queue() {
     }
     sleep(1);
     printf("Обработчик вызвался %d раз.\n", delivered_count);
-    printf("Заметим, что обычные сигналы (SIGUSR2) не очередатся: они обрабатываются один раз, а сигналы реального времени – все.\n");
+    printf("Заметим, что обычные сигналы (SIGUSR2) не очередатся: они обрабатываются один раз, а сигналы реального времени – все.\n"); fflush(stdout);
 }
 
 // Эксперимент 4.4: Проверка FIFO для равноприоритетных сигналов реального времени
 void experiment_fifo_order() {
-    printf("Эксперимент 4.4: Проверка FIFO для равноприоритетных сигналов реального времени\n");
+    printf("Эксперимент 4.4: Проверка FIFO для равноприоритетных сигналов реального времени\n"); fflush(stdout);
     int rt_sig = SIGRTMIN + 4;
     setup_handler(rt_sig);
 
@@ -222,31 +223,31 @@ void experiment_fifo_order() {
         exit(EXIT_FAILURE);
     }
     sleep(1);
-    printf("Если порядок доставки соответствует порядку отправки, то FIFO подтвержден.\n");
+    printf("Если порядок доставки соответствует порядку отправки, то FIFO подтвержден.\n"); fflush(stdout);
 }
 
 int main(void) {
-    printf("Программа экспериментов с сигналами.\n");
+    printf("Программа экспериментов с сигналами.\n"); fflush(stdout);
 
     // Эксперимент 4.1 и 4.2: Приоритеты сигналов
     experiment_priorities();
-    printf("Эксперимент 4.1 и 4.2 завершен.\n");
+    printf("Эксперимент 4.1 и 4.2 завершен.\n"); fflush(stdout);
 
     // Эксперимент 4.3.1: Очередь обычных сигналов
     experiment_normal_queue();
-    printf("Эксперимент 4.3.1 завершен.\n");
+    printf("Эксперимент 4.3.1 завершен.\n"); fflush(stdout);
 
     // Эксперимент 4.3.2: Очередь сигналов реального времени
     experiment_realtime_queue();
-    printf("Эксперимент 4.3.2 завершен.\n");
+    printf("Эксперимент 4.3.2 завершен.\n"); fflush(stdout);
 
     // Эксперимент 4.3.3: Смешанный набор сигналов
     experiment_mixed_queue();
-    printf("Эксперимент 4.3.3 завершен.\n");
+    printf("Эксперимент 4.3.3 завершен.\n"); fflush(stdout);
 
     // Эксперимент 4.4: FIFO для сигналов реального времени
     experiment_fifo_order();
-    printf("Эксперимент 4.4 завершен.\n");
+    printf("Эксперимент 4.4 завершен.\n"); fflush(stdout);
 
    
     return 0;
