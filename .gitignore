@@ -7,6 +7,8 @@
 !/lb1/**
 !/lb2/
 !/lb2/**
+!/lb3/
+!/lb3/**
 lb1/tests/
 lb1/*.txt
 logger-old.sh
