@@ -1,0 +1,532 @@
+Script started on 2025-03-29 17:51:42+03:00 [COMMAND="./logger.sh" TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="173" LINES="41"]
+Дата исполнения отчёта: 2025-03-29 17:51:42
+Идентификация: root
+Малиновский Александр Алексеевич
+
+[2025-03-29 17:51:42] ПРОФИЛЬ СИСТЕМЫ
+
+[2025-03-29 17:51:42] lscpu
+Архитектура:                          x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        39 bits physical, 48 bits virtual
+Порядок байт:                         Little Endian
+CPU(s):                               4
+On-line CPU(s) list:                  0-3
+ID прроизводителя:                    GenuineIntel
+Имя модели:                           11th Gen Intel(R) Core(TM) i5-1155G7 @ 2.50GHz
+BIOS Model name:                        CPU @ 0.0GHz
+BIOS CPU family:                      0
+Семейство ЦПУ:                        6
+Модель:                               140
+Потоков на ядро:                      1
+Ядер на сокет:                        4
+Сокетов:                              1
+Степпинг:                             2
+BogoMIPS:                             4992,02
+Флаги:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 movbe popcnt aes rdrand hypervisor lahf_lm abm 3dnowprefetch ibrs_enhanced fsgsbase bmi1 bmi2 invpcid rdseed adx clflushopt sha_ni arat md_clear flush_l1d arch_capabilities
+Разработчик гипервизора:              KVM
+Тип виртуализации:                    полный
+L1d cache:                            192 KiB (4 instances)
+L1i cache:                            128 KiB (4 instances)
+L2 cache:                             5 MiB (4 instances)
+L3 cache:                             32 MiB (4 instances)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-3
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Vulnerable
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; RSB filling; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+
+[2025-03-29 17:51:42] free -h
+               всего        занят        своб      общая  буф/врем.   доступно
+Память:        3,8Gi       2,3Gi       255Mi       122Mi       1,6Gi       1,5Gi
+Подкачка:      511Mi        12Ki       511Mi
+
+[2025-03-29 17:51:42] lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+loop0    7:0    0     4K  1 loop /snap/bare/5
+loop1    7:1    0  73,9M  1 loop /snap/core22/1748
+loop2    7:2    0  73,9M  1 loop /snap/core22/1802
+loop3    7:3    0 258,3M  1 loop /snap/firefox/5889
+loop4    7:4    0  10,7M  1 loop /snap/firmware-updater/127
+loop5    7:5    0 257,8M  1 loop /snap/firefox/5836
+loop6    7:6    0 505,1M  1 loop /snap/gnome-42-2204/176
+loop7    7:7    0  89,7M  1 loop /snap/gtk-common-themes/1536
+loop8    7:8    0   516M  1 loop /snap/gnome-42-2204/202
+loop9    7:9    0  11,1M  1 loop /snap/firmware-updater/167
+loop10   7:10   0   125M  1 loop /snap/gtk-theme-breeze/2
+loop11   7:11   0   264K  1 loop /snap/gtk-theme-breeze/5
+loop12   7:12   0    14M  1 loop /snap/icon-theme-breeze/3
+loop13   7:13   0  13,2M  1 loop /snap/icon-theme-breeze/5
+loop14   7:14   0  91,7M  1 loop /snap/gtk-common-themes/1535
+loop15   7:15   0  44,4M  1 loop /snap/snapd/23545
+loop16   7:16   0 210,8M  1 loop /snap/thunderbird/682
+loop17   7:17   0  44,4M  1 loop /snap/snapd/23771
+loop18   7:18   0 210,8M  1 loop /snap/thunderbird/684
+sda      8:0    0    20G  0 disk 
+└─sda1   8:1    0    20G  0 part /
+sr0     11:0    1  57,4M  0 rom  
+
+[2025-03-29 17:51:42] ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:9c:d2:56 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 82342sec preferred_lft 82342sec
+    inet6 fd00::9707:e66d:b6ba:239/64 scope global temporary dynamic 
+       valid_lft 86155sec preferred_lft 14155sec
+    inet6 fd00::80f:6263:cd47:52af/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 86155sec preferred_lft 14155sec
+    inet6 fe80::de6f:659a:67d9:e9d7/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: br-40aeb63f3837: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 02:42:c6:32:0d:f7 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.240.1/20 brd 192.168.255.255 scope global br-40aeb63f3837
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:c6ff:fe32:df7/64 scope link proto kernel_ll 
+       valid_lft forever preferred_lft forever
+4: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 02:42:13:23:f9:4e brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+
+[2025-03-29 17:51:42] Тип виртуализации: oracle
+
+[2025-03-29 17:51:42] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
+
+[2025-03-29 17:51:42] uname -a
+Linux immortal-virtualbox 6.11.0-21-generic #21-Ubuntu SMP PREEMPT_DYNAMIC Wed Feb 19 16:50:40 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+
+[2025-03-29 17:51:42] lsb_release -a
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.10
+Release:	24.10
+Codename:	oracular
+
+[2025-03-29 17:51:42] ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[2025-03-29 17:51:42] ----------------- ЗАДАНИЕ 1 -------------------------
+
+[2025-03-29 17:51:42] ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[2025-03-29 17:51:42] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb3$ ./1/1.sh
+[17:51:42.518906372] Main thread: Started (PID: 5892)
+17:51:42.523148 rt_sigaction(SIGRT_1, {sa_handler=0x718eca49e810, sa_mask=[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x718eca445250}, NULL, 8) = 0
+17:51:42.523953 rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+17:51:42.525009 rt_sigprocmask(SIG_BLOCK, ~[], [], 8) = 0
+[17:51:42.525779718] Thread 1: Started (TID: 124858092484288)
+17:51:42.525871 rt_sigprocmask(SIG_SETMASK, [], [17:51:42.525880601] Thread 2: Started (TID: 124858084091584)
+[17:51:42.525983056] Thread 2: Active
+NULL, 8) = 0
+[17:51:42.584031423] Thread 2: Active
+[17:51:42.633018444] Thread 2: Active
+[17:51:42.680121971] Thread 2: Active
+[17:51:42.726795409] Thread 2: Active
+[17:51:42.773345024] Thread 2: Active
+[17:51:42.861076054] Thread 2: Active
+[17:51:42.925972280] Thread 2: Active
+[17:51:42.990127462] Thread 2: Active
+[17:51:43.036659655] Thread 2: Active
+[17:51:43.082698930] Thread 2: Active
+[17:51:43.142348771] Thread 2: Active
+[17:51:43.202138774] Thread 2: Active
+[17:51:43.267323558] Thread 2: Active
+[17:51:43.327012210] Thread 2: Active
+[17:51:43.385591549] Thread 2: Active
+[17:51:43.441687757] Thread 2: Active
+[17:51:43.503995084] Thread 2: Active
+[17:51:43.532992591] Thread 1: Sending first SIGUSR1 to Thread 2
+[17:51:43.533095293] Thread 1: Monitoring for 3 seconds...
+[17:51:43.537070285] Thread 2: Received SIGUSR1 signal
+[17:51:43.558241712] Thread 2: Active
+[17:51:43.615234436] Thread 2: Active
+[17:51:43.665496054] Thread 2: Active
+[17:51:43.722656483] Thread 2: Active
+[17:51:43.779595428] Thread 2: Active
+[17:51:43.839170801] Thread 2: Active
+[17:51:43.897676692] Thread 2: Active
+[17:51:43.955990827] Thread 2: Active
+[17:51:44.023144494] Thread 2: Active
+[17:51:44.086773590] Thread 2: Active
+[17:51:44.143600149] Thread 2: Active
+[17:51:44.208838257] Thread 2: Active
+[17:51:44.277099922] Thread 2: Active
+[17:51:44.336471579] Thread 2: Active
+[17:51:44.395447432] Thread 2: Active
+[17:51:44.457241886] Thread 2: Active
+[17:51:44.519084190] Thread 2: Active
+[17:51:44.578909289] Thread 2: Active
+[17:51:44.664770145] Thread 2: Active
+[17:51:44.747665897] Thread 2: Active
+[17:51:44.811533502] Thread 2: Active
+[17:51:44.871298719] Thread 2: Active
+[17:51:44.940929040] Thread 2: Active
+[17:51:44.999004888] Thread 2: Active
+[17:51:45.057879099] Thread 2: Active
+[17:51:45.116856393] Thread 2: Active
+[17:51:45.182323467] Thread 2: Active
+[17:51:45.245750959] Thread 2: Active
+[17:51:45.301806968] Thread 2: Active
+[17:51:45.367893910] Thread 2: Active
+[17:51:45.430631063] Thread 2: Active
+[17:51:45.488914283] Thread 2: Active
+[17:51:45.547228031] Thread 2: Active
+[17:51:45.607785731] Thread 2: Active
+[17:51:45.667104794] Thread 2: Active
+[17:51:45.723507427] Thread 2: Active
+[17:51:45.789770148] Thread 2: Active
+[17:51:45.889176533] Thread 2: Active
+[17:51:45.920561440] Thread 1: Sending termination signal to Thread 2
+[17:51:45.920689874] Thread 2: Received SIGUSR1 signal
+[17:51:45.954021384] Thread 2: Exiting
+[17:51:45.956893025] Thread 1: Thread 2 terminated
+[17:51:45.962333082] Main thread: All threads completed
+17:51:45.970023 +++ exited with 0 +++
+==============================================
+[17:51:46.002047932] Main thread: Started (PID: 5900)
+17:51:46.002491 rt_sigaction(SIGRT_1, {sa_handler=0x7d7f7e29e810, sa_mask=[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x7d7f7e245250}, NULL, 8) = 0
+17:51:46.002796 rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+17:51:46.003001 rt_sigprocmask(SIG_BLOCK, ~[], [], 8) = 0
+17:51:46.003200 rt_sigprocmask(SIG_SETMASK, [], [17:51:46.003262383] Thread 1: Started (TID: 137986530342592)
+NULL, 8) = 0
+[17:51:46.004890846] Thread 2: Started (TID: 137986521949888)
+[17:51:46.004954252] Thread 2: Active
+[17:51:46.070144170] Thread 2: Active
+[17:51:46.129467474] Thread 2: Active
+[17:51:46.180400568] Thread 2: Active
+[17:51:46.239506135] Thread 2: Active
+[17:51:46.294385962] Thread 2: Active
+[17:51:46.363783659] Thread 2: Active
+[17:51:46.422591581] Thread 2: Active
+[17:51:46.470183703] Thread 2: Active
+[17:51:46.528732937] Thread 2: Active
+[17:51:46.577920616] Thread 2: Active
+[17:51:46.638136303] Thread 2: Active
+[17:51:46.700418445] Thread 2: Active
+[17:51:46.770518102] Thread 2: Active
+[17:51:46.829093018] Thread 2: Active
+[17:51:46.881721458] Thread 2: Active
+[17:51:46.940438472] Thread 2: Active
+[17:51:46.998108831] Thread 2: Active
+[17:51:47.056621602] Thread 2: Active
+[17:51:47.119105168] Thread 2: Active
+[17:51:47.188744386] Thread 2: Active
+[17:51:47.245673588] Thread 2: Active
+[17:51:47.297676059] Thread 2: Active
+[17:51:47.363820336] Thread 2: Active
+[17:51:47.425899787] Thread 2: Active
+[17:51:47.480734455] Thread 2: Active
+[17:51:47.533563441] Thread 2: Active
+[17:51:47.580971524] Thread 2: Active
+[17:51:47.639526177] Thread 2: Active
+[17:51:47.697364831] Thread 2: Active
+[17:51:47.760722690] Thread 2: Active
+[17:51:47.820365138] Thread 2: Active
+[17:51:47.878576019] Thread 2: Active
+[17:51:47.934044759] Thread 2: Active
+[17:51:47.992816119] Thread 2: Active
+[17:51:48.055037491] Thread 2: Active
+[17:51:48.111208393] Thread 2: Active
+[17:51:48.172251071] Thread 2: Active
+[17:51:48.228147826] Thread 2: Active
+[17:51:48.283730859] Thread 2: Active
+[17:51:48.342110146] Thread 2: Active
+[17:51:48.397344133] Thread 2: Active
+[17:51:48.457333159] Thread 2: Active
+[17:51:48.512776352] Thread 2: Active
+[17:51:48.567400403] Thread 2: Active
+[17:51:48.624810325] Thread 2: Active
+[17:51:48.685378537] Thread 2: Active
+[17:51:48.744088514] Thread 2: Active
+[17:51:48.802911731] Thread 2: Active
+[17:51:48.860151865] Thread 2: Active
+[17:51:48.920863512] Thread 2: Active
+[17:51:48.977492393] Thread 2: Active
+[17:51:49.035287507] Thread 2: Active
+[17:51:49.091859437] Thread 2: Active
+[17:51:49.150310382] Thread 2: Active
+[17:51:49.209590077] Thread 2: Active
+[17:51:49.271747273] Thread 2: Active
+[17:51:49.304659332] Thread 1: Sending first SIGUSR1 to Thread 2
+[17:51:49.304783782] Thread 1: Monitoring for 3 seconds...
+[17:51:49.304972506] Thread 2: Custom handler started - terminating thread
+[17:51:49.304795085] Thread 1: Still running
+[17:51:49.862835865] Thread 1: Still running
+[17:51:50.521039678] Thread 1: Still running
+[17:51:51.045145362] Thread 1: Still running
+[17:51:51.573195048] Thread 1: Still running
+[17:51:52.103447354] Thread 1: Still running
+[17:51:52.603565752] Thread 1: Sending termination signal to Thread 2
+[17:51:52.603583524] Thread 1: Thread 2 terminated
+[17:51:52.603650266] Main thread: All threads completed
+17:51:52.603809 +++ exited with 0 +++
+
+[2025-03-29 17:51:52] ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[2025-03-29 17:51:52] ----------------- ЗАДАНИЕ 2 -------------------------
+
+[2025-03-29 17:51:52] ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[2025-03-29 17:51:52] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb3$ ./2/2.sh
+Использование: ./2 <mode>
+Режимы: process_single, process_multi, thread_single, thread_multi, custom_signal
+17:51:52.711046 +++ exited with 1 +++
+
+[2025-03-29 17:51:52] ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[2025-03-29 17:51:52] ----------------- ЗАДАНИЕ 3 -------------------------
+
+[2025-03-29 17:51:52] ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[2025-03-29 17:51:52] ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[2025-03-29 17:51:52] ----------------- ЗАДАНИЕ 4 -------------------------
+
+[2025-03-29 17:51:52] ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[2025-03-29 17:51:52] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb3$ ./4/4.sh
+
+================================================================
+НАЧАЛО ПРОГРАММЫ ДЛЯ ЭКСПЕРИМЕНТОВ С СИГНАЛАМИ
+================================================================
+Каждый эксперимент будет выполняться последовательно с подробным
+описанием действий и ожидаемых результатов.
+
+================================================================
+ЭКСПЕРИМЕНТ: 4.1 и 4.2: Приоритеты сигналов реального времени
+================================================================
+Описание: Проверка, что сигналы с меньшими номерами имеют более высокий приоритет.
+Отправляем SIGRTMIN+1, затем SIGRTMIN - должен обработаться первым SIGRTMIN.
+
+Справочная информация:
+  SIGRTMIN = 34
+  SIGRTMAX = 64
+  Приоритет: меньший номер => более высокий приоритет
+
+17:51:52.860985 rt_sigaction(SIGRT_2, {sa_handler=0x5c25a335d329, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x726725245250}, NULL, 8) = 0
+17:51:52.861393 rt_sigaction(SIGRT_3, {sa_handler=0x5c25a335d329, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x726725245250}, NULL, 8) = 0
+17:51:52.861778 rt_sigprocmask(SIG_BLOCK, [RT_2 RT_3], [], 8) = 0
+Отправка сигналов в порядке: сначала SIGRTMIN+1, затем SIGRTMIN
+17:51:52.863577 rt_sigqueueinfo(5951, SIGRT_3, {si_signo=SIGRT_3, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=100, si_ptr=0x64}) = 0
+  Отправлен SIGRTMIN+1 (35) с значением 100
+17:51:52.865616 rt_sigqueueinfo(5951, SIGRT_2, {si_signo=SIGRT_2, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=200, si_ptr=0xc8}) = 0
+  Отправлен SIGRTMIN (34) с значением 200
+
+Разблокируем сигналы и ожидаем обработки...
+17:51:52.867210 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+17:51:52.867546 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=200, si_ptr=0xc8} ---
+17:51:52.867824 --- SIGRT_3 {si_signo=SIGRT_3, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=100, si_ptr=0x64} ---
+  [RT] Получен сигнал 35, sigval = 100, count = 1
+17:51:52.868469 rt_sigreturn({mask=[RT_2]}) = 0
+  [RT] Получен сигнал 34, sigval = 200, count = 2
+17:51:52.869394 rt_sigreturn({mask=[]}) = 0
+
+Ожидаемый результат:
+  Должен первым обработаться SIGRTMIN, несмотря на то что он был отправлен вторым
+
+=== ЭКСПЕРИМЕНТ 4.1 и 4.2 ЗАВЕРШЕН ===
+
+================================================================
+ЭКСПЕРИМЕНТ: 4.3.1: Очередь обычных сигналов (SIGUSR1)
+================================================================
+Описание: Проверка, что несколько отправленных обычных сигналов не накапливаются в очереди,
+а обрабатывается только один экземпляр.
+
+17:51:53.889271 rt_sigaction(SIGUSR1, {sa_handler=0x5c25a335d329, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x726725245250}, NULL, 8) = 0
+17:51:53.890421 rt_sigprocmask(SIG_BLOCK, [USR1], [], 8) = 0
+Отправляем SIGUSR1 5 раз подряд...
+17:51:53.892062 kill(5951, SIGUSR1)     = 0
+  Отправлен SIGUSR1 #1
+17:51:53.893189 kill(5951, SIGUSR1)     = 0
+  Отправлен SIGUSR1 #2
+17:51:53.894322 kill(5951, SIGUSR1)     = 0
+  Отправлен SIGUSR1 #3
+17:51:53.895751 kill(5951, SIGUSR1)     = 0
+  Отправлен SIGUSR1 #4
+17:51:53.896886 kill(5951, SIGUSR1)     = 0
+  Отправлен SIGUSR1 #5
+
+Разблокируем SIGUSR1...
+17:51:53.898632 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+17:51:53.899082 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_USER, si_pid=5951, si_uid=0} ---
+  [Norm] Получен сигнал 10, count = 1
+17:51:53.899870 rt_sigreturn({mask=[]}) = 0
+
+Результат:
+  Обработчик вызвался 1 раз
+Ожидаемое поведение: 1 раз, так как обычные сигналы не очередируются
+
+=== ЭКСПЕРИМЕНТ 4.3.1 ЗАВЕРШЕН ===
+
+================================================================
+ЭКСПЕРИМЕНТ: 4.3.2: Очередь сигналов реального времени
+================================================================
+Описание: Проверка, что сигналы реального времени накапливаются в очереди
+и обрабатываются все отправленные экземпляры.
+
+Используем сигнал реального времени: 36 (SIGRTMIN+2)
+
+17:51:54.916999 rt_sigaction(SIGRT_4, {sa_handler=0x5c25a335d329, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x726725245250}, NULL, 8) = 0
+17:51:54.917500 rt_sigprocmask(SIG_BLOCK, [RT_4], [], 8) = 0
+Отправляем сигнал 36 5 раз с разными значениями...
+17:51:54.919782 rt_sigqueueinfo(5951, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=1, si_ptr=0x500000001}) = 0
+  Отправлен SIGRT(36) с данными 1
+17:51:54.921597 rt_sigqueueinfo(5951, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=2, si_ptr=0x500000002}) = 0
+  Отправлен SIGRT(36) с данными 2
+17:51:54.923413 rt_sigqueueinfo(5951, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=3, si_ptr=0x500000003}) = 0
+  Отправлен SIGRT(36) с данными 3
+17:51:54.925362 rt_sigqueueinfo(5951, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=4, si_ptr=0x500000004}) = 0
+  Отправлен SIGRT(36) с данными 4
+17:51:54.927360 rt_sigqueueinfo(5951, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=5, si_ptr=0x500000005}) = 0
+  Отправлен SIGRT(36) с данными 5
+
+Разблокируем сигнал...
+17:51:54.928956 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+17:51:54.929237 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=1, si_ptr=0x500000001} ---
+  [RT] Получен сигнал 36, sigval = 1, count = 1
+17:51:54.929838 rt_sigreturn({mask=[]}) = 0
+17:51:54.930283 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=2, si_ptr=0x500000002} ---
+  [RT] Получен сигнал 36, sigval = 2, count = 2
+17:51:54.930936 rt_sigreturn({mask=[]}) = 0
+17:51:54.931330 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=3, si_ptr=0x500000003} ---
+  [RT] Получен сигнал 36, sigval = 3, count = 3
+17:51:54.931967 rt_sigreturn({mask=[]}) = 0
+17:51:54.932504 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=4, si_ptr=0x500000004} ---
+  [RT] Получен сигнал 36, sigval = 4, count = 4
+17:51:54.933119 rt_sigreturn({mask=[]}) = 0
+17:51:54.933601 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=5, si_ptr=0x500000005} ---
+  [RT] Получен сигнал 36, sigval = 5, count = 5
+17:51:54.934234 rt_sigreturn({mask=[]}) = 0
+
+Результат:
+  Обработчик вызвался 5 раз
+Ожидаемое поведение: 5 раз, так как сигналы реального времени очередируются
+
+=== ЭКСПЕРИМЕНТ 4.3.2 ЗАВЕРШЕН ===
+
+================================================================
+ЭКСПЕРИМЕНТ: 4.3.3: Смешанный набор сигналов (обычный + реального времени)
+================================================================
+Описание: Проверка обработки при одновременной отправке обычных сигналов и сигналов
+реального времени. Обычные сигналы не должны накапливаться в очереди.
+
+Используемые сигналы:
+  Обычный: SIGUSR2 (12)
+  Реального времени: 37 (SIGRTMIN+3)
+
+17:51:55.942036 rt_sigaction(SIGUSR2, {sa_handler=0x5c25a335d329, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x726725245250}, NULL, 8) = 0
+17:51:55.942150 rt_sigaction(SIGRT_5, {sa_handler=0x5c25a335d329, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x726725245250}, NULL, 8) = 0
+17:51:55.942201 rt_sigprocmask(SIG_BLOCK, [USR2 RT_5], [], 8) = 0
+Отправляем сигналы в последовательности:
+  1. Обычный SIGUSR2
+  2. Реального времени 37
+  3. Обычный SIGUSR2
+  4. Реального времени 37
+
+17:51:55.942433 kill(5951, SIGUSR2)     = 0
+17:51:55.942964 rt_sigqueueinfo(5951, SIGRT_5, {si_signo=SIGRT_5, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=101, si_ptr=0x500000065}) = 0
+17:51:55.943175 kill(5951, SIGUSR2)     = 0
+17:51:55.943296 rt_sigqueueinfo(5951, SIGRT_5, {si_signo=SIGRT_5, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=202, si_ptr=0x5000000ca}) = 0
+Разблокируем сигналы...
+17:51:55.943383 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+17:51:55.943444 --- SIGUSR2 {si_signo=SIGUSR2, si_code=SI_USER, si_pid=5951, si_uid=0} ---
+17:51:55.943475 --- SIGRT_5 {si_signo=SIGRT_5, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=101, si_ptr=0x500000065} ---
+  [RT] Получен сигнал 37, sigval = 101, count = 1
+17:51:55.943544 rt_sigreturn({mask=[USR2]}) = 0
+17:51:55.943880 --- SIGRT_5 {si_signo=SIGRT_5, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=202, si_ptr=0x5000000ca} ---
+  [RT] Получен сигнал 37, sigval = 202, count = 2
+17:51:55.943905 rt_sigreturn({mask=[USR2]}) = 0
+  [Norm] Получен сигнал 12, count = 3
+17:51:55.943936 rt_sigreturn({mask=[]}) = 0
+
+Результат:
+  Обработчик вызвался 3 раз.
+Ожидаемое поведение:
+  - SIGUSR2 обработается только 1 раз (последний)
+  - Оба SIGRT обработаются
+
+=== ЭКСПЕРИМЕНТ 4.3.3 ЗАВЕРШЕН ===
+
+================================================================
+ЭКСПЕРИМЕНТ: 4.4: FIFO для равноприоритетных сигналов реального времени
+================================================================
+Описание: Проверка, что сигналы реального времени с одинаковым приоритетом
+обрабатываются в порядке FIFO (первым пришел - первым обработан).
+
+Используем сигнал реального времени: 38 (SIGRTMIN+4)
+
+17:51:56.948087 rt_sigaction(SIGRT_6, {sa_handler=0x5c25a335d329, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x726725245250}, NULL, 8) = 0
+17:51:56.948236 rt_sigprocmask(SIG_BLOCK, [RT_6], [], 8) = 0
+Отправляем 5 сигналов 38 с последовательными значениями...
+17:51:56.948445 rt_sigqueueinfo(5951, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=1000, si_ptr=0x5000003e8}) = 0
+  Отправлен SIGRT(38) с данными 1000
+17:51:56.949265 rt_sigqueueinfo(5951, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=1001, si_ptr=0x5000003e9}) = 0
+  Отправлен SIGRT(38) с данными 1001
+17:51:56.950442 rt_sigqueueinfo(5951, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=1002, si_ptr=0x5000003ea}) = 0
+  Отправлен SIGRT(38) с данными 1002
+17:51:56.950671 rt_sigqueueinfo(5951, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=1003, si_ptr=0x5000003eb}) = 0
+  Отправлен SIGRT(38) с данными 1003
+17:51:56.951515 rt_sigqueueinfo(5951, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=1004, si_ptr=0x5000003ec}) = 0
+  Отправлен SIGRT(38) с данными 1004
+
+Разблокируем сигнал...
+17:51:56.952466 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+17:51:56.952707 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=1000, si_ptr=0x5000003e8} ---
+  [RT] Получен сигнал 38, sigval = 1000, count = 1
+17:51:56.952755 rt_sigreturn({mask=[]}) = 0
+17:51:56.952787 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=1001, si_ptr=0x5000003e9} ---
+  [RT] Получен сигнал 38, sigval = 1001, count = 2
+17:51:56.953183 rt_sigreturn({mask=[]}) = 0
+17:51:56.953248 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=1002, si_ptr=0x5000003ea} ---
+  [RT] Получен сигнал 38, sigval = 1002, count = 3
+17:51:56.953502 rt_sigreturn({mask=[]}) = 0
+17:51:56.953581 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=1003, si_ptr=0x5000003eb} ---
+  [RT] Получен сигнал 38, sigval = 1003, count = 4
+17:51:56.954013 rt_sigreturn({mask=[]}) = 0
+17:51:56.954055 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=5951, si_uid=0, si_int=1004, si_ptr=0x5000003ec} ---
+  [RT] Получен сигнал 38, sigval = 1004, count = 5
+17:51:56.954154 rt_sigreturn({mask=[]}) = 0
+
+Ожидаемый результат:
+  Сигналы должны обработаться в порядке отправки (значения 1000, 1001, 1002, 1003, 1004)
+
+=== ЭКСПЕРИМЕНТ 4.4 ЗАВЕРШЕН ===
+
+================================================================
+ВСЕ ЭКСПЕРИМЕНТЫ УСПЕШНО ЗАВЕРШЕНЫ
+================================================================17:51:57.956435 +++ exited with 0 +++
+
+[2025-03-29 17:51:57] ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[2025-03-29 17:51:57] ----------------- ЗАДАНИЕ 5 -------------------------
+
+[2025-03-29 17:51:57] ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[2025-03-29 17:51:57] immortal@immortal-virtualbox:/home/immortal/labs/Malinovskii_Aleksandr_lb3$ ./5/5.sh
+=== Тестирование производительности ===
+Параметры:
+  Итераций: 1000
+  Прогонов: 5
+  Размер сообщения: 1024 байт
+
+Компиляция программ...
+[01m[Kcc1:[m[K [01;31m[Kfatal error: [m[Kposix.c: Нет такого файла или каталога
+compilation terminated.
+Ошибка компиляции posix.c
+
+Script done on 2025-03-29 17:51:58+03:00 [COMMAND_EXIT_CODE="1"]
