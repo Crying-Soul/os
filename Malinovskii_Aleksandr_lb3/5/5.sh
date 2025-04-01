@@ -1,80 +1,101 @@
 #!/bin/bash
+# Улучшенный скрипт бенчмарка с точным выводом чисел.
 
-# Параметры тестирования
-ITERATIONS=1000
+cd 5
+gcc -o posix posix.c
+gcc -o sys sys.c
+gcc -o threads threads.c
+gcc -o benchmark benchmark.c
+# Пути к исполняемым файлам
+POSIX_EXEC="./posix"
+SYSV_EXEC="./sys"
+PTHREAD_EXEC="./threads"
+BENCHMARK_EXEC="./benchmark"
+
+# Количество итераций
+ITER=10
+# Количество запусков
 RUNS=5
-MESSAGE_SIZE=1024
 
-# Исходные файлы
-POSIX_SRC="posix.c"
-SYSV_SRC="sys.c"
-THREADS_SRC="threads.c"
-
-# Исполняемые файлы
-POSIX_BIN="posix"
-SYSV_BIN="sys"
-THREADS_BIN="threads"
-
-compile_programs() {
-    echo "Компиляция программ..."
-    gcc -O2 -o $POSIX_BIN $POSIX_SRC -lrt -lpthread || { echo "Ошибка компиляции $POSIX_SRC"; exit 1; }
-    gcc -O2 -o $SYSV_BIN $SYSV_SRC || { echo "Ошибка компиляции $SYSV_SRC"; exit 1; }
-    gcc -O2 -o $THREADS_BIN $THREADS_SRC -lpthread || { echo "Ошибка компиляции $THREADS_SRC"; exit 1; }
-    echo "Компиляция завершена успешно"
+# Проверка исполняемого файла
+check_exec() {
+    if [ ! -x "$1" ]; then
+        echo "Предупреждение: $1 не найден или не исполняемый. Пропускаем." >&2
+        return 1
+    fi
+    return 0
 }
 
-measure_time() {
-    local program=$1
-    local iters=$2
-    local runs=$3
-    local total_time=0
-    declare -a run_times
-    
-    echo "Тестирование $program (итераций: $iters):"
-    
-    for ((i=1; i<=runs; i++)); do
-        # Используем date с наносекундной точностью
-        start_time=$(date +%s.%N)
-        ./$program $iters >/dev/null 2>&1
-        end_time=$(date +%s.%N)
-        
-        # Вычисляем время выполнения с проверкой ошибок
-        runtime=$(awk -v start="$start_time" -v end="$end_time" 'BEGIN {printf "%.4f", end - start}')
-        if [[ "$runtime" == "0.0000" || -z "$runtime" ]]; then
-            runtime="0.0001"  # Минимальное значение чтобы избежать nan
+# Запуск benchmark и вычисление средних значений
+run_benchmark() {
+    local name=$1
+    shift
+
+    if ! check_exec "$1"; then
+        averages["$name,real"]="n/a"
+        averages["$name,cpu"]="n/a"
+        return
+    fi
+
+    local sum_real=0
+    local sum_cpu=0
+    local count=0
+    local real_time cpu_load out
+
+    for ((i=1; i<=RUNS; i++)); do
+        out=$("$BENCHMARK_EXEC" "$1" "$ITER" 2>/dev/null)
+        real_time=$(echo "$out" | awk '{print $1}')
+        cpu_load=$(echo "$out" | awk '{print $2}')
+
+        # Проверяем, что получили валидные числа
+        if [[ ! "$real_time" =~ ^[0-9]+(\.[0-9]+)?$ || ! "$cpu_load" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+            echo "Ошибка в выводе benchmark ($out). Пропуск итерации." >&2
+            continue
         fi
-        
-        run_times[$i]=$runtime
-        total_time=$(awk -v total="$total_time" -v rt="$runtime" 'BEGIN {printf "%.4f", total + rt}')
-        printf "  Прогон %d: %s сек\n" $i "$runtime"
+
+        sum_real=$(echo "$sum_real + $real_time" | bc -l)
+        sum_cpu=$(echo "$sum_cpu + $cpu_load" | bc -l)
+        ((count++))
     done
-    
-    average_time=$(awk -v total="$total_time" -v runs="$runs" 'BEGIN {printf "%.4f", total/runs}')
-    echo "---------------------------------"
-    printf "  Среднее время: %s сек\n" "$average_time"
-    echo
+
+    if ((count > 0)); then
+        local avg_real=$(echo "scale=9; $sum_real / $count" | bc -l)
+        local avg_cpu=$(echo "scale=2; $sum_cpu / $count" | bc -l)
+        averages["$name,real"]=$avg_real
+        averages["$name,cpu"]=$avg_cpu
+        echo "$name: avg real time = ${avg_real}s, avg CPU load = ${avg_cpu}%"
+    else
+        averages["$name,real"]="n/a"
+        averages["$name,cpu"]="n/a"
+    fi
 }
 
-cleanup() {
-    echo "Очистка ресурсов..."
-    rm -f /dev/shm/my_shm 2>/dev/null
-    ipcrm -a 2>/dev/null || echo "Для очистки System V ресурсов可能需要 права root"
-    rm -f $POSIX_BIN $SYSV_BIN $THREADS_BIN 2>/dev/null
-}
+declare -A averages
 
-echo "=== Тестирование производительности ==="
-echo "Параметры:"
-echo "  Итераций: $ITERATIONS"
-echo "  Прогонов: $RUNS"
-echo "  Размер сообщения: $MESSAGE_SIZE байт"
-echo
+echo "Запуск бенчмарков (ITER=$ITER, RUNS=$RUNS)..."
+echo "-----------------------------------------------"
 
-compile_programs
-echo
+run_benchmark "POSIX_IPC" "$POSIX_EXEC"
+run_benchmark "SystemV_IPC" "$SYSV_EXEC"
+run_benchmark "Pthread" "$PTHREAD_EXEC"
 
-measure_time $POSIX_BIN $ITERATIONS $RUNS
-measure_time $SYSV_BIN $ITERATIONS $RUNS
-measure_time $THREADS_BIN $ITERATIONS $RUNS
+methods=("POSIX_IPC" "SystemV_IPC" "Pthread")
 
-cleanup
-echo "Тестирование завершено"
+echo ""
+
+printf "%22s %17s %15s\n" "Реализация" "Real Time (s)" "CPU Load (%)"
+printf "%s %s %s\n" "--------------" "-----------------" "------------"
+
+for name in "${methods[@]}"; do
+    real_val=${averages["$name,real"]}
+    cpu_val=${averages["$name,cpu"]}
+    if [ -n "$real_val" ]; then
+        if [ "$name" = "Pthread" ]; then
+            echo -e "$name\t\t$real_val\t$cpu_val"  # Два \t после pthread
+        else
+            echo -e "$name\t$real_val\t$cpu_val"    # Один \t для остальных
+        fi
+    fi
+done
+
+rm benchmark posix sys threads

@@ -1,0 +1,138 @@
+27702 execve("./server_udp", ["./server_udp", "100"], 0x7fff24a88c00 /* 30 vars */) = 0
+27702 brk(NULL)                         = 0x5e8a9bf9c000
+27702 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x77f010115000
+27702 access("/etc/ld.so.preload", R_OK) = -1 ENOENT (Нет такого файла или каталога)
+27702 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+27702 fstat(3, {st_mode=S_IFREG|0644, st_size=96559, ...}) = 0
+27702 mmap(NULL, 96559, PROT_READ, MAP_PRIVATE, 3, 0) = 0x77f0100fd000
+27702 close(3)                          = 0
+27702 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+27702 read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\200\245\2\0\0\0\0\0"..., 832) = 832
+27702 pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+27702 fstat(3, {st_mode=S_IFREG|0755, st_size=2182752, ...}) = 0
+27702 pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+27702 mmap(NULL, 2227672, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x77f00fe00000
+27702 mmap(0x77f00fe28000, 1662976, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x28000) = 0x77f00fe28000
+27702 mmap(0x77f00ffbe000, 323584, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1be000) = 0x77f00ffbe000
+27702 mmap(0x77f01000d000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x20c000) = 0x77f01000d000
+27702 mmap(0x77f010013000, 52696, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x77f010013000
+27702 close(3)                          = 0
+27702 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x77f0100fa000
+27702 arch_prctl(ARCH_SET_FS, 0x77f0100fa740) = 0
+27702 set_tid_address(0x77f0100faa10)   = 27702
+27702 set_robust_list(0x77f0100faa20, 24) = 0
+27702 rseq(0x77f0100fb060, 0x20, 0, 0x53053053) = 0
+27702 mprotect(0x77f01000d000, 16384, PROT_READ) = 0
+27702 mprotect(0x5e8a79775000, 4096, PROT_READ) = 0
+27702 mprotect(0x77f010155000, 8192, PROT_READ) = 0
+27702 prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+27702 munmap(0x77f0100fd000, 96559)     = 0
+27702 socket(AF_INET, SOCK_DGRAM, IPPROTO_IP) = 3
+27702 bind(3, {sa_family=AF_INET, sin_port=htons(65433), sin_addr=inet_addr("0.0.0.0")}, 16) = 0
+27702 fstat(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(0x88, 0x2), ...}) = 0
+27702 getrandom("\x33\x1f\x86\x6a\x8f\x3d\xb1\x79", 8, GRND_NONBLOCK) = 8
+27702 brk(NULL)                         = 0x5e8a9bf9c000
+27702 brk(0x5e8a9bfbd000)               = 0x5e8a9bfbd000
+27702 write(1, "[UDP] Server listening on port 6"..., 52) = 52
+27702 recvfrom(3, "Client CLIENT_2 connected via UD"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(50634), sin_addr=inet_addr("127.0.0.1")}, [16]) = 33
+27702 recvfrom(3, "Client CLIENT_7 connected via UD"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(57990), sin_addr=inet_addr("127.0.0.1")}, [16]) = 33
+27702 recvfrom(3, "Client CLIENT_8 connected via UD"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(40385), sin_addr=inet_addr("127.0.0.1")}, [16]) = 33
+27702 recvfrom(3, "Client CLIENT_3 connected via UD"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(59599), sin_addr=inet_addr("127.0.0.1")}, [16]) = 33
+27702 recvfrom(3, "Client CLIENT_1 connected via UD"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(39361), sin_addr=inet_addr("127.0.0.1")}, [16]) = 33
+27702 recvfrom(3, "Client CLIENT_5 connected via UD"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(48775), sin_addr=inet_addr("127.0.0.1")}, [16]) = 33
+27702 recvfrom(3, "Client CLIENT_4 connected via UD"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(41425), sin_addr=inet_addr("127.0.0.1")}, [16]) = 33
+27702 recvfrom(3, "Client CLIENT_9 connected via UD"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(51913), sin_addr=inet_addr("127.0.0.1")}, [16]) = 33
+27702 recvfrom(3, "Client CLIENT_10 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(56308), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_17 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(56025), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_16 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(46892), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_12 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(60280), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_6 connected via UD"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(56886), sin_addr=inet_addr("127.0.0.1")}, [16]) = 33
+27702 recvfrom(3, "Client CLIENT_14 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(46300), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_19 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(39174), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_26 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(46043), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_23 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(60044), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_21 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(45643), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_29 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(55506), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_22 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(59990), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_15 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(53890), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_31 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(55669), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_18 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(34820), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_28 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(49424), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_13 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(33337), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_27 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(49718), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_35 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(48589), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_30 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(49147), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_36 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(38325), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_20 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(55398), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_34 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(43982), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_24 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(43903), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_11 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(53622), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_33 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(39504), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_32 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(41442), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_38 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(57022), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_37 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(44624), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_49 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(55314), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_25 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(55819), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_51 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(44700), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_44 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(42026), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_40 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(40545), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_43 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(38417), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_41 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(50649), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_39 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(47307), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_48 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(49359), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_45 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(51863), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_47 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(39356), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_50 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(35986), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_42 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(46392), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_46 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(35645), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_52 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(58118), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_53 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(57589), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_54 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(53910), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_56 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(52041), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_57 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(38517), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_55 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(44011), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_60 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(50780), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_61 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(47077), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_73 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(55229), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_63 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(47448), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_67 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(42728), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_70 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(37080), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_58 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(37009), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_59 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(53755), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_64 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(54561), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_68 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(52049), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_77 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(38392), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_72 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(40554), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_65 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(58784), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_71 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(44880), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_69 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(54910), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_79 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(39114), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_62 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(55607), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_75 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(40282), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_74 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(58774), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_76 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(53448), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_82 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(46045), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_81 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(46891), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_90 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(33316), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_86 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(55503), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_83 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(50270), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_80 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(49954), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_78 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(39525), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_66 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(58030), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_88 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(49728), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_84 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(35737), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_92 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(37054), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_85 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(47623), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_94 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(46463), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_87 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(58249), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_91 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(50529), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_96 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(45423), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_89 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(59035), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_95 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(39939), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_93 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(40526), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_98 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(52178), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 recvfrom(3, "Client CLIENT_99 connected via U"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(35344), sin_addr=inet_addr("127.0.0.1")}, [16]) = 34
+27702 write(1, "[UDP] All clients connected, shu"..., 43) = 43
+27702 close(3)                          = 0
+27702 exit_group(0)                     = ?
+27702 +++ exited with 0 +++
