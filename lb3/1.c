@@ -9,9 +9,9 @@
 #include <string.h>
 #include <stdbool.h>
 
-#define INITIAL_DELAY 1    // 1 сек перед первым сигналом
-#define OPERATION_TIME 3   // 3 сек работы до завершения
-#define TIME_BUF_SIZE 30   // Размер буфера для времени
+#define INITIAL_DELAY 1      // 1 сек перед первым сигналом
+#define OPERATION_TIME 3     // 3 сек работы до завершения
+#define TIME_BUF_SIZE 30     // Размер буфера для времени
 #define BUSY_LOOP_ITERATIONS 100000000 // Количество итераций "работы"
 
 static pthread_t t1, t2;
@@ -47,6 +47,7 @@ static void sigusr1_handler_default(int sig) {
     char time_buf[TIME_BUF_SIZE];
     get_current_time(time_buf, sizeof(time_buf));
     printf("[%s] Thread 2: Received SIGUSR1 signal (default handler)\n", time_buf);
+    fflush(stdout);
 }
 
 // Обработчик сигнала для задания 1.2
@@ -54,7 +55,9 @@ static void sigusr1_handler_custom(int sig) {
     char time_buf[TIME_BUF_SIZE];
     get_current_time(time_buf, sizeof(time_buf));
     printf("[%s] Thread 2: Received SIGUSR1 signal (custom handler)\n", time_buf);
+    fflush(stdout);
     printf("[%s] Thread 2: Exiting via pthread_exit()\n", time_buf);
+    fflush(stdout);
     pthread_exit(NULL);
 }
 
@@ -79,11 +82,13 @@ static void* thread2_func(void* arg) {
     }
     
     printf("[%s] Thread 2: Started (TID: %lu)\n", time_buf, (unsigned long)pthread_self());
+    fflush(stdout);
     
     // Основной цикл работы
     while (second_thread_active) {
         get_current_time(time_buf, sizeof(time_buf));
         printf("[%s] Thread 2: Active\n", time_buf);
+        fflush(stdout);
         
         // Имитация работы
         for (size_t i = 0; i < BUSY_LOOP_ITERATIONS; i++) {
@@ -93,6 +98,7 @@ static void* thread2_func(void* arg) {
     
     get_current_time(time_buf, sizeof(time_buf));
     printf("[%s] Thread 2: Exiting normally\n", time_buf);
+    fflush(stdout);
     return NULL;
 }
 
@@ -102,6 +108,7 @@ static void* thread1_func(void* arg) {
     get_current_time(time_buf, sizeof(time_buf));
     
     printf("[%s] Thread 1: Started (TID: %lu)\n", time_buf, (unsigned long)pthread_self());
+    fflush(stdout);
     
     // Создание второй нити с передачей обработчика в качестве аргумента
     void (*handler)(int) = (void (*)(int))arg;
@@ -116,6 +123,7 @@ static void* thread1_func(void* arg) {
     // Отправка первого сигнала
     get_current_time(time_buf, sizeof(time_buf));
     printf("[%s] Thread 1: Sending first SIGUSR1 to Thread 2\n", time_buf);
+    fflush(stdout);
     if (pthread_kill(t2, SIGUSR1)) {
         perror("pthread_kill");
     }
@@ -131,6 +139,7 @@ static void* thread1_func(void* arg) {
     
     get_current_time(time_buf, sizeof(time_buf));
     printf("[%s] Thread 1: Monitoring for %d seconds...\n", time_buf, OPERATION_TIME);
+    fflush(stdout);
     
     do {
         if (clock_gettime(CLOCK_MONOTONIC, &now)) {
@@ -142,6 +151,7 @@ static void* thread1_func(void* arg) {
     // Отправка сигнала завершения
     get_current_time(time_buf, sizeof(time_buf));
     printf("[%s] Thread 1: Sending termination signal to Thread 2\n", time_buf);
+    fflush(stdout);
     second_thread_active = false;
     if (pthread_kill(t2, SIGUSR1)) {
         perror("pthread_kill");
@@ -152,6 +162,7 @@ static void* thread1_func(void* arg) {
     
     get_current_time(time_buf, sizeof(time_buf));
     printf("[%s] Thread 1: Thread 2 terminated\n", time_buf);
+    fflush(stdout);
     
     return NULL;
 }
@@ -161,14 +172,17 @@ int main(int argc, char *argv[]) {
     get_current_time(time_buf, sizeof(time_buf));
     
     printf("[%s] Main thread: Started (PID: %d)\n", time_buf, getpid());
+    fflush(stdout);
     
     // Выбор обработчика в зависимости от аргумента командной строки
     void (*handler)(int) = sigusr1_handler_default;
     if (argc > 1 && strcmp(argv[1], "--custom-handler") == 0) {
         handler = sigusr1_handler_custom;
         printf("[%s] Using custom signal handler with pthread_exit()\n", time_buf);
+        fflush(stdout);
     } else {
         printf("[%s] Using default signal handler\n", time_buf);
+        fflush(stdout);
     }
     
     // Создание первой нити с передачей обработчика
@@ -182,5 +196,6 @@ int main(int argc, char *argv[]) {
     
     get_current_time(time_buf, sizeof(time_buf));
     printf("[%s] Main thread: All threads completed\n", time_buf);
+    fflush(stdout);
     return EXIT_SUCCESS;
 }

@@ -80,73 +80,83 @@ display_file_state() {
 
 execute_task() {
     local task_number=$1
-    local output_file_flag=${2:-1} # По умолчанию 1 (выводить out.txt)
-    shift 2
+
+    shift 1
     local task_script_name="${task_number}.sh"
-    local task_script=$(find_script "$task_script_name" "$LB_FOLDER")
+    local task_script=$(find_script "$task_script_name" "$LB_FOLDER" 2>&1)
     local task_args=("$@")
 
     if [[ -z "$task_script" ]]; then
-        log "Скрипт для задания ${task_number} не найден. Пропуск задания."
+        log "Скрипт для задания ${task_number} не найден. Пропуск задания." >&2
         return 1
     fi
 
-    log "ВЫПОЛНЕНИЕ ЗАДАНИЯ ${task_number} (Скрипт)"
+    log "ВЫПОЛНЕНИЕ ЗАДАНИЯ ${task_number} (Скрипт)" 2>&1
     if [[ ${#task_args[@]} -gt 0 ]]; then
-        log "Запуск скрипта ${task_script} с аргументами: ${task_args[*]}"
+        log "Запуск скрипта ${task_script} с аргументами: ${task_args[*]}" 2>&1
     else
-        log "Запуск скрипта ${task_script} без аргументов."
+        log "Запуск скрипта ${task_script} без аргументов." 2>&1
     fi
 
-    if [[ "$output_file_flag" -eq 1 && -f "$OUTPUT_FILE" ]]; then
-        display_file_state "ДО ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
-    fi
+
 
     if [[ -f "$task_script" ]]; then
         local start_time end_time duration
         start_time=$(date +%s)
 
-        bash "$task_script" "${task_args[@]}"
+        # Перенаправляем весь вывод (stdout+stderr) через tee для отображения и логирования
+        bash "$task_script" "${task_args[@]}" 2>&1 | tee -a "$LOG_FILE"
+        local exit_code=${PIPESTATUS[0]}
+
         end_time=$(date +%s)
         duration=$((end_time - start_time))
 
-        if [[ "$output_file_flag" -eq 1 && -f "$OUTPUT_FILE" ]]; then
-            display_file_state "ПОСЛЕ ВЫПОЛНЕНИЯ" "$OUTPUT_FILE"
-            >"$OUTPUT_FILE" # Очистка файла после выполнения
-        fi
-        log "Время выполнения задания ${task_number}: ${duration} секунд."
-        log ""
-        log ""
+  
+        log "Время выполнения задания ${task_number}: ${duration} секунд." 2>&1
+        log "" 2>&1
+        log "" 2>&1
+        
+        return $exit_code
     else
-        log "Скрипт для задания ${task_number} не найден. Пропуск задания."
+        log "Скрипт для задания ${task_number} не найден. Пропуск задания." >&2
         return 1
     fi
 }
 
-# Функция для выполнения отдельных команд
 execute_commands() {
     local task_number=$1
     shift
     local commands=("$@")
 
-    log "ВЫПОЛНЕНИЕ ЗАДАНИЯ ${task_number}"
+    log "ВЫПОЛНЕНИЕ ЗАДАНИЯ ${task_number}" 2>&1
 
     local start_time end_time duration
     start_time=$(date +%s)
+    
     for cmd in "${commands[@]}"; do
         local user_host="$(whoami)@$(hostname)"
-        run_and_log ">>> ${user_host}$ $cmd <<<" bash -c "$cmd"
+        # Перенаправляем весь вывод и сохраняем exit code
+        log ">>> ${user_host}$ $cmd <<<" 2>&1
+        bash -c "$cmd" 2>&1 | tee -a "$LOG_FILE"
+        local exit_code=${PIPESTATUS[0]}
+        
+        if [ $exit_code -ne 0 ]; then
+            log "Ошибка выполнения команды: $cmd (код: $exit_code)" >&2
+        fi
     done
+    
     end_time=$(date +%s)
     duration=$((end_time - start_time))
-    log "Время выполнения задания ${task_number}: ${duration} секунд."
-    log ""
-    log ""
+    log "Время выполнения задания ${task_number}: ${duration} секунд." 2>&1
+    log "" 2>&1
+    log "" 2>&1
+    
+    return $exit_code
 }
 
 # Основные переменные
 OUTPUT_FILE="out.txt"
-LB_FOLDER="./lb2/"
+LB_FOLDER="./lb3/"
 
 # Заголовок отчёта
 cat <<EOF
@@ -192,18 +202,55 @@ log_comment "Выполним подготовку окружения для в�
 execute_commands 0 \
     "./compiller.sh lb3"
 
-# execute_commands 1 \
-#     "sudo ./lb3/1"
+execute_commands 1.1 \
+    "strace -tt -v -s 1000 -e trace=signal ./lb3/1"
 
-# execute_task 2 0
+execute_commands 1.2 \
+    "strace -tt -v -s 1000 -e trace=signal ./lb3/1 --custom-handler"
+
+execute_task 2
+
+execute_task 3
 
 execute_commands 4 \
-    "strace -tt -v -s 1000 -e trace=signal ./lb3/4/4"
+    "strace -tt -v -s 1000 -e trace=signal ./lb3/4"
+
+log_comment "POSIX Вариант"
+execute_commands 5.1 \
+    "strace -f -e futex ./lb3/5/5-posix 5"
+
+log_comment "SYSTEMV Вариант"
+execute_commands 5.2 \
+    "strace -f -e trace=ipc ./lb3/5/5-systemv 5"
+
+log_comment "Сравнение на многоядерном процессоре"
+execute_commands 5 \
+    "./lb3/5/5.sh"
+
+log_comment "Сравнение на одноядерном процессоре"
+execute_commands 5 \
+    "taskset -c 0 ./lb3/5/5.sh"
+
+execute_task 6.1.1
+
+execute_task 6.1.2
+
+execute_task 6.2
+
+execute_task 6.3
+
+execute_task 7.1
+
+execute_task 7.2
+
+execute_task 7.3
+
+
 
 log_comment "Конец скрипта. Очистка файлов."
 
 execute_commands 0 \
-    "./cleaner.sh lb2"\
+    "./cleaner.sh lb3"\
 
 # Замер общего времени выполнения скрипта
 SCRIPT_END=$(date +%s)

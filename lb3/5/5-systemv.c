@@ -23,7 +23,6 @@ void print_usage(const char *prog_name) {
     fprintf(stderr, "Пример: %s 5\n", prog_name);
 }
 
-// Функция для очистки ресурсов (разделяемая память и семафоры)
 void cleanup_resources(int shmid, char *shm_ptr, int semid) {
     if (shm_ptr != (char *)-1 && shm_ptr != NULL) {
         shmdt(shm_ptr);
@@ -36,6 +35,45 @@ void cleanup_resources(int shmid, char *shm_ptr, int semid) {
     }
 }
 
+void writer_process(int semid, char *shm_ptr, int iterations, pid_t reader_pid) {
+    struct sembuf wait_write = {0, -1, 0};  // Ожидание sem_write
+    struct sembuf signal_read = {1, 1, 0};  // Разрешить чтение
+
+    for (int i = 0; i < iterations; i++) {
+        if (semop(semid, &wait_write, 1) == -1) {
+            perror("semop (wait_write)"); fflush(stdout);
+            break;
+        }
+        snprintf(shm_ptr, SHM_SIZE, "Сообщение %d от PID %d", i + 1, getpid()); fflush(stdout);
+        printf("\nПисатель (PID %d) отправил: %s\n", getpid(), shm_ptr); fflush(stdout);
+        if (semop(semid, &signal_read, 1) == -1) {
+            perror("semop (signal_read)"); fflush(stdout);
+            break;
+        }
+    }
+
+    // Ждем завершения читателя
+    waitpid(reader_pid, NULL, 0);
+}
+
+void reader_process(int semid, char *shm_ptr, int iterations, pid_t writer_pid) {
+    struct sembuf wait_read = {1, -1, 0};   // Ожидание sem_read
+    struct sembuf signal_write = {0, 1, 0}; // Разрешить запись
+
+    for (int i = 0; i < iterations; i++) {
+        if (semop(semid, &wait_read, 1) == -1) {
+            perror("semop (wait_read)"); fflush(stdout);
+            break;
+        }
+        printf("\nЧитатель (PID %d) получил: %s (от PID %d)\n",  
+               getpid(), shm_ptr, writer_pid); fflush(stdout);
+        if (semop(semid, &signal_write, 1) == -1) {
+            perror("semop (signal_write)"); fflush(stdout);
+            break;
+        }
+    }
+}
+
 int main(int argc, char *argv[]) {
     if (argc != 2) {
         print_usage(argv[0]);
@@ -44,7 +82,7 @@ int main(int argc, char *argv[]) {
 
     int iterations = atoi(argv[1]);
     if (iterations <= 0) {
-        fprintf(stderr, "Количество итераций должно быть положительным числом\n");
+        fprintf(stderr, "Количество итераций должно быть положительным числом\n"); fflush(stdout);
         print_usage(argv[0]);
         exit(EXIT_FAILURE);
     }
@@ -52,13 +90,13 @@ int main(int argc, char *argv[]) {
     // Создание разделяемой памяти
     int shmid = shmget(SHM_KEY, SHM_SIZE, IPC_CREAT | 0666);
     if (shmid == -1) {
-        perror("shmget");
+        perror("shmget"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
 
     char *shm_ptr = shmat(shmid, NULL, 0);
     if (shm_ptr == (char *)-1) {
-        perror("shmat");
+        perror("shmat"); fflush(stdout);
         cleanup_resources(shmid, (char *)-1, -1);
         exit(EXIT_FAILURE);
     }
@@ -66,7 +104,7 @@ int main(int argc, char *argv[]) {
     // Создание семафоров
     int semid = semget(SEM_KEY, 2, IPC_CREAT | 0666);
     if (semid == -1) {
-        perror("semget");
+        perror("semget"); fflush(stdout);
         cleanup_resources(shmid, shm_ptr, -1);
         exit(EXIT_FAILURE);
     }
@@ -75,55 +113,38 @@ int main(int argc, char *argv[]) {
     unsigned short values[2] = {1, 0};  // sem_write = 1, sem_read = 0
     arg.array = values;
     if (semctl(semid, 0, SETALL, arg) == -1) {
-        perror("semctl SETALL");
+        perror("semctl SETALL"); fflush(stdout);
         cleanup_resources(shmid, shm_ptr, semid);
         exit(EXIT_FAILURE);
     }
 
-    pid_t pid = fork();
-    if (pid < 0) {
-        perror("fork");
+    pid_t writer_pid = fork();
+    if (writer_pid < 0) {
+        perror("fork"); fflush(stdout);
         cleanup_resources(shmid, shm_ptr, semid);
         exit(EXIT_FAILURE);
     } 
-    else if (pid == 0) { // Читатель (ребенок)
-        struct sembuf wait_read = {1, -1, 0};   // Ожидание sem_read
-        struct sembuf signal_write = {0, 1, 0}; // Разрешить запись
-
-        for (int i = 0; i < iterations; i++) {
-            if (semop(semid, &wait_read, 1) == -1) {
-                perror("semop (wait_read)");
-                break;
-            }
-            printf("Читатель получил: %s\n", shm_ptr);
-            if (semop(semid, &signal_write, 1) == -1) {
-                perror("semop (signal_write)");
-                break;
-            }
+    else if (writer_pid == 0) { // Писатель (ребенок)
+        pid_t reader_pid = fork();
+        if (reader_pid < 0) {
+            perror("fork"); fflush(stdout);
+            cleanup_resources(shmid, shm_ptr, semid);
+            exit(EXIT_FAILURE);
         }
-
-        shmdt(shm_ptr);
-        exit(EXIT_SUCCESS);
+        else if (reader_pid == 0) { // Читатель (внук)
+            reader_process(semid, shm_ptr, iterations, getppid());
+            shmdt(shm_ptr);
+            exit(EXIT_SUCCESS);
+        }
+        else { // Писатель (ребенок)
+            writer_process(semid, shm_ptr, iterations, reader_pid);
+            shmdt(shm_ptr);
+            cleanup_resources(shmid, shm_ptr, semid);
+            exit(EXIT_SUCCESS);
+        }
     }
-    else { // Писатель (родитель)
-        struct sembuf wait_write = {0, -1, 0};  // Ожидание sem_write
-        struct sembuf signal_read = {1, 1, 0};  // Разрешить чтение
-
-        for (int i = 0; i < iterations; i++) {
-            if (semop(semid, &wait_write, 1) == -1) {
-                perror("semop (wait_write)");
-                break;
-            }
-            snprintf(shm_ptr, SHM_SIZE, "Сообщение %d", i + 1);
-            printf("Писатель отправил: %s\n", shm_ptr);
-            if (semop(semid, &signal_read, 1) == -1) {
-                perror("semop (signal_read)");
-                break;
-            }
-        }
-
-        wait(NULL);
-        cleanup_resources(shmid, shm_ptr, semid);
+    else { // Родительский процесс
+        waitpid(writer_pid, NULL, 0); // Ждем завершения писателя
     }
 
     return EXIT_SUCCESS;

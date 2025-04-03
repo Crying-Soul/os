@@ -17,9 +17,9 @@ void sig_handler(int signo, siginfo_t *info, void *context) {
     delivered_count++;
     // Для сигналов реального времени выводим дополнительно значение, переданное через sigqueue
     if (signo >= SIGRTMIN && signo <= SIGRTMAX) {
-        printf("[RT] Получен сигнал %d, sigval = %d, count = %d\n", signo, info->si_value.sival_int, delivered_count);
+        printf("[RT] Получен сигнал %d, sigval = %d, count = %d\n", signo, info->si_value.sival_int, delivered_count); fflush(stdout);
     } else {
-        printf("[Norm] Получен сигнал %d, count = %d\n", signo, delivered_count);
+        printf("[Norm] Получен сигнал %d, count = %d\n", signo, delivered_count); fflush(stdout);
     }
 }
 
@@ -30,7 +30,7 @@ void setup_handler(int signo) {
     sa.sa_sigaction = sig_handler;
     sa.sa_flags = SA_SIGINFO;
     if (sigaction(signo, &sa, NULL) == -1) {
-        perror("sigaction");
+        perror("sigaction"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
 }
@@ -38,8 +38,8 @@ void setup_handler(int signo) {
 // Эксперимент 4.1 и 4.2: Проверка приоритетов сигналов реального времени
 void experiment_priorities() {
     printf("Эксперимент 4.1 и 4.2: Приоритеты сигналов\n"); fflush(stdout);
-    printf("SIGRTMIN = %d\n", SIGRTMIN);
-    printf("SIGRTMAX = %d\n", SIGRTMAX);
+    printf("SIGRTMIN = %d\n", SIGRTMIN); fflush(stdout);
+    printf("SIGRTMAX = %d\n", SIGRTMAX); fflush(stdout);
     printf("Приоритет: меньший номер => более высокий приоритет.\n"); fflush(stdout);
     
     // Устанавливаем обработчики для двух сигналов реального времени: SIGRTMIN и SIGRTMIN+1
@@ -52,7 +52,7 @@ void experiment_priorities() {
     sigaddset(&block_set, SIGRTMIN);
     sigaddset(&block_set, SIGRTMIN + 1);
     if (sigprocmask(SIG_BLOCK, &block_set, &old_set) < 0) {
-        perror("sigprocmask");
+        perror("sigprocmask"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
 
@@ -60,20 +60,18 @@ void experiment_priorities() {
     union sigval sval;
     sval.sival_int = 100;
     if (sigqueue(getpid(), SIGRTMIN + 1, sval) == -1) {
-        perror("sigqueue");
+        perror("sigqueue"); fflush(stdout);
     }
     sval.sival_int = 200;
     if (sigqueue(getpid(), SIGRTMIN, sval) == -1) {
-        perror("sigqueue");
+        perror("sigqueue"); fflush(stdout);
     }
 
     // Разблокируем сигналы и посмотрим порядок доставки
     if (sigprocmask(SIG_SETMASK, &old_set, NULL) < 0) {
-        perror("sigprocmask");
+        perror("sigprocmask"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
-    // Подождем немного, чтобы обработчики вывели сообщение
-    sleep(1);
 }
 
 // Эксперимент 4.3.1: Очередь обычных сигналов
@@ -86,7 +84,7 @@ void experiment_normal_queue() {
     sigemptyset(&block_set);
     sigaddset(&block_set, SIGUSR1);
     if (sigprocmask(SIG_BLOCK, &block_set, &old_set) < 0) {
-        perror("sigprocmask");
+        perror("sigprocmask"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
     delivered_count = 0;
@@ -94,20 +92,18 @@ void experiment_normal_queue() {
     // Посылаем SIGUSR1 несколько раз
     for (int i = 0; i < 5; i++) {
         if (kill(getpid(), SIGUSR1) == -1) {
-            perror("kill");
+            perror("kill"); fflush(stdout);
         } else {
-            printf("Отослан SIGUSR1 #%d\n", i+1);
+            printf("Отослан SIGUSR1 #%d\n", i+1); fflush(stdout);
         }
     }
 
     // Разблокируем SIGUSR1
     if (sigprocmask(SIG_SETMASK, &old_set, NULL) < 0) {
-        perror("sigprocmask");
+        perror("sigprocmask"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
-    // Подождем, чтобы обработчик сработал
-    sleep(1);
-    printf("Обработчик вызвался %d раз (ожидалось 1, так как обычные сигналы не очередатся)\n", delivered_count);
+    printf("Обработчик вызвался %d раз (ожидалось 1, так как обычные сигналы не очередатся)\n", delivered_count); fflush(stdout);
 }
 
 // Эксперимент 4.3.2: Очередь сигналов реального времени
@@ -122,7 +118,7 @@ void experiment_realtime_queue() {
     sigemptyset(&block_set);
     sigaddset(&block_set, rt_sig);
     if (sigprocmask(SIG_BLOCK, &block_set, &old_set) < 0) {
-        perror("sigprocmask");
+        perror("sigprocmask"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
     delivered_count = 0;
@@ -132,19 +128,17 @@ void experiment_realtime_queue() {
     for (int i = 0; i < 5; i++) {
         sval.sival_int = i + 1;
         if (sigqueue(getpid(), rt_sig, sval) == -1) {
-            perror("sigqueue");
+            perror("sigqueue"); fflush(stdout);
         } else {
-            printf("Отослан SIGRT(%d) с данными %d\n", rt_sig, sval.sival_int);
+            printf("Отослан SIGRT(%d) с данными %d\n", rt_sig, sval.sival_int); fflush(stdout);
         }
     }
     // Разблокируем сигнал
     if (sigprocmask(SIG_SETMASK, &old_set, NULL) < 0) {
-        perror("sigprocmask");
+        perror("sigprocmask"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
-    // Подождем для обработки
-    sleep(1);
-    printf("Обработчик вызвался %d раз (ожидалось 5, так как сигналы реального времени очередатся)\n", delivered_count);
+    printf("Обработчик вызвался %d раз (ожидалось 5, так как сигналы реального времени очередатся)\n", delivered_count); fflush(stdout);
 }
 
 // Эксперимент 4.3.3: Очередь смешанного набора сигналов (обычный + реального времени)
@@ -161,32 +155,36 @@ void experiment_mixed_queue() {
     sigaddset(&block_set, SIGUSR2);
     sigaddset(&block_set, rt_sig);
     if (sigprocmask(SIG_BLOCK, &block_set, &old_set) < 0) {
-        perror("sigprocmask");
+        perror("sigprocmask"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
     delivered_count = 0;
 
     // Отправляем сигналы: обычный, реального времени, обычный, реального времени
-    if (kill(getpid(), SIGUSR2) == -1)
-        perror("kill SIGUSR2");
+    if (kill(getpid(), SIGUSR2) == -1) {
+        perror("kill SIGUSR2"); fflush(stdout);
+    }
     union sigval sval;
     sval.sival_int = 101;
-    if (sigqueue(getpid(), rt_sig, sval) == -1)
-        perror("sigqueue rt_sig");
+    if (sigqueue(getpid(), rt_sig, sval) == -1) {
+        perror("sigqueue rt_sig"); fflush(stdout);
+    }
 
-    if (kill(getpid(), SIGUSR2) == -1)
-        perror("kill SIGUSR2");
+    if (kill(getpid(), SIGUSR2) == -1) {
+        perror("kill SIGUSR2"); fflush(stdout);
+    }
     sval.sival_int = 202;
-    if (sigqueue(getpid(), rt_sig, sval) == -1)
-        perror("sigqueue rt_sig");
+    if (sigqueue(getpid(), rt_sig, sval) == -1) {
+        perror("sigqueue rt_sig"); fflush(stdout);
+    }
 
     // Разблокируем сигналы
     if (sigprocmask(SIG_SETMASK, &old_set, NULL) < 0) {
-        perror("sigprocmask");
+        perror("sigprocmask"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
-    sleep(1);
-    printf("Обработчик вызвался %d раз.\n", delivered_count);
+
+    printf("Обработчик вызвался %d раз.\n", delivered_count); fflush(stdout);
     printf("Заметим, что обычные сигналы (SIGUSR2) не очередатся: они обрабатываются один раз, а сигналы реального времени – все.\n"); fflush(stdout);
 }
 
@@ -201,7 +199,7 @@ void experiment_fifo_order() {
     sigemptyset(&block_set);
     sigaddset(&block_set, rt_sig);
     if (sigprocmask(SIG_BLOCK, &block_set, &old_set) < 0) {
-        perror("sigprocmask");
+        perror("sigprocmask"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
     delivered_count = 0;
@@ -212,17 +210,17 @@ void experiment_fifo_order() {
     for (int i = 0; i < count; i++) {
         sval.sival_int = i + 1000;  // уникальное значение для идентификации порядка
         if (sigqueue(getpid(), rt_sig, sval) == -1) {
-            perror("sigqueue");
+            perror("sigqueue"); fflush(stdout);
         } else {
-            printf("Отослан SIGRT(%d) с данными %d\n", rt_sig, sval.sival_int);
+            printf("Отослан SIGRT(%d) с данными %d\n", rt_sig, sval.sival_int); fflush(stdout);
         }
     }
     // Разблокируем сигнал, ожидаем доставку и обработку
     if (sigprocmask(SIG_SETMASK, &old_set, NULL) < 0) {
-        perror("sigprocmask");
+        perror("sigprocmask"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
-    sleep(1);
+
     printf("Если порядок доставки соответствует порядку отправки, то FIFO подтвержден.\n"); fflush(stdout);
 }
 
@@ -249,6 +247,5 @@ int main(void) {
     experiment_fifo_order();
     printf("Эксперимент 4.4 завершен.\n"); fflush(stdout);
 
-   
     return 0;
 }

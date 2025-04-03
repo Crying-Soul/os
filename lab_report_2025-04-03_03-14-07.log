@@ -1,0 +1,3170 @@
+Script started on 2025-04-03 03:14:07+03:00 [COMMAND="./logger-lb3.sh" TERM="xterm-256color" TTY="/dev/pts/8" COLUMNS="282" LINES="59"]
+Дата исполнения отчёта: 2025-04-03 03:14:07
+Идентификация исполнителя: root
+Группа: 3343
+ФИО: Гребнев Егор Дмитриевич
+-----------------------------------------------------------------
+[2025-04-03 03:14:07] ПРОФИЛЬ СИСТЕМЫ
+[2025-04-03 03:14:07] >>> Информация о процессоре (lscpu) <<<
+----------------------------------------
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        48 bits physical, 48 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               6
+On-line CPU(s) list:                  0-5
+Vendor ID:                            AuthenticAMD
+Model name:                           AMD Ryzen 5 3600 6-Core Processor
+BIOS Model name:                        CPU @ 0.0GHz
+BIOS CPU family:                      0
+CPU family:                           23
+Model:                                113
+Thread(s) per core:                   1
+Core(s) per socket:                   6
+Socket(s):                            1
+Stepping:                             0
+BogoMIPS:                             7200.00
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch ssbd vmmcall fsgsbase bmi1 avx2 bmi2 rdseed adx clflushopt sha_ni arat nrip_save flushbyasid decodeassists
+Virtualization:                       AMD-V
+Hypervisor vendor:                    KVM
+Virtualization type:                  full
+L1d cache:                            192 KiB (6 instances)
+L1i cache:                            192 KiB (6 instances)
+L2 cache:                             3 MiB (6 instances)
+L3 cache:                             192 MiB (6 instances)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-5
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Mitigation; untrained return thunk; SMT disabled
+Vulnerability Spec rstack overflow:   Mitigation; safe RET, no microcode
+Vulnerability Spec store bypass:      Not affected
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Retpolines; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+----------------------------------------
+[2025-04-03 03:14:07] >>> Информация о памяти (free -h) <<<
+----------------------------------------
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       3.9Gi       5.0Gi       161Mi       7.2Gi        11Gi
+Swap:          974Mi          0B       974Mi
+----------------------------------------
+[2025-04-03 03:14:07] >>> Информация о дисках (lsblk) <<<
+----------------------------------------
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda      8:0    0   60G  0 disk 
+├─sda1   8:1    0   59G  0 part /
+├─sda2   8:2    0    1K  0 part 
+└─sda5   8:5    0  975M  0 part [SWAP]
+sr0     11:0    1 57.4M  0 rom  
+----------------------------------------
+[2025-04-03 03:14:07] >>> Информация о сетевых интерфейсах (ip a) <<<
+----------------------------------------
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:5c:10:fa brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 67258sec preferred_lft 67258sec
+    inet6 fd00::2250:c5de:4f82:d66c/64 scope global temporary dynamic 
+       valid_lft 86235sec preferred_lft 14235sec
+    inet6 fd00::a00:27ff:fe5c:10fa/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 86235sec preferred_lft 14235sec
+    inet6 fe80::a00:27ff:fe5c:10fa/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: br-5cc120f53bac: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 2a:f6:0e:ec:c1:a0 brd ff:ff:ff:ff:ff:ff
+    inet 172.20.0.1/16 brd 172.20.255.255 scope global br-5cc120f53bac
+       valid_lft forever preferred_lft forever
+4: br-5f8e322b553c: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether f2:61:d2:5d:5a:c3 brd ff:ff:ff:ff:ff:ff
+    inet 172.21.0.1/16 brd 172.21.255.255 scope global br-5f8e322b553c
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f061:d2ff:fe5d:5ac3/64 scope link 
+       valid_lft forever preferred_lft forever
+5: br-b56d365599b8: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 1e:4f:ac:b9:1f:cb brd ff:ff:ff:ff:ff:ff
+    inet 172.18.0.1/16 brd 172.18.255.255 scope global br-b56d365599b8
+       valid_lft forever preferred_lft forever
+6: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 4e:1c:c3:71:69:b0 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::4c1c:c3ff:fe71:69b0/64 scope link 
+       valid_lft forever preferred_lft forever
+7: br-5ade70efe37c: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 66:99:5b:dd:c2:39 brd ff:ff:ff:ff:ff:ff
+    inet 172.19.0.1/16 brd 172.19.255.255 scope global br-5ade70efe37c
+       valid_lft forever preferred_lft forever
+34: veth6935285@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-5f8e322b553c state UP group default 
+    link/ether 02:e4:97:49:8a:13 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet6 fe80::e4:97ff:fe49:8a13/64 scope link 
+       valid_lft forever preferred_lft forever
+35: vethb950e47@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-5f8e322b553c state UP group default 
+    link/ether ba:8d:af:fb:3c:d1 brd ff:ff:ff:ff:ff:ff link-netnsid 1
+    inet6 fe80::b88d:afff:fefb:3cd1/64 scope link 
+       valid_lft forever preferred_lft forever
+----------------------------------------
+[2025-04-03 03:14:07] ИДЕНТИФИКАЦИЯ ВИРТУАЛЬНОЙ МАШИНЫ
+[2025-04-03 03:14:07] Система запущена в виртуальной машине.
+[2025-04-03 03:14:07] Тип виртуализации: oracle
+
+-----------------------------------------------------------------
+[2025-04-03 03:14:07] ИДЕНТИФИКАЦИЯ/ОПИСАНИЕ ОС
+[2025-04-03 03:14:07] >>> Информация о ядре (uname -a) <<<
+----------------------------------------
+Linux ASPIRIN 6.1.0-32-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.129-1 (2025-03-06) x86_64 GNU/Linux
+----------------------------------------
+[2025-04-03 03:14:07] >>> Информация о версии ОС (lКомпиляция lb3/6/6.1/dual_pipe.c в lb3/6/6.1/dual_pipe
+Компиляция lb3/6/6.1/pipe_exec.c в lb3/6/6.1/pipe_exec
+Компиляция lb3/6/6.1/simple_pipe.c в lb3/6/6.1/simple_pipe
+Компиляция lb3/6/6.2/writer.c в lb3/6/6.2/writer
+Компиляция lb3/6/6.2/reader.c в lb3/6/6.2/reader
+Компиляция lb3/6/6.2/create_fifo.c в lb3/6/6.2/create_fifo
+Компиляция lb3/6/6.2/analyze_fifo.c в lb3/6/6.2/analyze_fifo
+Компиляция lb3/6/6.3/message_queue.c в lb3/6/6.3/message_queue
+Компиляция lb3/1.c в lb3/1
+Компиляция lb3/7/7.2/client.c в lb3/7/7.2/client
+Компиляция lb3/7/7.2/server.c в lb3/7/7.2/server
+Компиляция lb3/7/7.1/client.c в lb3/7/7.1/client
+Компиляция lb3/7/7.1/server.c в lb3/7/7.1/server
+Компиляция lb3/7/7.3/client.c в lb3/7/7.3/client
+Компиляция lb3/7/7.3/server.c в lb3/7/7.3/server
+Компиляция lb3/4.c в lb3/4
+Компиляция lb3/5/5-posix.c в lb3/5/5-posix
+Компиляция lb3/5/5-systemv.c в lb3/5/5-systemv
+Компиляция lb3/5/5-benchmark.c в lb3/5/5-benchmark
+Компиляция lb3/5/5-pthread.c в lb3/5/5-pthread
+Компиляция lb3/2.c в lb3/2
+Компиляция lb3/3/3.1.c в lb3/3/3.1
+lb3/3/3.1.c:51:2: warning: data definition has no type or storage class
+   51 | }fflush(stdout);
+      |  ^~~~~~
+lb3/3/3.1.c:51:2: warning: type defaults to ‘int’ in declaration of ‘fflush’ [-Wimplicit-int]
+lb3/3/3.1.c:51:1: warning: parameter names (without types) in function declaration
+   51 | }fflush(stdout);
+      | ^
+Компиляция lb3/3/3.2.c в lb3/3/3.2
+[03:14:09.052193068] Main thread: Started (PID: 183749)
+[03:14:09.052193068] Using default signal handler
+03:14:09.053086 rt_sigaction(SIGRT_1, {sa_handler=0x7fb3e45a6720, sa_mask=[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x7fb3e455c050}, NULL, 8) = 0
+03:14:09.053284 rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+03:14:09.053567 rt_sigprocmask(SIG_BLOCK, ~[], [], 8) = 0
+[03:14:09.053741465] Thread 1: Started (TID: 140410606438080)
+03:14:09.053722 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[03:14:09.053815658] Thread 2: Started (TID: 140410598045376)
+[03:14:09.053819698] Thread 2: Active
+[03:14:09.103177311] Thread 2: Active
+[03:14:09.151603465] Thread 2: Active
+[03:14:09.203580765] Thread 2: Active
+[03:14:09.252160309] Thread 2: Active
+[03:14:09.300883757] Thread 2: Active
+[03:14:09.350037073] Thread 2: Active
+[03:14:09.398204580] Thread 2: Active
+[03:14:09.445966048] Thread 2: Active
+[03:14:09.494573388] Thread 2: Active
+[03:14:09.543389764] Thread 2: Active
+[03:14:09.592947028] Thread 2: Active
+[03:14:09.644383300] Thread 2: Active
+[03:14:09.692390063] Thread 2: Active
+[03:14:09.761915009] Thread 2: Active
+[03:14:09.810266765] Thread 2: Active
+[03:14:09.858811693] Thread 2: Active
+[03:14:09.908112760] Thread 2: Active
+[03:14:09.955362363] Thread 2: Active
+[03:14:10.002945201] Thread 2: Active
+[03:14:10.050903518] Thread 2: Active
+[03:14:10.056391672] Thread 1: Sending first SIGUSR1 to Thread 2
+[03:14:10.056416992] Thread 1: Monitoring for 3 seconds...
+[03:14:10.056427518] Thread 2: Received SIGUSR1 signal (default handler)
+sb_release -a) <<<
+----------------------------------------
+Distributor ID:	Debian
+Description:	Debian GNU/Linux 12 (bookworm)
+Release:	12
+Codename:	bookworm
+----------------------------------------
+
+-----------------------------------------------------------------
+[2025-04-03 03:14:07] НАЧАЛО ВЫПОЛНЕНИЯ ЗАДАНИЙ
+[2025-04-03 03:14:07] [КОММЕНТАРИЙ] Выполним подготовку окружения для выполнения заданий. Скомпилируем все исходные файлы.
+[2025-04-03 03:14:07] ВЫПОЛНЕНИЕ ЗАДАНИЯ 0
+[2025-04-03 03:14:07] >>> root@ASPIRIN$ ./compiller.sh lb3 <<<
+Компиляция lb3/6/6.1/dual_pipe.c в lb3/6/6.1/dual_pipe
+Компиляция lb3/6/6.1/pipe_exec.c в lb3/6/6.1/pipe_exec
+Компиляция lb3/6/6.1/simple_pipe.c в lb3/6/6.1/simple_pipe
+Компиляция lb3/6/6.2/writer.c в lb3/6/6.2/writer
+Компиляция lb3/6/6.2/reader.c в lb3/6/6.2/reader
+Компиляция lb3/6/6.2/create_fifo.c в lb3/6/6.2/create_fifo
+Компиляция lb3/6/6.2/analyze_fifo.c в lb3/6/6.2/analyze_fifo
+Компиляция lb3/6/6.3/message_queue.c в lb3/6/6.3/message_queue
+Компиляция lb3/1.c в lb3/1
+Компиляция lb3/7/7.2/client.c в lb3/7/7.2/client
+Компиляция lb3/7/7.2/server.c в lb3/7/7.2/server
+Компиляция lb3/7/7.1/client.c в lb3/7/7.1/client
+Компиляция lb3/7/7.1/server.c в lb3/7/7.1/server
+Компиляция lb3/7/7.3/client.c в lb3/7/7.3/client
+Компиляция lb3/7/7.3/server.c в lb3/7/7.3/server
+Компиляция lb3/4.c в lb3/4
+Компиляция lb3/5/5-posix.c в lb3/5/5-posix
+Компиляция lb3/5/5-systemv.c в lb3/5/5-systemv
+Компиляция lb3/5/5-benchmark.c в lb3/5/5-benchmark
+Компиляция lb3/5/5-pthread.c в lb3/5/5-pthread
+Компиляция lb3/2.c в lb3/2
+Компиляция lb3/3/3.1.c в lb3/3/3.1
+lb3/3/3.1.c:51:2: warning: data definition has no type or storage class
+   51 | }fflush(stdout);
+      |  ^~~~~~
+lb3/3/3.1.c:51:2: warning: type defaults to ‘int’ in declaration of ‘fflush’ [-Wimplicit-int]
+lb3/3/3.1.c:51:1: warning: parameter names (without types) in function declaration
+   51 | }fflush(stdout);
+      | ^
+Компиляция lb3/3/3.2.c в lb3/3/3.2
+[2025-04-03 03:14:09] Время выполнения задания 0: 2 секунд.
+
+
+[2025-04-03 03:14:09] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.1
+[2025-04-03 03:14:09] >>> root@ASPIRIN$ strace -tt -v -s 1000 -e trace=signal ./lb3/1 <<<
+[03:14:09.052193068] Main thread: Started (PID: 183749)
+[03:14:09.052193068] Using default signal handler
+03:14:09.053086 rt_sigaction(SIGRT_1, {sa_handler=0x7fb3e45a6720, sa_mask=[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x7fb3e455c050}, NULL, 8) = 0
+03:14:09.053284 rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+03:14:09.053567 rt_sigprocmask(SIG_BLOCK, ~[], [], 8) = 0
+[03:14:09.053741465] Thread 1: Started (TID: 140410606438080)
+03:14:09.053722 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[03:14:09.053815658] Thread 2: Started (TID: 140410598045376)
+[03:14:09.053819698] Thread 2: Active
+[03:14:09.103177311] Thread 2: Active
+[03:14:09.151603465] Thread 2: Active
+[03:14:09.203580765] Thread 2: Active
+[03:14:09.252160309] Thread 2: Active
+[03:14:09.300883757] Thread 2: Active
+[03:14:09.350037073] Thread 2: Active
+[03:14:09.398204580] Thread 2: Active
+[03:14:09.445966048] Thread 2: Active
+[03:14:09.494573388] Thread 2: Active
+[03:14:09.543389764] Thread 2: Active
+[03:14:09.592947028] Thread 2: Active
+[03:14:09.644383300] Thread 2: Active
+[03:14:09.692390063] Thread 2: Active
+[03:14:09.761915009] Thread 2: Active
+[03:14:09.810266765] Thread 2: Active
+[03:14:09.858811693] Thread 2: Active
+[03:14:09.908112760] Thread 2: Active
+[03:14:09.955362363] Thread 2: Active
+[03:14:10.002945201] Thread 2: Active
+[03:14:10.050903518] Thread 2: Active
+[03:14:10.056391672] Thread 1: Sending first S[03:14:10.098618237] Thread 2: Active
+[03:14:10.147430085] Thread 2: Active
+[03:14:10.196791940] Thread 2: Active
+[03:14:10.245856330] Thread 2: Active
+[03:14:10.296085438] Thread 2: Active
+[03:14:10.345186140] Thread 2: Active
+[03:14:10.395137233] Thread 2: Active
+[03:14:10.443975236] Thread 2: Active
+[03:14:10.493015307] Thread 2: Active
+[03:14:10.541154898] Thread 2: Active
+[03:14:10.589389425] Thread 2: Active
+[03:14:10.637784839] Thread 2: Active
+[03:14:10.686037600] Thread 2: Active
+[03:14:10.735213939] Thread 2: Active
+[03:14:10.783281429] Thread 2: Active
+[03:14:10.832666053] Thread 2: Active
+[03:14:10.880797350] Thread 2: Active
+[03:14:10.930090975] Thread 2: Active
+[03:14:10.978381087] Thread 2: Active
+[03:14:11.026598903] Thread 2: Active
+[03:14:11.075010386] Thread 2: Active
+[03:14:11.123983216] Thread 2: Active
+[03:14:11.172297455] Thread 2: Active
+[03:14:11.220802091] Thread 2: Active
+[03:14:11.269411701] Thread 2: Active
+[03:14:11.318828200] Thread 2: Active
+[03:14:11.365840894] Thread 2: Active
+[03:14:11.413495449] Thread 2: Active
+[03:14:11.460378934] Thread 2: Active
+[03:14:11.507927725] Thread 2: Active
+[03:14:11.556929626] Thread 2: Active
+[03:14:11.604414679] Thread 2: Active
+[03:14:11.653377825] Thread 2: Active
+[03:14:11.700956976] Thread 2: Active
+[03:14:11.748041012] Thread 2: Active
+[03:14:11.795085137] Thread 2: Active
+[03:14:11.842960238] Thread 2: Active
+[03:14:11.890600222] Thread 2: Active
+[03:14:11.937760800] Thread 2: Active
+[03:14:11.985525737] Thread 2: Active
+[03:14:12.033135098] Thread 2: Active
+[03:14:12.081848033] Thread 2: Active
+[03:14:12.129503264] Thread 2: Active
+[03:14:12.177587819] Thread 2: Active
+[03:14:12.226078291] Thread 2: Active
+[03:14:12.274863952] Thread 2: Active
+[03:14:12.324808039] Thread 2: Active
+[03:14:12.374466452] Thread 2: Active
+[03:14:12.422363285] Thread 2: Active
+[03:14:12.471498263] Thread 2: Active
+[03:14:12.520987546] Thread 2: Active
+[03:14:12.594201218] Thread 2: Active
+[03:14:12.642614198] Thread 2: Active
+[03:14:12.674727157] Thread 1: Sending termination signal to Thread 2
+[03:14:12.674796608] Thread 2: Received SIGUSR1 signal (default handler)
+[03:14:12.689981465] Thread 2: Exiting normally
+[03:14:12.690079579] Thread 1: Thread 2 terminated
+[03:14:12.690167332] Main thread: All threads completed
+03:14:12.690573 +++ exited with 0 +++
+[03:14:12.705669968] Main thread: Started (PID: 183781)
+[03:14:12.705669968] Using custom signal handler with pthread_exit()
+03:14:12.706772 rt_sigaction(SIGRT_1, {sa_handler=0x7f6b44a61720, sa_mask=[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x7f6b44a17050}, NULL, 8) = 0
+03:14:12.707154 rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+03:14:12.707473 rt_sigprocmask(SIG_BLOCK, ~[], [], 8) = 0
+[03:14:12.707716832] Thread 1: Started (TID: 140098689398464)
+03:14:12.707728 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[03:14:12.707906677] Thread 2: Started (TID: 140098681005760)
+[03:14:12.707917728] Thread 2: Active
+[03:14:12.756616042] Thread 2: Active
+[03:14:12.803891621] Thread 2: Active
+[03:14:12.851146720] Thread 2: Active
+[03:14:12.898535748] Thread 2: Active
+[03:14:12.945778224] Thread 2: Active
+[03:14:12.993371808] Thread 2: Active
+[03:14:13.040487875] Thread 2: Active
+[03:14:13.087550130] Thread 2: Active
+[03:14:13.134769389] Thread 2: Active
+[03:14:13.182024010] Thread 2: Active
+[03:14:13.229095686] Thread 2: Active
+[03:14:13.276393029] Thread 2: Active
+[03:14:13.403423584] Thread 2: Active
+[03:14:13.450467264] Thread 2: Active
+[03:14:13.497495747] Thread 2: Active
+[03:14:13.544204492] Thread 2: Active
+IGUSR1 to Thread 2
+[03:14:10.056416992] Thread 1: Monitoring for 3 seconds...
+[03:14:10.056427518] Thread 2: Received SIGUSR1 signal (default handler)
+[03:14:10.098618237] Thread 2: Active
+[03:14:10.147430085] Thread 2: Active
+[03:14:10.196791940] Thread 2: Active
+[03:14:10.245856330] Thread 2: Active
+[03:14:10.296085438] Thread 2: Active
+[03:14:10.345186140] Thread 2: Active
+[03:14:10.395137233] Thread 2: Active
+[03:14:10.443975236] Thread 2: Active
+[03:14:10.493015307] Thread 2: Active
+[03:14:10.541154898] Thread 2: Active
+[03:14:10.589389425] Thread 2: Active
+[03:14:10.637784839] Thread 2: Active
+[03:14:10.686037600] Thread 2: Active
+[03:14:10.735213939] Thread 2: Active
+[03:14:10.783281429] Thread 2: Active
+[03:14:10.832666053] Thread 2: Active
+[03:14:10.880797350] Thread 2: Active
+[03:14:10.930090975] Thread 2: Active
+[03:14:10.978381087] Thread 2: Active
+[03:14:11.026598903] Thread 2: Active
+[03:14:11.075010386] Thread 2: Active
+[03:14:11.123983216] Thread 2: Active
+[03:14:11.172297455] Thread 2: Active
+[03:14:11.220802091] Thread 2: Active
+[03:14:11.269411701] Thread 2: Active
+[03:14:11.318828200] Thread 2: Active
+[03:14:11.365840894] Thread 2: Active
+[03:14:11.413495449] Thread 2: Active
+[03:14:11.460378934] Thread 2: Active
+[03:14:11.507927725] Thread 2: Active
+[03:14:11.556929626] Thread 2: Active
+[03:14:11.604414679] Thread 2: Active
+[03:14:11.653377825] Thread 2: Active
+[03:14:11.700956976] Thread 2: Active
+[03:14:11.748041012] Thread 2: Active
+[03:14:11.795085137] Thread 2: Active
+[03:14:11.842960238] Thread 2: Active
+[03:14:11.890600222] Thread 2: Active
+[03:14:11.937760800] Thread 2: Active
+[03:14:11.985525737] Thread 2: Active
+[03:14:12.033135098] Thread 2: Active
+[03:14:12.081848033] Thread 2: Active
+[03:14:12.129503264] Thread 2: Active
+[03:14:12.177587819] Thread 2: Active
+[03:14:12.226078291] Thread 2: Active
+[03:14:12.274863952] Thread 2: Active
+[03:14:12.324808039] Thread 2: Active
+[03:14:12.374466452] Thread 2: Active
+[03:14:12.422363285] Thread 2: Active
+[03:14:12.471498263] Thread 2: Active
+[03:14:12.520987546] Thread 2: Active
+[03:14:12.594201218] Thread 2: Active
+[03:14:12.642614198] Thread 2: Active
+[03:14:12.674727157] Thread 1: Sending termination signal to Thread 2
+[03:14:12.674796608] Thread 2: Received SIGUSR1 signal (default handler)
+[03:14:12.689981465] Thread 2: Exiting normally
+[03:14:12.690079579] Thread 1: Thread 2 terminated
+[03:14:12.690167332] Main thread: All threads completed
+03:14:12.690573 +++ exited with 0 +++
+[2025-04-03 03:14:12] Время выполнения задания 1.1: 3 секунд.
+
+
+[2025-04-03 03:14:12] ВЫПОЛНЕНИЕ ЗАДАНИЯ 1.2
+[2025-04-03 03:14:12] >>> root@ASPIRIN$ strace -tt -v -s 1000 -e trace=signal ./lb3/1 --custom-handler <<<
+[03:14:12.705669968] Main thread: Started (PID: 183781)
+[03:14:12.705669968] Using custom signal handler with pthread_exit()
+03:14:12.706772 rt_sigaction(SIGRT_1, {sa_handler=0x7f6b44a61720, sa_mask=[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x7f6b44a17050}, NULL, 8) = 0
+03:14:12.707154 rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+03:14:12.707473 rt_sigprocmask(SIG_BLOCK, ~[], [], 8) = 0
+[03:14:12.707716832] Thread 1: Started (TID: 140098689398464)
+03:14:12.707728 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+[03:14:12.707906677] Thread 2: Started (TID: 140098681005760)
+[03:14:12.707917728] Thread 2: Active
+[03:14:12.756616042] Thread 2: Active
+[03:14:12.803891621] Thread 2: Active
+[03:14:12.851146720] Thread 2: Active
+[03:14:12.898535748] Thread 2: Active
+[03:14:12.945778224] Thread 2: Active
+[03:14:12.993371808] Thread 2: Active
+[03:14:13.040487875] Thread 2: Active
+[03:14:13.087550130] Thread 2: Active
+[03:14:13.134769389] Thread 2: Active
+[03:14:13.182024010] Thread 2: Active
+[03:14:13.229095686] Thread 2: Active
+[03:14:13.276393029] Thread 2: Active
+[03:14:13.403423584] Thread 2: Active
+[03:14:13.450467264] Thread 2: Active
+[03:14:13.497495747] Thread 2: Active
+[03:14:13.544204492] [03:14:13.591489145] Thread 2: Active
+[03:14:13.638182153] Thread 2: Active
+[03:14:13.685446904] Thread 2: Active
+[03:14:13.713980071] Thread 1: Sending first SIGUSR1 to Thread 2
+[03:14:13.714052323] Thread 1: Monitoring for 3 seconds...
+[03:14:13.714156016] Thread 2: Received SIGUSR1 signal (custom handler)
+[03:14:13.714156016] Thread 2: Exiting via pthread_exit()
+[03:14:16.674727152] Thread 1: Sending termination signal to Thread 2
+[03:14:16.674751163] Thread 1: Thread 2 terminated
+[03:14:16.674878757] Main thread: All threads completed
+03:14:16.675831 +++ exited with 0 +++
+Запуск: --process_single
+Отправлен сигнал SIGINT
+Завершен: --process_single\n
+Запуск: --process_multi
+Отправлен сигнал SIGINT
+Отправлен сигнал SIGINT
+Отправлен сигнал SIGINT
+Завершен: --process_multi\n
+Запуск: --thread_single
+Отправлен сигнал SIGINT
+Режим thread_single. Нажмите Ctrl+C.
+Поток: получен SIGINT (однократно).
+./lb3/2.sh: line 20: kill: (183838) - No such process
+Завершен: --thread_single\n
+Запуск: --thread_multi
+Отправлен сигнал SIGINT
+Отправлен сигнал SIGINT
+Отправлен сигнал SIGINT
+Режим thread_multi. Нажмите Ctrl+C несколько раз.
+Поток: получен SIGINT 1 раз(а).
+Поток: получен SIGINT 2 раз(а).
+Поток: получен SIGINT 3 раз(а).
+Поток: после 3 срабатываний восстанавливаем исходное поведение.
+./lb3/2.sh: line 20: kill: (183842) - No such process
+Завершен: --thread_multi\n
+Запуск: --custom_signal
+Отправлен сигнал SIGTSTP
+Завершен: --custom_signal\n
+==============================================
+                  ЗАДАНИЕ 3.1                 
+==============================================
+
+============================================================
+ПРОГРАММА ДЕМОНСТРАЦИИ РАБОТЫ С SIGACTION()
+============================================================
+PID: 183883
+
+03:14:26.858472 rt_sigaction(SIGINT, {sa_handler=0x55cb763f1310, sa_mask=[TERM], sa_flags=SA_RESTORER|SA_RESTART|SA_SIGINFO, sa_restorer=0x7f5cc6b70050}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+
+============================================================
+ТЕСТ: Обработка SIGINT (Ctrl+C) с SA_SIGINFO
+============================================================
+Описание: Демонстрация обработки SIGINT с использованием SA_SIGINFO для получения
+дополнительной информации о сигнале (pid отправителя, код и т.д.)
+
+  Настроен обработчик для SIGINT (Ctrl+C) (сигнал 2)
+  Флаги: 0x10000004, Маска: установлена
+  Отправка сигнала 2 текущему процессу...
+03:14:26.859005 kill(183883, SIGINT)    = 0
+03:14:26.859098 --- SIGINT {si_signo=SIGINT, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+
+  Получен SIGINT (сигнал 2) от процесса 183883
+  Код пользователя: 0
+03:14:26.859163 rt_sigreturn({mask=[]}) = 0
+
+  Тест завершен
+03:14:27.066284 rt_sigaction(SIGTERM, {sa_handler=0x55cb763f137c, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7f5cc6b70050}, NULL, 8) = 0
+Thread 2: Active
+[03:14:13.591489145] Thread 2: Active
+[03:14:13.638182153] Thread 2: Active
+[03:14:13.685446904] Thread 2: Active
+[03:14:13.713980071] Thread 1: Sending first SIGUSR1 to Thread 2
+[03:14:13.714052323] Thread 1: Monitoring for 3 seconds...
+[03:14:13.714156016] Thread 2: Received SIGUSR1 signal (custom handler)
+[03:14:13.714156016] Thread 2: Exiting via pthread_exit()
+[03:14:16.674727152] Thread 1: Sending termination signal to Thread 2
+[03:14:16.674751163] Thread 1: Thread 2 terminated
+[03:14:16.674878757] Main thread: All threads completed
+03:14:16.675831 +++ exited with 0 +++
+[2025-04-03 03:14:16] Время выполнения задания 1.2: 4 секунд.
+
+
+[2025-04-03 03:14:16] ВЫПОЛНЕНИЕ ЗАДАНИЯ 2 (Скрипт)
+[2025-04-03 03:14:16] Запуск скрипта ./lb3/2.sh без аргументов.
+Запуск: --process_single
+Отправлен сигнал SIGINT
+Завершен: --process_single\n
+Запуск: --process_multi
+Отправлен сигнал SIGINT
+Отправлен сигнал SIGINT
+Отправлен сигнал SIGINT
+Завершен: --process_multi\n
+Запуск: --thread_single
+Отправлен сигнал SIGINT
+Режим thread_single. Нажмите Ctrl+C.
+Поток: получен SIGINT (однократно).
+./lb3/2.sh: line 20: kill: (183838) - No such process
+Завершен: --thread_single\n
+Запуск: --thread_multi
+Отправлен сигнал SIGINT
+Отправлен сигнал SIGINT
+Отправлен сигнал SIGINT
+Режим thread_multi. Нажмите Ctrl+C несколько раз.
+Поток: получен SIGINT 1 раз(а).
+Поток: получен SIGINT 2 раз(а).
+Поток: получен SIGINT 3 раз(а).
+Поток: после 3 срабатываний восстанавливаем исходное поведение.
+./lb3/2.sh: line 20: kill: (183842) - No such process
+Завершен: --thread_multi\n
+Запуск: --custom_signal
+Отправлен сигнал SIGTSTP
+Завершен: --custom_signal\n
+[2025-04-03 03:14:26] Время выполнения задания 2: 10 секунд.
+
+
+[2025-04-03 03:14:26] ВЫПОЛНЕНИЕ ЗАДАНИЯ 3 (Скрипт)
+[2025-04-03 03:14:26] Запуск скрипта ./lb3/3/3.sh без аргументов.
+==============================================
+                  ЗАДАНИЕ 3.1                 
+==============================================
+
+============================================================
+ПРОГРАММА ДЕМОНСТРАЦИИ РАБОТЫ С SIGACTION()
+============================================================
+PID: 183883
+
+03:14:26.858472 rt_sigaction(SIGINT, {sa_handler=0x55cb763f1310, sa_mask=[TERM], sa_flags=SA_RESTORER|SA_RESTART|SA_SIGINFO, sa_restorer=0x7f5cc6b70050}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+
+============================================================
+ТЕСТ: Обработка SIGINT (Ctrl+C) с SA_SIGINFO
+============================================================
+Описание: Демонстрация обработки SIGINT с использованием SA_SIGINFO для получения
+дополнительной информации о сигнале (pid отправителя, код и т.д.)
+
+  Настроен обработчик для SIGINT (Ctrl+C) (сигнал 2)
+  Флаги: 0x10000004, Маска: установлена
+  Отправка сигнала 2 текущему процессу...
+03:14:26.859005 kill(183883, SIGINT)    = 0
+03:14:26.859098 --- SIGINT {si_signo=SIGINT, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+
+  Получен SIGINT (сигнал 2) от процесса 183883
+  Код пользователя: 0
+03:14:26.859163 rt_sigreturn({mask=[]}) = 0
+
+  Тест завершен
+03:14:27.066284 rt_sigaction(SIGTERM, {sa_handler=0x55cb763f137c, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7f5cc6b70050}, NULL, 8) = 0
+============================================================
+ТЕСТ: Старый стиль обработчика (SIGTERM)
+============================================================
+Описание: Демонстрация простого обработчика сигналов без использования SA_SIGINFO
+
+  Настроен простой обработчик для SIGTERM (без SA_SIGINFO)
+  Отправка сигнала 15 текущему процессу...
+03:14:27.066538 kill(183883, SIGTERM)   = 0
+03:14:27.066714 --- SIGTERM {si_signo=SIGTERM, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+
+  Получен SIGTERM (сигнал 15)
+  Этот обработчик использует старый стиль (без siginfo_t)
+03:14:27.066874 rt_sigreturn({mask=[]}) = 0
+
+  Тест завершен
+03:14:27.273347 rt_sigaction(SIGUSR1, {sa_handler=0x55cb763f13cb, sa_mask=[USR2], sa_flags=SA_RESTORER|SA_NODEFER|SA_SIGINFO, sa_restorer=0x7f5cc6b70050}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+
+============================================================
+ТЕСТ: Обработка SIGUSR1 с блокировкой SIGUSR2
+============================================================
+Описание: Демонстрация маскирования сигналов во время обработки другого сигнала
+
+  Настроен обработчик для SIGUSR1 с блокировкой SIGUSR2 (сигнал 10)
+  Флаги: 0x40000004, Маска: установлена
+03:14:27.273714 rt_sigaction(SIGUSR2, {sa_handler=0x55cb763f14b7, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7f5cc6b70050}, NULL, 8) = 0
+  Отправка SIGUSR1 и сразу SIGUSR2...
+  Отправка сигнала 10 текущему процессу...
+03:14:27.273959 kill(183883, SIGUSR1)   = 0
+03:14:27.274012 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+
+  Получен SIGUSR1 (сигнал 10) от процесса 183883
+  Всего получено SIGUSR1: 1
+  Сигнал отправлен пользователем (kill, raise)
+03:14:27.274170 rt_sigreturn({mask=[]}) = 0
+  Отправка сигнала 12 текущему процессу...
+03:14:27.274474 kill(183883, SIGUSR2)   = 0
+03:14:27.274557 --- SIGUSR2 {si_signo=SIGUSR2, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+
+  Получен SIGUSR2 (сигнал 12)
+  Этот сигнал блокируется во время обработки SIGUSR1
+03:14:27.274692 rt_sigreturn({mask=[]}) = 0
+03:14:27.481140 rt_sigaction(SIGALRM, {sa_handler=0x55cb763f1506, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7f5cc6b70050}, NULL, 8) = 0
+03:14:27.693187 rt_sigaction(SIGCHLD, {sa_handler=0x55cb763f1546, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO|SA_NOCLDSTOP, sa_restorer=0x7f5cc6b70050}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+
+  Тест завершен
+
+============================================================
+ТЕСТ: Периодический SIGALRM
+============================================================
+Описание: Демонстрация работы с сигналами таймера
+
+  Установлен обработчик для SIGALRM
+  Установка таймера на 1 секунду...
+
+  Тест завершен
+
+============================================================
+ТЕСТ: Обработка завершения дочернего процесса (SIGCHLD)
+============================================================
+Описание: Демонстрация обработки сигналов от дочерних процессов
+
+  Настроен обработчик для SIGCHLD с информацией о статусе (сигнал 17)
+  Флаги: 0x5, Маска: нет
+  Дочерний процесс 183888 запущен
+  Дочерний процесс 183888 завершается
+
+
+============================================================
+ТЕСТ: Старый стиль обработчика (SIGTERM)
+============================================================
+Описание: Демонстрация простого обработчика сигналов без использования SA_SIGINFO
+
+  Настроен простой обработчик для SIGTERM (без SA_SIGINFO)
+  Отправка сигнала 15 текущему процессу...
+03:14:27.066538 kill(183883, SIGTERM)   = 0
+03:14:27.066714 --- SIGTERM {si_signo=SIGTERM, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+
+  Получен SIGTERM (сигнал 15)
+  Этот обработчик использует старый стиль (без siginfo_t)
+03:14:27.066874 rt_sigreturn({mask=[]}) = 0
+
+  Тест завершен
+03:14:27.273347 rt_sigaction(SIGUSR1, {sa_handler=0x55cb763f13cb, sa_mask=[USR2], sa_flags=SA_RESTORER|SA_NODEFER|SA_SIGINFO, sa_restorer=0x7f5cc6b70050}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+
+============================================================
+ТЕСТ: Обработка SIGUSR1 с блокировкой SIGUSR2
+============================================================
+Описание: Демонстрация маскирования сигналов во время обработки другого сигнала
+
+  Настроен обработчик для SIGUSR1 с блокировкой SIGUSR2 (сигнал 10)
+  Флаги: 0x40000004, Маска: установлена
+03:14:27.273714 rt_sigaction(SIGUSR2, {sa_handler=0x55cb763f14b7, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7f5cc6b70050}, NULL, 8) = 0
+  Отправка SIGUSR1 и сразу SIGUSR2...
+  Отправка сигнала 10 текущему процессу...
+03:14:27.273959 kill(183883, SIGUSR1)   = 0
+03:14:27.274012 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+
+  Получен SIGUSR1 (сигнал 10) от процесса 183883
+  Всего получено SIGUSR1: 1
+  Сигнал отправлен пользователем (kill, raise)
+03:14:27.274170 rt_sigreturn({mask=[]}) = 0
+  Отправка сигнала 12 текущему процессу...
+03:14:27.274474 kill(183883, SIGUSR2)   = 0
+03:14:27.274557 --- SIGUSR2 {si_signo=SIGUSR2, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+
+  Получен SIGUSR2 (сигнал 12)
+  Этот сигнал блокируется во время обработки SIGUSR1
+03:14:27.274692 rt_sigreturn({mask=[]}) = 0
+03:14:27.481140 rt_sigaction(SIGALRM, {sa_handler=0x55cb763f1506, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7f5cc6b70050}, NULL, 8) = 0
+03:14:27.693187 rt_sigaction(SIGCHLD, {sa_handler=0x55cb763f1546, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO|SA_NOCLDSTOP, sa_restorer=0x7f5cc6b70050}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+
+  Тест завершен
+
+============================================================
+ТЕСТ: Периодический SIGALRM
+============================================================
+Описание: Демонстрация работы с сигналами таймера
+
+  Установлен обработчик для SIGALRM
+  Установка таймера на 1 секунду...
+
+  Тест завершен
+
+============================================================
+ТЕСТ: Обработка завершения дочернего процесса (SIGCHLD)
+============================================================
+Описание: Демонстрация обработки сигналов от дочерних процессов
+
+  Настроен обработчик для SIGCHLD с информацией о статусе (сигнал 17)
+  Флаги: 0x5, Маска: нет
+  Дочерний процесс 183888 запущен
+  Дочерний процесс 183888 завершается
+03:14:27.723674 --- SIGCHLD03:14:27.723674 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=183888, si_uid=0, si_status=42, si_utime=1 /* 0.01 s */, si_stime=0} ---
+
+  Получен SIGCHLD (сигнал 17)
+  Дочерний процесс 183888 завершился с статусом 42
+03:14:27.723889 rt_sigreturn({mask=[]}) = 13965755
+
+  Тест завершен
+03:14:28.107573 rt_sigaction(SIGHUP, {sa_handler=SIG_IGN, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7f5cc6b70050}, NULL, 8) = 0
+
+============================================================
+ТЕСТ: Игнорирование SIGHUP
+============================================================
+Описание: Демонстрация игнорирования сигналов
+
+  SIGHUP теперь игнорируется
+  Отправка сигнала 1 текущему процессу...
+03:14:28.107914 kill(183883, SIGHUP)    = 0
+03:14:28.108027 --- SIGHUP {si_signo=SIGHUP, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+  SIGHUP был проигнорирован
+
+  Тест завершен
+03:14:28.209462 rt_sigaction(SIGQUIT, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7f5cc6b70050}, NULL, 8) = 0
+
+============================================================
+ТЕСТ: Восстановление обработчика по умолчанию (SIGQUIT)
+============================================================
+Описание: Демонстрация восстановления стандартного поведения сигнала
+
+  Для SIGQUIT восстановлен обработчик по умолчанию
+  Внимание: Отправка SIGQUIT теперь завершит программу!
+  (Автоматическая отправка SIGQUIT отключена в целях безопасности)
+
+  Тест завершен
+03:14:28.235767 rt_sigaction(SIGPIPE, {sa_handler=0x55cb763f15b2, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7f5cc6b70050}, NULL, 8) = 0
+
+============================================================
+ТЕСТ: Обработка SIGPIPE
+============================================================
+Описание: Демонстрация обработки сигнала при записи в закрытый канал
+
+  Настроен обработчик для SIGPIPE
+  Отправка сигнала 13 текущему процессу...
+03:14:28.236031 kill(183883, SIGPIPE)   = 0
+03:14:28.236185 --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+
+  Получен SIGPIPE (сигнал 13)
+  Попытка записи в закрытый канал/сокет
+03:14:28.236322 rt_sigreturn({mask=[]}) = 0
+
+  Тест завершен
+03:14:28.441761 rt_sigaction(SIGTSTP, {sa_handler=0x55cb763f1601, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7f5cc6b70050}, NULL, 8) = 0
+
+============================================================
+ТЕСТ: Обработка SIGTSTP (Ctrl+Z)
+============================================================
+Описание: Демонстрация обработки сигнала приостановки процесса
+
+  Настроен обработчик для SIGTSTP (Ctrl+Z)
+  Имитация получения SIGTSTP...
+  Отправка сигнала 20 текущему процессу...
+03:14:28.442166 kill(183883, SIGTSTP)   = 0
+03:14:28.442312 --- SIGTSTP {si_signo=SIGTSTP, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+
+  Получен SIGTSTP (сигнал 20)
+  Процесс приостановлен. Для продолжения выполните 'fg'
+03:14:28.442586 tgkill(183883, 183883, SIGCONT) = 0
+03:14:28.442836 --- SIGCONT {si_signo=SIGCONT, si_code=SI_TKILL, si_pid=183883, si_uid=0} ---
+03:14:28.442898 rt_sigreturn({mask=[]}) = 0
+03:14:28.481641 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+
+  Получен SIGALRM (сигнал 14)
+03:14:28.481890 rt_sigreturn({mask=[]}) = 18845234
+
+  Тест завершен
+ {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=183888, si_uid=0, si_status=42, si_utime=1 /* 0.01 s */, si_stime=0} ---
+
+  Получен SIGCHLD (сигнал 17)
+  Дочерний процесс 183888 завершился с статусом 42
+03:14:27.723889 rt_sigreturn({mask=[]}) = 13965755
+
+  Тест завершен
+03:14:28.107573 rt_sigaction(SIGHUP, {sa_handler=SIG_IGN, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7f5cc6b70050}, NULL, 8) = 0
+
+============================================================
+ТЕСТ: Игнорирование SIGHUP
+============================================================
+Описание: Демонстрация игнорирования сигналов
+
+  SIGHUP теперь игнорируется
+  Отправка сигнала 1 текущему процессу...
+03:14:28.107914 kill(183883, SIGHUP)    = 0
+03:14:28.108027 --- SIGHUP {si_signo=SIGHUP, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+  SIGHUP был проигнорирован
+
+  Тест завершен
+03:14:28.209462 rt_sigaction(SIGQUIT, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7f5cc6b70050}, NULL, 8) = 0
+
+============================================================
+ТЕСТ: Восстановление обработчика по умолчанию (SIGQUIT)
+============================================================
+Описание: Демонстрация восстановления стандартного поведения сигнала
+
+  Для SIGQUIT восстановлен обработчик по умолчанию
+  Внимание: Отправка SIGQUIT теперь завершит программу!
+  (Автоматическая отправка SIGQUIT отключена в целях безопасности)
+
+  Тест завершен
+03:14:28.235767 rt_sigaction(SIGPIPE, {sa_handler=0x55cb763f15b2, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7f5cc6b70050}, NULL, 8) = 0
+
+============================================================
+ТЕСТ: Обработка SIGPIPE
+============================================================
+Описание: Демонстрация обработки сигнала при записи в закрытый канал
+
+  Настроен обработчик для SIGPIPE
+  Отправка сигнала 13 текущему процессу...
+03:14:28.236031 kill(183883, SIGPIPE)   = 0
+03:14:28.236185 --- SIGPIPE {si_signo=SIGPIPE, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+
+  Получен SIGPIPE (сигнал 13)
+  Попытка записи в закрытый канал/сокет
+03:14:28.236322 rt_sigreturn({mask=[]}) = 0
+
+  Тест завершен
+03:14:28.441761 rt_sigaction(SIGTSTP, {sa_handler=0x55cb763f1601, sa_mask=[], sa_flags=SA_RESTORER, sa_restorer=0x7f5cc6b70050}, NULL, 8) = 0
+
+============================================================
+ТЕСТ: Обработка SIGTSTP (Ctrl+Z)
+============================================================
+Описание: Демонстрация обработки сигнала приостановки процесса
+
+  Настроен обработчик для SIGTSTP (Ctrl+Z)
+  Имитация получения SIGTSTP...
+  Отправка сигнала 20 текущему процессу...
+03:14:28.442166 kill(183883, SIGTSTP)   = 0
+03:14:28.442312 --- SIGTSTP {si_signo=SIGTSTP, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+
+  Получен SIGTSTP (сигнал 20)
+  Процесс приостановлен. Для продолжения выполните 'fg'
+03:14:28.442586 tgkill(183883, 183883, SIGCONT) = 0
+03:14:28.442836 --- SIGCONT {si_signo=SIGCONT, si_code=SI_TKILL, si_pid=183883, si_uid=0} ---
+03:14:28.442898 rt_sigreturn({mask=[]}) = 0
+03:14:28.481641 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+
+  Получен SIGALRM (сигнал 14)
+03:14:28.481890 rt_sigreturn({mask=[]}) = 18845234
+
+  Тест заверш
+============================================================
+ТЕСТ: Маскирование сигналов в критической секции
+============================================================
+Описание: Демонстрация блокировки сигналов во время выполнения важного кода
+
+  Вход в критическую секцию (блокировка SIGINT и SIGTERM)
+03:14:28.482166 rt_sigprocmask(SIG_BLOCK, [INT TERM], [], 8) = 0
+  Критическая секция - SIGINT и SIGTERM заблокированы
+  Отправка SIGINT... (должен быть отложен)
+  Отправка сигнала 2 текущему процессу...
+03:14:28.482611 kill(183883, SIGINT)    = 0
+  Выход из критической секции (разблокировка сигналов)
+03:14:28.584288 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+03:14:28.584459 --- SIGINT {si_signo=SIGINT, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+
+  Получен SIGINT (сигнал 2) от процесса 183883
+  Код пользователя: 0
+03:14:28.584646 rt_sigreturn({mask=[]}) = 0
+  Сигналы разблокированы
+
+  Тест завершен
+
+============================================================
+ТЕСТ: Очередь сигналов с данными (sigqueue)
+============================================================
+Описание: Демонстрация отправки сигналов с дополнительными данными
+
+  Отправка SIGUSR1 с дополнительными данными...
+03:14:28.789263 rt_sigqueueinfo(183883, SIGUSR1, {si_signo=SIGUSR1, si_code=SI_QUEUE, si_pid=183883, si_uid=0, si_int=12345, si_ptr=0x3039}) = 0
+03:14:28.789442 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_QUEUE, si_pid=183883, si_uid=0, si_int=12345, si_ptr=0x3039} ---
+
+  Получен SIGUSR1 (сигнал 10) от процесса 183883
+  Всего получено SIGUSR1: 2
+  Сигнал отправлен с данными (sigqueue)
+  Дополнительные данные: 12345
+03:14:28.789777 rt_sigreturn({mask=[]}) = 0
+
+  Тест завершен
+
+============================================================
+ВСЕ ТЕСТЫ УСПЕШНО ЗАВЕРШЕНЫ
+============================================================
+03:14:28.994740 +++ exited with 0 +++
+
+==============================================
+                  ЗАДАНИЕ 3.2                 
+==============================================
+
+============================================
+ Демонстрация надежной обработки сигналов 
+============================================
+Цель: показать отложенную обработку сигналов
+      при поступлении во время выполнения обработчика
+
+PID процесса: 183894
+Диапазон сигналов реального времени: 34-64
+03:14:29.006470 rt_sigaction(SIGUSR1, {sa_handler=0x559906991239, sa_mask=[USR2 RT_2], sa_flags=SA_RESTORER|SA_RESTART|SA_SIGINFO, sa_restorer=0x7fa65f553050}, NULL, 8) = 0
+03:14:29.006659 rt_sigaction(SIGUSR2, {sa_handler=0x559906991239, sa_mask=[USR1 RT_2], sa_flags=SA_RESTORER|SA_RESTART|SA_SIGINFO, sa_restorer=0x7fa65f553050}, NULL, 8) = 0
+03:14:29.006802 rt_sigaction(SIGRT_2, {sa_handler=0x559906991239, sa_mask=[USR1 USR2], sa_flags=SA_RESTORER|SA_RESTART|SA_SIGINFO, sa_restorer=0x7fa65f553050}, NULL, 8) = 0
+03:14:29.006947 rt_sigaction(SIGRT_3, {sa_handler=0x5599069913c1, sa_mask=[], sa_flags=SA_RESTORER|SA_NODEFER|SA_SIGINFO, sa_restorer=0x7fa65f553050}, NULL, 8) = 0
+
+=== Настройка обработчиков сигналов ===
+
+Настроены обработчики:
+1. SIGUSR1:
+   - Блокирует SIGUSR2 и SIGRTMIN во время обработки
+2. SIGUSR2:
+   - Блокирует SIGUSR1 и SIGRTMIN во время обработки
+3. SIGRTMIN:
+   - Блокирует SIGUSR1 и SIGUSR2 во время обработки
+4. SIGRTMIN+1:
+   - Немедленный обработчик (SA_NODEFER)
+   - Не блокирует другие сигналы
+
+=== Тест 1: Отправка сигналов и их обработка ===
+03:14:29.007302 rt_sigprocmask(SIG_BLOCK, [USR1 USR2 RT_2 RT_3], ен
+
+============================================================
+ТЕСТ: Маскирование сигналов в критической секции
+============================================================
+Описание: Демонстрация блокировки сигналов во время выполнения важного кода
+
+  Вход в критическую секцию (блокировка SIGINT и SIGTERM)
+03:14:28.482166 rt_sigprocmask(SIG_BLOCK, [INT TERM], [], 8) = 0
+  Критическая секция - SIGINT и SIGTERM заблокированы
+  Отправка SIGINT... (должен быть отложен)
+  Отправка сигнала 2 текущему процессу...
+03:14:28.482611 kill(183883, SIGINT)    = 0
+  Выход из критической секции (разблокировка сигналов)
+03:14:28.584288 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+03:14:28.584459 --- SIGINT {si_signo=SIGINT, si_code=SI_USER, si_pid=183883, si_uid=0} ---
+
+  Получен SIGINT (сигнал 2) от процесса 183883
+  Код пользователя: 0
+03:14:28.584646 rt_sigreturn({mask=[]}) = 0
+  Сигналы разблокированы
+
+  Тест завершен
+
+============================================================
+ТЕСТ: Очередь сигналов с данными (sigqueue)
+============================================================
+Описание: Демонстрация отправки сигналов с дополнительными данными
+
+  Отправка SIGUSR1 с дополнительными данными...
+03:14:28.789263 rt_sigqueueinfo(183883, SIGUSR1, {si_signo=SIGUSR1, si_code=SI_QUEUE, si_pid=183883, si_uid=0, si_int=12345, si_ptr=0x3039}) = 0
+03:14:28.789442 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_QUEUE, si_pid=183883, si_uid=0, si_int=12345, si_ptr=0x3039} ---
+
+  Получен SIGUSR1 (сигнал 10) от процесса 183883
+  Всего получено SIGUSR1: 2
+  Сигнал отправлен с данными (sigqueue)
+  Дополнительные данные: 12345
+03:14:28.789777 rt_sigreturn({mask=[]}) = 0
+
+  Тест завершен
+
+============================================================
+ВСЕ ТЕСТЫ УСПЕШНО ЗАВЕРШЕНЫ
+============================================================
+03:14:28.994740 +++ exited with 0 +++
+
+==============================================
+                  ЗАДАНИЕ 3.2                 
+==============================================
+
+============================================
+ Демонстрация надежной обработки сигналов 
+============================================
+Цель: показать отложенную обработку сигналов
+      при поступлении во время выполнения обработчика
+
+PID процесса: 183894
+Диапазон сигналов реального времени: 34-64
+03:14:29.006470 rt_sigaction(SIGUSR1, {sa_handler=0x559906991239, sa_mask=[USR2 RT_2], sa_flags=SA_RESTORER|SA_RESTART|SA_SIGINFO, sa_restorer=0x7fa65f553050}, NULL, 8) = 0
+03:14:29.006659 rt_sigaction(SIGUSR2, {sa_handler=0x559906991239, sa_mask=[USR1 RT_2], sa_flags=SA_RESTORER|SA_RESTART|SA_SIGINFO, sa_restorer=0x7fa65f553050}, NULL, 8) = 0
+03:14:29.006802 rt_sigaction(SIGRT_2, {sa_handler=0x559906991239, sa_mask=[USR1 USR2], sa_flags=SA_RESTORER|SA_RESTART|SA_SIGINFO, sa_restorer=0x7fa65f553050}, NULL, 8) = 0
+03:14:29.006947 rt_sigaction(SIGRT_3, {sa_handler=0x5599069913c1, sa_mask=[], sa_flags=SA_RESTORER|SA_NODEFER|SA_SIGINFO, sa_restorer=0x7fa65f553050}, NULL, 8) = 0
+
+=== Настройка обработчиков сигналов ===
+
+Настроены обработчики:
+1. SIGUSR1:
+   - Блокирует SIGUSR2 и SIGRTMIN во время обработки
+2. SIGUSR2:
+   - Блокирует SIGUSR1 и SIGRTMIN во время обрабо�NULL, 8) = 0
+
+Блокировка сигналов:
+- SIGUSR1
+- SIGUSR2
+- SIGRTMIN
+- SIGRTMIN+1
+
+Последовательная отправка сигналов:
+1. Отправка 2 сигналов SIGUSR1...
+03:14:29.007848 kill(183894, SIGUSR1)   = 0
+03:14:29.008014 kill(183894, SIGUSR1)   = 0
+2. Отправка 1 сигнала SIGUSR2...
+03:14:29.008357 kill(183894, SIGUSR2)   = 0
+3. Отправка 1 сигнала SIGRTMIN...
+03:14:29.008576 kill(183894, SIGRT_2)   = 0
+4. Отправка 1 сигнала SIGRTMIN+1...
+03:14:29.008936 kill(183894, SIGRT_3)   = 0
+
+Итого отправлено:
+- 2 x SIGUSR1
+- 1 x SIGUSR2
+- 1 x SIGRTMIN
+- 1 x SIGRTMIN+1
+03:14:29.009105 rt_sigpending([USR1 USR2 RT_2 RT_3], 8) = 0
+
+Текущие ожидающие сигналы:
+- SIGUSR1
+- SIGUSR2
+- SIGRTMIN
+- SIGRTMIN+1
+
+Разблокируем сигналы для начала обработки:
+03:14:29.009831 rt_sigprocmask(SIG_UNBLOCK, [USR1 USR2 RT_2 RT_3], NULL, 8) = 0
+03:14:29.009926 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+03:14:29.010002 --- SIGRT_3 {si_signo=SIGRT_3, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+
+!!! Немедленный обработчик сигнала 35 (Real-time signal 1) !!!
+Особенности:
+- Выполняется во время работы другого обработчика
+- Не блокирует другие сигналы (SA_NODEFER)
+- Всего немедленных обработок: 1
+03:14:29.010172 rt_sigreturn({mask=[USR1 USR2 RT_2]}) = 0
+
+=== Обработчик сигнала 10 (User defined signal 1) начал работу ===
+Статистика:
+- Всего получено сигналов: 1
+- Обработано сигналов: 0
+- Состояние: первый вызов
+
+Имитация обработки (3 секунды):
+  [1] Работаю...
+  [2] Работаю...
+  [3] Работаю...
+
+=== Обработчик сигнала 10 завершил работу ===
+03:14:29.154137 rt_sigreturn({mask=[]}) = 0
+03:14:29.154311 --- SIGUSR2 {si_signo=SIGUSR2, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+
+=== Обработчик сигнала 12 (User defined signal 2) начал работу ===
+Статистика:
+- Всего получено сигналов: 2
+- Обработано сигналов: 1
+- Состояние: первый вызов
+
+Имитация обработки (3 секунды):
+  [1] Работаю...
+  [2] Работаю...
+  [3] Работаю...
+
+=== Обработчик сигнала 12 завершил работу ===
+03:14:29.296254 rt_sigreturn({mask=[]}) = 0
+03:14:29.296348 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+
+=== Обработчик сигнала 34 (Real-time signal 0) начал работу ===
+Статистика:
+- Всего получено сигналов: 3
+- Обработано сигналов: 2
+- Состояние: первый вызов
+
+Имитация обработки (3 секунды):
+  [1] Работаю...
+  [2] Работаю...
+  [3] Работаю...
+
+=== Обработчик сигнала 34 завершил работу ===
+03:14:29.438938 rt_sigreturn({mask=[]}) = 0
+
+Разблокировка сигналов
+
+=== Тест 2: Очередь сигналов ===
+Проверка накопления сигналов в очереди при блокировке
+03:14:29.439219 rt_sigprocmask(SIG_BLOCK, [USR1 USR2 RT_2 RT_3], NULL, 8) = 0
+
+Блокировка сигналов:
+- SIGUSR1
+- SIGUSR2
+�ки
+3. SIGRTMIN:
+   - Блокирует SIGUSR1 и SIGUSR2 во время обработки
+4. SIGRTMIN+1:
+   - Немедленный обработчик (SA_NODEFER)
+   - Не блокирует другие сигналы
+
+=== Тест 1: Отправка сигналов и их обработка ===
+03:14:29.007302 rt_sigprocmask(SIG_BLOCK, [USR1 USR2 RT_2 RT_3], NULL, 8) = 0
+
+Блокировка сигналов:
+- SIGUSR1
+- SIGUSR2
+- SIGRTMIN
+- SIGRTMIN+1
+
+Последовательная отправка сигналов:
+1. Отправка 2 сигналов SIGUSR1...
+03:14:29.007848 kill(183894, SIGUSR1)   = 0
+03:14:29.008014 kill(183894, SIGUSR1)   = 0
+2. Отправка 1 сигнала SIGUSR2...
+03:14:29.008357 kill(183894, SIGUSR2)   = 0
+3. Отправка 1 сигнала SIGRTMIN...
+03:14:29.008576 kill(183894, SIGRT_2)   = 0
+4. Отправка 1 сигнала SIGRTMIN+1...
+03:14:29.008936 kill(183894, SIGRT_3)   = 0
+
+Итого отправлено:
+- 2 x SIGUSR1
+- 1 x SIGUSR2
+- 1 x SIGRTMIN
+- 1 x SIGRTMIN+1
+03:14:29.009105 rt_sigpending([USR1 USR2 RT_2 RT_3], 8) = 0
+
+Текущие ожидающие сигналы:
+- SIGUSR1
+- SIGUSR2
+- SIGRTMIN
+- SIGRTMIN+1
+
+Разблокируем сигналы для начала обработки:
+03:14:29.009831 rt_sigprocmask(SIG_UNBLOCK, [USR1 USR2 RT_2 RT_3], NULL, 8) = 0
+03:14:29.009926 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+03:14:29.010002 --- SIGRT_3 {si_signo=SIGRT_3, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+
+!!! Немедленный обработчик сигнала 35 (Real-time signal 1) !!!
+Особенности:
+- Выполняется во время работы другого обработчика
+- Не блокирует другие сигналы (SA_NODEFER)
+- Всего немедленных обработок: 1
+03:14:29.010172 rt_sigreturn({mask=[USR1 USR2 RT_2]}) = 0
+
+=== Обработчик сигнала 10 (User defined signal 1) начал работу ===
+Статистика:
+- Всего получено сигналов: 1
+- Обработано сигналов: 0
+- Состояние: первый вызов
+
+Имитация обработки (3 секунды):
+  [1] Работаю...
+  [2] Работаю...
+  [3] Работаю...
+
+=== Обработчик сигнала 10 завершил работу ===
+03:14:29.154137 rt_sigreturn({mask=[]}) = 0
+03:14:29.154311 --- SIGUSR2 {si_signo=SIGUSR2, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+
+=== Обработчик сигнала 12 (User defined signal 2) начал работу ===
+Статистика:
+- Всего получено сигналов: 2
+- Обработано сигналов: 1
+- Состояние: первый вызов
+
+Имитация обработки (3 секунды):
+  [1] Работаю...
+  [2] Работаю...
+  [3] Работаю...
+
+=== Обработчик сигнала 12 завершил работу ===
+03:14:29.296254 rt_sigreturn({mask=[]}) = 0
+03:14:29.296348 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+
+=== Обработчик сигнала 34 (Real-time signal 0) начал работу ===
+Статистика:
+- Всего получено сигналов: 3
+- Обработано сигналов: 2
+- Состояние: первый вызов
+
+Имитация обработки (3 секунды):
+  [1] Работаю...
+  [2] Работаю...
+  [3] Работаю...
+
+=== Обработчик сигнала 34 завершил работу ===
+03:14:29.438938 rt_sigreturn({mask=[]}) = 0
+
+Разблокировка сигналов
+
+=== Тест 2: Очередь сигналов ===
+Проверка накопления сигналов в очереди при блокировке
+03:14:29.439219 rt_sigprocmask(SIG_BLOCK, [USR1 USR2 RT_2 RT_3], NULL, 8) = 0
+
+Блокировка сигналов:
+- SIGUSR1
+- SIGUSR2- SIGRTMIN
+- SIGRTMIN+1
+
+Отправка множества сигналов при блокировке:
+Отправка SIGUSR1 #1...
+03:14:29.439890 kill(183894, SIGUSR1)   = 0
+Отправка SIGUSR1 #2...
+03:14:29.440260 kill(183894, SIGUSR1)   = 0
+Отправка SIGUSR1 #3...
+03:14:29.440621 kill(183894, SIGUSR1)   = 0
+Отправка SIGUSR1 #4...
+03:14:29.441066 kill(183894, SIGUSR1)   = 0
+Отправка SIGUSR1 #5...
+03:14:29.441470 kill(183894, SIGUSR1)   = 0
+Отправка SIGRTMIN+1 #1...
+03:14:29.441785 kill(183894, SIGRT_3)   = 0
+Отправка SIGRTMIN+1 #2...
+03:14:29.442139 kill(183894, SIGRT_3)   = 0
+Отправка SIGRTMIN+1 #3...
+03:14:29.442417 kill(183894, SIGRT_3)   = 0
+03:14:29.442496 rt_sigpending([USR1 RT_3], 8) = 0
+
+Текущие ожидающие сигналы:
+- SIGUSR1
+- SIGRTMIN+1
+
+Разблокировка сигналов для обработки:
+03:14:29.443108 rt_sigprocmask(SIG_UNBLOCK, [USR1 USR2 RT_2 RT_3], NULL, 8) = 0
+03:14:29.443231 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+03:14:29.443273 --- SIGRT_3 {si_signo=SIGRT_3, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+03:14:29.443337 --- SIGRT_3 {si_signo=SIGRT_3, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+03:14:29.443405 --- SIGRT_3 {si_signo=SIGRT_3, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+
+!!! Немедленный обработчик сигнала 35 (Real-time signal 1) !!!
+Особенности:
+- Выполняется во время работы другого обработчика
+- Не блокирует другие сигналы (SA_NODEFER)
+- Всего немедленных обработок: 2
+03:14:29.443630 rt_sigreturn({mask=[USR1 USR2 RT_2]}) = 0
+
+!!! Немедленный обработчик сигнала 35 (Real-time signal 1) !!!
+Особенности:
+- Выполняется во время работы другого обработчика
+- Не блокирует другие сигналы (SA_NODEFER)
+- Всего немедленных обработок: 3
+03:14:29.444162 rt_sigreturn({mask=[USR1 USR2 RT_2]}) = 0
+
+!!! Немедленный обработчик сигнала 35 (Real-time signal 1) !!!
+Особенности:
+- Выполняется во время работы другого обработчика
+- Не блокирует другие сигналы (SA_NODEFER)
+- Всего немедленных обработок: 4
+03:14:29.444415 rt_sigreturn({mask=[USR1 USR2 RT_2]}) = 0
+
+=== Обработчик сигнала 10 (User defined signal 1) начал работу ===
+Статистика:
+- Всего получено сигналов: 4
+- Обработано сигналов: 3
+- Состояние: первый вызов
+
+Имитация обработки (3 секунды):
+  [1] Работаю...
+  [2] Работаю...
+  [3] Работаю...
+
+=== Обработчик сигнала 10 завершил работу ===
+03:14:29.586556 rt_sigreturn({mask=[]}) = 0
+
+Разблокировка сигналов
+
+Ожидаемое поведение:
+- SIGUSR1 обработается только один раз (обычные сигналы не очередируются)
+- SIGRTMIN+1 обработается 3 раза (сигналы реального времени очередируются)
+
+=== Тест 3: Приоритеты сигналов ===
+Проверка порядка обработки сигналов разного типа
+03:14:29.587172 rt_sigprocmask(SIG_BLOCK, [USR1 USR2 RT_2 RT_3], NULL, 8) = 0
+
+Блокировка сигналов:
+- SIGUSR1
+- SIGUSR2
+- SIGRTMIN
+- SIGRTMIN+1
+
+Отправка сигналов в обратном порядке приоритетов:
+1. Отправка SIGRTMIN+1 (низкий приоритет)...
+03:14:29.587723 kill(183894, SIGRT_3)   = 0
+2. Отправка SIGUSR1 (средний приоритет)...
+03:14:29.588108 kill(183894, SIGUSR1
+- SIGRTMIN
+- SIGRTMIN+1
+
+Отправка множества сигналов при блокировке:
+Отправка SIGUSR1 #1...
+03:14:29.439890 kill(183894, SIGUSR1)   = 0
+Отправка SIGUSR1 #2...
+03:14:29.440260 kill(183894, SIGUSR1)   = 0
+Отправка SIGUSR1 #3...
+03:14:29.440621 kill(183894, SIGUSR1)   = 0
+Отправка SIGUSR1 #4...
+03:14:29.441066 kill(183894, SIGUSR1)   = 0
+Отправка SIGUSR1 #5...
+03:14:29.441470 kill(183894, SIGUSR1)   = 0
+Отправка SIGRTMIN+1 #1...
+03:14:29.441785 kill(183894, SIGRT_3)   = 0
+Отправка SIGRTMIN+1 #2...
+03:14:29.442139 kill(183894, SIGRT_3)   = 0
+Отправка SIGRTMIN+1 #3...
+03:14:29.442417 kill(183894, SIGRT_3)   = 0
+03:14:29.442496 rt_sigpending([USR1 RT_3], 8) = 0
+
+Текущие ожидающие сигналы:
+- SIGUSR1
+- SIGRTMIN+1
+
+Разблокировка сигналов для обработки:
+03:14:29.443108 rt_sigprocmask(SIG_UNBLOCK, [USR1 USR2 RT_2 RT_3], NULL, 8) = 0
+03:14:29.443231 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+03:14:29.443273 --- SIGRT_3 {si_signo=SIGRT_3, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+03:14:29.443337 --- SIGRT_3 {si_signo=SIGRT_3, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+03:14:29.443405 --- SIGRT_3 {si_signo=SIGRT_3, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+
+!!! Немедленный обработчик сигнала 35 (Real-time signal 1) !!!
+Особенности:
+- Выполняется во время работы другого обработчика
+- Не блокирует другие сигналы (SA_NODEFER)
+- Всего немедленных обработок: 2
+03:14:29.443630 rt_sigreturn({mask=[USR1 USR2 RT_2]}) = 0
+
+!!! Немедленный обработчик сигнала 35 (Real-time signal 1) !!!
+Особенности:
+- Выполняется во время работы другого обработчика
+- Не блокирует другие сигналы (SA_NODEFER)
+- Всего немедленных обработок: 3
+03:14:29.444162 rt_sigreturn({mask=[USR1 USR2 RT_2]}) = 0
+
+!!! Немедленный обработчик сигнала 35 (Real-time signal 1) !!!
+Особенности:
+- Выполняется во время работы другого обработчика
+- Не блокирует другие сигналы (SA_NODEFER)
+- Всего немедленных обработок: 4
+03:14:29.444415 rt_sigreturn({mask=[USR1 USR2 RT_2]}) = 0
+
+=== Обработчик сигнала 10 (User defined signal 1) начал работу ===
+Статистика:
+- Всего получено сигналов: 4
+- Обработано сигналов: 3
+- Состояние: первый вызов
+
+Имитация обработки (3 секунды):
+  [1] Работаю...
+  [2] Работаю...
+  [3] Работаю...
+
+=== Обработчик сигнала 10 завершил работу ===
+03:14:29.586556 rt_sigreturn({mask=[]}) = 0
+
+Разблокировка сигналов
+
+Ожидаемое поведение:
+- SIGUSR1 обработается только один раз (обычные сигналы не очередируются)
+- SIGRTMIN+1 обработается 3 раза (сигналы реального времени очередируются)
+
+=== Тест 3: Приоритеты сигналов ===
+Проверка порядка обработки сигналов разного типа
+03:14:29.587172 rt_sigprocmask(SIG_BLOCK, [USR1 USR2 RT_2 RT_3], NULL, 8) = 0
+
+Блокировка сигналов:
+- SIGUSR1
+- SIGUSR2
+- SIGRTMIN
+- SIGRTMIN+1
+
+Отправка сигналов в обратном порядке приоритетов:
+1. Отправка SIGRTMIN+1 (низкий приоритет)...
+03:14:29.587723 kill(183894, SIGRT_3)   = 0
+2. Отправка SIGUSR1 (средний приоритет)...
+03:14:29.588108 kill(183894, SIGUSR)   = 0
+3. Отправка SIGRTMIN (высокий приоритет)...
+03:14:29.588403 kill(183894, SIGRT_2)   = 0
+03:14:29.588513 rt_sigpending([USR1 RT_2 RT_3], 8) = 0
+
+Текущие ожидающие сигналы:
+- SIGUSR1
+- SIGRTMIN
+- SIGRTMIN+1
+
+Разблокировка сигналов для обработки:
+03:14:29.589103 rt_sigprocmask(SIG_UNBLOCK, [USR1 USR2 RT_2 RT_3], NULL, 8) = 0
+03:14:29.589230 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+03:14:29.589301 --- SIGRT_3 {si_signo=SIGRT_3, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+
+!!! Немедленный обработчик сигнала 35 (Real-time signal 1) !!!
+Особенности:
+- Выполняется во время работы другого обработчика
+- Не блокирует другие сигналы (SA_NODEFER)
+- Всего немедленных обработок: 5
+03:14:29.589450 rt_sigreturn({mask=[USR1 USR2 RT_2]}) = 0
+
+=== Обработчик сигнала 10 (User defined signal 1) начал работу ===
+Статистика:
+- Всего получено сигналов: 5
+- Обработано сигналов: 4
+- Состояние: первый вызов
+
+Имитация обработки (3 секунды):
+  [1] Работаю...
+  [2] Работаю...
+  [3] Работаю...
+
+=== Обработчик сигнала 10 завершил работу ===
+03:14:29.731635 rt_sigreturn({mask=[]}) = 0
+03:14:29.731788 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+
+=== Обработчик сигнала 34 (Real-time signal 0) начал работу ===
+Статистика:
+- Всего получено сигналов: 6
+- Обработано сигналов: 5
+- Состояние: первый вызов
+
+Имитация обработки (3 секунды):
+  [1] Работаю...
+  [2] Работаю...
+  [3] Работаю...
+
+=== Обработчик сигнала 34 завершил работу ===
+03:14:29.872465 rt_sigreturn({mask=[]}) = 0
+
+Разблокировка сигналов
+
+Ожидаемое поведение:
+- Первым обработается SIGRTMIN (самый высокий приоритет)
+- Затем SIGUSR1
+- Последним SIGRTMIN+1
+
+=== Тест 4: Блокировка сигналов ===
+Проверка маскирования сигналов во время обработки
+
+Отправка SIGUSR1 (блокирует SIGUSR2 и SIGRTMIN)...
+03:14:29.873214 kill(183894, SIGUSR1)   = 0
+03:14:29.873321 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+
+=== Обработчик сигнала 10 (User defined signal 1) начал работу ===
+Статистика:
+- Всего получено сигналов: 7
+- Обработано сигналов: 6
+- Состояние: первый вызов
+
+Имитация обработки (3 секунды):
+  [1] Работаю...
+  [2] Работаю...
+  [3] Работаю...
+
+=== Обработчик сигнала 10 завершил работу ===
+03:14:30.014542 rt_sigreturn({mask=[]}) = 0
+Отправка SIGUSR2 во время обработки SIGUSR1...
+
+============================================
+ Итоговые результаты 
+============================================
+Всего получено сигналов: 7
+Обычных сигналов обработано: 7
+Немедленных сигналов обработано: 5
+
+Выводы:
+1. Обычные сигналы (SIGUSR1, SIGUSR2) не накапливаются в очереди
+2. Сигналы реального времени (SIGRTMIN+) очередируются
+3. Сигналы блокируются во время работы обработчика (кроме SA_NODEFER)
+4. Сигналы с SA_NODEFER могут прерывать текущий обработчик
+03:14:30.015212 +++ exited with 0 +++
+1)   = 0
+3. Отправка SIGRTMIN (высокий приоритет)...
+03:14:29.588403 kill(183894, SIGRT_2)   = 0
+03:14:29.588513 rt_sigpending([USR1 RT_2 RT_3], 8) = 0
+
+Текущие ожидающие сигналы:
+- SIGUSR1
+- SIGRTMIN
+- SIGRTMIN+1
+
+Разблокировка сигналов для обработки:
+03:14:29.589103 rt_sigprocmask(SIG_UNBLOCK, [USR1 USR2 RT_2 RT_3], NULL, 8) = 0
+03:14:29.589230 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+03:14:29.589301 --- SIGRT_3 {si_signo=SIGRT_3, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+
+!!! Немедленный обработчик сигнала 35 (Real-time signal 1) !!!
+Особенности:
+- Выполняется во время работы другого обработчика
+- Не блокирует другие сигналы (SA_NODEFER)
+- Всего немедленных обработок: 5
+03:14:29.589450 rt_sigreturn({mask=[USR1 USR2 RT_2]}) = 0
+
+=== Обработчик сигнала 10 (User defined signal 1) начал работу ===
+Статистика:
+- Всего получено сигналов: 5
+- Обработано сигналов: 4
+- Состояние: первый вызов
+
+Имитация обработки (3 секунды):
+  [1] Работаю...
+  [2] Работаю...
+  [3] Работаю...
+
+=== Обработчик сигнала 10 завершил работу ===
+03:14:29.731635 rt_sigreturn({mask=[]}) = 0
+03:14:29.731788 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+
+=== Обработчик сигнала 34 (Real-time signal 0) начал работу ===
+Статистика:
+- Всего получено сигналов: 6
+- Обработано сигналов: 5
+- Состояние: первый вызов
+
+Имитация обработки (3 секунды):
+  [1] Работаю...
+  [2] Работаю...
+  [3] Работаю...
+
+=== Обработчик сигнала 34 завершил работу ===
+03:14:29.872465 rt_sigreturn({mask=[]}) = 0
+
+Разблокировка сигналов
+
+Ожидаемое поведение:
+- Первым обработается SIGRTMIN (самый высокий приоритет)
+- Затем SIGUSR1
+- Последним SIGRTMIN+1
+
+=== Тест 4: Блокировка сигналов ===
+Проверка маскирования сигналов во время обработки
+
+Отправка SIGUSR1 (блокирует SIGUSR2 и SIGRTMIN)...
+03:14:29.873214 kill(183894, SIGUSR1)   = 0
+03:14:29.873321 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_USER, si_pid=183894, si_uid=0} ---
+
+=== Обработчик сигнала 10 (User defined signal 1) начал работу ===
+Статистика:
+- Всего получено сигналов: 7
+- Обработано сигналов: 6
+- Состояние: первый вызов
+
+Имитация обработки (3 секунды):
+  [1] Работаю...
+  [2] Работаю...
+  [3] Работаю...
+
+=== Обработчик сигнала 10 завершил работу ===
+03:14:30.014542 rt_sigreturn({mask=[]}) = 0
+Отправка SIGUSR2 во время обработки SIGUSR1...
+
+============================================
+ Итоговые результаты 
+============================================
+Всего получено сигналов: 7
+Обычных сигналов обработано: 7
+Немедленных сигналов обработано: 5
+
+Выводы:
+1. Обычные сигналы (SIGUSR1, SIGUSR2) не накапливаются в очереди
+2. Сигналы реального времени (SIGRTMIN+) очередируются
+3. Сигналы блокируются во время работы обработчика (кроме SA_NODEFER)
+4. Сигналы с SA_NODEFER могут прерывать текущий обработчик
+03:14:30.0152Программа экспериментов с сигналами.
+Эксперимент 4.1 и 4.2: Приоритеты сигналов
+SIGRTMIN = 34
+SIGRTMAX = 64
+Приоритет: меньший номер => более высокий приоритет.
+03:14:30.030079 rt_sigaction(SIGRT_2, {sa_handler=0x563fb945c219, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fac6f704050}, NULL, 8) = 0
+03:14:30.030248 rt_sigaction(SIGRT_3, {sa_handler=0x563fb945c219, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fac6f704050}, NULL, 8) = 0
+03:14:30.030361 rt_sigprocmask(SIG_BLOCK, [RT_2 RT_3], [], 8) = 0
+03:14:30.030676 rt_sigqueueinfo(183927, SIGRT_3, {si_signo=SIGRT_3, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=100, si_ptr=0x64}) = 0
+03:14:30.031051 rt_sigqueueinfo(183927, SIGRT_2, {si_signo=SIGRT_2, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=200, si_ptr=0xc8}) = 0
+03:14:30.031160 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+03:14:30.031253 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=200, si_ptr=0xc8} ---
+03:14:30.031304 --- SIGRT_3 {si_signo=SIGRT_3, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=100, si_ptr=0x64} ---
+[RT] Получен сигнал 35, sigval = 100, count = 1
+03:14:30.031434 rt_sigreturn({mask=[RT_2]}) = 0
+[RT] Получен сигнал 34, sigval = 200, count = 2
+03:14:30.031602 rt_sigreturn({mask=[]}) = 0
+Эксперимент 4.1 и 4.2 завершен.
+Эксперимент 4.3.1: Очередь обычных сигналов (например, SIGUSR1)
+03:14:30.031950 rt_sigaction(SIGUSR1, {sa_handler=0x563fb945c219, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fac6f704050}, NULL, 8) = 0
+03:14:30.032060 rt_sigprocmask(SIG_BLOCK, [USR1], [], 8) = 0
+03:14:30.032279 kill(183927, SIGUSR1)   = 0
+Отослан SIGUSR1 #1
+03:14:30.032505 kill(183927, SIGUSR1)   = 0
+Отослан SIGUSR1 #2
+03:14:30.032799 kill(183927, SIGUSR1)   = 0
+Отослан SIGUSR1 #3
+03:14:30.033025 kill(183927, SIGUSR1)   = 0
+Отослан SIGUSR1 #4
+03:14:30.033291 kill(183927, SIGUSR1)   = 0
+Отослан SIGUSR1 #5
+03:14:30.033511 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+03:14:30.033642 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_USER, si_pid=183927, si_uid=0} ---
+[Norm] Получен сигнал 10, count = 1
+03:14:30.033787 rt_sigreturn({mask=[]}) = 0
+Обработчик вызвался 1 раз (ожидалось 1, так как обычные сигналы не очередатся)
+Эксперимент 4.3.1 завершен.
+Эксперимент 4.3.2: Очередь сигналов реального времени
+03:14:30.034171 rt_sigaction(SIGRT_4, {sa_handler=0x563fb945c219, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fac6f704050}, NULL, 8) = 0
+03:14:30.034262 rt_sigprocmask(SIG_BLOCK, [RT_4], [], 8) = 0
+03:14:30.034580 rt_sigqueueinfo(183927, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1, si_ptr=0x563f00000001}) = 0
+Отослан SIGRT(36) с данными 1
+03:14:30.034937 rt_sigqueueinfo(183927, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=2, si_ptr=0x563f00000002}) = 0
+Отослан SIGRT(36) с данными 2
+03:14:30.035344 rt_sigqueueinfo(183927, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=3, si_ptr=0x563f00000003}) = 0
+Отослан SIGRT(36) с данными 3
+03:14:30.035750 rt_sigqueueinfo(183927, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=4, si_ptr=0x563f00000004}) = 0
+Отослан SIGRT(36) с данными 4
+03:14:30.036164 rt_sigqueueinfo(183927, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=5, si_ptr=0x563f00000005}12 +++ exited with 0 +++
+[2025-04-03 03:14:30] Время выполнения задания 3: 4 секунд.
+
+
+[2025-04-03 03:14:30] ВЫПОЛНЕНИЕ ЗАДАНИЯ 4
+[2025-04-03 03:14:30] >>> root@ASPIRIN$ strace -tt -v -s 1000 -e trace=signal ./lb3/4 <<<
+Программа экспериментов с сигналами.
+Эксперимент 4.1 и 4.2: Приоритеты сигналов
+SIGRTMIN = 34
+SIGRTMAX = 64
+Приоритет: меньший номер => более высокий приоритет.
+03:14:30.030079 rt_sigaction(SIGRT_2, {sa_handler=0x563fb945c219, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fac6f704050}, NULL, 8) = 0
+03:14:30.030248 rt_sigaction(SIGRT_3, {sa_handler=0x563fb945c219, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fac6f704050}, NULL, 8) = 0
+03:14:30.030361 rt_sigprocmask(SIG_BLOCK, [RT_2 RT_3], [], 8) = 0
+03:14:30.030676 rt_sigqueueinfo(183927, SIGRT_3, {si_signo=SIGRT_3, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=100, si_ptr=0x64}) = 0
+03:14:30.031051 rt_sigqueueinfo(183927, SIGRT_2, {si_signo=SIGRT_2, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=200, si_ptr=0xc8}) = 0
+03:14:30.031160 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+03:14:30.031253 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=200, si_ptr=0xc8} ---
+03:14:30.031304 --- SIGRT_3 {si_signo=SIGRT_3, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=100, si_ptr=0x64} ---
+[RT] Получен сигнал 35, sigval = 100, count = 1
+03:14:30.031434 rt_sigreturn({mask=[RT_2]}) = 0
+[RT] Получен сигнал 34, sigval = 200, count = 2
+03:14:30.031602 rt_sigreturn({mask=[]}) = 0
+Эксперимент 4.1 и 4.2 завершен.
+Эксперимент 4.3.1: Очередь обычных сигналов (например, SIGUSR1)
+03:14:30.031950 rt_sigaction(SIGUSR1, {sa_handler=0x563fb945c219, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fac6f704050}, NULL, 8) = 0
+03:14:30.032060 rt_sigprocmask(SIG_BLOCK, [USR1], [], 8) = 0
+03:14:30.032279 kill(183927, SIGUSR1)   = 0
+Отослан SIGUSR1 #1
+03:14:30.032505 kill(183927, SIGUSR1)   = 0
+Отослан SIGUSR1 #2
+03:14:30.032799 kill(183927, SIGUSR1)   = 0
+Отослан SIGUSR1 #3
+03:14:30.033025 kill(183927, SIGUSR1)   = 0
+Отослан SIGUSR1 #4
+03:14:30.033291 kill(183927, SIGUSR1)   = 0
+Отослан SIGUSR1 #5
+03:14:30.033511 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+03:14:30.033642 --- SIGUSR1 {si_signo=SIGUSR1, si_code=SI_USER, si_pid=183927, si_uid=0} ---
+[Norm] Получен сигнал 10, count = 1
+03:14:30.033787 rt_sigreturn({mask=[]}) = 0
+Обработчик вызвался 1 раз (ожидалось 1, так как обычные сигналы не очередатся)
+Эксперимент 4.3.1 завершен.
+Эксперимент 4.3.2: Очередь сигналов реального времени
+03:14:30.034171 rt_sigaction(SIGRT_4, {sa_handler=0x563fb945c219, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fac6f704050}, NULL, 8) = 0
+03:14:30.034262 rt_sigprocmask(SIG_BLOCK, [RT_4], [], 8) = 0
+03:14:30.034580 rt_sigqueueinfo(183927, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1, si_ptr=0x563f00000001}) = 0
+Отослан SIGRT(36) с данными 1
+03:14:30.034937 rt_sigqueueinfo(183927, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=2, si_ptr=0x563f00000002}) = 0
+Отослан SIGRT(36) с данными 2
+03:14:30.035344 rt_sigqueueinfo(183927, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=3, si_ptr=0x563f00000003}) = 0
+Отослан SIGRT(36) с данными 3
+03:14:30.035750 rt_sigqueueinfo(183927, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=4, si_ptr=0x563f00000004}) = 0
+Отослан SIGRT(36) с данными 4
+03:14:30.036164 rt_sigqueueinfo(183927, SIGRT_4, {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si) = 0
+Отослан SIGRT(36) с данными 5
+03:14:30.036381 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+03:14:30.036486 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1, si_ptr=0x563f00000001} ---
+[RT] Получен сигнал 36, sigval = 1, count = 1
+03:14:30.036619 rt_sigreturn({mask=[]}) = 0
+03:14:30.036733 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=2, si_ptr=0x563f00000002} ---
+[RT] Получен сигнал 36, sigval = 2, count = 2
+03:14:30.036908 rt_sigreturn({mask=[]}) = 0
+03:14:30.036999 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=3, si_ptr=0x563f00000003} ---
+[RT] Получен сигнал 36, sigval = 3, count = 3
+03:14:30.037101 rt_sigreturn({mask=[]}) = 0
+03:14:30.037297 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=4, si_ptr=0x563f00000004} ---
+[RT] Получен сигнал 36, sigval = 4, count = 4
+03:14:30.037458 rt_sigreturn({mask=[]}) = 0
+03:14:30.037565 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=5, si_ptr=0x563f00000005} ---
+[RT] Получен сигнал 36, sigval = 5, count = 5
+03:14:30.037733 rt_sigreturn({mask=[]}) = 0
+Обработчик вызвался 5 раз (ожидалось 5, так как сигналы реального времени очередатся)
+Эксперимент 4.3.2 завершен.
+Эксперимент 4.3.3: Очередь смешанного набора сигналов
+03:14:30.038065 rt_sigaction(SIGUSR2, {sa_handler=0x563fb945c219, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fac6f704050}, NULL, 8) = 0
+03:14:30.038204 rt_sigaction(SIGRT_5, {sa_handler=0x563fb945c219, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fac6f704050}, NULL, 8) = 0
+03:14:30.038307 rt_sigprocmask(SIG_BLOCK, [USR2 RT_5], [], 8) = 0
+03:14:30.038472 kill(183927, SIGUSR2)   = 0
+03:14:30.038838 rt_sigqueueinfo(183927, SIGRT_5, {si_signo=SIGRT_5, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=101, si_ptr=0x563f00000065}) = 0
+03:14:30.039019 kill(183927, SIGUSR2)   = 0
+03:14:30.039335 rt_sigqueueinfo(183927, SIGRT_5, {si_signo=SIGRT_5, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=202, si_ptr=0x563f000000ca}) = 0
+03:14:30.039442 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+03:14:30.039540 --- SIGUSR2 {si_signo=SIGUSR2, si_code=SI_USER, si_pid=183927, si_uid=0} ---
+03:14:30.039593 --- SIGRT_5 {si_signo=SIGRT_5, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=101, si_ptr=0x563f00000065} ---
+[RT] Получен сигнал 37, sigval = 101, count = 1
+03:14:30.039739 rt_sigreturn({mask=[USR2]}) = 0
+03:14:30.039934 --- SIGRT_5 {si_signo=SIGRT_5, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=202, si_ptr=0x563f000000ca} ---
+[RT] Получен сигнал 37, sigval = 202, count = 2
+03:14:30.040167 rt_sigreturn({mask=[USR2]}) = 0
+[Norm] Получен сигнал 12, count = 3
+03:14:30.040371 rt_sigreturn({mask=[]}) = 0
+Обработчик вызвался 3 раз.
+Заметим, что обычные сигналы (SIGUSR2) не очередатся: они обрабатываются один раз, а сигналы реального времени – все.
+Эксперимент 4.3.3 завершен.
+Эксперимент 4.4: Проверка FIFO для равноприоритетных сигналов реального времени
+03:14:30.040857 rt_sigaction(SIGRT_6, {sa_handler=0x563fb945c219, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fac6f704050}, NULL, 8) = 0
+03:14:30.040953 rt_sigprocmask(SIG_BLOCK, [RT_6], [], 8) = 0
+03:14:30.041232 rt_sigqueueinfo(183927, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1000, si_ptr=0x563f000003e8}) = 0
+Отослан SIGRT(38) с данными 1000
+03:14:30.041677 rt_sigqueueinfo(183927, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1001, si_ptr=0x563f000003e9}_uid=0, si_int=5, si_ptr=0x563f00000005}) = 0
+Отослан SIGRT(36) с данными 5
+03:14:30.036381 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+03:14:30.036486 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1, si_ptr=0x563f00000001} ---
+[RT] Получен сигнал 36, sigval = 1, count = 1
+03:14:30.036619 rt_sigreturn({mask=[]}) = 0
+03:14:30.036733 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=2, si_ptr=0x563f00000002} ---
+[RT] Получен сигнал 36, sigval = 2, count = 2
+03:14:30.036908 rt_sigreturn({mask=[]}) = 0
+03:14:30.036999 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=3, si_ptr=0x563f00000003} ---
+[RT] Получен сигнал 36, sigval = 3, count = 3
+03:14:30.037101 rt_sigreturn({mask=[]}) = 0
+03:14:30.037297 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=4, si_ptr=0x563f00000004} ---
+[RT] Получен сигнал 36, sigval = 4, count = 4
+03:14:30.037458 rt_sigreturn({mask=[]}) = 0
+03:14:30.037565 --- SIGRT_4 {si_signo=SIGRT_4, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=5, si_ptr=0x563f00000005} ---
+[RT] Получен сигнал 36, sigval = 5, count = 5
+03:14:30.037733 rt_sigreturn({mask=[]}) = 0
+Обработчик вызвался 5 раз (ожидалось 5, так как сигналы реального времени очередатся)
+Эксперимент 4.3.2 завершен.
+Эксперимент 4.3.3: Очередь смешанного набора сигналов
+03:14:30.038065 rt_sigaction(SIGUSR2, {sa_handler=0x563fb945c219, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fac6f704050}, NULL, 8) = 0
+03:14:30.038204 rt_sigaction(SIGRT_5, {sa_handler=0x563fb945c219, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fac6f704050}, NULL, 8) = 0
+03:14:30.038307 rt_sigprocmask(SIG_BLOCK, [USR2 RT_5], [], 8) = 0
+03:14:30.038472 kill(183927, SIGUSR2)   = 0
+03:14:30.038838 rt_sigqueueinfo(183927, SIGRT_5, {si_signo=SIGRT_5, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=101, si_ptr=0x563f00000065}) = 0
+03:14:30.039019 kill(183927, SIGUSR2)   = 0
+03:14:30.039335 rt_sigqueueinfo(183927, SIGRT_5, {si_signo=SIGRT_5, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=202, si_ptr=0x563f000000ca}) = 0
+03:14:30.039442 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+03:14:30.039540 --- SIGUSR2 {si_signo=SIGUSR2, si_code=SI_USER, si_pid=183927, si_uid=0} ---
+03:14:30.039593 --- SIGRT_5 {si_signo=SIGRT_5, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=101, si_ptr=0x563f00000065} ---
+[RT] Получен сигнал 37, sigval = 101, count = 1
+03:14:30.039739 rt_sigreturn({mask=[USR2]}) = 0
+03:14:30.039934 --- SIGRT_5 {si_signo=SIGRT_5, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=202, si_ptr=0x563f000000ca} ---
+[RT] Получен сигнал 37, sigval = 202, count = 2
+03:14:30.040167 rt_sigreturn({mask=[USR2]}) = 0
+[Norm] Получен сигнал 12, count = 3
+03:14:30.040371 rt_sigreturn({mask=[]}) = 0
+Обработчик вызвался 3 раз.
+Заметим, что обычные сигналы (SIGUSR2) не очередатся: они обрабатываются один раз, а сигналы реального времени – все.
+Эксперимент 4.3.3 завершен.
+Эксперимент 4.4: Проверка FIFO для равноприоритетных сигналов реального времени
+03:14:30.040857 rt_sigaction(SIGRT_6, {sa_handler=0x563fb945c219, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fac6f704050}, NULL, 8) = 0
+03:14:30.040953 rt_sigprocmask(SIG_BLOCK, [RT_6], [], 8) = 0
+03:14:30.041232 rt_sigqueueinfo(183927, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1000, si_ptr=0x563f000003e8}) = 0
+Отослан SIGRT(38) с данными 1000
+03:14:30.041677 rt_sigqueueinfo(183927, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_ui) = 0
+Отослан SIGRT(38) с данными 1001
+03:14:30.042118 rt_sigqueueinfo(183927, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1002, si_ptr=0x563f000003ea}) = 0
+Отослан SIGRT(38) с данными 1002
+03:14:30.042520 rt_sigqueueinfo(183927, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1003, si_ptr=0x563f000003eb}) = 0
+Отослан SIGRT(38) с данными 1003
+03:14:30.042906 rt_sigqueueinfo(183927, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1004, si_ptr=0x563f000003ec}) = 0
+Отослан SIGRT(38) с данными 1004
+03:14:30.043163 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+03:14:30.043321 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1000, si_ptr=0x563f000003e8} ---
+[RT] Получен сигнал 38, sigval = 1000, count = 1
+03:14:30.043537 rt_sigreturn({mask=[]}) = 0
+03:14:30.043663 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1001, si_ptr=0x563f000003e9} ---
+[RT] Получен сигнал 38, sigval = 1001, count = 2
+03:14:30.043796 rt_sigreturn({mask=[]}) = 0
+03:14:30.043918 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1002, si_ptr=0x563f000003ea} ---
+[RT] Получен сигнал 38, sigval = 1002, count = 3
+03:14:30.044083 rt_sigreturn({mask=[]}) = 0
+03:14:30.044258 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1003, si_ptr=0x563f000003eb} ---
+[RT] Получен сигнал 38, sigval = 1003, count = 4
+03:14:30.044416 rt_sigreturn({mask=[]}) = 0
+03:14:30.044505 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1004, si_ptr=0x563f000003ec} ---
+[RT] Получен сигнал 38, sigval = 1004, count = 5
+03:14:30.044693 rt_sigreturn({mask=[]}) = 0
+Если порядок доставки соответствует порядку отправки, то FIFO подтвержден.
+Эксперимент 4.4 завершен.
+03:14:30.045165 +++ exited with 0 +++
+strace: Process 183941 attached
+Writer process (PID: 183940) started, created reader (PID: 183941)
+Reader process (PID: 183941) started
+[pid 183941] futex(0x7f151e105000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY[Writer PID 183940] Sent: Message 1 from PID 183940
+ <unfinished ...>
+[pid 183940] futex(0x7f151e105000, FUTEX_WAKE, 1) = 1
+[pid 183941] <... futex resumed>)       = 0
+[pid 183940] futex(0x7f151e106000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY[Reader PID 183941] Received: Message 1 from PID 183940
+ <unfinished ...>
+[pid 183941] futex(0x7f151e106000, FUTEX_WAKE, 1) = 1
+[pid 183941] futex(0x7f151e105000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+[pid 183940] <... futex resumed>)       = 0
+[Writer PID 183940] Sent: Message 2 from PID 183940
+[pid 183940] futex(0x7f151e105000, FUTEX_WAKE, 1) = 1
+[pid 183940] futex(0x7f151e106000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+[pid 183941] <... futex resumed>)       = 0
+[Reader PID 183941] Received: Message 2 from PID 183940
+[pid 183941] futex(0x7f151e106000, FUTEX_WAKE, 1 <unfinished ...>
+[pid 183940] <... futex resumed>)       = 0
+[pid 183941] <... futex resumed>)       = 1
+[pid 183941] futex(0x7f151e105000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY[Writer PID 183940] Sent: Message 3 from PID 183940
+ <unfinished ...>
+[pid 183940] futex(0x7f151e105000, FUTEX_WAKE, 1) = 1
+[pid 183941] <... futex resumed>)       = 0
+[pid 183940] futex(0x7f151e106000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANYd=0, si_int=1001, si_ptr=0x563f000003e9}) = 0
+Отослан SIGRT(38) с данными 1001
+03:14:30.042118 rt_sigqueueinfo(183927, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1002, si_ptr=0x563f000003ea}) = 0
+Отослан SIGRT(38) с данными 1002
+03:14:30.042520 rt_sigqueueinfo(183927, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1003, si_ptr=0x563f000003eb}) = 0
+Отослан SIGRT(38) с данными 1003
+03:14:30.042906 rt_sigqueueinfo(183927, SIGRT_6, {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1004, si_ptr=0x563f000003ec}) = 0
+Отослан SIGRT(38) с данными 1004
+03:14:30.043163 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+03:14:30.043321 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1000, si_ptr=0x563f000003e8} ---
+[RT] Получен сигнал 38, sigval = 1000, count = 1
+03:14:30.043537 rt_sigreturn({mask=[]}) = 0
+03:14:30.043663 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1001, si_ptr=0x563f000003e9} ---
+[RT] Получен сигнал 38, sigval = 1001, count = 2
+03:14:30.043796 rt_sigreturn({mask=[]}) = 0
+03:14:30.043918 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1002, si_ptr=0x563f000003ea} ---
+[RT] Получен сигнал 38, sigval = 1002, count = 3
+03:14:30.044083 rt_sigreturn({mask=[]}) = 0
+03:14:30.044258 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1003, si_ptr=0x563f000003eb} ---
+[RT] Получен сигнал 38, sigval = 1003, count = 4
+03:14:30.044416 rt_sigreturn({mask=[]}) = 0
+03:14:30.044505 --- SIGRT_6 {si_signo=SIGRT_6, si_code=SI_QUEUE, si_pid=183927, si_uid=0, si_int=1004, si_ptr=0x563f000003ec} ---
+[RT] Получен сигнал 38, sigval = 1004, count = 5
+03:14:30.044693 rt_sigreturn({mask=[]}) = 0
+Если порядок доставки соответствует порядку отправки, то FIFO подтвержден.
+Эксперимент 4.4 завершен.
+03:14:30.045165 +++ exited with 0 +++
+[2025-04-03 03:14:30] Время выполнения задания 4: 0 секунд.
+
+
+[2025-04-03 03:14:30] [КОММЕНТАРИЙ] POSIX Вариант
+[2025-04-03 03:14:30] ВЫПОЛНЕНИЕ ЗАДАНИЯ 5.1
+[2025-04-03 03:14:30] >>> root@ASPIRIN$ strace -f -e futex ./lb3/5/5-posix 5 <<<
+strace: Process 183941 attached
+Writer process (PID: 183940) started, created reader (PID: 183941)
+Reader process (PID: 183941) started
+[pid 183941] futex(0x7f151e105000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY[Writer PID 183940] Sent: Message 1 from PID 183940
+ <unfinished ...>
+[pid 183940] futex(0x7f151e105000, FUTEX_WAKE, 1) = 1
+[pid 183941] <... futex resumed>)       = 0
+[pid 183940] futex(0x7f151e106000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY[Reader PID 183941] Received: Message 1 from PID 183940
+ <unfinished ...>
+[pid 183941] futex(0x7f151e106000, FUTEX_WAKE, 1) = 1
+[pid 183941] futex(0x7f151e105000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+[pid 183940] <... futex resumed>)       = 0
+[Writer PID 183940] Sent: Message 2 from PID 183940
+[pid 183940] futex(0x7f151e105000, FUTEX_WAKE, 1) = 1
+[pid 183940] futex(0x7f151e106000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+[pid 183941] <... futex resumed>)       = 0
+[Reader PID 183941] Received: Message 2 from PID 183940
+[pid 183941] futex(0x7f151e106000, FUTEX_WAKE, 1 <unfinished ...>
+[pid 183940] <... futex resumed>)       = 0
+[pid 183941] <... futex resumed>)       = 1
+[pid 183941] futex(0x7f151e105000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY[Writer PID 183940] Sent: Message 3 from PID 183940
+ <unfinished ...>
+[pid 183940] futex(0x7f151e105000, FUTEX_WAKE, 1) = 1
+[pid 183941] <... futex resumed>)       = 0
+[pid 183940] fu[Reader PID 183941] Received: Message 3 from PID 183940
+ <unfinished ...>
+[pid 183941] futex(0x7f151e106000, FUTEX_WAKE, 1) = 1
+[pid 183940] <... futex resumed>)       = 0
+[pid 183941] futex(0x7f151e105000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY[Writer PID 183940] Sent: Message 4 from PID 183940
+ <unfinished ...>
+[pid 183940] futex(0x7f151e105000, FUTEX_WAKE, 1) = 1
+[pid 183941] <... futex resumed>)       = 0
+[pid 183940] futex(0x7f151e106000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY[Reader PID 183941] Received: Message 4 from PID 183940
+ <unfinished ...>
+[pid 183941] futex(0x7f151e106000, FUTEX_WAKE, 1 <unfinished ...>
+[pid 183940] <... futex resumed>)       = 0
+[pid 183941] <... futex resumed>)       = 1
+[pid 183941] futex(0x7f151e105000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY[Writer PID 183940] Sent: Message 5 from PID 183940
+ <unfinished ...>
+[pid 183940] futex(0x7f151e105000, FUTEX_WAKE, 1) = 1
+[pid 183941] <... futex resumed>)       = 0
+[Reader PID 183941] Received: Message 5 from PID 183940
+[pid 183941] +++ exited with 0 +++
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=183941, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
++++ exited with 0 +++
+shmget(0x1234, 1024, IPC_CREAT|0666)    = 65554
+shmat(65554, NULL, 0)                   = 0x7fc819c2a000
+semget(0x5678, 2, IPC_CREAT|0666)       = 32782
+semctl(32782, 0, SETALL, 0x7ffcecbf2fa4) = 0
+strace: Process 183955 attached
+strace: Process 183956 attached
+[pid 183955] semtimedop(32782, [{sem_num=0, sem_op=-1, sem_flg=0}], 1, NULL) = 0
+[pid 183956] semtimedop(32782, [{sem_num=1, sem_op=-1, sem_flg=0}], 1, NULL
+Писатель (PID 183955) отправил: Сообщение 1 от PID 183955
+ <unfinished ...>
+[pid 183955] semtimedop(32782, [{sem_num=1, sem_op=1, sem_flg=0}], 1, NULL) = 0
+[pid 183956] <... semtimedop resumed>)  = 0
+[pid 183955] semtimedop(32782, [{sem_num=0, sem_op=-1, sem_flg=0}], 1, NULL
+Читатель (PID 183956) получил: Сообщение 1 от PID 183955 (от PID 183955)
+ <unfinished ...>
+[pid 183956] semtimedop(32782, [{sem_num=0, sem_op=1, sem_flg=0}], 1, NULL) = 0
+[pid 183955] <... semtimedop resumed>)  = 0
+[pid 183956] semtimedop(32782, [{sem_num=1, sem_op=-1, sem_flg=0}], 1, NULL
+Писатель (PID 183955) отправил: Сообщение 2 от PID 183955
+ <unfinished ...>
+[pid 183955] semtimedop(32782, [{sem_num=1, sem_op=1, sem_flg=0}], 1, NULL) = 0
+[pid 183956] <... semtimedop resumed>)  = 0
+[pid 183955] semtimedop(32782, [{sem_num=0, sem_op=-1, sem_flg=0}], 1, NULL
+Читатель (PID 183956) получил: Сообщение 2 от PID 183955 (от PID 183955)
+ <unfinished ...>
+[pid 183956] semtimedop(32782, [{sem_num=0, sem_op=1, sem_flg=0}], 1, NULL) = 0
+[pid 183955] <... semtimedop resumed>)  = 0
+[pid 183956] semtimedop(32782, [{sem_num=1, sem_op=-1, sem_flg=0}], 1, NULL
+Писатель (PID 183955) отправил: Сообщение 3 от PID 183955
+ <unfinished ...>
+[pid 183955] semtimedop(32782, [{sem_num=1, sem_op=1, sem_flg=0}], 1, NULL <unfinished ...>
+[pid 183956] <... semtimedop resumed>)  = 0
+[pid 183955] <... semtimedop resumed>)  = 0
+[pid 183955] semtimedop(32782, [{sem_num=0, sem_op=-1, sem_flg=0}], 1, NULL
+Читатель (PID 183956) получил: Сообщение 3 от PID 183955 (от PID 183955)
+ <unfinished ...>
+[pid 183956] semtimedop(32782, [{sem_num=0, sem_op=1, sem_flg=0}], 1, NULL) = 0
+[pid 183955] <... semtimedop resumed>)  = 0
+[pid 183956] semtimedop(32782, [{sem_num=1, sem_op=-1, sem_flg=0}], 1, NULL
+Писатель (PID 183955) отправил: Сообщение 4 от PID 183955
+tex(0x7f151e106000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY[Reader PID 183941] Received: Message 3 from PID 183940
+ <unfinished ...>
+[pid 183941] futex(0x7f151e106000, FUTEX_WAKE, 1) = 1
+[pid 183940] <... futex resumed>)       = 0
+[pid 183941] futex(0x7f151e105000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY[Writer PID 183940] Sent: Message 4 from PID 183940
+ <unfinished ...>
+[pid 183940] futex(0x7f151e105000, FUTEX_WAKE, 1) = 1
+[pid 183941] <... futex resumed>)       = 0
+[pid 183940] futex(0x7f151e106000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY[Reader PID 183941] Received: Message 4 from PID 183940
+ <unfinished ...>
+[pid 183941] futex(0x7f151e106000, FUTEX_WAKE, 1 <unfinished ...>
+[pid 183940] <... futex resumed>)       = 0
+[pid 183941] <... futex resumed>)       = 1
+[pid 183941] futex(0x7f151e105000, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 0, NULL, FUTEX_BITSET_MATCH_ANY[Writer PID 183940] Sent: Message 5 from PID 183940
+ <unfinished ...>
+[pid 183940] futex(0x7f151e105000, FUTEX_WAKE, 1) = 1
+[pid 183941] <... futex resumed>)       = 0
+[Reader PID 183941] Received: Message 5 from PID 183940
+[pid 183941] +++ exited with 0 +++
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=183941, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
++++ exited with 0 +++
+[2025-04-03 03:14:30] Время выполнения задания 5.1: 0 секунд.
+
+
+[2025-04-03 03:14:30] [КОММЕНТАРИЙ] SYSTEMV Вариант
+[2025-04-03 03:14:30] ВЫПОЛНЕНИЕ ЗАДАНИЯ 5.2
+[2025-04-03 03:14:30] >>> root@ASPIRIN$ strace -f -e trace=ipc ./lb3/5/5-systemv 5 <<<
+shmget(0x1234, 1024, IPC_CREAT|0666)    = 65554
+shmat(65554, NULL, 0)                   = 0x7fc819c2a000
+semget(0x5678, 2, IPC_CREAT|0666)       = 32782
+semctl(32782, 0, SETALL, 0x7ffcecbf2fa4) = 0
+strace: Process 183955 attached
+strace: Process 183956 attached
+[pid 183955] semtimedop(32782, [{sem_num=0, sem_op=-1, sem_flg=0}], 1, NULL) = 0
+[pid 183956] semtimedop(32782, [{sem_num=1, sem_op=-1, sem_flg=0}], 1, NULL
+Писатель (PID 183955) отправил: Сообщение 1 от PID 183955
+ <unfinished ...>
+[pid 183955] semtimedop(32782, [{sem_num=1, sem_op=1, sem_flg=0}], 1, NULL) = 0
+[pid 183956] <... semtimedop resumed>)  = 0
+[pid 183955] semtimedop(32782, [{sem_num=0, sem_op=-1, sem_flg=0}], 1, NULL
+Читатель (PID 183956) получил: Сообщение 1 от PID 183955 (от PID 183955)
+ <unfinished ...>
+[pid 183956] semtimedop(32782, [{sem_num=0, sem_op=1, sem_flg=0}], 1, NULL) = 0
+[pid 183955] <... semtimedop resumed>)  = 0
+[pid 183956] semtimedop(32782, [{sem_num=1, sem_op=-1, sem_flg=0}], 1, NULL
+Писатель (PID 183955) отправил: Сообщение 2 от PID 183955
+ <unfinished ...>
+[pid 183955] semtimedop(32782, [{sem_num=1, sem_op=1, sem_flg=0}], 1, NULL) = 0
+[pid 183956] <... semtimedop resumed>)  = 0
+[pid 183955] semtimedop(32782, [{sem_num=0, sem_op=-1, sem_flg=0}], 1, NULL
+Читатель (PID 183956) получил: Сообщение 2 от PID 183955 (от PID 183955)
+ <unfinished ...>
+[pid 183956] semtimedop(32782, [{sem_num=0, sem_op=1, sem_flg=0}], 1, NULL) = 0
+[pid 183955] <... semtimedop resumed>)  = 0
+[pid 183956] semtimedop(32782, [{sem_num=1, sem_op=-1, sem_flg=0}], 1, NULL
+Писатель (PID 183955) отправил: Сообщение 3 от PID 183955
+ <unfinished ...>
+[pid 183955] semtimedop(32782, [{sem_num=1, sem_op=1, sem_flg=0}], 1, NULL <unfinished ...>
+[pid 183956] <... semtimedop resumed>)  = 0
+[pid 183955] <... semtimedop resumed>)  = 0
+[pid 183955] semtimedop(32782, [{sem_num=0, sem_op=-1, sem_flg=0}], 1, NULL
+Читатель (PID 183956) получил: Сообщение 3 от PID 183955 (от PID 183955)
+ <unfinished ...>
+[pid 183956] semtimedop(32782, [{sem_num=0, sem_op=1, sem_flg=0}], 1, NULL) = 0
+[pid 183955] <... semtimedop resumed>)  = 0
+[pid 183956] semtimedop(32782, [{sem_num=1, sem_op=-1, sem_flg=0}], 1, NULL
+П� <unfinished ...>
+[pid 183955] semtimedop(32782, [{sem_num=1, sem_op=1, sem_flg=0}], 1, NULL <unfinished ...>
+[pid 183956] <... semtimedop resumed>)  = 0
+[pid 183955] <... semtimedop resumed>)  = 0
+[pid 183955] semtimedop(32782, [{sem_num=0, sem_op=-1, sem_flg=0}], 1, NULL
+Читатель (PID 183956) получил: Сообщение 4 от PID 183955 (от PID 183955)
+ <unfinished ...>
+[pid 183956] semtimedop(32782, [{sem_num=0, sem_op=1, sem_flg=0}], 1, NULL) = 0
+[pid 183955] <... semtimedop resumed>)  = 0
+[pid 183956] semtimedop(32782, [{sem_num=1, sem_op=-1, sem_flg=0}], 1, NULL
+Писатель (PID 183955) отправил: Сообщение 5 от PID 183955
+ <unfinished ...>
+[pid 183955] semtimedop(32782, [{sem_num=1, sem_op=1, sem_flg=0}], 1, NULL <unfinished ...>
+[pid 183956] <... semtimedop resumed>)  = 0
+[pid 183955] <... semtimedop resumed>)  = 0
+
+Читатель (PID 183956) получил: Сообщение 5 от PID 183955 (от PID 183955)
+[pid 183956] semtimedop(32782, [{sem_num=0, sem_op=1, sem_flg=0}], 1, NULL) = 0
+[pid 183956] shmdt(0x7fc819c2a000)      = 0
+[pid 183956] +++ exited with 0 +++
+[pid 183955] --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=183956, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+[pid 183955] shmdt(0x7fc819c2a000)      = 0
+[pid 183955] shmdt(0x7fc819c2a000)      = -1 EINVAL (Invalid argument)
+[pid 183955] shmctl(65554, IPC_RMID, NULL) = 0
+[pid 183955] semctl(32782, 0, IPC_RMID, NULL) = 0
+[pid 183955] +++ exited with 0 +++
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=183955, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
++++ exited with 0 +++
+Запуск бенчмарков (ITER=10000, RUNS=5)...
+-----------------------------------------------
+POSIX_IPC: avg real time = .357919185s, avg CPU load = 67.80%
+SystemV_IPC: avg real time = .339662200s, avg CPU load = 67.90%
+Pthread: avg real time = .310823892s, avg CPU load = 66.77%
+
+  Реализация     Real Time (s)    CPU Load (%)
+-------------- ----------------- ------------
+   POSIX_IPC       0.357919185      67.80
+ SystemV_IPC       0.339662200      67.90
+     Pthread       0.310823892      66.77
+Запуск бенчмарков (ITER=10000, RUNS=5)...
+-----------------------------------------------
+POSIX_IPC: avg real time = .091094927s, avg CPU load = 99.80%
+SystemV_IPC: avg real time = .096085860s, avg CPU load = 99.69%
+Pthread: avg real time = .095067582s, avg CPU load = 99.72%
+
+  Реализация     Real Time (s)    CPU Load (%)
+-------------- ----------------- ------------
+   POSIX_IPC       0.091094927      99.80
+ SystemV_IPC       0.096085860      99.69
+     Pthread       0.095067582      99.72
+[H[2J[3J
+================================================
+ ДЕМОНСТРАЦИЯ РАБОТЫ С PIPE (КАНАЛАМИ) В LINUX
+================================================
+
+
+================================================
+ 1. ДЕМОНСТРАЦИЯ АНОНИМНЫХ КАНАЛОВ (PIPE)
+================================================
+
+Пример 1.1: Простой pipe между командами
+Команда: ls -l | grep '.txt'
+�сатель (PID 183955) отправил: Сообщение 4 от PID 183955
+ <unfinished ...>
+[pid 183955] semtimedop(32782, [{sem_num=1, sem_op=1, sem_flg=0}], 1, NULL <unfinished ...>
+[pid 183956] <... semtimedop resumed>)  = 0
+[pid 183955] <... semtimedop resumed>)  = 0
+[pid 183955] semtimedop(32782, [{sem_num=0, sem_op=-1, sem_flg=0}], 1, NULL
+Читатель (PID 183956) получил: Сообщение 4 от PID 183955 (от PID 183955)
+ <unfinished ...>
+[pid 183956] semtimedop(32782, [{sem_num=0, sem_op=1, sem_flg=0}], 1, NULL) = 0
+[pid 183955] <... semtimedop resumed>)  = 0
+[pid 183956] semtimedop(32782, [{sem_num=1, sem_op=-1, sem_flg=0}], 1, NULL
+Писатель (PID 183955) отправил: Сообщение 5 от PID 183955
+ <unfinished ...>
+[pid 183955] semtimedop(32782, [{sem_num=1, sem_op=1, sem_flg=0}], 1, NULL <unfinished ...>
+[pid 183956] <... semtimedop resumed>)  = 0
+[pid 183955] <... semtimedop resumed>)  = 0
+
+Читатель (PID 183956) получил: Сообщение 5 от PID 183955 (от PID 183955)
+[pid 183956] semtimedop(32782, [{sem_num=0, sem_op=1, sem_flg=0}], 1, NULL) = 0
+[pid 183956] shmdt(0x7fc819c2a000)      = 0
+[pid 183956] +++ exited with 0 +++
+[pid 183955] --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=183956, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+[pid 183955] shmdt(0x7fc819c2a000)      = 0
+[pid 183955] shmdt(0x7fc819c2a000)      = -1 EINVAL (Invalid argument)
+[pid 183955] shmctl(65554, IPC_RMID, NULL) = 0
+[pid 183955] semctl(32782, 0, IPC_RMID, NULL) = 0
+[pid 183955] +++ exited with 0 +++
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=183955, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
++++ exited with 0 +++
+[2025-04-03 03:14:30] Время выполнения задания 5.2: 0 секунд.
+
+
+[2025-04-03 03:14:30] [КОММЕНТАРИЙ] Сравнение на многоядерном процессоре
+[2025-04-03 03:14:30] ВЫПОЛНЕНИЕ ЗАДАНИЯ 5
+[2025-04-03 03:14:30] >>> root@ASPIRIN$ ./lb3/5/5.sh <<<
+Запуск бенчмарков (ITER=10000, RUNS=5)...
+-----------------------------------------------
+POSIX_IPC: avg real time = .357919185s, avg CPU load = 67.80%
+SystemV_IPC: avg real time = .339662200s, avg CPU load = 67.90%
+Pthread: avg real time = .310823892s, avg CPU load = 66.77%
+
+  Реализация     Real Time (s)    CPU Load (%)
+-------------- ----------------- ------------
+   POSIX_IPC       0.357919185      67.80
+ SystemV_IPC       0.339662200      67.90
+     Pthread       0.310823892      66.77
+[2025-04-03 03:14:35] Время выполнения задания 5: 5 секунд.
+
+
+[2025-04-03 03:14:35] [КОММЕНТАРИЙ] Сравнение на одноядерном процессоре
+[2025-04-03 03:14:35] ВЫПОЛНЕНИЕ ЗАДАНИЯ 5
+[2025-04-03 03:14:35] >>> root@ASPIRIN$ taskset -c 0 ./lb3/5/5.sh <<<
+Запуск бенчмарков (ITER=10000, RUNS=5)...
+-----------------------------------------------
+POSIX_IPC: avg real time = .091094927s, avg CPU load = 99.80%
+SystemV_IPC: avg real time = .096085860s, avg CPU load = 99.69%
+Pthread: avg real time = .095067582s, avg CPU load = 99.72%
+
+  Реализация     Real Time (s)    CPU Load (%)
+-------------- ----------------- ------------
+   POSIX_IPC       0.091094927      99.80
+ SystemV_IPC       0.096085860      99.69
+     Pthread       0.095067582      99.72
+[2025-04-03 03:14:36] Время выполнения задания 5: 1 секунд.
+
+
+[2025-04-03 03:14:36] ВЫПОЛНЕНИЕ ЗАДАНИЯ 6.1.1 (Скрипт)
+[2025-04-03 03:14:36] Запуск скрипта ./lb3/6/6.1/6.1.1.sh без аргументов.
+[H[2J[3J
+================================================
+ ДЕМОНСТРАЦИЯ РАБОТЫ С PIPE (КАНАЛАМИ) В LINUX
+================================================
+
+
+================================================
+ 1. ДЕМОНСТРАЦИЯ АНОНИМНЫХ КАНАЛОВ (PIPE)
+=====-rw-r--r-- 1 root  root      32 Apr  3 03:12 filtered_numbers.txt
+-rw-r--r-- 1 root  root    9797 Apr  2 18:14 strace_output.txt
+
+Пример 1.2: Цепочка из нескольких команд с обработкой данных
+Команда: seq 1 20 | grep '1' | sort -nr | tee filtered_numbers.txt
+19
+18
+17
+16
+15
+14
+13
+12
+11
+10
+1
+Результат сохранен в filtered_numbers.txt
+
+Пример 1.3: Подсчет количества процессов пользователя
+Команда: ps -u root -o pid= | wc -l
+Количество процессов: 137
+
+Пример 1.4: Использование pipe с awk для сложной обработки
+Команда: df -h | awk '$6 == "/" {print "Свободно на корневом разделе: " $4}'
+Свободно на корневом разделе: 29G
+
+
+================================================
+ 2. СИСТЕМНЫЕ ОГРАНИЧЕНИЯ ДЛЯ PIPE
+================================================
+
+2.1 Максимальный размер буфера pipe (в байтах):
+PIPE_MAX_SIZE: 1048576
+Для изменения добавьте в /etc/sysctl.conf:
+fs.pipe-max-size = <новое_значение>
+
+2.2 Ограничения на количество pipe для пользователя:
+PIPE_USER_HARD (максимальное количество страниц): 0
+PIPE_USER_SOFT (мягкое ограничение страниц): 16384
+
+2.3 Общие ограничения на открытые файлы (включая pipe):
+ULIMIT -n (максимум открытых файлов): 1024
+Для изменения создайте /etc/security/limits.d/custom.conf с содержимым:
+root soft nofile 16384
+root hard nofile 32768
+
+2.4 Размер страницы памяти:
+PAGESIZE: 4096 байт
+Это влияет на эффективность работы с pipe
+
+
+================================================
+ 3. КОНФИГУРАЦИОННЫЕ ФАЙЛЫ ДЛЯ НАСТРОЙКИ PIPE
+================================================
+
+3.1 Основные файлы с ограничениями:
+/proc/sys/fs/pipe-max-size: 1048576
+/proc/sys/fs/pipe-user-pages-soft: 16384
+/proc/sys/fs/pipe-user-pages-hard: 0
+
+3.2 Текущее использование pipe в системе:
+Команда: lsof | grep -w 'pipe' | wc -l
+Текущее количество открытых pipe: 3839
+
+3.3 Пример настройки ограничений через sysctl:
+Для увеличения размера pipe добавьте в /etc/sysctl.conf:
+fs.pipe-max-size = 1048576
+И выполните: sysctl -p
+
+
+================================================
+ 4. ДОПОЛНИТЕЛЬНЫЕ ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ PIPE
+================================================
+
+Пример 4.1: Параллельная обработка с pipe
+Команда: seq 1 10 | xargs -P 4 -I {} echo "Обработка {}"
+Обработка 1
+Обработка 2
+Обработка 3
+Обработка 4
+Обработка 5
+Обработка 6
+Обработка 7
+Обработка 8
+Обработка 9
+Обработка 10
+
+ЗАПУСК simple_pipe:
+Эта программа демонстрирует:
+ - Создание pipe
+ - Создание дочернего процесса fork()
+ - Передачу одного сообщения от родителя к потомку
+Ожидаемый вывод:
+Родительский процесс отправляет сообщение
+Дочерний процесс получает это сообщение
+===========================================
+
+Пример 1.1: Простой pipe между командами
+Команда: ls -l | grep '.txt'
+-rw-r--r-- 1 root  root      32 Apr  3 03:12 filtered_numbers.txt
+-rw-r--r-- 1 root  root    9797 Apr  2 18:14 strace_output.txt
+
+Пример 1.2: Цепочка из нескольких команд с обработкой данных
+Команда: seq 1 20 | grep '1' | sort -nr | tee filtered_numbers.txt
+19
+18
+17
+16
+15
+14
+13
+12
+11
+10
+1
+Результат сохранен в filtered_numbers.txt
+
+Пример 1.3: Подсчет количества процессов пользователя
+Команда: ps -u root -o pid= | wc -l
+Количество процессов: 137
+
+Пример 1.4: Использование pipe с awk для сложной обработки
+Команда: df -h | awk '$6 == "/" {print "Свободно на корневом разделе: " $4}'
+Свободно на корневом разделе: 29G
+
+
+================================================
+ 2. СИСТЕМНЫЕ ОГРАНИЧЕНИЯ ДЛЯ PIPE
+================================================
+
+2.1 Максимальный размер буфера pipe (в байтах):
+PIPE_MAX_SIZE: 1048576
+Для изменения добавьте в /etc/sysctl.conf:
+fs.pipe-max-size = <новое_значение>
+
+2.2 Ограничения на количество pipe для пользователя:
+PIPE_USER_HARD (максимальное количество страниц): 0
+PIPE_USER_SOFT (мягкое ограничение страниц): 16384
+
+2.3 Общие ограничения на открытые файлы (включая pipe):
+ULIMIT -n (максимум открытых файлов): 1024
+Для изменения создайте /etc/security/limits.d/custom.conf с содержимым:
+root soft nofile 16384
+root hard nofile 32768
+
+2.4 Размер страницы памяти:
+PAGESIZE: 4096 байт
+Это влияет на эффективность работы с pipe
+
+
+================================================
+ 3. КОНФИГУРАЦИОННЫЕ ФАЙЛЫ ДЛЯ НАСТРОЙКИ PIPE
+================================================
+
+3.1 Основные файлы с ограничениями:
+/proc/sys/fs/pipe-max-size: 1048576
+/proc/sys/fs/pipe-user-pages-soft: 16384
+/proc/sys/fs/pipe-user-pages-hard: 0
+
+3.2 Текущее использование pipe в системе:
+Команда: lsof | grep -w 'pipe' | wc -l
+Текущее количество открытых pipe: 3839
+
+3.3 Пример настройки ограничений через sysctl:
+Для увеличения размера pipe добавьте в /etc/sysctl.conf:
+fs.pipe-max-size = 1048576
+И выполните: sysctl -p
+
+
+================================================
+ 4. ДОПОЛНИТЕЛЬНЫЕ ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ PIPE
+================================================
+
+Пример 4.1: Параллельная обработка с pipe
+Команда: seq 1 10 | xargs -P 4 -I {} echo "Обработка {}"
+Обработка 1
+Обработка 2
+Обработка 3
+Обработка 4
+Обработка 5
+Обработка 6
+Обработка 7
+Обработка 8
+Обработка 9
+Обработка 10
+
+[2025-04-03 03:14:38] Время выполнения задания 6.1.1: 2 секунд.
+
+
+[2025-04-03 03:14:38] ВЫПОЛНЕНИЕ ЗАДАНИЯ 6.1.2 (Скрипт)
+[2025-04-03 03:14:38] Запуск скрипта ./lb3/6/6.1/6.1.2.sh без аргументов.
+ЗАПУСК simple_pipe:
+Эта программа демонстрирует:
+ - Создание pipe
+ - Создание дочернего процесса fork()
+ - Передачу одного сообщения от родителя к потомку
+Ожидаемый вывод:
+Родительский процесс отп------------------ НАЧАЛО ВЫВОДА ------------------
+Дочерний процесс (PID=184606) получил: 'Привет из родительского процесса!'
+Родительский процесс (PID=184605) отправляет: 'Привет из родительского процесса!'
+------------------ КОНЕЦ ВЫВОДА -------------------
+
+ЗАПУСК dual_pipe:
+Эта программа демонстрирует:
+ - Создание двух pipe для двустороннего обмена
+ - Родитель отправляет сообщение потомку
+ - Потомок отвечает на сообщение
+Ожидаемый вывод:
+Родитель отправляет -> потомок получает
+Потомок отправляет ответ -> родитель получает
+------------------ НАЧАЛО ВЫВОДА ------------------
+Дочерний процесс (PID=184608) получил: 'Сообщение от родительского процесса'
+Дочерний процесс (PID=184608) отправляет: 'Ответ от дочернего процесса'
+Родительский процесс (PID=184607) отправляет: 'Сообщение от родительского процесса'
+Родительский процесс (PID=184607) получил: 'Ответ от дочернего процесса'
+------------------ КОНЕЦ ВЫВОДА -------------------
+
+ЗАПУСК pipe_exec:
+Эта программа демонстрирует:
+ - Создание pipe
+ - Перенаправление вывода с помощью dup2()
+ - Запуск программы wc -l для подсчета строк
+Ожидаемый вывод:
+Программа должна вывести число 3 (три строки было записано в pipe)
+------------------ НАЧАЛО ВЫВОДА ------------------
+3
+------------------ КОНЕЦ ВЫВОДА -------------------
+
+
+=== Создание FIFO ===
+Создаем FIFO из командной строки: mkfifo cmd_pipe
+mkfifo: cannot create fifo 'cmd_pipe': File exists
+prw-r--r-- 1 root root 0 Apr  3 03:12 cmd_pipe
+
+Создаем FIFO программно:
+FIFO 'prog_pipe' уже существует
+prw-r--r-- 1 root root 0 Apr  3 01:08 prog_pipe
+
+=== Анализ FIFO ===
+
+Анализ утилитами ОС:
+file cmd_pipe: cmd_pipe: fifo (named pipe)
+stat cmd_pipe: prw-r--r-- 3147673 0
+ls -li cmd_pipe:
+3147673 prw-r--r-- 1 root root 0 Apr  3 03:12 cmd_pipe
+
+Поиск в /proc по inode 3147673:
+
+Программный анализ:
+Информация о файле: cmd_pipe
+Тип: FIFO (именованный канал)
+Inode: 3147673
+Права доступа: rw- r-- r-- (0644)
+Размер: 0 байт
+Владелец: UID=0, GID=0
+Время последнего доступа: Thu Apr  3 03:12:09 2025
+Время последней модификации: Thu Apr  3 03:12:09 2025
+Время последнего изменения статуса: Thu Apr  3 03:12:09 2025
+
+=== Демонстрация работы FIFO ===
+Запускаем reader в фоне:
+
+Запускаем writer:
+Получено: Тестовое сообщение через FIFO
+=== Текущие ограничения IPC в системе ===
+Все пути указаны в абсолютном формате (/proc/sys/kernel/...)
+----------------------------------------
+равляет сообщение
+Дочерний процесс получает это сообщение
+------------------ НАЧАЛО ВЫВОДА ------------------
+Дочерний процесс (PID=184606) получил: 'Привет из родительского процесса!'
+Родительский процесс (PID=184605) отправляет: 'Привет из родительского процесса!'
+------------------ КОНЕЦ ВЫВОДА -------------------
+
+ЗАПУСК dual_pipe:
+Эта программа демонстрирует:
+ - Создание двух pipe для двустороннего обмена
+ - Родитель отправляет сообщение потомку
+ - Потомок отвечает на сообщение
+Ожидаемый вывод:
+Родитель отправляет -> потомок получает
+Потомок отправляет ответ -> родитель получает
+------------------ НАЧАЛО ВЫВОДА ------------------
+Дочерний процесс (PID=184608) получил: 'Сообщение от родительского процесса'
+Дочерний процесс (PID=184608) отправляет: 'Ответ от дочернего процесса'
+Родительский процесс (PID=184607) отправляет: 'Сообщение от родительского процесса'
+Родительский процесс (PID=184607) получил: 'Ответ от дочернего процесса'
+------------------ КОНЕЦ ВЫВОДА -------------------
+
+ЗАПУСК pipe_exec:
+Эта программа демонстрирует:
+ - Создание pipe
+ - Перенаправление вывода с помощью dup2()
+ - Запуск программы wc -l для подсчета строк
+Ожидаемый вывод:
+Программа должна вывести число 3 (три строки было записано в pipe)
+------------------ НАЧАЛО ВЫВОДА ------------------
+3
+------------------ КОНЕЦ ВЫВОДА -------------------
+
+[2025-04-03 03:14:38] Время выполнения задания 6.1.2: 0 секунд.
+
+
+[2025-04-03 03:14:38] ВЫПОЛНЕНИЕ ЗАДАНИЯ 6.2 (Скрипт)
+[2025-04-03 03:14:38] Запуск скрипта ./lb3/6/6.2/6.2.sh без аргументов.
+
+=== Создание FIFO ===
+Создаем FIFO из командной строки: mkfifo cmd_pipe
+mkfifo: cannot create fifo 'cmd_pipe': File exists
+prw-r--r-- 1 root root 0 Apr  3 03:12 cmd_pipe
+
+Создаем FIFO программно:
+FIFO 'prog_pipe' уже существует
+prw-r--r-- 1 root root 0 Apr  3 01:08 prog_pipe
+
+=== Анализ FIFO ===
+
+Анализ утилитами ОС:
+file cmd_pipe: cmd_pipe: fifo (named pipe)
+stat cmd_pipe: prw-r--r-- 3147673 0
+ls -li cmd_pipe:
+3147673 prw-r--r-- 1 root root 0 Apr  3 03:12 cmd_pipe
+
+Поиск в /proc по inode 3147673:
+
+Программный анализ:
+Информация о файле: cmd_pipe
+Тип: FIFO (именованный канал)
+Inode: 3147673
+Права доступа: rw- r-- r-- (0644)
+Размер: 0 байт
+Владелец: UID=0, GID=0
+Время последнего доступа: Thu Apr  3 03:12:09 2025
+Время последней модификации: Thu Apr  3 03:12:09 2025
+Время последнего изменения статуса: Thu Apr  3 03:12:09 2025
+
+=== Демонстрация работы FIFO ===
+Запускаем reader в фоне:
+
+Запускаем writer:
+Получено: Тестовое сообщение через FIFO
+[2025-04-03 03:14:40] Время выполнения задания 6.2: 2 секунд.
+
+
+[2025-04-03 03:14:40] ВЫПОЛНЕНИЕ ЗАДАНИЯ 6.3 (Скрипт)
+[2025-04-03 03:14:40] Запуск скрипта ./lb3/6/6.3/6.3.sh без аргументов.
+=== Текущие ограничения ● Путь: /proc/sys/kernel/shmmax
+  Значение: 18446744073692774399
+  Описание: Максимальный размер сегмента shared memory (в байтах). Например, 18446744073692774399 = 16 эксабайт (практически не ограничено).
+----------------------------------------
+● Путь: /proc/sys/kernel/msgmax
+  Значение: 8192
+  Описание: Максимальный размер одного сообщения в очереди (в байтах). Например, 8192 = 8 КБ.
+----------------------------------------
+● Путь: /proc/sys/kernel/sem
+  Значение: 32000	1024000000	500	32000
+  Описание: Параметры семафоров в формате: [1]макс. семафоров в системе [2]макс. операций за вызов [3]макс. системных семафоров [4]макс. очередей семафоров.
+----------------------------------------
+● Путь: /proc/sys/kernel/msgmni
+  Значение: 32000
+  Описание: Максимальное количество очередей сообщений в системе. Например, 32000.
+----------------------------------------
+● Путь: /proc/sys/kernel/msgmnb
+  Значение: 16384
+  Описание: Максимальный размер одной очереди сообщений (в байтах). Например, 16384 = 16 КБ.
+----------------------------------------
+● Путь: /proc/sys/kernel/shmall
+  Значение: 18446744073692774399
+  Описание: Общий объем shared memory, который может быть выделен (в страницах памяти). Например, 4294967296 = 16 ТБ (при размере страницы 4 КБ).
+----------------------------------------
+
+***** Демонстрация работы очередей сообщений *****
+
+Создана очередь с ID: 7
+
+=== Информация об очереди ===
+Права доступа: 666
+Байт в очереди: 0
+Количество сообщений: 0
+Макс. размер очереди: 16384 байт
+Последняя отправка: никогда
+Последнее получение: никогда
+Последнее изменение: 2025-04-03 03:14:40.000
+PID последнего отправителя: 0
+PID последнего получателя: 0
+============================
+
+*** Базовый эксперимент ***
+Отправлено: [тип:2] Тестовое сообщение 1 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:3] Тестовое сообщение 2 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:1] Тестовое сообщение 3 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:2] Тестовое сообщение 4 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:3] Тестовое сообщение 5 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:1] Тестовое сообщение 6 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:2] Тестовое сообщение 7 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:3] Тестовое сообщение 8 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+
+=== Информация об очереди ===
+Права доступа: 666
+Байт в очереди: 2240
+Количество сообщений: 8
+Макс. размер очереди: 16384 байт
+Последняя отправка: 2025-04-03 03:14:40.000
+Последнее получение: никогда
+Последнее изменение: 2025-04-03 03:14:40.000
+PID последнего отправителя: 184666
+PID последнего получателя: 0
+============================
+
+Получаем сообщения типа 2:
+Получено: [тип:2] Тестовое сообщение 1 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+Получено: [тип:2] Тестовое сообщение 4 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+Получено: [тип:2] Тестовое сообщение 7 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+
+Попытка получить несуществующее сообщение типа 4:
+Нет сообщений типа 4
+
+*** Эксперимент с приоритетами ***
+Отправлено: [тип:10] Сообщение с высоким приоритетом (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:5] Сообщение со средним приоритетом (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:1] Сообщение с низким приоритетом (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+
+Получаем сообщение с наивысшим приоритетом:
+Получено: [тип:3] Тестовое сообщение 2 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+
+*** Эксперимент с fork() ***
+Родительский процесс ожидает сообщение...
+Получено: [тип:4] Сообщение от дочернего процесса (отправлено: 2025-04-03 03:14:41.254, за�
+***** Демонстрация работы очередей сообщений *****
+
+Создана очередь с ID: 7
+
+=== Информация об очереди ===
+Права доступа: 666
+Байт в очереди: 0
+Количество сообщений: 0
+Макс. размер очереди: 16384 байт
+Последняя отправка: никогда
+Последнее получение: никогда
+Последнее изменение: 2025-04-03 03:14:40.000
+PID последнего отправителя: 0
+PID последнего получателя: 0
+============================
+
+*** Базовый эксперимент ***
+Отправлено: [тип:2] Тестовое сообщение 1 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:3] Тестовое сообщение 2 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:1] Тестовое сообщение 3 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:2] Тестовое сообщение 4 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:3] Тестовое сообщение 5 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:1] Тестовое сообщение 6 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:2] Тестовое сообщение 7 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:3] Тестовое сообщение 8 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+
+=== Информация об очереди ===
+Права доступа: 666
+Байт в очереди: 2240
+Количество сообщений: 8
+Макс. размер очереди: 16384 байт
+Последняя отправка: 2025-04-03 03:14:40.000
+Последнее получение: никогда
+Последнее изменение: 2025-04-03 03:14:40.000
+PID последнего отправителя: 184666
+PID последнего получателя: 0
+============================
+
+Получаем сообщения типа 2:
+Получено: [тип:2] Тестовое сообщение 1 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+Получено: [тип:2] Тестовое сообщение 4 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+Получено: [тип:2] Тестовое сообщение 7 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+
+Попытка получить несуществующее сообщение типа 4:
+Нет сообщений типа 4
+
+*** Эксперимент с приоритетами ***
+Отправлено: [тип:10] Сообщение с высоким приоритетом (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:5] Сообщение со средним приоритетом (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:1] Сообщение с низким приоритетом (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+
+Получаем сообщение с наивысшим приоритетом:
+Получено: [тип:3] Тестовое сообщение 2 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+
+*** Эксперимент с fork() ***
+Отправлено: [тип:4] Сообщение от дочернего процесса (время: 2025-04-03 03:14:41.254, отправитель: 184667)
+IPC в системе ===
+Все пути указаны в абсолютном формате (/proc/sys/kernel/...)
+----------------------------------------
+● Путь: /proc/sys/kernel/shmmax
+  Значение: 18446744073692774399
+  Описание: Максимальный размер сегмента shared memory (в байтах). Например, 18446744073692774399 = 16 эксабайт (практически не ограничено).
+----------------------------------------
+● Путь: /proc/sys/kernel/msgmax
+  Значение: 8192
+  Описание: Максимальный размер одного сообщения в очереди (в байтах). Например, 8192 = 8 КБ.
+----------------------------------------
+● Путь: /proc/sys/kernel/sem
+  Значение: 32000	1024000000	500	32000
+  Описание: Параметры семафоров в формате: [1]макс. семафоров в системе [2]макс. операций за вызов [3]макс. системных семафоров [4]макс. очередей семафоров.
+----------------------------------------
+● Путь: /proc/sys/kernel/msgmni
+  Значение: 32000
+  Описание: Максимальное количество очередей сообщений в системе. Например, 32000.
+----------------------------------------
+● Путь: /proc/sys/kernel/msgmnb
+  Значение: 16384
+  Описание: Максимальный размер одной очереди сообщений (в байтах). Например, 16384 = 16 КБ.
+----------------------------------------
+● Путь: /proc/sys/kernel/shmall
+  Значение: 18446744073692774399
+  Описание: Общий объем shared memory, который может быть выделен (в страницах памяти). Например, 4294967296 = 16 ТБ (при размере страницы 4 КБ).
+----------------------------------------
+
+***** Демонстрация работы очередей сообщений *****
+
+Создана очередь с ID: 7
+
+=== Информация об очереди ===
+Права доступа: 666
+Байт в очереди: 0
+Количество сообщений: 0
+Макс. размер очереди: 16384 байт
+Последняя отправка: никогда
+Последнее получение: никогда
+Последнее изменение: 2025-04-03 03:14:40.000
+PID последнего отправителя: 0
+PID последнего получателя: 0
+============================
+
+*** Базовый эксперимент ***
+Отправлено: [тип:2] Тестовое сообщение 1 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:3] Тестовое сообщение 2 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:1] Тестовое сообщение 3 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:2] Тестовое сообщение 4 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:3] Тестовое сообщение 5 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:1] Тестовое сообщение 6 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:2] Тестовое сообщение 7 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:3] Тестовое сообщение 8 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+
+=== Информация об очереди ===
+Права доступа: 666
+Байт в очереди: 2240
+Количество сообщений: 8
+Макс. размер очереди: 16384 байт
+Последняя отправка: 2025-04-03 03:14:40.000
+Последнее получение: никогда
+Последнее изменение: 2025-04-03 03:14:40.000
+PID последнего отправителя: 184666
+PID последнего получателя: 0
+============================
+
+Получаем сообщения типа 2:
+Получено: [тип:2] Тестовое сообщение 1 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+Получено: [тип:2] Тестовое сообщение 4 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+Получено: [тип:2] Тестовое сообщение 7 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+
+Попытка получить несуществующее сообщение типа 4:
+Нет сообщений типа 4
+
+*** Эксперимент с приоритетами ***
+Отправлено: [тип:10] Сообщение с высоким приоритетом (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:5] Сообщение со средним приоритетом (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:1] Сообщение с низким приоритетом (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+
+Получаем сообщение с наивысшим приоритетом:
+Получено: [тип:3] Тестовое сообщение 2 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+
+*** Эксперимент с fork() ***
+Родительский процесс ожидает сообщение...
+Получено: [тип:4] Сообщение от дочернего процесса (отправлено: 2025-04-03 03:14:41.254, за�
+***** Демонстрация работы очередей сообщений *****
+
+Создана очередь с ID: 7
+
+=== Информация об очереди ===
+Права доступа: 666
+Байт в очереди: 0
+Количество сообщений: 0
+Макс. размер очереди: 16384 байт
+Последняя отправка: никогда
+Последнее получение: никогда
+Последнее изменение: 2025-04-03 03:14:40.000
+PID последнего отправителя: 0
+PID последнего получателя: 0
+============================
+
+*** Базовый эксперимент ***
+Отправлено: [тип:2] Тестовое сообщение 1 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:3] Тестовое сообщение 2 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:1] Тестовое сообщение 3 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:2] Тестовое сообщение 4 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:3] Тестовое сообщение 5 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:1] Тестовое сообщение 6 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:2] Тестовое сообщение 7 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:3] Тестовое сообщение 8 (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+
+=== Информация об очереди ===
+Права доступа: 666
+Байт в очереди: 2240
+Количество сообщдержка: 0 мс, отправитель: 184667)
+
+*** Тест производительности ***
+Отправлено 1000 сообщений за 846 мкс (0.846 мкс/сообщение)
+
+*** Очистка очереди ***
+Удалено 0 сообщений
+
+Очередь 7 успешно удалена
+UDP сервер запущен (PID: 184677)
+socket(AF_INET, SOCK_DGRAM, IPPROTO_IP) = 3
+bind(3, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("0.0.0.0")}, 16) = 0
+recvfrom(3, 
+Запуск UDP клиента...
+socket(AF_INET, SOCK_DGRAM, IPPROTO_IP) = 3
+setsockopt(3, SOL_SOCKET, SO_RCVTIMEO_OLD, "\5\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+sendto(3, "\320\237\321\200\320\270\320\262\320\265\321\202, \321\201\320\265\321\200\320\262\320\265\321\200! (UDP"..., 33, MSG_CONFIRM, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("0.0.0.0")}, 16) = 33
+"\320\237\321\200\320\270\320\262\320\265\321\202, \321\201\320\265\321\200\320\262\320\265\321\200! (UDP"..., 1024, MSG_WAITALL, {sa_family=AF_INET, sin_port=htons(55268), sin_addr=inet_addr("127.0.0.1")}, [16]) = 33
+sendto(3, "\320\241\320\276\320\276\320\261\321\211\320\265\320\275\320\270\320\265 \320\277\320\276\320\273\321\203\321\207\320\265\320"..., 58, MSG_CONFIRM, {sa_family=AF_INET, sin_port=htons(55268), sin_addr=inet_addr("127.0.0.1")}, 16) = 58
+recvfrom(3, recvfrom(3, "\320\241\320\276\320\276\320\261\321\211\320\265\320\275\320\270\320\265 \320\277\320\276\320\273\321\203\321\207\320\265\320"..., 1023, 0, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("127.0.0.1")}, [16]) = 58
+Сообщение отправлено серверу (попытка 1/3)
+Ответ сервера: Сообщение получено сервером (UDP)
+�ний: 8
+Макс. размер очереди: 16384 байт
+Последняя отправка: 2025-04-03 03:14:40.000
+Последнее получение: никогда
+Последнее изменение: 2025-04-03 03:14:40.000
+PID последнего отправителя: 184666
+PID последнего получателя: 0
+============================
+
+Получаем сообщения типа 2:
+Получено: [тип:2] Тестовое сообщение 1 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+Получено: [тип:2] Тестовое сообщение 4 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+Получено: [тип:2] Тестовое сообщение 7 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+
+Попытка получить несуществующее сообщение типа 4:
+Нет сообщений типа 4
+
+*** Эксперимент с приоритетами ***
+Отправлено: [тип:10] Сообщение с высоким приоритетом (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:5] Сообщение со средним приоритетом (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+Отправлено: [тип:1] Сообщение с низким приоритетом (время: 2025-04-03 03:14:40.253, отправитель: 184666)
+
+Получаем сообщение с наивысшим приоритетом:
+Получено: [тип:3] Тестовое сообщение 2 (отправлено: 2025-04-03 03:14:40.253, задержка: 0 мс, отправитель: 184666)
+
+*** Эксперимент с fork() ***
+Отправлено: [тип:4] Сообщение от дочернего процесса (время: 2025-04-03 03:14:41.254, отправитель: 184667)
+�ержка: 0 мс, отправитель: 184667)
+
+*** Тест производительности ***
+Отправлено 1000 сообщений за 846 мкс (0.846 мкс/сообщение)
+
+*** Очистка очереди ***
+Удалено 0 сообщений
+
+Очередь 7 успешно удалена
+[2025-04-03 03:14:41] Время выполнения задания 6.3: 1 секунд.
+
+
+[2025-04-03 03:14:41] ВЫПОЛНЕНИЕ ЗАДАНИЯ 7.1 (Скрипт)
+[2025-04-03 03:14:41] Запуск скрипта ./lb3/7/7.1/7.1.sh без аргументов.
+UDP сервер запущен (PID: 184677)
+socket(AF_INET, SOCK_DGRAM, IPPROTO_IP) = 3
+bind(3, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("0.0.0.0")}, 16) = 0
+recvfrom(3, 
+Запуск UDP клиента...
+socket(AF_INET, SOCK_DGRAM, IPPROTO_IP) = 3
+setsockopt(3, SOL_SOCKET, SO_RCVTIMEO_OLD, "\5\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+sendto(3, "\320\237\321\200\320\270\320\262\320\265\321\202, \321\201\320\265\321\200\320\262\320\265\321\200! (UDP"..., 33, MSG_CONFIRM, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("0.0.0.0")}, 16) = 33
+"\320\237\321\200\320\270\320\262\320\265\321\202, \321\201\320\265\321\200\320\262\320\265\321\200! (UDP"..., 1024, MSG_WAITALL, {sa_family=AF_INET, sin_port=htons(55268), sin_addr=inet_addr("127.0.0.1")}, [16]) = 33
+sendto(3, "\320\241\320\276\320\276\320\261\321\211\320\265\320\275\320\270\320\265 \320\277\320\276\320\273\321\203\321\207\320\265\320"..., 58, MSG_CONFIRM, {sa_family=AF_INET, sin_port=htons(55268), sin_addr=inet_addr("127.0.0.1")}, 16) = 58
+recvfrom(3, recvfrom(3, "\320\241\320\276\320\276\320\261\321\211\320\265\320\275\320\270\320\265 \320\277\320\276\320\273\321\203\321\207\320\265\320"..., 1023, 0, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("127.0.0.1")}, [16]) = 58
+Сообщение отправлено серверу (попыт�+++ exited with 0 +++
+strace: Process 184681 detached
+ <detached ...>
+UDP сервер запущен (PID: 184699)
+socket(AF_INET, SOCK_DGRAM, IPPROTO_IP) = 3
+bind(3, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("0.0.0.0")}, 16) = 0
+recvfrom(3, 
+Запуск UDP клиента...
+socket(AF_INET, SOCK_DGRAM, IPPROTO_IP) = 3
+setsockopt(3, SOL_SOCKET, SO_RCVTIMEO_OLD, "\5\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+sendto(3, "\320\237\321\200\320\270\320\262\320\265\321\202, \321\201\320\265\321\200\320\262\320\265\321\200! (UDP"..., 33, MSG_CONFIRM, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("0.0.0.0")}, 16) = 33
+"\320\237\321\200\320\270\320\262\320\265\321\202, \321\201\320\265\321\200\320\262\320\265\321\200! (UDP"..., 1024, MSG_WAITALL, {sa_family=AF_INET, sin_port=htons(57050), sin_addr=inet_addr("127.0.0.1")}, [16]) = 33
+sendto(3, "\320\241\320\276\320\276\320\261\321\211\320\265\320\275\320\270\320\265 \320\277\320\276\320\273\321\203\321\207\320\265\320"..., 58, MSG_CONFIRM, {sa_family=AF_INET, sin_port=htons(57050), sin_addr=inet_addr("127.0.0.1")}, 16) = 58
+recvfrom(3, recvfrom(3, "\320\241\320\276\320\276\320\261\321\211\320\265\320\275\320\270\320\265 \320\277\320\276\320\273\321\203\321\207\320\265\320"..., 1023, 0, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("127.0.0.1")}, [16]) = 58
+Сообщение отправлено серверу (попытка 1/3)
+Ответ сервера: Сообщение получено сервером (UDP)
++++ exited with 0 +++
+strace: Process 184703 detached
+ <detached ...>
+Очистка старых логов и процессов...
+
+=== Тестирование 10 tcp клиентов ===
+Общее время выполнения: 0.19 секунд
+
+[Анализ для 10 tcp клиентов]
+
+Топ-10 системных вызовов сервера:
+     41 rt_sigprocmask
+     18 mmap
+     13 mprotect
+     13 close
+     11 set_robust_list
+     11 rseq
+     11 accept
+     10 sendto
+     10 recvfrom
+     10 clone3
+
+Ошибок в логах клиентов не обнаружено
+Очистка старых логов и процессов...
+
+=== Тестирование 10 udp клиентов ===
+Общее время выполнения: 0.16 секунд
+
+[Анализ для 10 udp клиентов]
+
+Топ-10 системных вызовов сервера:
+     11 recvfrom
+     10 sendto
+      8 mmap
+      3 newfstatat
+      3 mprotect
+      3 close
+      3 brk
+      2 rt_sigaction
+      2 pread64
+      2 openat
+
+Ошибок в логах клиентов не обнаружено
+Очистка старых логов и процессов...
+
+=== Тестирование 100 tcp клиентов ===
+Общее время выполнения: 1.84 секунд
+
+[Анализ для 100 tcp клиентов]
+
+Топ-10 системных вызовов сервера:
+    401 rt_sigprocmask
+    103 close
+    101 set_robust_list
+    101 rseq
+    101 accept
+    100 sendto
+    100 recvfrom
+    100 clone3
+     99 madvise
+     99 exit
+
+Ошибок в логах клиентов не обнаружено
+Очистка старых логов и процессов...
+
+=== Тестирование 100 udp клиентов ===
+Общее время выполнения: 1.87 секунд
+
+[Анализ для 100 udp клиентов]
+
+Топ-10 системных вызовов сервера:
+�а 1/3)
+Ответ сервера: Сообщение получено сервером (UDP)
++++ exited with 0 +++
+strace: Process 184681 detached
+ <detached ...>
+[2025-04-03 03:14:43] Время выполнения задания 7.1: 2 секунд.
+
+
+[2025-04-03 03:14:43] ВЫПОЛНЕНИЕ ЗАДАНИЯ 7.2 (Скрипт)
+[2025-04-03 03:14:43] Запуск скрипта ./lb3/7/7.2/7.2.sh без аргументов.
+UDP сервер запущен (PID: 184699)
+socket(AF_INET, SOCK_DGRAM, IPPROTO_IP) = 3
+bind(3, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("0.0.0.0")}, 16) = 0
+recvfrom(3, 
+Запуск UDP клиента...
+socket(AF_INET, SOCK_DGRAM, IPPROTO_IP) = 3
+setsockopt(3, SOL_SOCKET, SO_RCVTIMEO_OLD, "\5\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+sendto(3, "\320\237\321\200\320\270\320\262\320\265\321\202, \321\201\320\265\321\200\320\262\320\265\321\200! (UDP"..., 33, MSG_CONFIRM, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("0.0.0.0")}, 16) = 33
+"\320\237\321\200\320\270\320\262\320\265\321\202, \321\201\320\265\321\200\320\262\320\265\321\200! (UDP"..., 1024, MSG_WAITALL, {sa_family=AF_INET, sin_port=htons(57050), sin_addr=inet_addr("127.0.0.1")}, [16]) = 33
+sendto(3, "\320\241\320\276\320\276\320\261\321\211\320\265\320\275\320\270\320\265 \320\277\320\276\320\273\321\203\321\207\320\265\320"..., 58, MSG_CONFIRM, {sa_family=AF_INET, sin_port=htons(57050), sin_addr=inet_addr("127.0.0.1")}, 16) = 58
+recvfrom(3, recvfrom(3, "\320\241\320\276\320\276\320\261\321\211\320\265\320\275\320\270\320\265 \320\277\320\276\320\273\321\203\321\207\320\265\320"..., 1023, 0, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("127.0.0.1")}, [16]) = 58
+Сообщение отправлено серверу (попытка 1/3)
+Ответ сервера: Сообщение получено сервером (UDP)
++++ exited with 0 +++
+strace: Process 184703 detached
+ <detached ...>
+[2025-04-03 03:14:45] Время выполнения задания 7.2: 2 секунд.
+
+
+[2025-04-03 03:14:45] ВЫПОЛНЕНИЕ ЗАДАНИЯ 7.3 (Скрипт)
+[2025-04-03 03:14:45] Запуск скрипта ./lb3/7/7.3/7.3.sh без аргументов.
+Очистка старых логов и процессов...
+
+=== Тестирование 10 tcp клиентов ===
+Общее время выполнения: 0.19 секунд
+
+[Анализ для 10 tcp клиентов]
+
+Топ-10 системных вызовов сервера:
+     41 rt_sigprocmask
+     18 mmap
+     13 mprotect
+     13 close
+     11 set_robust_list
+     11 rseq
+     11 accept
+     10 sendto
+     10 recvfrom
+     10 clone3
+
+Ошибок в логах клиентов не обнаружено
+Очистка старых логов и процессов...
+
+=== Тестирование 10 udp клиентов ===
+Общее время выполнения: 0.16 секунд
+
+[Анализ для 10 udp клиентов]
+
+Топ-10 системных вызовов сервера:
+     11 recvfrom
+     10 sendto
+      8 mmap
+      3 newfstatat
+      3 mprotect
+      3 close
+      3 brk
+      2 rt_sigaction
+      2 pread64
+      2 openat
+
+Ошибок в логах клиентов не обнаружено
+Очистка старых логов и процессов...
+
+=== Тестирование 100 tcp клиентов ===
+Общее время выполнения: 1.84 секунд
+
+[Анализ для 100 tcp клиентов]
+
+Топ-10 системных вызовов сервера:
+    401 rt_sigprocmask
+    103 close
+    101 set_robust_list
+    101 rseq
+    101 accept
+    100 sendto
+    100 recvfrom
+    100 clone3
+     99 madvise
+     99 exit
+
+Ошибок в логах клиентов не обнаружено
+Очистка старых логов и процессов...
+
+=== Тестирование 100 udp клиентов ===
+Общее время выполнения: 1.87 секунд
+
+[А�    101 recvfrom
+    100 sendto
+      8 mmap
+      3 newfstatat
+      3 mprotect
+      3 close
+      3 brk
+      2 write
+      2 rt_sigaction
+      2 pread64
+
+Ошибок в логах клиентов не обнаружено
+Очистка старых логов и процессов...
+
+=== Тестирование 1000 tcp клиентов ===
+Общее время выполнения: 17.43 секунд
+
+[Анализ для 1000 tcp клиентов]
+
+Топ-10 системных вызовов сервера:
+   4000 rt_sigprocmask
+   1003 close
+   1001 set_robust_list
+   1001 rseq
+   1001 accept
+   1000 sendto
+   1000 recvfrom
+   1000 clone3
+    999 madvise
+    999 exit
+
+Ошибок в логах клиентов не обнаружено
+Очистка старых логов и процессов...
+
+=== Тестирование 1000 udp клиентов ===
+Общее время выполнения: 16.96 секунд
+
+[Анализ для 1000 udp клиентов]
+
+Топ-10 системных вызовов сервера:
+   1002 recvfrom
+   1000 sendto
+     17 write
+      8 mmap
+      3 newfstatat
+      3 mprotect
+      3 close
+      3 brk
+      2 rt_sigaction
+      2 pread64
+
+Ошибок в логах клиентов не обнаружено
+Очистка старых логов и процессов...
+Удаление lb3/6/6.1/dual_pipe
+Удаление lb3/6/6.1/pipe_exec
+Удаление lb3/6/6.1/simple_pipe
+Удаление lb3/6/6.2/writer
+Удаление lb3/6/6.2/reader
+Удаление lb3/6/6.2/create_fifo
+Удаление lb3/6/6.2/analyze_fifo
+Удаление lb3/6/6.3/message_queue
+Удаление lb3/1
+Удаление lb3/7/7.2/client
+Удаление lb3/7/7.2/server
+Удаление lb3/7/7.1/client
+Удаление lb3/7/7.1/server
+Удаление lb3/7/7.3/client
+Удаление lb3/7/7.3/server
+Удаление lb3/4
+Удаление lb3/5/5-posix
+Удаление lb3/5/5-systemv
+Удаление lb3/5/5-benchmark
+Удаление lb3/5/5-pthread
+Удаление lb3/2
+Удаление lb3/3/3.1
+Удаление lb3/3/3.2
+Все скомпилированные файлы удалены.
+�ализ для 100 udp клиентов]
+
+Топ-10 системных вызовов сервера:
+    101 recvfrom
+    100 sendto
+      8 mmap
+      3 newfstatat
+      3 mprotect
+      3 close
+      3 brk
+      2 write
+      2 rt_sigaction
+      2 pread64
+
+Ошибок в логах клиентов не обнаружено
+Очистка старых логов и процессов...
+
+=== Тестирование 1000 tcp клиентов ===
+Общее время выполнения: 17.43 секунд
+
+[Анализ для 1000 tcp клиентов]
+
+Топ-10 системных вызовов сервера:
+   4000 rt_sigprocmask
+   1003 close
+   1001 set_robust_list
+   1001 rseq
+   1001 accept
+   1000 sendto
+   1000 recvfrom
+   1000 clone3
+    999 madvise
+    999 exit
+
+Ошибок в логах клиентов не обнаружено
+Очистка старых логов и процессов...
+
+=== Тестирование 1000 udp клиентов ===
+Общее время выполнения: 16.96 секунд
+
+[Анализ для 1000 udp клиентов]
+
+Топ-10 системных вызовов сервера:
+   1002 recvfrom
+   1000 sendto
+     17 write
+      8 mmap
+      3 newfstatat
+      3 mprotect
+      3 close
+      3 brk
+      2 rt_sigaction
+      2 pread64
+
+Ошибок в логах клиентов не обнаружено
+Очистка старых логов и процессов...
+[2025-04-03 03:15:43] Время выполнения задания 7.3: 58 секунд.
+
+
+[2025-04-03 03:15:43] [КОММЕНТАРИЙ] Конец скрипта. Очистка файлов.
+[2025-04-03 03:15:43] ВЫПОЛНЕНИЕ ЗАДАНИЯ 0
+[2025-04-03 03:15:43] >>> root@ASPIRIN$ ./cleaner.sh lb3 <<<
+Удаление lb3/6/6.1/dual_pipe
+Удаление lb3/6/6.1/pipe_exec
+Удаление lb3/6/6.1/simple_pipe
+Удаление lb3/6/6.2/writer
+Удаление lb3/6/6.2/reader
+Удаление lb3/6/6.2/create_fifo
+Удаление lb3/6/6.2/analyze_fifo
+Удаление lb3/6/6.3/message_queue
+Удаление lb3/1
+Удаление lb3/7/7.2/client
+Удаление lb3/7/7.2/server
+Удаление lb3/7/7.1/client
+Удаление lb3/7/7.1/server
+Удаление lb3/7/7.3/client
+Удаление lb3/7/7.3/server
+Удаление lb3/4
+Удаление lb3/5/5-posix
+Удаление lb3/5/5-systemv
+Удаление lb3/5/5-benchmark
+Удаление lb3/5/5-pthread
+Удаление lb3/2
+Удаление lb3/3/3.1
+Удаление lb3/3/3.2
+Все скомпилированные файлы удалены.
+[2025-04-03 03:15:43] Время выполнения задания 0: 0 секунд.
+
+
+[2025-04-03 03:15:43] Общее время выполнения скрипта: 96 секунд.
+=================================================================
+                      ОТЧЁТ ЗАВЕРШЁН
+=================================================================
+[2025-04-03 03:15:43] Основной отчёт сохранён в файл: lab_report_2025-04-03_03-14-07.log
+
+Script done on 2025-04-03 03:15:43+03:00 [COMMAND_EXIT_CODE="0"]

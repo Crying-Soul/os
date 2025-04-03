@@ -7,7 +7,7 @@ run_test() {
     local SIGNAL=$2
     local COUNT=$3
     echo "Запуск: $FLAG"
-    $PROGRAM $FLAG &
+    strace -tt -v -s 1000 -e trace=signal $PROGRAM $FLAG &
     PID=$!
     sleep 1  # Даем время запуститься
     
