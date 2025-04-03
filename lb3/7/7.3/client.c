@@ -83,16 +83,16 @@ void tcp_client(const char* client_id, const char* server_ip) {
     if (bytes_sent < 0) {
         print_error("TCP send");
     } else {
-        printf("[TCP] Sent %zd/%d bytes: %s\n", bytes_sent, msg_len, message);
+        printf("[TCP] Sent %zd/%d bytes: %s\n", bytes_sent, msg_len, message); fflush(stdout);
         
         // Попытка получить ответ от сервера
         char response[BUFFER_SIZE] = {0};
         ssize_t bytes_received = recv(sock, response, BUFFER_SIZE - 1, 0);
         if (bytes_received > 0) {
             response[bytes_received] = '\0';
-            printf("[TCP] Received: %s\n", response);
+            printf("[TCP] Received: %s\n", response); fflush(stdout);
         } else if (bytes_received == 0) {
-            printf("[TCP] Server closed connection\n");
+            printf("[TCP] Server closed connection\n"); fflush(stdout);
         } else {
             print_error("TCP receive");
         }
@@ -129,14 +129,14 @@ void udp_client(const char* client_id, const char* server_ip) {
     }
     
     char message[BUFFER_SIZE];
-    int msg_len = snprintf(message, BUFFER_SIZE, "Client %s connected via UDP", client_id);
+    int msg_len = snprintf(message, BUFFER_SIZE, "Client %s connected via UDP", client_id);fflush(stdout);
     
     ssize_t bytes_sent = sendto(sock, message, msg_len, 0,
                                (const struct sockaddr *)&servaddr, sizeof(servaddr));
     if (bytes_sent < 0) {
-        print_error("UDP send");
+        print_error("UDP send");fflush(stdout);
     } else {
-        printf("[UDP] Sent %zd/%d bytes: %s\n", bytes_sent, msg_len, message);
+        printf("[UDP] Sent %zd/%d bytes: %s\n", bytes_sent, msg_len, message);fflush(stdout);
         
         // Попытка получить ответ от сервера (с таймаутом)
         struct timeval timeout = {.tv_sec = CONNECTION_TIMEOUT_SEC, .tv_usec = 0};
@@ -149,11 +149,11 @@ void udp_client(const char* client_id, const char* server_ip) {
                                             (struct sockaddr *)&servaddr, &addr_len);
             if (bytes_received > 0) {
                 response[bytes_received] = '\0';
-                printf("[UDP] Received: %s\n", response);
+                printf("[UDP] Received: %s\n", response);fflush(stdout);
             } else if (bytes_received == 0) {
-                printf("[UDP] Empty response from server\n");
+                printf("[UDP] Empty response from server\n");fflush(stdout);
             } else if (errno == EAGAIN || errno == EWOULDBLOCK) {
-                printf("[UDP] No response from server (timeout)\n");
+                printf("[UDP] No response from server (timeout)\n");fflush(stdout);
             } else {
                 print_error("UDP receive");
             }

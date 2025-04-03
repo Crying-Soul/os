@@ -105,7 +105,7 @@ execute_task() {
         start_time=$(date +%s)
 
         # Перенаправляем весь вывод (stdout+stderr) через tee для отображения и логирования
-        bash "$task_script" "${task_args[@]}" 2>&1 | tee -a "$LOG_FILE"
+        bash "$task_script" "${task_args[@]}" 2>&1 
         local exit_code=${PIPESTATUS[0]}
 
         end_time=$(date +%s)
@@ -135,9 +135,9 @@ execute_commands() {
     
     for cmd in "${commands[@]}"; do
         local user_host="$(whoami)@$(hostname)"
-        # Перенаправляем весь вывод и сохраняем exit code
+       
         log ">>> ${user_host}$ $cmd <<<" 2>&1
-        bash -c "$cmd" 2>&1 | tee -a "$LOG_FILE"
+        bash -c "$cmd" 2>&1 
         local exit_code=${PIPESTATUS[0]}
         
         if [ $exit_code -ne 0 ]; then
@@ -203,12 +203,38 @@ execute_commands 0 \
     "./compiller.sh lb3"
 
 execute_commands 1.1 \
-    "strace -tt -v -s 1000 -e trace=signal ./lb3/1"
+    "strace -tt -e 'trace=signal,kill,tgkill,tkill,sigaction,sigprocmask' -f ./lb3/1"
 
 execute_commands 1.2 \
-    "strace -tt -v -s 1000 -e trace=signal ./lb3/1 --custom-handler"
+    "strace -tt -e 'trace=signal,kill,tgkill,tkill,sigaction,sigprocmask' -f ./lb3/1 --custom-handler"
 
-execute_task 2
+# execute_task 2
+# lotos@ASPIRIN:~/Documents/os$ ./lb3/2 --process_single
+# Режим process_single. Нажмите Ctrl+C.
+# ^CПроцесс: получен SIGINT (однократно).
+# ^C
+# lotos@ASPIRIN:~/Documents/os$ ./lb3/2 --process_multi
+# Режим process_multi. Нажмите Ctrl+C несколько раз.
+# ^CПроцесс: получен SIGINT 1 раз(а).
+# ^CПроцесс: получен SIGINT 2 раз(а).
+# ^CПроцесс: получен SIGINT 3 раз(а).
+# Восстанавливаем исходный обработчик после 3 срабатываний.
+# ^C
+# lotos@ASPIRIN:~/Documents/os$ ./lb3/2 --thread_single
+# Режим thread_single. Нажмите Ctrl+C.
+# ^CПоток: получен SIGINT (однократно).
+# lotos@ASPIRIN:~/Documents/os$ ./lb3/2 --thread_multi
+# Режим thread_multi. Нажмите Ctrl+C несколько раз.
+# ^CПоток: получен SIGINT 1 раз(а).
+# ^CПоток: получен SIGINT 2 раз(а).
+# ^CПоток: получен SIGINT 3 раз(а).
+# Поток: после 3 срабатываний восстанавливаем исходное поведение.
+# lotos@ASPIRIN:~/Documents/os$ ./lb3/2 --custom_signal
+# Режим custom_signal. Нажмите Ctrl+Z.
+# ^ZПолучен SIGTSTP (Ctrl+Z)!
+# ^C
+# lotos@ASPIRIN:~/Documents/os$ 
+
 
 execute_task 3
 
@@ -217,11 +243,15 @@ execute_commands 4 \
 
 log_comment "POSIX Вариант"
 execute_commands 5.1 \
-    "strace -f -e futex ./lb3/5/5-posix 5"
+    "strace -f -e trace=read,write,futex -s 1000 ./lb3/5/5-posix 5"
 
 log_comment "SYSTEMV Вариант"
 execute_commands 5.2 \
-    "strace -f -e trace=ipc ./lb3/5/5-systemv 5"
+    "strace -f -e trace=read,write,shmget,shmat,shmdt,semop,semctl,futex ./lb3/5/5-systemv 5"
+
+log_comment "PTHREAD Вариант"
+execute_commands 5.2 \
+    "strace -f -e trace=read,write,futex ./lb3/5/5-pthread 5"
 
 log_comment "Сравнение на многоядерном процессоре"
 execute_commands 5 \
@@ -239,12 +269,13 @@ execute_task 6.2
 
 execute_task 6.3
 
+execute_task 7
+
 execute_task 7.1
 
 execute_task 7.2
 
 execute_task 7.3
-
 
 
 log_comment "Конец скрипта. Очистка файлов."

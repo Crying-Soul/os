@@ -56,7 +56,7 @@ int main() {
             continue;
         }
         
-        printf("Сообщение отправлено серверу (попытка %d/%d)\n", attempt + 1, MAX_RETRIES);
+        printf("Сообщение отправлено серверу");fflush(stdout);
         
         // Получение ответа от сервера
         ssize_t received_bytes = recvfrom(sockfd, buffer, BUFFER_SIZE - 1, 
@@ -68,7 +68,7 @@ int main() {
         }
         
         buffer[received_bytes] = '\0';
-        printf("Ответ сервера: %s\n", buffer);
+        printf("Ответ сервера: %s\n", buffer);fflush(stdout);
         break;
     }
     

@@ -142,7 +142,7 @@ void start_tcp_server(int num_clients) {
 
     setup_tcp_socket(&state.server_fd, &address);
 
-    printf("[TCP] Server listening on port %d for %d clients\n", TCP_PORT, num_clients);
+    printf("[TCP] Server listening on port %d for %d clients\n", TCP_PORT, num_clients);fflush(stdout);
 
     while (!global_shutdown) {
         pthread_mutex_lock(&state.lock);
@@ -165,7 +165,7 @@ void start_tcp_server(int num_clients) {
             continue;
         }
 
-        printf("[TCP] New connection from %s\n", inet_ntoa(client_addr.sin_addr));
+        printf("[TCP] New connection from %s\n", inet_ntoa(client_addr.sin_addr));fflush(stdout);
 
         tcp_client_t *client = malloc(sizeof(tcp_client_t));
         if (!client) {
@@ -260,7 +260,7 @@ void start_udp_server(int num_clients) {
         exit(EXIT_FAILURE);
     }
 
-    printf("[UDP] Server listening on port %d for %d clients\n", UDP_PORT, num_clients);
+    printf("[UDP] Server listening on port %d for %d clients\n", UDP_PORT, num_clients);fflush(stdout);
 
     while (!global_shutdown) {
         pthread_mutex_lock(&state.lock);
@@ -276,7 +276,7 @@ void start_udp_server(int num_clients) {
                              (struct sockaddr *)&cliaddr, &len);
         if (n > 0) {
             buffer[n] = '\0';
-            printf("[UDP] Received from %s: %s\n", inet_ntoa(cliaddr.sin_addr), buffer);
+            printf("[UDP] Received from %s: %s\n", inet_ntoa(cliaddr.sin_addr), buffer);fflush(stdout);
 
             const char *response = "UDP message received";
             if (sendto(state.server_fd, response, strlen(response), 0,

@@ -34,7 +34,7 @@ int main() {
         exit(EXIT_FAILURE);
     }
     
-    printf("UDP сервер слушает на порту %d...\n", PORT);
+    printf("UDP сервер слушает на порту %d...\n", PORT);fflush(stdout);
     
     while (1) {
         // Получение данных от клиента
@@ -45,7 +45,7 @@ int main() {
         
         printf("Получено от %s:%d: %s\n", 
                inet_ntoa(client_addr.sin_addr), 
-               ntohs(client_addr.sin_port), buffer);
+               ntohs(client_addr.sin_port), buffer);fflush(stdout);
         
         // Отправка ответа клиенту
         char *response = "Сообщение получено сервером (UDP)";

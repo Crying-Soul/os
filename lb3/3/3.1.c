@@ -18,6 +18,7 @@ void print_test_header(const char *test_name, const char *description) {
     printf("ТЕСТ: %s\n", test_name);
     printf("============================================================\n");
     printf("Описание: %s\n\n", description);
+    fflush(stdout);
 }
 
 // Функция для ожидания сигнала
@@ -48,7 +49,7 @@ void sigterm_handler(int sig) {
     printf("\n  Получен SIGTERM (сигнал %d)\n", sig);
     printf("  Этот обработчик использует старый стиль (без siginfo_t)\n"); fflush(stdout);
     signal_received = 1;
-}fflush(stdout);
+}
 
 // Обработчик для SIGUSR1
 void sigusr1_handler(int sig, siginfo_t *info, void *ucontext) {

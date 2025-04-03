@@ -37,42 +37,177 @@ void setup_handler(int signo) {
 
 // Эксперимент 4.1 и 4.2: Проверка приоритетов сигналов реального времени
 void experiment_priorities() {
-    printf("Эксперимент 4.1 и 4.2: Приоритеты сигналов\n"); fflush(stdout);
-    printf("SIGRTMIN = %d\n", SIGRTMIN); fflush(stdout);
-    printf("SIGRTMAX = %d\n", SIGRTMAX); fflush(stdout);
-    printf("Приоритет: меньший номер => более высокий приоритет.\n"); fflush(stdout);
     
-    // Устанавливаем обработчики для двух сигналов реального времени: SIGRTMIN и SIGRTMIN+1
+    printf("4.1 и 4.2: Приоритеты сигналов реального времени\n");
+    printf("1. Проверка приоритетов SIGRTMIN и SIGRTMIN+1\n");
+    printf("2. Проверка приоритетов для всего диапазона сигналов реального времени\n");
+    printf("3. Определение сигналов с минимальным и максимальным приоритетом");
+
+    fflush(stdout);
+
+    /********************************************************************
+     * Часть 1: Проверка стандартных сигналов (1-10)
+     ********************************************************************/
+    printf("\n=== Часть 1: Стандартные сигналы (1-10) ===\n");
+    
+    const int std_signals[] = {
+        SIGHUP,    // 1
+        SIGINT,    // 2
+        SIGQUIT,   // 3
+        SIGILL,    // 4
+        SIGTRAP,   // 5
+        SIGABRT,   // 6
+        SIGBUS,    // 7
+        SIGFPE,    // 8
+        SIGKILL,   // 9
+        SIGUSR1    // 10
+    };
+    const char* std_signal_names[] = {
+        "SIGHUP", "SIGINT", "SIGQUIT", "SIGILL", "SIGTRAP",
+        "SIGABRT", "SIGBUS", "SIGFPE", "SIGKILL", "SIGUSR1"
+    };
+    const int num_std_signals = sizeof(std_signals)/sizeof(std_signals[0]);
+
+    printf("Стандартные сигналы:\n");
+    for (int i = 0; i < num_std_signals; i++) {
+        printf("%2d) %-8s (%d)\n", i+1, std_signal_names[i], std_signals[i]);
+    }
+    printf("\n");
+
+    // Устанавливаем обработчики (кроме SIGKILL)
+    for (int i = 0; i < num_std_signals; i++) {
+        if (std_signals[i] != SIGKILL) {
+            setup_handler(std_signals[i]);
+        }
+    }
+
+    // Блокируем сигналы (кроме SIGKILL)
+    sigset_t block_set, old_set;
+    sigemptyset(&block_set);
+    for (int i = 0; i < num_std_signals; i++) {
+        if (std_signals[i] != SIGKILL) {
+            sigaddset(&block_set, std_signals[i]);
+        }
+    }
+    if (sigprocmask(SIG_BLOCK, &block_set, &old_set) < 0) {
+        perror("sigprocmask");
+        exit(EXIT_FAILURE);
+    }
+
+    // Отправляем сигналы в обратном порядке (от 10 к 1)
+    printf("Отправка сигналов в порядке от SIGUSR1 до SIGHUP:\n");
+    for (int i = num_std_signals-1; i >= 0; i--) {
+        if (std_signals[i] == SIGKILL) {
+            printf("  Пропускаем SIGKILL (нельзя отправить самому себе)\n");
+            continue;
+        }
+        
+        if (kill(getpid(), std_signals[i]) == -1) {
+            perror("kill");
+        } else {
+            printf("  Отправлен %-8s (%d)\n", std_signal_names[i], std_signals[i]);
+        }
+    }
+
+    printf("\nРазблокируем сигналы...\n");
+    if (sigprocmask(SIG_SETMASK, &old_set, NULL) < 0) {
+        perror("sigprocmask");
+        exit(EXIT_FAILURE);
+    }
+    sleep(1);
+
+    printf("\nРезультат для стандартных сигналов:\n");
+    printf("  Обычно обрабатываются в порядке получения без строгих приоритетов\n");
+    printf("  SIGKILL (%d) не может быть перехвачен или заблокирован\n\n", SIGKILL);
+
+    /********************************************************************
+     * Часть 2: Проверка приоритетов сигналов реального времени
+     ********************************************************************/
+    printf("=== Часть 2: Сигналы реального времени ===\n");
+    printf("Справочная информация:\n");
+    printf("  SIGRTMIN = %d\n", SIGRTMIN);
+    printf("  SIGRTMAX = %d\n", SIGRTMAX);
+    printf("  Всего сигналов реального времени: %d\n", SIGRTMAX - SIGRTMIN + 1);
+    printf("  Приоритет: меньший номер => более высокий приоритет\n\n");
+
+    // Подчасть 2.1: Проверка SIGRTMIN и SIGRTMIN+1
+    printf("=== Подчасть 2.1: Проверка SIGRTMIN и SIGRTMIN+1 ===\n");
+    
     setup_handler(SIGRTMIN);
     setup_handler(SIGRTMIN + 1);
 
-    // Блокируем оба сигнала
-    sigset_t block_set, old_set;
     sigemptyset(&block_set);
     sigaddset(&block_set, SIGRTMIN);
     sigaddset(&block_set, SIGRTMIN + 1);
     if (sigprocmask(SIG_BLOCK, &block_set, &old_set) < 0) {
-        perror("sigprocmask"); fflush(stdout);
+        perror("sigprocmask");
         exit(EXIT_FAILURE);
     }
 
-    // Посылаем сигналы в обратном порядке (сначала более высокий номер, затем меньший)
+    printf("Отправка сигналов в порядке: сначала SIGRTMIN+1, затем SIGRTMIN\n");
     union sigval sval;
     sval.sival_int = 100;
     if (sigqueue(getpid(), SIGRTMIN + 1, sval) == -1) {
-        perror("sigqueue"); fflush(stdout);
+        perror("sigqueue");
+    } else {
+        printf("  Отправлен SIGRTMIN+1 (%d) с значением %d\n", SIGRTMIN + 1, sval.sival_int);
     }
     sval.sival_int = 200;
     if (sigqueue(getpid(), SIGRTMIN, sval) == -1) {
-        perror("sigqueue"); fflush(stdout);
+        perror("sigqueue");
+    } else {
+        printf("  Отправлен SIGRTMIN (%d) с значением %d\n", SIGRTMIN, sval.sival_int);
     }
 
-    // Разблокируем сигналы и посмотрим порядок доставки
+    printf("\nРазблокируем сигналы...\n");
     if (sigprocmask(SIG_SETMASK, &old_set, NULL) < 0) {
-        perror("sigprocmask"); fflush(stdout);
+        perror("sigprocmask");
         exit(EXIT_FAILURE);
     }
+    sleep(1);
+    
+    printf("\nОжидаемый результат:\n");
+    printf("  Должен первым обработаться SIGRTMIN, несмотря на то что он был отправлен вторым\n");
+
+    // Подчасть 2.2: Проверка всего диапазона RT сигналов
+    printf("\n=== Подчасть 2.2: Проверка всего диапазона RT сигналов ===\n");
+    
+    for (int sig = SIGRTMIN; sig <= SIGRTMAX; sig++) {
+        setup_handler(sig);
+    }
+
+    sigemptyset(&block_set);
+    for (int sig = SIGRTMIN; sig <= SIGRTMAX; sig++) {
+        sigaddset(&block_set, sig);
+    }
+    if (sigprocmask(SIG_BLOCK, &block_set, &old_set) < 0) {
+        perror("sigprocmask");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Отправка сигналов в порядке от SIGRTMAX до SIGRTMIN:\n");
+    for (int sig = SIGRTMAX; sig >= SIGRTMIN; sig--) {
+        sval.sival_int = sig;
+        if (sigqueue(getpid(), sig, sval) == -1) {
+            perror("sigqueue");
+        } else {
+            printf("  Отправлен SIGRT(%d)\n", sig);
+        }
+    }
+
+    printf("\nРазблокируем сигналы...\n");
+    if (sigprocmask(SIG_SETMASK, &old_set, NULL) < 0) {
+        perror("sigprocmask");
+        exit(EXIT_FAILURE);
+    }
+    sleep(1);
+    
+    printf("\nРезультат для RT сигналов:\n");
+    printf("  Сигналы обрабатываются в порядке от SIGRTMIN до SIGRTMAX\n");
+    printf("  Максимальный приоритет: SIGRTMIN (%d)\n", SIGRTMIN);
+    printf("  Минимальный приоритет: SIGRTMAX (%d)\n", SIGRTMAX);
 }
+
 
 // Эксперимент 4.3.1: Очередь обычных сигналов
 void experiment_normal_queue() {

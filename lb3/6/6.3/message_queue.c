@@ -21,7 +21,7 @@
 #define MSG_TYPE_PRIORITY_LOW 1         // Низкий приоритет для эксперимента
 #define TOTAL_MESSAGES 8                // Общее количество тестовых сообщений
 #define QUEUE_PERMISSIONS 0666          // Права доступа к очереди
-#define PERFORMANCE_TEST_MSGS 1000      // Количество сообщений для теста производительности
+#define PERFORMANCE_TEST_MSGS 100      // Количество сообщений для теста производительности
 
 /* Структура сообщения с дополнительными полями */
 typedef struct {

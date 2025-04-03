@@ -44,7 +44,7 @@ int main() {
         exit(EXIT_FAILURE);
     }
     
-    printf("Сервер слушает на порту %d...\n", PORT);
+    printf("Сервер слушает на порту %d...\n", PORT);fflush(stdout);
     
     // Принятие входящего соединения
     if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
@@ -54,12 +54,12 @@ int main() {
     
     // Чтение данных от клиента
     read(new_socket, buffer, BUFFER_SIZE);
-    printf("Получено от клиента: %s\n", buffer);
+    printf("Получено от клиента: %s\n", buffer);fflush(stdout);
     
     // Отправка ответа клиенту
     char *response = "Сообщение получено сервером";
     send(new_socket, response, strlen(response), 0);
-    printf("Ответ отправлен клиенту\n");
+    printf("Ответ отправлен клиенту\n");fflush(stdout);
     
     close(new_socket);
     close(server_fd);

@@ -32,6 +32,7 @@ void* writer(void *arg) {
         }
         snprintf(shdata->data, SHM_SIZE, "Сообщение %d", i + 1);
         printf("Писатель отправил: %s\n", shdata->data);
+        fflush(stdout);
         shdata->ready = 1;
         if (pthread_cond_signal(&shdata->cond) != 0) {
             perror("pthread_cond_signal (writer)");
@@ -62,6 +63,7 @@ void* reader(void *arg) {
             }
         }
         printf("Читатель получил: %s\n", shdata->data);
+        fflush(stdout);
         shdata->ready = 0;
         if (pthread_cond_signal(&shdata->cond) != 0) {
             perror("pthread_cond_signal (reader)");

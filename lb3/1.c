@@ -9,7 +9,6 @@
 #include <string.h>
 #include <stdbool.h>
 
-#define INITIAL_DELAY 1      // 1 сек перед первым сигналом
 #define OPERATION_TIME 3     // 3 сек работы до завершения
 #define TIME_BUF_SIZE 30     // Размер буфера для времени
 #define BUSY_LOOP_ITERATIONS 100000000 // Количество итераций "работы"
@@ -118,7 +117,10 @@ static void* thread1_func(void* arg) {
     }
     
     // Задержка перед первым сигналом
-    sleep(INITIAL_DELAY);
+    volatile unsigned long dummy = 0;
+    for (unsigned long j = 0; j < 1000000000UL; j++){
+        dummy++;
+    }
     
     // Отправка первого сигнала
     get_current_time(time_buf, sizeof(time_buf));

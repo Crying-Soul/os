@@ -27,4 +27,4 @@ for file in "${!IPC_INFO[@]}"; do
 done
 
 
-./lb3/6/6.3/message_queue
+strace -f -e trace=ipc,msgget,msgsnd,msgrcv,msgctl ./lb3/6/6.3/message_queue
