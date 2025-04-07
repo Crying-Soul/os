@@ -1,3 +1,31 @@
+/**************************************************************
+ * Программа перехвата сигналов для разных режимов
+ * 
+ * Цели:
+ * 1. Реализовать однократный перехват SIGINT для процесса и потока
+ * 2. Реализовать многократный перехват SIGINT с восстановлением
+ *    исходного обработчика после нескольких срабатываний
+ * 3. Привести пример переназначения другой комбинации клавиш
+ * 
+ * Особенности реализации:
+ * - Использование signal() для установки обработчиков сигналов
+ * - sigwait() для ожидания сигналов в потоках
+ * - sigprocmask() для блокировки сигналов в потоках
+ * 
+ * Режимы:
+ * 1. process_single: однократный перехват SIGINT для процесса
+ * 2. thread_single: однократный перехват SIGINT для потока
+ * 3. process_multi: многократный перехват SIGINT для процесса
+ * 4. thread_multi: многократный перехват SIGINT для потока
+ * 5. custom_signal: переназначение другой комбинации клавиш (SIGQUIT)
+ * 
+ * Выводы:
+ * 1. signal() позволяет гибко управлять обработкой сигналов
+ * 2. sigwait() и sigprocmask() обеспечивают контроль над сигналами в потоках
+ * 3. Восстановление исходного обработчика после нескольких срабатываний
+ *    позволяет автоматизировать поведение программы
+ **************************************************************/
+
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
@@ -52,9 +80,10 @@ void* thread_signal_handler_multi(void* arg) {
     return NULL;
 }
 
-// 2.5 Пример переназначения другой комбинации клавиш (Ctrl+Z)
-void sigtstp_handler(int signum) {
-    printf("Получен SIGTSTP (Ctrl+Z)!\n");
+
+void sigquit_handler(int signum) {
+    printf("Получен SIGQUIT (Ctrl+\\)!\n");
+   // signal(SIGQUIT, SIG_DFL);
 }
 
 int main(int argc, char *argv[]) {
@@ -95,11 +124,12 @@ int main(int argc, char *argv[]) {
         pthread_join(tid, NULL);
     }
     else if (strcmp(argv[1], "--custom_signal") == 0) {
-        signal(SIGTSTP, sigtstp_handler);
-        printf("Режим custom_signal. Нажмите Ctrl+Z.\n");
+        signal(SIGQUIT, sigquit_handler);
+        printf("Режим custom_signal. Нажмите Ctrl+\\ (SIGQUIT).\n");
         while (1) pause();
     }
     else {
+        // Остальные режимы остаются без изменений
         fprintf(stderr, "Неизвестный режим: %s\n", argv[1]);
         exit(EXIT_FAILURE);
     }

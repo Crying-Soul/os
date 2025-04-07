@@ -167,21 +167,20 @@ task(){
 task 1
 execute_task 1 0
 task 2
-execute_task 2 0
-#execute_task 2.2 0
-#execute_task 2.3 0
-#execute_task 2.4 0
+#execute_task 2 0
 task 3
-#xecute_task 3.1 0
-#execute_task 3.2 0
+execute_task 3 0
 task 4
 execute_task 4 0
 task 5
 execute_task 5 0
-#execute_task 5.2 0
-#execute_task 5.3 0
-#execute_task 5.4 0
-#execute_task 5.5 0
-#execute_task 5.6 0
 task 6
 execute_task 6.1 0
+execute_task 6.2 0
+execute_task 6.3 0
+task 7
+execute_task 7 0
+execute_task 7.1 0
+execute_task 7.2 0
+execute_task 7.3 0
+execute_task 7.3_bm 0
